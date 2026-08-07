@@ -1,0 +1,45 @@
+taxonomy:
+  version: 1.0.0
+  owner: Enterprise Architecture Office
+  description: Enterprise taxonomy for EduVijna Architecture Office artefacts.
+
+categories:
+  - id: program
+    name: Program
+    description: Cross-cutting enterprise programmes owned or stewarded by the Architecture Office.
+
+  - id: office
+    name: Office
+    description: Architecture Office operating model, charter, and workspace orientation.
+
+  - id: architecture
+    name: Architecture
+    description: Enterprise architecture artefacts describing structure and intended evolution.
+
+  - id: standard
+    name: Standard
+    description: Approved engineering and architecture standards.
+
+  - id: decision
+    name: Decision
+    description: Architecture decisions and decision-log summaries.
+
+  - id: blueprint
+    name: Blueprint
+    description: Engineering and delivery blueprints that direct authorised work packages.
+
+  - id: review
+    name: Review
+    description: Architecture and design review records and outcomes.
+
+  - id: discovery
+    name: Discovery
+    description: Enterprise discovery programme artefacts and findings.
+
+  - id: roadmap
+    name: Roadmap
+    description: Transformation and capability sequencing artefacts.
+
+  - id: reference
+    name: Reference
+    description: External references, frameworks, research, and glossary material.

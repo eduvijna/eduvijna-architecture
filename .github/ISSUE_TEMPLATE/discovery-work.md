@@ -1,20 +1,16 @@
 ---
-name: Discovery work item
-about: Track authorised enterprise discovery work (inventories, assessments, findings)
+name: Discovery work
+about: Track authorised enterprise discovery work
 title: "[Discovery] "
 labels: ["discovery", "needs-triage"]
-assignees: []
 ---
 
-## Discovery objective
-
-<!-- What question or inventory is this discovery work intended to answer? -->
+## Objective
 
 ## Authorisation
 
-- Sprint / blueprint ID:
+- Programme / blueprint ID:
 - Sponsor:
-- Target completion:
 
 ## In scope
 
@@ -24,12 +20,6 @@ assignees: []
 
 -
 
-## Expected outputs (when authorised)
-
-<!-- List planned artefact types only; do not attach unauthorised discovery reports in bootstrap phases. -->
-
--
-
-## Dependencies
+## Expected outputs
 
 -

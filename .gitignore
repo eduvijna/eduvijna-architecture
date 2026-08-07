@@ -70,7 +70,7 @@ obj/
 *.user
 *.suo
 
-# Generated diagrams / local exports (keep intentional assets under assets/)
+# Generated diagrams / local exports (keep curated references under references/)
 *.drawio.bkp
 ~$*
 

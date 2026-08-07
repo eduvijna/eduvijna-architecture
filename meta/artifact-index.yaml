@@ -1,0 +1,57 @@
+artifact_index:
+  version: 1.0.0
+  owner: Enterprise Architecture Office
+  description: Catalogue schema for artefacts published in the EduVijna Architecture Office repository.
+  status: ready
+
+schema:
+  artifact:
+    id:
+      type: string
+      required: true
+      description: Stable artefact identifier.
+    title:
+      type: string
+      required: true
+      description: Human-readable artefact title.
+    category:
+      type: string
+      required: true
+      description: Taxonomy category id from meta/taxonomy.yaml.
+    path:
+      type: string
+      required: true
+      description: Repository-relative path to the artefact.
+    owner:
+      type: string
+      required: true
+      description: Owning role or team.
+    status:
+      type: string
+      required: true
+      allowed_values:
+        - draft
+        - in-review
+        - approved
+        - deprecated
+        - retired
+    version:
+      type: string
+      required: true
+      description: Artefact semantic version.
+    created:
+      type: date
+      required: true
+    last_updated:
+      type: date
+      required: true
+    reviewers:
+      type: list
+      required: false
+      description: Reviewer identities or roles.
+    related:
+      type: list
+      required: false
+      description: Related artefact ids.
+
+artifacts: []

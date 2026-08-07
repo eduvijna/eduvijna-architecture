@@ -1,74 +1,95 @@
 # EduVijna Architecture
 
-Enterprise Architecture Office (EAO) governance repository for the EduVijna ecosystem.
+Enterprise Architecture Office repository for the EduVijna ecosystem.
 
-This is **not** an application repository. It is the authoritative workspace for architecture governance, engineering standards stewardship, architecture reviews, decision records, discovery artefacts, and enterprise transformation guidance.
+## Mission
+
+Establish and steward coherent enterprise architecture, governance, and engineering practice so EduVijna capabilities evolve with clarity, accountability, and lasting architectural integrity.
 
 ## Purpose
 
-Provide a single, version-controlled home for how EduVijna designs, governs, and evolves its enterprise architecture.
+This repository is the governance workspace of the EduVijna Enterprise Architecture Office (EAO). It defines how architecture is governed, how standards and decisions are managed, how reviews are conducted, and how enterprise discovery and transformation guidance are organised.
 
-## What this repository is
+It is not an application repository and does not contain implementation code.
 
-| Area | Role |
-|------|------|
-| Office | EAO operating model and workspace orientation |
-| Governance | Policies, processes, and compliance artefacts |
-| Discovery | Enterprise discovery programme outputs (future) |
-| Architecture | Reference and target-state architecture artefacts (future) |
-| Standards | Engineering and architecture standards (future) |
-| Decisions | Architecture Decision Records (future) |
-| Reviews | Architecture and design review artefacts (future) |
-| Roadmap | Transformation and capability roadmap (future) |
-| Blueprints | Engineering and delivery blueprints |
-| Assets | Shared diagrams, templates, and supporting media |
+## Repository Scope
 
-## What this repository is not
+In scope:
+
+- Enterprise architecture governance
+- Engineering and architecture standards stewardship
+- Architecture reviews and decision management
+- Enterprise discovery programme artefacts
+- Transformation roadmap and engineering blueprints
+- External references and agreed terminology
+- Repository metadata and taxonomy
+
+Out of scope:
 
 - Application source code
-- Runtime configuration or infrastructure-as-code for production services
-- Product feature backlog
-- Informal personal notes outside EAO process
+- Runtime configuration and infrastructure-as-code for product services
+- Product feature backlogs
+- Informal notes outside EAO process
 
-## Current status
+## Repository Structure
 
-**Sprint EBP-001 — Repository bootstrap**
+| Directory | Role |
+|-----------|------|
+| `office/` | Architecture Office operating context |
+| `governance/` | Governance policies and processes |
+| `discovery/` | Enterprise discovery programme |
+| `architecture/` | Architecture artefacts |
+| `standards/` | Standards library |
+| `decisions/` | Architecture decisions and decision log |
+| `reviews/` | Architecture and design reviews |
+| `roadmap/` | Transformation roadmap |
+| `blueprints/` | Engineering blueprints |
+| `references/` | External references and glossary |
+| `meta/` | Repository manifest, taxonomy, and artefact index |
+| `templates/` | Shared document standards and templates |
 
-This release establishes the folder hierarchy, root documentation, GitHub contribution templates, and directory overview files only. Architecture documents, standards, ADRs, specifications, and discovery reports are intentionally deferred to later sprints (starting with Sprint A-002).
+## Engineering Lifecycle
 
-## Repository layout
+1. **Discover** — Establish current-state understanding through authorised discovery work.
+2. **Decide** — Record significant decisions and maintain the decision log.
+3. **Define** — Publish architecture, standards, and blueprints under EAO stewardship.
+4. **Review** — Conduct architecture reviews before material change is accepted.
+5. **Guide** — Sequence transformation through roadmap artefacts.
+6. **Govern** — Maintain process integrity through contribution and ownership controls.
 
-```text
-eduvijna-architecture/
-├── office/          # EAO workspace and operating context
-├── governance/      # Governance artefacts and processes
-├── discovery/       # Enterprise discovery programme
-├── architecture/    # Architecture artefacts
-├── standards/       # Standards library
-├── decisions/       # Architecture decisions
-├── reviews/         # Review records and outcomes
-├── roadmap/         # Transformation roadmap
-├── blueprints/      # Engineering blueprints
-└── assets/          # Shared supporting assets
-```
+## Artifact Types
 
-Each top-level directory contains an `OVERVIEW.md` describing purpose, scope, ownership, contents, and exclusions.
+| Type | Location | Description |
+|------|----------|-------------|
+| Office | `office/` | Operating model and office orientation |
+| Governance | `governance/` | Policies and process artefacts |
+| Discovery | `discovery/` | Discovery plans and findings |
+| Architecture | `architecture/` | Architecture artefacts and views |
+| Standard | `standards/` | Approved standards |
+| Decision | `decisions/` | ADRs and the decision log |
+| Review | `reviews/` | Review records and outcomes |
+| Roadmap | `roadmap/` | Transformation sequencing |
+| Blueprint | `blueprints/` | Engineering blueprint directives |
+| Reference | `references/` | External references and glossary |
+| Metadata | `meta/` | Manifest, taxonomy, artefact index |
 
-## Getting started
+Artefact front matter follows `templates/document-header.md`. Taxonomy categories are defined in `meta/taxonomy.yaml`.
 
-1. Read this `README.md` and the relevant directory `OVERVIEW.md` files.
-2. Follow `CONTRIBUTING.md` for contribution and review expectations.
-3. Use GitHub issue and pull request templates for proposed changes.
-4. Do not add architecture, standards, ADR, or discovery content until the corresponding sprint authorises it.
+## Contribution Workflow
 
-## Versioning
+1. Confirm the change belongs in this governance repository.
+2. Open an issue using the appropriate template when the change is material.
+3. Branch from `main` and keep the change focused.
+4. Submit a pull request; merge requires review.
+5. Architecture Review is required for architecture, standards, decisions, and related material changes.
+6. Follow `CONTRIBUTING.md` for quality, identifiers, cross-references, and versioning.
 
-See `VERSION` for the current repository bootstrap version and `CHANGELOG.md` for release history.
+## Repository Roadmap
 
-## Ownership
+| Wave | Focus |
+|------|--------|
+| Complete | Repository foundation and refinement (EBP-001, EBP-002) |
+| Next | Enterprise Discovery Wave 1 |
+| Later | Standards, ADRs, architecture models, and platform specifications under authorised sprints |
 
-Owned by the EduVijna Enterprise Architecture Office (EAO). Code owners are declared in `CODEOWNERS`.
-
-## License
-
-See `LICENSE`.
+See `VERSION`, `CHANGELOG.md`, and `meta/repository-manifest.yaml` for current repository metadata.

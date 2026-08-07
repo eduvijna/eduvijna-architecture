@@ -1,26 +1,15 @@
 ---
-name: Governance or process request
-about: Request a change to EAO governance, contribution process, or review practice
+name: Governance request
+about: Request a governance or process change
 title: "[Governance] "
 labels: ["governance", "needs-triage"]
-assignees: []
 ---
 
-## Problem statement
-
-<!-- What process gap or friction are you addressing? -->
+## Problem
 
 ## Proposed change
 
-<!-- Describe the process or governance update. -->
-
 ## Impact
-
-- Who is affected?
-- Which directories or templates change?
-- Does this affect review or merge requirements?
-
-## Alternatives considered
 
 -
 

@@ -7,7 +7,7 @@ Maintain the library of engineering and architecture standards that teams across
 ## Scope
 
 - Authorised standards for engineering practice, interoperability, security, data, and related domains
-- Standard lifecycle artefacts (proposal, approval, versioning) once the standards process is established
+- Standard lifecycle artefacts (proposal, approval, versioning)
 - Cross-repository guidance owned by the EAO
 
 ## Ownership
@@ -16,7 +16,7 @@ EduVijna Enterprise Architecture Office (EAO), with subject-matter owners assign
 
 ## Contents
 
-Bootstrap placeholder only (`OVERVIEW.md`). No standards documents are created in EBP-001.
+Approved and in-progress standards under EAO stewardship.
 
 ## Exclusions
 

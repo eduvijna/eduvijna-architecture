@@ -1,61 +1,73 @@
 # Contributing to EduVijna Architecture
 
-Thank you for contributing to the EduVijna Enterprise Architecture Office (EAO) repository.
+Contributions to this Enterprise Architecture Office (EAO) repository must preserve governance integrity, traceability, and reviewability.
 
-This repository governs architecture and engineering process for the EduVijna ecosystem. Contributions must preserve clarity, traceability, and reviewability.
+## Rules
 
-## Before you contribute
+### No implementation code
 
-1. Confirm the change belongs in this governance repository (not an application repo).
-2. Read the `OVERVIEW.md` for the directory you intend to change.
-3. Prefer small, reviewable pull requests over large unstructured dumps.
-4. Do not invent architecture, standards, ADRs, or specifications outside an authorised sprint or work item.
+Do not add application source code, scripts that implement product behaviour, infrastructure-as-code for product runtimes, or executable services. This repository is for architecture governance artefacts only.
 
-## Contribution types
+### Pull Request required
 
-| Type | Examples | Expected process |
-|------|----------|------------------|
-| Bootstrap / workspace | Folder structure, templates, overview text | PR with clear rationale |
-| Governance process | Contribution rules, review checklists | EAO review required |
-| Architecture content | Reference models, views, catalogues | Authorised sprint; architecture review |
-| Standards | Coding, API, security, data standards | Authorised sprint; standards review |
-| Decisions | ADRs | Authorised decision process |
-| Discovery | Discovery reports and inventories | Authorised discovery sprint |
-| Editorial | Typos, broken links, formatting | Lightweight PR |
+All changes land through a pull request to the default branch. Direct commits to `main` are not permitted under normal process.
+
+### Architecture Review required
+
+Material changes to architecture, standards, decisions, reviews, discovery outputs, roadmaps, or blueprints require Architecture Review before approval. Editorial corrections may follow a lighter review path when they do not alter meaning.
+
+### Stable artifact IDs
+
+Assigned artefact identifiers are stable. Do not reuse, renumber, or silently repurpose IDs. If an artefact is superseded, retain history and mark status appropriately.
+
+### Markdown quality
+
+- Use clear headings and concise prose
+- Prefer tables where they improve scanability
+- Ensure links resolve within the repository
+- Follow `templates/document-header.md` for new Markdown documents
+
+### Cross references
+
+Link related artefacts by stable ID and path. Prefer repository-relative links. Keep terminology aligned with `references/glossary.md` and `meta/taxonomy.yaml`.
+
+### Versioning expectations
+
+- Update artefact `version` when meaning changes
+- Record consumer-visible repository changes in `CHANGELOG.md`
+- Align repository version in `VERSION` and `meta/repository-manifest.yaml` when releasing
 
 ## Workflow
 
-1. **Open an issue** using the appropriate GitHub issue template when the change is non-trivial.
-2. **Create a branch** from the default branch using a descriptive name (for example `docs/ebp-001-bootstrap` or `chore/update-overview`).
-3. **Make focused changes** that match the issue and directory scope.
-4. **Update `CHANGELOG.md`** under `[Unreleased]` when the change is user-visible to consumers of this repository.
-5. **Open a pull request** using the pull request template.
-6. **Request review** from the owners listed in `CODEOWNERS`.
-7. **Merge only after approval** and any required checks pass.
+1. Open an issue for non-trivial work.
+2. Create a descriptive branch from `main`.
+3. Make focused changes within the correct directory.
+4. Update `CHANGELOG.md` under `[Unreleased]` when appropriate.
+5. Open a pull request using the PR template.
+6. Request review from owners in `CODEOWNERS`.
+7. Merge only after required approvals.
 
-## Pull request expectations
+## Contribution types
 
-- Describe *why* the change is needed, not only *what* changed.
-- Link related issues, blueprints, or sprint identifiers (for example `EBP-001`, `A-002`).
-- Keep scope aligned with the acceptance criteria of the governing blueprint or work item.
-- Do not commit secrets, credentials, or personal data.
-- Do not add empty placeholder architecture documents “for later.”
+| Type | Process |
+|------|---------|
+| Governance / process | PR + EAO review |
+| Architecture / standards / decisions | PR + Architecture Review |
+| Discovery / roadmap / blueprints | PR + Architecture Review |
+| References / glossary / metadata | PR + EAO review |
+| Editorial | Lightweight PR |
 
-## Review expectations
+## Review checklist
 
-Reviewers should verify:
+Reviewers verify:
 
 - Correct directory placement and ownership
-- Scope compliance (no premature architecture/standards/ADR/discovery content during bootstrap phases)
-- Clarity and professional tone
-- Consistency with existing overview and contribution guidance
-
-## Code of conduct for contributions
-
-- Be precise and constructive in review comments.
-- Prefer evidence and references over opinion when debating architecture direction.
-- Escalate unresolved disagreements through EAO governance channels, not ad-hoc merges.
+- No implementation code introduced
+- Stable IDs preserved
+- Cross-references and glossary consistency
+- Markdown quality and working links
+- Version and changelog expectations met
 
 ## Questions
 
-For process questions, open a `governance` or `general` issue, or contact the Enterprise Architecture Office via the channels defined by EduVijna leadership.
+Use a General or Governance issue template, or contact the Enterprise Architecture Office through EduVijna leadership channels.

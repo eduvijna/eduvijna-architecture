@@ -6,7 +6,7 @@ Capture architecture and design review requests, evidence, outcomes, and follow-
 
 ## Scope
 
-- Review intake records, checklists, and outcome notes when authorised
+- Review intake records, checklists, and outcome notes
 - Traceability between reviewed proposals and resulting decisions or remediation work
 - EAO-facilitated review artefacts that support governance
 
@@ -16,7 +16,7 @@ EduVijna Enterprise Architecture Office (EAO), coordinating with requesting prod
 
 ## Contents
 
-Bootstrap placeholder only (`OVERVIEW.md`). No review records or checklists are created in EBP-001 beyond repository contribution templates.
+Architecture and design review records and outcomes.
 
 ## Exclusions
 

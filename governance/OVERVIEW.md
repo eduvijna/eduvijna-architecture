@@ -7,7 +7,7 @@ House governance artefacts that define how architecture, standards, reviews, and
 ## Scope
 
 - Policies, process definitions, and compliance-oriented guidance for EAO activities
-- Contribution, review, and escalation process artefacts once authorised
+- Contribution, review, and escalation process artefacts
 - Cross-cutting controls that apply to work stored in this repository
 
 ## Ownership
@@ -16,7 +16,7 @@ EduVijna Enterprise Architecture Office (EAO), with stakeholder input from engin
 
 ## Contents
 
-Bootstrap placeholder only (`OVERVIEW.md`). Governance documents will be added in authorised sprints; they are not part of EBP-001.
+Governance policies, process definitions, and related control artefacts.
 
 ## Exclusions
 

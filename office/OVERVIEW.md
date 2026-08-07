@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Define the operating context for the EduVijna Enterprise Architecture Office (EAO). This directory orients contributors to how the EAO works within this repository and how the workspace is intended to be used.
+Define the operating context for the EduVijna Enterprise Architecture Office (EAO) and orient contributors to how this workspace is used.
 
 ## Scope
 
@@ -16,10 +16,10 @@ EduVijna Enterprise Architecture Office (EAO). Changes require review per `CODEO
 
 ## Contents
 
-This directory currently contains bootstrap orientation only (`OVERVIEW.md`). Future authorised artefacts may include office charters, operating rhythms, and contributor onboarding notes specific to the EAO.
+Office orientation and operating artefacts stewarded by the EAO.
 
 ## Exclusions
 
 - Application source code and product feature documentation
-- Architecture models, standards, ADRs, and discovery reports (those belong in their dedicated directories when authorised)
+- Architecture models, standards, ADRs, and discovery reports (those belong in their dedicated directories)
 - Informal personal notes outside EAO process

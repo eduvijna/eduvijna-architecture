@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Store engineering and delivery blueprints that instruct how specific EduVijna initiatives or repository foundations are to be executed.
+Store engineering and delivery blueprints that instruct how specific EduVijna initiatives or repository work packages are to be executed.
 
 ## Scope
 
-- Authorised Engineering Blueprints (for example EBP-001) and related delivery blueprints
+- Engineering Blueprints and related delivery blueprints
 - Execution guidance that is directive for a defined sprint or work package
 - Blueprint status and acceptance criteria references for implementers
 
@@ -16,7 +16,7 @@ EduVijna Enterprise Architecture Office (EAO). Blueprint authors may include pro
 
 ## Contents
 
-Bootstrap placeholder only (`OVERVIEW.md`). The EBP-001 bootstrap itself established this repository; published blueprint documents may be added in later authorised work.
+Authorised engineering and delivery blueprints.
 
 ## Exclusions
 

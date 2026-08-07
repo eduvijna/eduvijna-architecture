@@ -6,7 +6,7 @@ Hold the enterprise architecture and transformation roadmap for the EduVijna eco
 
 ## Scope
 
-- Authorised roadmap artefacts for capabilities, platforms, and architecture initiatives
+- Roadmap artefacts for capabilities, platforms, and architecture initiatives
 - Sequencing, dependencies, and horizon planning owned by the EAO
 - Links from roadmap items to blueprints, reviews, and delivery programmes
 
@@ -16,7 +16,7 @@ EduVijna Enterprise Architecture Office (EAO), aligned with product and engineer
 
 ## Contents
 
-Bootstrap placeholder only (`OVERVIEW.md`). No roadmap documents are created in EBP-001.
+Transformation and architecture roadmap artefacts.
 
 ## Exclusions
 

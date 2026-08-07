@@ -2,13 +2,13 @@
 
 ## Purpose
 
-Store approved and in-progress architecture artefacts that describe how the EduVijna ecosystem is structured and intended to evolve.
+Store architecture artefacts that describe how the EduVijna ecosystem is structured and intended to evolve.
 
 ## Scope
 
-- Reference, current-state, and target-state architecture artefacts when authorised
+- Reference, current-state, and target-state architecture artefacts
 - Views, models, and architecture narratives governed by EAO process
-- Material that depends on prior discovery and decision outcomes where required
+- Material that depends on discovery and decision outcomes where required
 
 ## Ownership
 
@@ -16,7 +16,7 @@ EduVijna Enterprise Architecture Office (EAO). Architecture artefacts require EA
 
 ## Contents
 
-Bootstrap placeholder only (`OVERVIEW.md`). No architecture documents, models, or specifications are created in EBP-001.
+Approved and in-progress architecture artefacts under EAO stewardship.
 
 ## Exclusions
 

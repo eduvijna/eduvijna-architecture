@@ -1,0 +1,47 @@
+repository:
+  id: EDUVIJNA-ARCH
+  name: eduvijna-architecture
+  owner: Enterprise Architecture Office
+  organization: EduVijna
+  version: 1.0.0
+  visibility: private
+  license: Apache-2.0
+  default_branch: main
+
+purpose:
+  - enterprise architecture
+  - governance
+  - engineering standards
+  - architecture reviews
+  - enterprise discovery stewardship
+  - transformation roadmap guidance
+
+status:
+  lifecycle: active
+  classification: governance-repository
+  implementation_code: false
+
+governance:
+  office: Enterprise Architecture Office
+  contribution_model: pull-request-required
+  architecture_review_required: true
+  document_header_standard: templates/document-header.md
+
+structure:
+  domains:
+    - office
+    - governance
+    - discovery
+    - architecture
+    - standards
+    - decisions
+    - reviews
+    - roadmap
+    - blueprints
+    - references
+    - meta
+    - templates
+
+contacts:
+  primary: Enterprise Architecture Office
+  codeowners: CODEOWNERS

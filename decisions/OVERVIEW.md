@@ -6,8 +6,8 @@ Record significant architecture and engineering decisions for the EduVijna ecosy
 
 ## Scope
 
-- Architecture Decision Records (ADRs) and related decision artefacts when authorised
-- Decision status, context, and consequences managed under EAO process
+- Architecture Decision Records (ADRs) governed by EAO process
+- The chronological decision log summarising approved decisions
 - Traceability from decisions to architecture, standards, and roadmap work
 
 ## Ownership
@@ -16,11 +16,12 @@ EduVijna Enterprise Architecture Office (EAO). Decision authors may include doma
 
 ## Contents
 
-Bootstrap placeholder only (`OVERVIEW.md`). No ADRs or decision logs are created in EBP-001.
+- `DECISION_LOG.md` — chronological summary of approved architecture decisions
+- Individual ADRs when authorised and approved
 
 ## Exclusions
 
-- Informal chat decisions without recorded ADR process
+- Informal chat decisions without recorded process
 - Standards text itself (see `standards/`)
 - Detailed design specifications unless captured as a decision record
 - Discovery findings that have not been converted into decisions
