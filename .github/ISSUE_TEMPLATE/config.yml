@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Contribution guide
+    url: https://github.com/eduvijna/eduvijna-architecture/blob/main/CONTRIBUTING.md
+    about: Read CONTRIBUTING.md before opening an issue in this EAO repository.
+  - name: Repository README
+    url: https://github.com/eduvijna/eduvijna-architecture/blob/main/README.md
+    about: Start here for repository purpose, layout, and current bootstrap status.

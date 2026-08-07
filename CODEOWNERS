@@ -1,0 +1,28 @@
+# EduVijna Architecture — CODEOWNERS
+#
+# Enterprise Architecture Office (EAO) ownership map.
+# Replace placeholder handles with real GitHub usernames or teams
+# before enabling required reviews in branch protection.
+#
+# Syntax: <pattern> <owner> [<owner> ...]
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for the entire repository
+*                           @eduvijna/enterprise-architecture-office
+
+# Governance and contribution process
+/CONTRIBUTING.md            @eduvijna/enterprise-architecture-office
+/CODEOWNERS                 @eduvijna/enterprise-architecture-office
+/.github/                   @eduvijna/enterprise-architecture-office
+
+# EAO workspace domains
+/office/                    @eduvijna/enterprise-architecture-office
+/governance/                @eduvijna/enterprise-architecture-office
+/discovery/                 @eduvijna/enterprise-architecture-office
+/architecture/              @eduvijna/enterprise-architecture-office
+/standards/                 @eduvijna/enterprise-architecture-office
+/decisions/                 @eduvijna/enterprise-architecture-office
+/reviews/                   @eduvijna/enterprise-architecture-office
+/roadmap/                   @eduvijna/enterprise-architecture-office
+/blueprints/                @eduvijna/enterprise-architecture-office
+/assets/                    @eduvijna/enterprise-architecture-office
