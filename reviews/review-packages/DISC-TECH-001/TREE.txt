@@ -1,0 +1,24 @@
+DISC-TECH-001 Review Package — Repository Tree (Discovery Wave 1 Technology)
+
+eduvijna-architecture/
+├── discovery/
+│   └── inventories/
+│       └── technologies/
+│           ├── technology-inventory.yaml
+│           ├── technology-inventory.json
+│           ├── technology-inventory.md
+│           ├── technology-catalog.md
+│           ├── technology-version-matrix.md
+│           ├── entries/
+│           │   ├── DISC-TECH-0001.yaml … DISC-TECH-0084.yaml
+│           └── evidence/
+│               ├── DISC-TECH-0001.md … DISC-TECH-0084.md
+│
+└── reviews/
+    └── review-packages/
+        └── DISC-TECH-001/
+            ├── SUMMARY.md
+            ├── TREE.txt
+            ├── CHANGED_FILES.md
+            ├── CHECKLIST.md
+            └── OPEN_QUESTIONS.md
