@@ -1,0 +1,24 @@
+DISC-REP-001 Review Package — Repository Tree (Discovery Wave 1)
+
+eduvijna-architecture/
+├── discovery/
+│   └── inventories/
+│       └── repositories/
+│           ├── repository-inventory.yaml
+│           ├── repository-inventory.json
+│           ├── repository-inventory.md
+│           ├── repository-dependency-map.md
+│           ├── entries/
+│           │   ├── DISC-REP-0001.yaml … DISC-REP-0013.yaml
+│           └── evidence/
+│               ├── DISC-REP-0001.md … DISC-REP-0013.md
+│               └── _raw/   (pre-existing capture artefacts)
+│
+└── reviews/
+    └── review-packages/
+        └── DISC-REP-001/
+            ├── SUMMARY.md
+            ├── TREE.txt
+            ├── CHANGED_FILES.md
+            ├── CHECKLIST.md
+            └── OPEN_QUESTIONS.md

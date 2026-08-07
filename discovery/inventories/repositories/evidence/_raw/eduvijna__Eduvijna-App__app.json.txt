@@ -1,0 +1,73 @@
+﻿{
+  "expo": {
+    "name": "Eduvijna",
+    "slug": "eduvijna-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/eduvijna.png",
+    "userInterfaceStyle": "automatic",
+    "statusBar": {
+      "style": "auto",
+      "translucent": false
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 35,
+            "buildToolsVersion": "35.0.0",
+            "newArchEnabled": true
+          }
+        }
+      ],
+      "expo-secure-store",
+      "expo-asset"
+    ],
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ],
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "extra": {
+      "BACKEND_URL": "https://api.eduvijna.com",
+      "eas": {
+        "projectId": "defde510-23b4-48d3-915b-8623f373039b"
+      }
+    },
+    "android": {
+      "package": "com.samathakotikanyadanam.eduvijnamobile",
+      "compileSdkVersion": 35,
+      "targetSdkVersion": 35,
+      "buildToolsVersion": "35.0.0",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/eduvijna.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "NOTIFICATIONS"
+      ],
+      "splash": {
+        "backgroundColor": "#ffffff",
+        "resizeMode": "contain",
+        "image": "./assets/splash.png"
+      },
+      "enableProguardInReleaseBuilds": true,
+      "enableShrinkResourcesInReleaseBuilds": true
+    },
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/defde510-23b4-48d3-915b-8623f373039b"
+    },
+    "ios": {}
+  }
+}

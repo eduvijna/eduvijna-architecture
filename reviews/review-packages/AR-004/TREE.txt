@@ -1,0 +1,40 @@
+AR-004 Review Package — Repository Tree (EBP-003 Metadata Enhancement)
+
+eduvijna-architecture/
+├── discovery/
+│   ├── OVERVIEW.md
+│   ├── VALIDATION_RULES.md                          [UPDATED]
+│   ├── templates/
+│   │   ├── repository-template.yaml                 [UPDATED]
+│   │   ├── application-template.yaml                [UPDATED]
+│   │   ├── technology-template.yaml                 [UPDATED]
+│   │   ├── database-template.yaml                   [UPDATED]
+│   │   ├── api-template.yaml                        [UPDATED]
+│   │   ├── ai-template.yaml                         [UPDATED]
+│   │   ├── infrastructure-template.yaml             [UPDATED]
+│   │   ├── capability-template.yaml                 [UPDATED]
+│   │   ├── security-template.yaml                   [UPDATED]
+│   │   └── technical-debt-template.yaml             [UPDATED]
+│   ├── schemas/
+│   │   ├── common-metadata.schema.json              [NEW]
+│   │   ├── repository.schema.json                   [UPDATED]
+│   │   ├── application.schema.json                  [UPDATED]
+│   │   ├── technology.schema.json                   [UPDATED]
+│   │   ├── database.schema.json                     [UPDATED]
+│   │   ├── api.schema.json                          [UPDATED]
+│   │   ├── ai.schema.json                           [UPDATED]
+│   │   ├── infrastructure.schema.json               [UPDATED]
+│   │   ├── capability.schema.json                   [UPDATED]
+│   │   ├── security.schema.json                     [UPDATED]
+│   │   └── technical-debt.schema.json               [UPDATED]
+│   └── examples/
+│       └── repository-example.yaml                  [UPDATED]
+│
+└── reviews/
+    └── review-packages/
+        └── AR-004/
+            ├── SUMMARY.md
+            ├── TREE.txt
+            ├── CHANGED_FILES.md
+            ├── CHECKLIST.md
+            └── OPEN_QUESTIONS.md

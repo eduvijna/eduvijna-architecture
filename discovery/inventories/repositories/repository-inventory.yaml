@@ -1,0 +1,1772 @@
+# Discovery Wave 1 — Repository Inventory Catalogue
+# discovery_view is catalogue presentation only (not part of repository.schema.json)
+discovery_set:
+  review_package: DISC-REP-001
+  scope_note: GitHub user eduvijna + org eduvijna-ai (no org named EduVijna found)
+  discovered_at: '2026-08-07T14:00:00Z'
+  discovered_by: Enterprise Discovery Engineer
+  repository_count: 13
+entries:
+- metadata:
+    discovery_id: DISC-REP-0001
+    discovery_type: repository
+    source_repository: eduvijna-architecture
+    discovered_at: '2026-08-07T14:00:00Z'
+    discovered_by: Enterprise Discovery Engineer
+    confidence: HIGH
+    version: '0.2.0'
+    inventory_version: '1.1.0'
+  repository:
+    repository_id: REPO-eduvijna-architecture
+    name: eduvijna-architecture
+    clone_url: https://github.com/eduvijna/eduvijna-architecture.git
+    web_url: https://github.com/eduvijna/eduvijna-architecture
+    visibility: public
+    hosting_platform: github
+    default_branch: main
+    primary_language: 'UNKNOWN'
+    lifecycle: 'UNKNOWN'
+    criticality: 'UNKNOWN'
+    classification: Governance
+    ownership:
+      organisational_owner: Enterprise Architecture Office
+      technical_owner: Enterprise Architecture Office
+      codeowners_present: 'true'
+  repository_optional:
+    monorepo: 'UNKNOWN'
+    ci_cd_present: 'false'
+    readme_present: 'true'
+    description: Enterprise Architecture Office governance repository for the EduVijna ecosystem.
+    license: Apache-2.0
+    notes: 'stack: Governance documentation repository (no application package manager evidenced); package_manager:
+      none evidenced; workflows: .github/workflows/.gitkeep'
+  evidence:
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna__eduvijna-architecture-root.json
+    description: GitHub root contents listing; evidences README.md, LICENSE, CONTRIBUTING.md, CODEOWNERS,
+      .github; no package.json.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna__eduvijna-architecture-languages.json
+    description: GitHub languages API returned empty object; primary_language UNKNOWN.
+  - type: github-workflow
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna__eduvijna-architecture-workflows.json
+    description: Workflows path list contains only .github/workflows/.gitkeep; ci_cd_present=false.
+  - type: other
+    location: CODEOWNERS
+    description: CODEOWNERS present; maps paths to @eduvijna/enterprise-architecture-office.
+  - type: readme
+    location: README.md
+    description: States EAO ownership and governance purpose.
+  - type: other
+    location: LICENSE
+    description: Apache License Version 2.0 text; supports license Apache-2.0.
+  - type: other
+    location: https://github.com/eduvijna/eduvijna-architecture
+    description: GitHub URL from gh discovery; hosting_platform=github; visibility=public.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/gh-repo-list-default-branches.txt
+    description: gh repo list metadata evidences defaultBranchRef.name=main for this repository.
+  - type: manual
+    location: reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+    description: Wave 1 frozen repository classification vocabulary decision recorded in DISC-REP-001
+      review package; supports repository.classification.
+  unknown_value_policy:
+    statement: Unknown values are recorded explicitly using the marker. Never invent or guess missing
+      facts.
+    marker: 'UNKNOWN'
+    fields_marked_unknown:
+    - repository.lifecycle
+    - repository.criticality
+    - repository_optional.monorepo
+    rationale_required: true
+  observations:
+  - observation_id: OBS-01
+    text: repository.classification set from Wave 1 frozen vocabulary decision (EAO-approved); see reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+      and discovery/VALIDATION_RULES.md.
+    related_fields:
+    - repository.classification
+    recorded_on: '2026-08-07'
+  assumptions:
+  - assumption_id: ASM-01
+    statement: HTTPS clone_url and web_url for eduvijna/eduvijna-architecture match the GitHub repository
+      identity recorded during Wave 1 gh discovery.
+    rationale: Root/languages/workflows evidence files are keyed by owner__name; full repository metadata
+      JSON was not retained as a separate _raw artefact for every metadata field.
+    impact_if_wrong: URLs or visibility could refer to a renamed, transferred, or forked repository.
+  reproducibility:
+    method: Replay Discovery Wave 1 repository capture against GitHub user eduvijna and org eduvijna-ai
+      using gh API (list repos; fetch root contents, languages, .github/workflows paths; download selected
+      manifests). Populate inventory fields only from artefacts under discovery/inventories/repositories/evidence/_raw/.
+      Mark remaining required fields UNKNOWN. Do not modify application repositories.
+    tooling:
+    - gh
+    - Python 3
+    - jsonschema
+    - PyYAML
+    replay_notes: Re-run against the same GitHub owners on or after 2026-08-07. Some README/CODEOWNERS
+      fetches in _raw are truncated or HTTP 404; prefer root-listing presence flags plus successfully
+      fetched manifests. UTF-16 LE BOM may be present in Windows-captured files.
+  discovery_view:
+    technology:
+      primary_language: 'UNKNOWN'
+      package_manager: none evidenced
+      frameworks_runtimes: 'UNKNOWN'
+      notes: No package manifest at repository root.
+      languages: []
+    operations:
+      ci_cd_present: 'false'
+      workflows:
+      - .github/workflows/.gitkeep
+      containerisation: none evidenced
+      iac: none evidenced
+    quality:
+      readme_present: 'true'
+      contributing_present: 'true'
+      license: Apache-2.0
+      codeowners_present: 'true'
+      architecture_doc_present: 'false'
+    relationships:
+      evidenced_dependencies: none evidenced
+      notes: No application dependency links evidenced.
+    classification: Governance
+- metadata:
+    discovery_id: DISC-REP-0002
+    discovery_type: repository
+    source_repository: Eduvijna
+    discovered_at: '2026-08-07T14:00:00Z'
+    discovered_by: Enterprise Discovery Engineer
+    confidence: HIGH
+    version: '0.2.0'
+    inventory_version: '1.1.0'
+  repository:
+    repository_id: REPO-eduvijna-Eduvijna
+    name: Eduvijna
+    clone_url: https://github.com/eduvijna/Eduvijna.git
+    web_url: https://github.com/eduvijna/Eduvijna
+    visibility: private
+    hosting_platform: github
+    default_branch: main
+    primary_language: TypeScript
+    lifecycle: 'UNKNOWN'
+    criticality: 'UNKNOWN'
+    classification: Runtime
+    ownership:
+      organisational_owner: eduvijna
+      technical_owner: 'UNKNOWN'
+      codeowners_present: 'false'
+  repository_optional:
+    monorepo: 'UNKNOWN'
+    ci_cd_present: 'false'
+    readme_present: 'true'
+    description: Expo/React Native TypeScript mobile application (package name eduvijna).
+    languages:
+    - TypeScript (5532274)
+    - JavaScript (39858)
+    - Python (2117)
+    notes: 'stack: Expo ~54 + React Native 0.81.5 + TypeScript (package.json); package_manager: npm (package-lock.json);
+      workflows: 404'
+  evidence:
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna__Eduvijna-root.json
+    description: Root listing evidences package.json, package-lock.json, app.json, eas.json, ARCHITECTURE.md,
+      README.md; no .github; no CODEOWNERS.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna__Eduvijna-languages.json
+    description: 'Languages: TypeScript dominant.'
+  - type: github-workflow
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna__Eduvijna-workflows.json
+    description: gh API HTTP 404 for .github/workflows; ci_cd_present=false.
+  - type: package-json
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna__Eduvijna__package.json.txt
+    description: Dependencies include expo ~54.0.35, react-native 0.81.5, react, axios; name eduvijna.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna__Eduvijna__CODEOWNERS.txt
+    description: CODEOWNERS fetch returned HTTP 404 JSON; codeowners_present=false.
+  - type: other
+    location: https://github.com/eduvijna/Eduvijna
+    description: GitHub URL from gh discovery; hosting_platform=github; visibility=private.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/gh-repo-list-default-branches.txt
+    description: gh repo list metadata evidences defaultBranchRef.name=main for this repository.
+  - type: manual
+    location: reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+    description: Wave 1 frozen repository classification vocabulary decision recorded in DISC-REP-001
+      review package; supports repository.classification.
+  unknown_value_policy:
+    statement: Unknown values are recorded explicitly using the marker. Never invent or guess missing
+      facts.
+    marker: 'UNKNOWN'
+    fields_marked_unknown:
+    - repository.lifecycle
+    - repository.criticality
+    - repository.ownership.technical_owner
+    - repository_optional.license
+    - repository_optional.monorepo
+    rationale_required: true
+  observations:
+  - observation_id: OBS-01
+    text: repository.classification set from Wave 1 frozen vocabulary decision (EAO-approved); see reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+      and discovery/VALIDATION_RULES.md.
+    related_fields:
+    - repository.classification
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-02
+    text: ARCHITECTURE.md and eas.json present at root (listing only); contents not fully captured in
+      _raw.
+    related_fields:
+    - discovery_view.quality
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-03
+    text: axios dependency present; target backend repository URL not evidenced in collected artefacts.
+    related_fields:
+    - discovery_view.relationships
+    recorded_on: '2026-08-07'
+  assumptions:
+  - assumption_id: ASM-01
+    statement: HTTPS clone_url and web_url for eduvijna/Eduvijna match the GitHub repository identity
+      recorded during Wave 1 gh discovery.
+    rationale: Root/languages/workflows evidence files are keyed by owner__name; full repository metadata
+      JSON was not retained as a separate _raw artefact for every metadata field.
+    impact_if_wrong: URLs or visibility could refer to a renamed, transferred, or forked repository.
+  reproducibility:
+    method: Replay Discovery Wave 1 repository capture against GitHub user eduvijna and org eduvijna-ai
+      using gh API (list repos; fetch root contents, languages, .github/workflows paths; download selected
+      manifests). Populate inventory fields only from artefacts under discovery/inventories/repositories/evidence/_raw/.
+      Mark remaining required fields UNKNOWN. Do not modify application repositories.
+    tooling:
+    - gh
+    - Python 3
+    - jsonschema
+    - PyYAML
+    replay_notes: Re-run against the same GitHub owners on or after 2026-08-07. Some README/CODEOWNERS
+      fetches in _raw are truncated or HTTP 404; prefer root-listing presence flags plus successfully
+      fetched manifests. UTF-16 LE BOM may be present in Windows-captured files.
+  discovery_view:
+    technology:
+      primary_language: TypeScript
+      package_manager: npm (package-lock.json)
+      frameworks_runtimes: Expo, React Native
+      notes: app.json and eas.json present at root.
+      languages:
+      - TypeScript (5532274)
+      - JavaScript (39858)
+      - Python (2117)
+    operations:
+      ci_cd_present: 'false'
+      workflows: none evidenced (workflows API 404)
+      containerisation: none evidenced
+      iac: none evidenced
+    quality:
+      readme_present: 'true'
+      contributing_present: 'false'
+      license: 'UNKNOWN'
+      codeowners_present: 'false'
+      architecture_doc_present: true (ARCHITECTURE.md at root)
+    relationships:
+      evidenced_dependencies: 'UNKNOWN'
+      notes: axios client dependency evidenced; no evidenced link to a specific backend repository.
+    classification: Runtime
+- metadata:
+    discovery_id: DISC-REP-0003
+    discovery_type: repository
+    source_repository: Eduvijna-App
+    discovered_at: '2026-08-07T14:00:00Z'
+    discovered_by: Enterprise Discovery Engineer
+    confidence: HIGH
+    version: '0.2.0'
+    inventory_version: '1.1.0'
+  repository:
+    repository_id: REPO-eduvijna-Eduvijna-App
+    name: Eduvijna-App
+    clone_url: https://github.com/eduvijna/Eduvijna-App.git
+    web_url: https://github.com/eduvijna/Eduvijna-App
+    visibility: private
+    hosting_platform: github
+    default_branch: main
+    primary_language: TypeScript
+    lifecycle: 'UNKNOWN'
+    criticality: 'UNKNOWN'
+    classification: Runtime
+    ownership:
+      organisational_owner: eduvijna
+      technical_owner: 'UNKNOWN'
+      codeowners_present: 'false'
+  repository_optional:
+    monorepo: 'UNKNOWN'
+    ci_cd_present: 'false'
+    readme_present: 'true'
+    description: Expo/React Native TypeScript mobile application (package name eduvijna).
+    languages:
+    - TypeScript (1286745)
+    - Python (37769)
+    - JavaScript (8049)
+    notes: 'stack: Expo ~52 + React Native 0.76.9 + TypeScript (package.json); package_manager: npm (package-lock.json);
+      workflows: 404'
+  evidence:
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna__Eduvijna-App-root.json
+    description: Root listing evidences package.json, package-lock.json, app.json, eas.json, ARCHITECTURE.md,
+      README.md; no .github.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna__Eduvijna-App-languages.json
+    description: 'Languages: TypeScript dominant.'
+  - type: github-workflow
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna__Eduvijna-App-workflows.json
+    description: gh API HTTP 404 for workflows directory; ci_cd_present=false.
+  - type: package-json
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna__Eduvijna-App__package.json.txt
+    description: Dependencies include expo ~52.0.0, react-native 0.76.9, axios; name eduvijna.
+  - type: other
+    location: https://github.com/eduvijna/Eduvijna-App
+    description: GitHub URL from gh discovery; hosting_platform=github; visibility=private.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/gh-repo-list-default-branches.txt
+    description: gh repo list metadata evidences defaultBranchRef.name=main for this repository.
+  - type: manual
+    location: reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+    description: Wave 1 frozen repository classification vocabulary decision recorded in DISC-REP-001
+      review package; supports repository.classification.
+  unknown_value_policy:
+    statement: Unknown values are recorded explicitly using the marker. Never invent or guess missing
+      facts.
+    marker: 'UNKNOWN'
+    fields_marked_unknown:
+    - repository.lifecycle
+    - repository.criticality
+    - repository.ownership.technical_owner
+    - repository_optional.license
+    - repository_optional.monorepo
+    rationale_required: true
+  observations:
+  - observation_id: OBS-01
+    text: repository.classification set from Wave 1 frozen vocabulary decision (EAO-approved); see reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+      and discovery/VALIDATION_RULES.md.
+    related_fields:
+    - repository.classification
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-02
+    text: Shares npm package name eduvijna with eduvijna/Eduvijna; relationship beyond naming not evidenced.
+    related_fields:
+    - discovery_view.relationships
+    recorded_on: '2026-08-07'
+  assumptions:
+  - assumption_id: ASM-01
+    statement: HTTPS clone_url and web_url for eduvijna/Eduvijna-App match the GitHub repository identity
+      recorded during Wave 1 gh discovery.
+    rationale: Root/languages/workflows evidence files are keyed by owner__name; full repository metadata
+      JSON was not retained as a separate _raw artefact for every metadata field.
+    impact_if_wrong: URLs or visibility could refer to a renamed, transferred, or forked repository.
+  reproducibility:
+    method: Replay Discovery Wave 1 repository capture against GitHub user eduvijna and org eduvijna-ai
+      using gh API (list repos; fetch root contents, languages, .github/workflows paths; download selected
+      manifests). Populate inventory fields only from artefacts under discovery/inventories/repositories/evidence/_raw/.
+      Mark remaining required fields UNKNOWN. Do not modify application repositories.
+    tooling:
+    - gh
+    - Python 3
+    - jsonschema
+    - PyYAML
+    replay_notes: Re-run against the same GitHub owners on or after 2026-08-07. Some README/CODEOWNERS
+      fetches in _raw are truncated or HTTP 404; prefer root-listing presence flags plus successfully
+      fetched manifests. UTF-16 LE BOM may be present in Windows-captured files.
+  discovery_view:
+    technology:
+      primary_language: TypeScript
+      package_manager: npm (package-lock.json)
+      frameworks_runtimes: Expo, React Native
+      notes: eas.json and ARCHITECTURE.md present at root.
+      languages:
+      - TypeScript (1286745)
+      - Python (37769)
+      - JavaScript (8049)
+    operations:
+      ci_cd_present: 'false'
+      workflows: none evidenced (workflows API 404)
+      containerisation: none evidenced
+      iac: none evidenced
+    quality:
+      readme_present: 'true'
+      contributing_present: 'false'
+      license: 'UNKNOWN'
+      codeowners_present: 'false'
+      architecture_doc_present: true (ARCHITECTURE.md at root)
+    relationships:
+      evidenced_dependencies: 'UNKNOWN'
+      notes: axios present; no evidenced backend repository URL.
+    classification: Runtime
+- metadata:
+    discovery_id: DISC-REP-0004
+    discovery_type: repository
+    source_repository: eduvijna-api
+    discovered_at: '2026-08-07T14:00:00Z'
+    discovered_by: Enterprise Discovery Engineer
+    confidence: HIGH
+    version: '0.2.0'
+    inventory_version: '1.1.0'
+  repository:
+    repository_id: REPO-eduvijna-ai-eduvijna-api
+    name: eduvijna-api
+    clone_url: https://github.com/eduvijna-ai/eduvijna-api.git
+    web_url: https://github.com/eduvijna-ai/eduvijna-api
+    visibility: private
+    hosting_platform: github
+    default_branch: main
+    primary_language: Python
+    lifecycle: 'UNKNOWN'
+    criticality: 'UNKNOWN'
+    classification: Runtime
+    ownership:
+      organisational_owner: eduvijna-ai
+      technical_owner: 'UNKNOWN'
+      codeowners_present: 'false'
+  repository_optional:
+    monorepo: 'UNKNOWN'
+    ci_cd_present: 'true'
+    readme_present: 'true'
+    description: Python FastAPI backend service (uvicorn entrypoint evidenced in Dockerfile).
+    languages:
+    - Python (10912418)
+    - PLpgSQL (845314)
+    - HTML (87893)
+    - PowerShell (87377)
+    - Shell (39278)
+    - Dockerfile (484)
+    notes: 'stack: Python FastAPI + uvicorn (requirements.txt, Dockerfile CMD); package_manager: pip (requirements.txt);
+      workflows: .github/workflows/deploy.yml'
+  evidence:
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-api-root.json
+    description: Root listing evidences Dockerfile, docker-compose.yml/.dev/.prod, requirements.txt, README.md,
+      .github, FRONTEND_BACKEND_API_MAPPING.md; no CODEOWNERS.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-api-languages.json
+    description: 'Languages: Python dominant.'
+  - type: github-workflow
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-api-workflows.json
+    description: Workflow path .github/workflows/deploy.yml present; ci_cd_present=true.
+  - type: requirements-txt
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-api__requirements.txt.txt
+    description: Lists fastapi, uvicorn, and related Python dependencies.
+  - type: dockerfile
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-api__Dockerfile.txt
+    description: Python 3.11-slim image; CMD uvicorn app.main:app on port 8000.
+  - type: docker-compose
+    location: docker-compose.yml (root listing)
+    description: docker-compose.yml, docker-compose.dev.yml, docker-compose.prod.yml present at repository
+      root.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-api__CODEOWNERS.txt
+    description: CODEOWNERS fetch returned HTTP 404; codeowners_present=false.
+  - type: other
+    location: https://github.com/eduvijna-ai/eduvijna-api
+    description: GitHub URL from gh discovery; hosting_platform=github; visibility=private.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/gh-repo-list-default-branches.txt
+    description: gh repo list metadata evidences defaultBranchRef.name=main for this repository.
+  - type: manual
+    location: reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+    description: Wave 1 frozen repository classification vocabulary decision recorded in DISC-REP-001
+      review package; supports repository.classification.
+  unknown_value_policy:
+    statement: Unknown values are recorded explicitly using the marker. Never invent or guess missing
+      facts.
+    marker: 'UNKNOWN'
+    fields_marked_unknown:
+    - repository.lifecycle
+    - repository.criticality
+    - repository.ownership.technical_owner
+    - repository_optional.license
+    - repository_optional.monorepo
+    rationale_required: true
+  observations:
+  - observation_id: OBS-01
+    text: repository.classification set from Wave 1 frozen vocabulary decision (EAO-approved); see reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+      and discovery/VALIDATION_RULES.md.
+    related_fields:
+    - repository.classification
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-02
+    text: FRONTEND_BACKEND_API_MAPPING.md exists at root (filename evidenced); content not captured; frontend
+      targets UNKNOWN.
+    related_fields:
+    - discovery_view.relationships
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-03
+    text: Prior note claimed CODEOWNERS true; collected evidence shows absent CODEOWNERS and contents
+      API 404.
+    related_fields:
+    - repository.ownership.codeowners_present
+    recorded_on: '2026-08-07'
+  assumptions:
+  - assumption_id: ASM-01
+    statement: HTTPS clone_url and web_url for eduvijna-ai/eduvijna-api match the GitHub repository identity
+      recorded during Wave 1 gh discovery.
+    rationale: Root/languages/workflows evidence files are keyed by owner__name; full repository metadata
+      JSON was not retained as a separate _raw artefact for every metadata field.
+    impact_if_wrong: URLs or visibility could refer to a renamed, transferred, or forked repository.
+  reproducibility:
+    method: Replay Discovery Wave 1 repository capture against GitHub user eduvijna and org eduvijna-ai
+      using gh API (list repos; fetch root contents, languages, .github/workflows paths; download selected
+      manifests). Populate inventory fields only from artefacts under discovery/inventories/repositories/evidence/_raw/.
+      Mark remaining required fields UNKNOWN. Do not modify application repositories.
+    tooling:
+    - gh
+    - Python 3
+    - jsonschema
+    - PyYAML
+    replay_notes: Re-run against the same GitHub owners on or after 2026-08-07. Some README/CODEOWNERS
+      fetches in _raw are truncated or HTTP 404; prefer root-listing presence flags plus successfully
+      fetched manifests. UTF-16 LE BOM may be present in Windows-captured files.
+  discovery_view:
+    technology:
+      primary_language: Python
+      package_manager: pip (requirements.txt)
+      frameworks_runtimes: FastAPI, uvicorn
+      notes: Dockerfile CMD uses uvicorn app.main:app.
+      languages:
+      - Python (10912418)
+      - PLpgSQL (845314)
+      - HTML (87893)
+      - PowerShell (87377)
+      - Shell (39278)
+      - Dockerfile (484)
+    operations:
+      ci_cd_present: 'true'
+      workflows:
+      - .github/workflows/deploy.yml
+      containerisation: Dockerfile + docker-compose.yml/.dev/.prod
+      iac: none evidenced at root
+    quality:
+      readme_present: 'true'
+      contributing_present: 'false'
+      license: 'UNKNOWN'
+      codeowners_present: 'false'
+      architecture_doc_present: 'UNKNOWN'
+    relationships:
+      evidenced_dependencies: 'UNKNOWN'
+      notes: FRONTEND_BACKEND_API_MAPPING.md filename evidenced; mapping targets not captured.
+    classification: Runtime
+- metadata:
+    discovery_id: DISC-REP-0005
+    discovery_type: repository
+    source_repository: Quiz-React
+    discovered_at: '2026-08-07T14:00:00Z'
+    discovered_by: Enterprise Discovery Engineer
+    confidence: HIGH
+    version: '0.2.0'
+    inventory_version: '1.1.0'
+  repository:
+    repository_id: REPO-eduvijna-ai-Quiz-React
+    name: Quiz-React
+    clone_url: https://github.com/eduvijna-ai/Quiz-React.git
+    web_url: https://github.com/eduvijna-ai/Quiz-React
+    visibility: private
+    hosting_platform: github
+    default_branch: main
+    primary_language: TypeScript
+    lifecycle: 'UNKNOWN'
+    criticality: 'UNKNOWN'
+    classification: Runtime
+    ownership:
+      organisational_owner: eduvijna-ai
+      technical_owner: 'UNKNOWN'
+      codeowners_present: 'false'
+  repository_optional:
+    monorepo: 'UNKNOWN'
+    ci_cd_present: 'true'
+    readme_present: 'true'
+    description: React + Vite TypeScript web application (package name quiz-react).
+    languages:
+    - TypeScript (9199361)
+    - CSS (525838)
+    - JavaScript (35790)
+    - Python (29777)
+    - Shell (17847)
+    - HTML (14734)
+    - PowerShell (4332)
+    - PLpgSQL (2651)
+    - Makefile (2579)
+    - Dockerfile (520)
+    notes: 'stack: React + Vite (package.json and vite.config.ts at root); package_manager: npm and yarn
+      (package-lock.json + yarn.lock); workflows: .github/workflows/deploy.yml'
+  evidence:
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Quiz-React-root.json
+    description: Root listing evidences package.json, package-lock.json, yarn.lock, vite.config.ts, docker-compose.yml,
+      Dockerfile.dev, Dockerfile.prod, .github, README.md; no root Dockerfile.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Quiz-React-languages.json
+    description: 'Languages: TypeScript dominant.'
+  - type: github-workflow
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Quiz-React-workflows.json
+    description: Workflow path .github/workflows/deploy.yml; ci_cd_present=true.
+  - type: package-json
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Quiz-React__package.json.txt
+    description: vite, @vitejs/plugin-react, react, axios; name quiz-react.
+  - type: dockerfile
+    location: Dockerfile.dev / Dockerfile.prod (root listing)
+    description: Container Dockerfiles present (dev/prod variants); root Dockerfile name not present.
+  - type: docker-compose
+    location: docker-compose.yml (root listing)
+    description: docker-compose.yml plus docker-compose.dev.yml and docker-compose.prod.yml present.
+  - type: other
+    location: https://github.com/eduvijna-ai/Quiz-React
+    description: GitHub URL from gh discovery; hosting_platform=github; visibility=private.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/gh-repo-list-default-branches.txt
+    description: gh repo list metadata evidences defaultBranchRef.name=main for this repository.
+  - type: manual
+    location: reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+    description: Wave 1 frozen repository classification vocabulary decision recorded in DISC-REP-001
+      review package; supports repository.classification.
+  unknown_value_policy:
+    statement: Unknown values are recorded explicitly using the marker. Never invent or guess missing
+      facts.
+    marker: 'UNKNOWN'
+    fields_marked_unknown:
+    - repository.lifecycle
+    - repository.criticality
+    - repository.ownership.technical_owner
+    - repository_optional.license
+    - repository_optional.monorepo
+    rationale_required: true
+  observations:
+  - observation_id: OBS-01
+    text: repository.classification set from Wave 1 frozen vocabulary decision (EAO-approved); see reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+      and discovery/VALIDATION_RULES.md.
+    related_fields:
+    - repository.classification
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-02
+    text: Both yarn.lock and package-lock.json present; canonical installer not evidenced.
+    related_fields:
+    - discovery_view.technology
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-03
+    text: axios dependency evidenced; specific backend repository link not captured.
+    related_fields:
+    - discovery_view.relationships
+    recorded_on: '2026-08-07'
+  assumptions:
+  - assumption_id: ASM-01
+    statement: HTTPS clone_url and web_url for eduvijna-ai/Quiz-React match the GitHub repository identity
+      recorded during Wave 1 gh discovery.
+    rationale: Root/languages/workflows evidence files are keyed by owner__name; full repository metadata
+      JSON was not retained as a separate _raw artefact for every metadata field.
+    impact_if_wrong: URLs or visibility could refer to a renamed, transferred, or forked repository.
+  reproducibility:
+    method: Replay Discovery Wave 1 repository capture against GitHub user eduvijna and org eduvijna-ai
+      using gh API (list repos; fetch root contents, languages, .github/workflows paths; download selected
+      manifests). Populate inventory fields only from artefacts under discovery/inventories/repositories/evidence/_raw/.
+      Mark remaining required fields UNKNOWN. Do not modify application repositories.
+    tooling:
+    - gh
+    - Python 3
+    - jsonschema
+    - PyYAML
+    replay_notes: Re-run against the same GitHub owners on or after 2026-08-07. Some README/CODEOWNERS
+      fetches in _raw are truncated or HTTP 404; prefer root-listing presence flags plus successfully
+      fetched manifests. UTF-16 LE BOM may be present in Windows-captured files.
+  discovery_view:
+    technology:
+      primary_language: TypeScript
+      package_manager: npm and yarn (dual lockfiles)
+      frameworks_runtimes: React, Vite
+      notes: vite.config.ts at root.
+      languages:
+      - TypeScript (9199361)
+      - CSS (525838)
+      - JavaScript (35790)
+      - Python (29777)
+      - Shell (17847)
+      - HTML (14734)
+      - PowerShell (4332)
+      - PLpgSQL (2651)
+      - Makefile (2579)
+      - Dockerfile (520)
+    operations:
+      ci_cd_present: 'true'
+      workflows:
+      - .github/workflows/deploy.yml
+      containerisation: Dockerfile.dev, Dockerfile.prod, docker-compose files
+      iac: none evidenced at root
+    quality:
+      readme_present: 'true'
+      contributing_present: 'false'
+      license: 'UNKNOWN'
+      codeowners_present: 'false'
+      architecture_doc_present: 'UNKNOWN'
+    relationships:
+      evidenced_dependencies: 'UNKNOWN'
+      notes: axios client present; backend repository target UNKNOWN.
+    classification: Runtime
+- metadata:
+    discovery_id: DISC-REP-0006
+    discovery_type: repository
+    source_repository: eduvijna-web
+    discovered_at: '2026-08-07T14:00:00Z'
+    discovered_by: Enterprise Discovery Engineer
+    confidence: HIGH
+    version: '0.2.0'
+    inventory_version: '1.1.0'
+  repository:
+    repository_id: REPO-eduvijna-ai-eduvijna-web
+    name: eduvijna-web
+    clone_url: https://github.com/eduvijna-ai/eduvijna-web.git
+    web_url: https://github.com/eduvijna-ai/eduvijna-web
+    visibility: private
+    hosting_platform: github
+    default_branch: main
+    primary_language: TypeScript
+    lifecycle: 'UNKNOWN'
+    criticality: 'UNKNOWN'
+    classification: Runtime
+    ownership:
+      organisational_owner: eduvijna-ai
+      technical_owner: 'UNKNOWN'
+      codeowners_present: 'false'
+  repository_optional:
+    monorepo: 'UNKNOWN'
+    ci_cd_present: 'true'
+    readme_present: 'true'
+    description: Next.js TypeScript web application (package name nextn; next.config.ts present).
+    languages:
+    - TypeScript (684518)
+    - CSS (5093)
+    - JavaScript (4453)
+    - Dockerfile (1496)
+    notes: 'stack: Next.js ^15.3.6 (package.json); package_manager: npm (package-lock.json); workflows:
+      .github/workflows/deploy.yml'
+  evidence:
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-web-root.json
+    description: Root listing evidences package.json, package-lock.json, next.config.ts, Dockerfile, docker-compose.yml,
+      README.md, .github.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-web-languages.json
+    description: 'Languages: TypeScript dominant.'
+  - type: github-workflow
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-web-workflows.json
+    description: Workflow path .github/workflows/deploy.yml; ci_cd_present=true.
+  - type: package-json
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-web__package.json.txt
+    description: Dependency next ^15.3.6; package name nextn.
+  - type: dockerfile
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-web__Dockerfile.txt
+    description: Dockerfile present at repository root (content captured).
+  - type: docker-compose
+    location: docker-compose.yml (root listing)
+    description: docker-compose.yml present at repository root.
+  - type: other
+    location: https://github.com/eduvijna-ai/eduvijna-web
+    description: GitHub URL from gh discovery; hosting_platform=github; visibility=private.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/gh-repo-list-default-branches.txt
+    description: gh repo list metadata evidences defaultBranchRef.name=main for this repository.
+  - type: manual
+    location: reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+    description: Wave 1 frozen repository classification vocabulary decision recorded in DISC-REP-001
+      review package; supports repository.classification.
+  unknown_value_policy:
+    statement: Unknown values are recorded explicitly using the marker. Never invent or guess missing
+      facts.
+    marker: 'UNKNOWN'
+    fields_marked_unknown:
+    - repository.lifecycle
+    - repository.criticality
+    - repository.ownership.technical_owner
+    - repository_optional.license
+    - repository_optional.monorepo
+    rationale_required: true
+  observations:
+  - observation_id: OBS-01
+    text: repository.classification set from Wave 1 frozen vocabulary decision (EAO-approved); see reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+      and discovery/VALIDATION_RULES.md.
+    related_fields:
+    - repository.classification
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-02
+    text: No axios dependency evidenced in package.json interest scan; outbound API relationships UNKNOWN.
+    related_fields:
+    - discovery_view.relationships
+    recorded_on: '2026-08-07'
+  assumptions:
+  - assumption_id: ASM-01
+    statement: HTTPS clone_url and web_url for eduvijna-ai/eduvijna-web match the GitHub repository identity
+      recorded during Wave 1 gh discovery.
+    rationale: Root/languages/workflows evidence files are keyed by owner__name; full repository metadata
+      JSON was not retained as a separate _raw artefact for every metadata field.
+    impact_if_wrong: URLs or visibility could refer to a renamed, transferred, or forked repository.
+  reproducibility:
+    method: Replay Discovery Wave 1 repository capture against GitHub user eduvijna and org eduvijna-ai
+      using gh API (list repos; fetch root contents, languages, .github/workflows paths; download selected
+      manifests). Populate inventory fields only from artefacts under discovery/inventories/repositories/evidence/_raw/.
+      Mark remaining required fields UNKNOWN. Do not modify application repositories.
+    tooling:
+    - gh
+    - Python 3
+    - jsonschema
+    - PyYAML
+    replay_notes: Re-run against the same GitHub owners on or after 2026-08-07. Some README/CODEOWNERS
+      fetches in _raw are truncated or HTTP 404; prefer root-listing presence flags plus successfully
+      fetched manifests. UTF-16 LE BOM may be present in Windows-captured files.
+  discovery_view:
+    technology:
+      primary_language: TypeScript
+      package_manager: npm (package-lock.json)
+      frameworks_runtimes: Next.js
+      notes: next.config.ts at root; npm package name nextn.
+      languages:
+      - TypeScript (684518)
+      - CSS (5093)
+      - JavaScript (4453)
+      - Dockerfile (1496)
+    operations:
+      ci_cd_present: 'true'
+      workflows:
+      - .github/workflows/deploy.yml
+      containerisation: Dockerfile + docker-compose.yml
+      iac: none evidenced at root
+    quality:
+      readme_present: 'true'
+      contributing_present: 'false'
+      license: 'UNKNOWN'
+      codeowners_present: 'false'
+      architecture_doc_present: 'UNKNOWN'
+    relationships:
+      evidenced_dependencies: none evidenced
+      notes: No cross-repository dependency facts captured.
+    classification: Runtime
+- metadata:
+    discovery_id: DISC-REP-0007
+    discovery_type: repository
+    source_repository: Eduvijna-Cloud-Infra-Deploy
+    discovered_at: '2026-08-07T14:00:00Z'
+    discovered_by: Enterprise Discovery Engineer
+    confidence: HIGH
+    version: '0.2.0'
+    inventory_version: '1.1.0'
+  repository:
+    repository_id: REPO-eduvijna-ai-Eduvijna-Cloud-Infra-Deploy
+    name: Eduvijna-Cloud-Infra-Deploy
+    clone_url: https://github.com/eduvijna-ai/Eduvijna-Cloud-Infra-Deploy.git
+    web_url: https://github.com/eduvijna-ai/Eduvijna-Cloud-Infra-Deploy
+    visibility: private
+    hosting_platform: github
+    default_branch: main
+    primary_language: HCL
+    lifecycle: 'UNKNOWN'
+    criticality: 'UNKNOWN'
+    classification: Infrastructure
+    ownership:
+      organisational_owner: eduvijna-ai
+      technical_owner: 'UNKNOWN'
+      codeowners_present: 'false'
+  repository_optional:
+    monorepo: 'UNKNOWN'
+    ci_cd_present: 'true'
+    readme_present: 'false'
+    description: Terraform and Helm/Kubernetes deployment repository (HCL providers/modules; helm/ directory).
+    languages:
+    - HCL (3736)
+    - Go Template (1792)
+    notes: 'stack: Terraform (tf files) + Helm + Kubernetes YAML; package_manager: none evidenced; workflows:
+      .github/workflows/helm-deploy.yml, .github/workflows/terraform.yml'
+  evidence:
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Eduvijna-Cloud-Infra-Deploy-root.json
+    description: Root listing evidences providers.tf, variables.tf, outputs.tf, versions.tf, modules/,
+      helm/, kubernetes yaml files, .github; no README.md.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Eduvijna-Cloud-Infra-Deploy-languages.json
+    description: 'Languages: HCL dominant, Go Template secondary.'
+  - type: github-workflow
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Eduvijna-Cloud-Infra-Deploy-workflows.json
+    description: Workflows helm-deploy.yml and terraform.yml; ci_cd_present=true.
+  - type: terraform
+    location: providers.tf / variables.tf / outputs.tf / versions.tf (root listing)
+    description: Terraform configuration files present at repository root.
+  - type: kubernetes
+    location: helm/ and yaml at root (root listing)
+    description: helm/ directory and Kubernetes YAML filenames evidenced.
+  - type: other
+    location: https://github.com/eduvijna-ai/Eduvijna-Cloud-Infra-Deploy
+    description: GitHub URL from gh discovery; hosting_platform=github; visibility=private.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/gh-repo-list-default-branches.txt
+    description: gh repo list metadata evidences defaultBranchRef.name=main for this repository.
+  - type: manual
+    location: reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+    description: Wave 1 frozen repository classification vocabulary decision recorded in DISC-REP-001
+      review package; supports repository.classification.
+  unknown_value_policy:
+    statement: Unknown values are recorded explicitly using the marker. Never invent or guess missing
+      facts.
+    marker: 'UNKNOWN'
+    fields_marked_unknown:
+    - repository.lifecycle
+    - repository.criticality
+    - repository.ownership.technical_owner
+    - repository_optional.license
+    - repository_optional.description
+    - repository_optional.monorepo
+    rationale_required: true
+  observations:
+  - observation_id: OBS-01
+    text: repository.classification set from Wave 1 frozen vocabulary decision (EAO-approved); see reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+      and discovery/VALIDATION_RULES.md.
+    related_fields:
+    - repository.classification
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-02
+    text: No README at repository root in collected listing.
+    related_fields:
+    - repository_optional.readme_present
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-03
+    text: Relationships from infra modules to application repositories not evidenced (module contents
+      not captured).
+    related_fields:
+    - discovery_view.relationships
+    recorded_on: '2026-08-07'
+  assumptions:
+  - assumption_id: ASM-01
+    statement: HTTPS clone_url and web_url for eduvijna-ai/Eduvijna-Cloud-Infra-Deploy match the GitHub
+      repository identity recorded during Wave 1 gh discovery.
+    rationale: Root/languages/workflows evidence files are keyed by owner__name; full repository metadata
+      JSON was not retained as a separate _raw artefact for every metadata field.
+    impact_if_wrong: URLs or visibility could refer to a renamed, transferred, or forked repository.
+  reproducibility:
+    method: Replay Discovery Wave 1 repository capture against GitHub user eduvijna and org eduvijna-ai
+      using gh API (list repos; fetch root contents, languages, .github/workflows paths; download selected
+      manifests). Populate inventory fields only from artefacts under discovery/inventories/repositories/evidence/_raw/.
+      Mark remaining required fields UNKNOWN. Do not modify application repositories.
+    tooling:
+    - gh
+    - Python 3
+    - jsonschema
+    - PyYAML
+    replay_notes: Re-run against the same GitHub owners on or after 2026-08-07. Some README/CODEOWNERS
+      fetches in _raw are truncated or HTTP 404; prefer root-listing presence flags plus successfully
+      fetched manifests. UTF-16 LE BOM may be present in Windows-captured files.
+  discovery_view:
+    technology:
+      primary_language: HCL
+      package_manager: none evidenced
+      frameworks_runtimes: Terraform, Helm
+      notes: Kubernetes YAML manifests present at root alongside helm/.
+      languages:
+      - HCL (3736)
+      - Go Template (1792)
+    operations:
+      ci_cd_present: 'true'
+      workflows:
+      - .github/workflows/helm-deploy.yml
+      - .github/workflows/terraform.yml
+      containerisation: none evidenced as app Dockerfile
+      iac: Terraform + Helm + Kubernetes YAML
+    quality:
+      readme_present: 'false'
+      contributing_present: 'false'
+      license: 'UNKNOWN'
+      codeowners_present: 'false'
+      architecture_doc_present: 'false'
+    relationships:
+      evidenced_dependencies: 'UNKNOWN'
+      notes: Deploy targets for product repos not evidenced from collected root listing alone.
+    classification: Infrastructure
+- metadata:
+    discovery_id: DISC-REP-0008
+    discovery_type: repository
+    source_repository: Learning-Journey-Api
+    discovered_at: '2026-08-07T14:00:00Z'
+    discovered_by: Enterprise Discovery Engineer
+    confidence: HIGH
+    version: '0.2.0'
+    inventory_version: '1.1.0'
+  repository:
+    repository_id: REPO-eduvijna-ai-Learning-Journey-Api
+    name: Learning-Journey-Api
+    clone_url: https://github.com/eduvijna-ai/Learning-Journey-Api.git
+    web_url: https://github.com/eduvijna-ai/Learning-Journey-Api
+    visibility: private
+    hosting_platform: github
+    default_branch: main
+    primary_language: Python
+    lifecycle: 'UNKNOWN'
+    criticality: 'UNKNOWN'
+    classification: Experimental
+    ownership:
+      organisational_owner: eduvijna-ai
+      technical_owner: 'UNKNOWN'
+      codeowners_present: 'false'
+  repository_optional:
+    monorepo: 'UNKNOWN'
+    ci_cd_present: 'false'
+    readme_present: 'true'
+    description: Python FastAPI API for Learning Journey (requirements.txt).
+    languages:
+    - Python (245675)
+    - PowerShell (35297)
+    - HTML (8893)
+    notes: 'stack: Python FastAPI (requirements.txt); package_manager: pip (requirements.txt); workflows:
+      404'
+  evidence:
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Learning-Journey-Api-root.json
+    description: Root listing evidences requirements.txt, README.md, app/, routers/; no Dockerfile; no
+      .github.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Learning-Journey-Api-languages.json
+    description: 'Languages: Python dominant.'
+  - type: github-workflow
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Learning-Journey-Api-workflows.json
+    description: Workflows API HTTP 404; ci_cd_present=false.
+  - type: requirements-txt
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Learning-Journey-Api__requirements.txt.txt
+    description: fastapi==0.104.1, uvicorn[standard]==0.24.0 and related deps.
+  - type: other
+    location: https://github.com/eduvijna-ai/Learning-Journey-Api
+    description: GitHub URL from gh discovery; hosting_platform=github; visibility=private.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/gh-repo-list-default-branches.txt
+    description: gh repo list metadata evidences defaultBranchRef.name=main for this repository.
+  - type: manual
+    location: reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+    description: Wave 1 frozen repository classification vocabulary decision recorded in DISC-REP-001
+      review package; supports repository.classification.
+  unknown_value_policy:
+    statement: Unknown values are recorded explicitly using the marker. Never invent or guess missing
+      facts.
+    marker: 'UNKNOWN'
+    fields_marked_unknown:
+    - repository.lifecycle
+    - repository.criticality
+    - repository.ownership.technical_owner
+    - repository_optional.license
+    - repository_optional.monorepo
+    rationale_required: true
+  observations:
+  - observation_id: OBS-01
+    text: repository.classification set from Wave 1 frozen vocabulary decision (EAO-approved); see reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+      and discovery/VALIDATION_RULES.md.
+    related_fields:
+    - repository.classification
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-02
+    text: Co-named with Learning-Journey-App; coupling not evidenced beyond naming.
+    related_fields:
+    - discovery_view.relationships
+    recorded_on: '2026-08-07'
+  assumptions:
+  - assumption_id: ASM-01
+    statement: HTTPS clone_url and web_url for eduvijna-ai/Learning-Journey-Api match the GitHub repository
+      identity recorded during Wave 1 gh discovery.
+    rationale: Root/languages/workflows evidence files are keyed by owner__name; full repository metadata
+      JSON was not retained as a separate _raw artefact for every metadata field.
+    impact_if_wrong: URLs or visibility could refer to a renamed, transferred, or forked repository.
+  reproducibility:
+    method: Replay Discovery Wave 1 repository capture against GitHub user eduvijna and org eduvijna-ai
+      using gh API (list repos; fetch root contents, languages, .github/workflows paths; download selected
+      manifests). Populate inventory fields only from artefacts under discovery/inventories/repositories/evidence/_raw/.
+      Mark remaining required fields UNKNOWN. Do not modify application repositories.
+    tooling:
+    - gh
+    - Python 3
+    - jsonschema
+    - PyYAML
+    replay_notes: Re-run against the same GitHub owners on or after 2026-08-07. Some README/CODEOWNERS
+      fetches in _raw are truncated or HTTP 404; prefer root-listing presence flags plus successfully
+      fetched manifests. UTF-16 LE BOM may be present in Windows-captured files.
+  discovery_view:
+    technology:
+      primary_language: Python
+      package_manager: pip (requirements.txt)
+      frameworks_runtimes: FastAPI, uvicorn
+      notes: No root Dockerfile evidenced.
+      languages:
+      - Python (245675)
+      - PowerShell (35297)
+      - HTML (8893)
+    operations:
+      ci_cd_present: 'false'
+      workflows: none evidenced (workflows API 404)
+      containerisation: none evidenced
+      iac: none evidenced
+    quality:
+      readme_present: 'true'
+      contributing_present: 'false'
+      license: 'UNKNOWN'
+      codeowners_present: 'false'
+      architecture_doc_present: 'UNKNOWN'
+    relationships:
+      evidenced_dependencies: 'UNKNOWN'
+      notes: Likely pairs with Learning-Journey-App by naming only; not evidenced.
+    classification: Experimental
+- metadata:
+    discovery_id: DISC-REP-0009
+    discovery_type: repository
+    source_repository: Learning-Journey-App
+    discovered_at: '2026-08-07T14:00:00Z'
+    discovered_by: Enterprise Discovery Engineer
+    confidence: HIGH
+    version: '0.2.0'
+    inventory_version: '1.1.0'
+  repository:
+    repository_id: REPO-eduvijna-ai-Learning-Journey-App
+    name: Learning-Journey-App
+    clone_url: https://github.com/eduvijna-ai/Learning-Journey-App.git
+    web_url: https://github.com/eduvijna-ai/Learning-Journey-App
+    visibility: private
+    hosting_platform: github
+    default_branch: main
+    primary_language: JavaScript
+    lifecycle: 'UNKNOWN'
+    criticality: 'UNKNOWN'
+    classification: Experimental
+    ownership:
+      organisational_owner: eduvijna-ai
+      technical_owner: 'UNKNOWN'
+      codeowners_present: 'false'
+  repository_optional:
+    monorepo: 'UNKNOWN'
+    ci_cd_present: 'false'
+    readme_present: 'true'
+    description: React Native mobile app (package name learning-journey-mobile).
+    languages:
+    - JavaScript (291361)
+    - Java (59267)
+    - TypeScript (2968)
+    - Objective-C (2315)
+    - Ruby (2307)
+    - Objective-C++ (760)
+    notes: 'stack: React Native ^0.72.17 (package.json); package_manager: npm (package-lock.json); workflows:
+      404'
+  evidence:
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Learning-Journey-App-root.json
+    description: Root listing evidences package.json, package-lock.json, android/, ios/, README.md, BACKEND_*
+      markdown files; no .github.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Learning-Journey-App-languages.json
+    description: 'Languages: JavaScript dominant.'
+  - type: github-workflow
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Learning-Journey-App-workflows.json
+    description: Workflows API HTTP 404; ci_cd_present=false.
+  - type: package-json
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Learning-Journey-App__package.json.txt
+    description: react-native ^0.72.17, axios; name learning-journey-mobile.
+  - type: other
+    location: https://github.com/eduvijna-ai/Learning-Journey-App
+    description: GitHub URL from gh discovery; hosting_platform=github; visibility=private.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/gh-repo-list-default-branches.txt
+    description: gh repo list metadata evidences defaultBranchRef.name=main for this repository.
+  - type: manual
+    location: reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+    description: Wave 1 frozen repository classification vocabulary decision recorded in DISC-REP-001
+      review package; supports repository.classification.
+  unknown_value_policy:
+    statement: Unknown values are recorded explicitly using the marker. Never invent or guess missing
+      facts.
+    marker: 'UNKNOWN'
+    fields_marked_unknown:
+    - repository.lifecycle
+    - repository.criticality
+    - repository.ownership.technical_owner
+    - repository_optional.license
+    - repository_optional.monorepo
+    rationale_required: true
+  observations:
+  - observation_id: OBS-01
+    text: repository.classification set from Wave 1 frozen vocabulary decision (EAO-approved); see reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+      and discovery/VALIDATION_RULES.md.
+    related_fields:
+    - repository.classification
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-02
+    text: BACKEND_* markdown filenames suggest backend integration; contents not captured; target UNKNOWN.
+    related_fields:
+    - discovery_view.relationships
+    recorded_on: '2026-08-07'
+  assumptions:
+  - assumption_id: ASM-01
+    statement: HTTPS clone_url and web_url for eduvijna-ai/Learning-Journey-App match the GitHub repository
+      identity recorded during Wave 1 gh discovery.
+    rationale: Root/languages/workflows evidence files are keyed by owner__name; full repository metadata
+      JSON was not retained as a separate _raw artefact for every metadata field.
+    impact_if_wrong: URLs or visibility could refer to a renamed, transferred, or forked repository.
+  reproducibility:
+    method: Replay Discovery Wave 1 repository capture against GitHub user eduvijna and org eduvijna-ai
+      using gh API (list repos; fetch root contents, languages, .github/workflows paths; download selected
+      manifests). Populate inventory fields only from artefacts under discovery/inventories/repositories/evidence/_raw/.
+      Mark remaining required fields UNKNOWN. Do not modify application repositories.
+    tooling:
+    - gh
+    - Python 3
+    - jsonschema
+    - PyYAML
+    replay_notes: Re-run against the same GitHub owners on or after 2026-08-07. Some README/CODEOWNERS
+      fetches in _raw are truncated or HTTP 404; prefer root-listing presence flags plus successfully
+      fetched manifests. UTF-16 LE BOM may be present in Windows-captured files.
+  discovery_view:
+    technology:
+      primary_language: JavaScript
+      package_manager: npm (package-lock.json)
+      frameworks_runtimes: React Native
+      notes: android/ and ios/ directories present at root.
+      languages:
+      - JavaScript (291361)
+      - Java (59267)
+      - TypeScript (2968)
+      - Objective-C (2315)
+      - Ruby (2307)
+      - Objective-C++ (760)
+    operations:
+      ci_cd_present: 'false'
+      workflows: none evidenced (workflows API 404)
+      containerisation: none evidenced
+      iac: none evidenced
+    quality:
+      readme_present: 'true'
+      contributing_present: 'false'
+      license: 'UNKNOWN'
+      codeowners_present: 'false'
+      architecture_doc_present: 'UNKNOWN'
+    relationships:
+      evidenced_dependencies: 'UNKNOWN'
+      notes: axios present; BACKEND_* doc filenames evidenced without captured content.
+    classification: Experimental
+- metadata:
+    discovery_id: DISC-REP-0010
+    discovery_type: repository
+    source_repository: eduvijna-app
+    discovered_at: '2026-08-07T14:00:00Z'
+    discovered_by: Enterprise Discovery Engineer
+    confidence: HIGH
+    version: '0.2.0'
+    inventory_version: '1.1.0'
+  repository:
+    repository_id: REPO-eduvijna-ai-eduvijna-app
+    name: eduvijna-app
+    clone_url: https://github.com/eduvijna-ai/eduvijna-app.git
+    web_url: https://github.com/eduvijna-ai/eduvijna-app
+    visibility: private
+    hosting_platform: github
+    default_branch: main
+    primary_language: TypeScript
+    lifecycle: 'UNKNOWN'
+    criticality: 'UNKNOWN'
+    classification: Experimental
+    ownership:
+      organisational_owner: eduvijna-ai
+      technical_owner: 'UNKNOWN'
+      codeowners_present: 'false'
+  repository_optional:
+    monorepo: 'UNKNOWN'
+    ci_cd_present: 'false'
+    readme_present: 'true'
+    description: React Native TypeScript mobile application (package name EduVijnaApp).
+    languages:
+    - TypeScript (52637)
+    - Batchfile (10000)
+    - Java (2261)
+    - PowerShell (1244)
+    - JavaScript (1145)
+    notes: 'stack: React Native 0.72.6 (package.json; not Expo); package_manager: npm (package-lock.json);
+      workflows: 404'
+  evidence:
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-app-root.json
+    description: Root listing evidences package.json, package-lock.json, android/, app.json, README.md;
+      no .github; no eas.json.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-app-languages.json
+    description: 'Languages: TypeScript dominant.'
+  - type: github-workflow
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-app-workflows.json
+    description: Workflows API HTTP 404; ci_cd_present=false.
+  - type: package-json
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-app__package.json.txt
+    description: react-native 0.72.6, axios; name EduVijnaApp; no expo dependency.
+  - type: other
+    location: https://github.com/eduvijna-ai/eduvijna-app
+    description: GitHub URL from gh discovery; hosting_platform=github; visibility=private.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/gh-repo-list-default-branches.txt
+    description: gh repo list metadata evidences defaultBranchRef.name=main for this repository.
+  - type: manual
+    location: reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+    description: Wave 1 frozen repository classification vocabulary decision recorded in DISC-REP-001
+      review package; supports repository.classification.
+  unknown_value_policy:
+    statement: Unknown values are recorded explicitly using the marker. Never invent or guess missing
+      facts.
+    marker: 'UNKNOWN'
+    fields_marked_unknown:
+    - repository.lifecycle
+    - repository.criticality
+    - repository.ownership.technical_owner
+    - repository_optional.license
+    - repository_optional.monorepo
+    rationale_required: true
+  observations:
+  - observation_id: OBS-01
+    text: repository.classification set from Wave 1 frozen vocabulary decision (EAO-approved); see reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+      and discovery/VALIDATION_RULES.md.
+    related_fields:
+    - repository.classification
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-02
+    text: axios dependency evidenced; backend target UNKNOWN.
+    related_fields:
+    - discovery_view.relationships
+    recorded_on: '2026-08-07'
+  assumptions:
+  - assumption_id: ASM-01
+    statement: HTTPS clone_url and web_url for eduvijna-ai/eduvijna-app match the GitHub repository identity
+      recorded during Wave 1 gh discovery.
+    rationale: Root/languages/workflows evidence files are keyed by owner__name; full repository metadata
+      JSON was not retained as a separate _raw artefact for every metadata field.
+    impact_if_wrong: URLs or visibility could refer to a renamed, transferred, or forked repository.
+  reproducibility:
+    method: Replay Discovery Wave 1 repository capture against GitHub user eduvijna and org eduvijna-ai
+      using gh API (list repos; fetch root contents, languages, .github/workflows paths; download selected
+      manifests). Populate inventory fields only from artefacts under discovery/inventories/repositories/evidence/_raw/.
+      Mark remaining required fields UNKNOWN. Do not modify application repositories.
+    tooling:
+    - gh
+    - Python 3
+    - jsonschema
+    - PyYAML
+    replay_notes: Re-run against the same GitHub owners on or after 2026-08-07. Some README/CODEOWNERS
+      fetches in _raw are truncated or HTTP 404; prefer root-listing presence flags plus successfully
+      fetched manifests. UTF-16 LE BOM may be present in Windows-captured files.
+  discovery_view:
+    technology:
+      primary_language: TypeScript
+      package_manager: npm (package-lock.json)
+      frameworks_runtimes: React Native (CLI)
+      notes: No expo dependency in package.json.
+      languages:
+      - TypeScript (52637)
+      - Batchfile (10000)
+      - Java (2261)
+      - PowerShell (1244)
+      - JavaScript (1145)
+    operations:
+      ci_cd_present: 'false'
+      workflows: none evidenced (workflows API 404)
+      containerisation: none evidenced
+      iac: none evidenced
+    quality:
+      readme_present: 'true'
+      contributing_present: 'false'
+      license: 'UNKNOWN'
+      codeowners_present: 'false'
+      architecture_doc_present: 'UNKNOWN'
+    relationships:
+      evidenced_dependencies: 'UNKNOWN'
+      notes: axios present; no evidenced repository-to-repository link.
+    classification: Experimental
+- metadata:
+    discovery_id: DISC-REP-0011
+    discovery_type: repository
+    source_repository: voice-clone
+    discovered_at: '2026-08-07T14:00:00Z'
+    discovered_by: Enterprise Discovery Engineer
+    confidence: HIGH
+    version: '0.2.0'
+    inventory_version: '1.1.0'
+  repository:
+    repository_id: REPO-eduvijna-ai-voice-clone
+    name: voice-clone
+    clone_url: https://github.com/eduvijna-ai/voice-clone.git
+    web_url: https://github.com/eduvijna-ai/voice-clone
+    visibility: private
+    hosting_platform: github
+    default_branch: main
+    primary_language: Python
+    lifecycle: 'UNKNOWN'
+    criticality: 'UNKNOWN'
+    classification: Research
+    ownership:
+      organisational_owner: eduvijna-ai
+      technical_owner: 'UNKNOWN'
+      codeowners_present: 'false'
+  repository_optional:
+    monorepo: 'UNKNOWN'
+    ci_cd_present: 'false'
+    readme_present: 'true'
+    description: Python TTS/voice-cloning research service with FastAPI (requirements.txt; deployment
+      Dockerfile).
+    languages:
+    - Python (115061)
+    - PowerShell (12582)
+    - Shell (4812)
+    - Dockerfile (1637)
+    notes: 'stack: TTS + torch + FastAPI (requirements.txt); package_manager: pip (requirements.txt);
+      workflows: 404'
+  evidence:
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__voice-clone-root.json
+    description: Root listing evidences requirements.txt, README.md, LICENSE, CONTRIBUTING.md, deployment/,
+      setup.py; no .github; no root Dockerfile.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__voice-clone-languages.json
+    description: 'Languages: Python dominant.'
+  - type: github-workflow
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__voice-clone-workflows.json
+    description: Workflows API HTTP 404; ci_cd_present=false.
+  - type: requirements-txt
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__voice-clone__requirements.txt.txt
+    description: TTS, torch, fastapi, uvicorn and related research/API dependencies.
+  - type: dockerfile
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__voice-clone__deployment_Dockerfile.txt
+    description: deployment/Dockerfile for Telugu Voice Cloning API (multi-stage Python 3.10).
+  - type: other
+    location: https://github.com/eduvijna-ai/voice-clone
+    description: GitHub URL from gh discovery; hosting_platform=github; visibility=private.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/gh-repo-list-default-branches.txt
+    description: gh repo list metadata evidences defaultBranchRef.name=main for this repository.
+  - type: manual
+    location: reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+    description: Wave 1 frozen repository classification vocabulary decision recorded in DISC-REP-001
+      review package; supports repository.classification.
+  unknown_value_policy:
+    statement: Unknown values are recorded explicitly using the marker. Never invent or guess missing
+      facts.
+    marker: 'UNKNOWN'
+    fields_marked_unknown:
+    - repository.lifecycle
+    - repository.criticality
+    - repository.ownership.technical_owner
+    - repository_optional.license
+    - repository_optional.monorepo
+    rationale_required: true
+  observations:
+  - observation_id: OBS-01
+    text: repository.classification set from Wave 1 frozen vocabulary decision (EAO-approved); see reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+      and discovery/VALIDATION_RULES.md.
+    related_fields:
+    - repository.classification
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-02
+    text: LICENSE and CONTRIBUTING.md present; SPDX identifier not read from LICENSE contents.
+    related_fields:
+    - repository_optional.license
+    recorded_on: '2026-08-07'
+  assumptions:
+  - assumption_id: ASM-01
+    statement: HTTPS clone_url and web_url for eduvijna-ai/voice-clone match the GitHub repository identity
+      recorded during Wave 1 gh discovery.
+    rationale: Root/languages/workflows evidence files are keyed by owner__name; full repository metadata
+      JSON was not retained as a separate _raw artefact for every metadata field.
+    impact_if_wrong: URLs or visibility could refer to a renamed, transferred, or forked repository.
+  reproducibility:
+    method: Replay Discovery Wave 1 repository capture against GitHub user eduvijna and org eduvijna-ai
+      using gh API (list repos; fetch root contents, languages, .github/workflows paths; download selected
+      manifests). Populate inventory fields only from artefacts under discovery/inventories/repositories/evidence/_raw/.
+      Mark remaining required fields UNKNOWN. Do not modify application repositories.
+    tooling:
+    - gh
+    - Python 3
+    - jsonschema
+    - PyYAML
+    replay_notes: Re-run against the same GitHub owners on or after 2026-08-07. Some README/CODEOWNERS
+      fetches in _raw are truncated or HTTP 404; prefer root-listing presence flags plus successfully
+      fetched manifests. UTF-16 LE BOM may be present in Windows-captured files.
+  discovery_view:
+    technology:
+      primary_language: Python
+      package_manager: pip (requirements.txt)
+      frameworks_runtimes: FastAPI, TTS, torch
+      notes: setup.py present at root.
+      languages:
+      - Python (115061)
+      - PowerShell (12582)
+      - Shell (4812)
+      - Dockerfile (1637)
+    operations:
+      ci_cd_present: 'false'
+      workflows: none evidenced (workflows API 404)
+      containerisation: deployment/Dockerfile
+      iac: none evidenced
+    quality:
+      readme_present: 'true'
+      contributing_present: 'true'
+      license: LICENSE file present (SPDX UNKNOWN)
+      codeowners_present: 'false'
+      architecture_doc_present: 'UNKNOWN'
+    relationships:
+      evidenced_dependencies: none evidenced
+      notes: No evidenced links to other EduVijna product repositories.
+    classification: Research
+- metadata:
+    discovery_id: DISC-REP-0012
+    discovery_type: repository
+    source_repository: Edu-Chrome-Extension
+    discovered_at: '2026-08-07T14:00:00Z'
+    discovered_by: Enterprise Discovery Engineer
+    confidence: HIGH
+    version: '0.2.0'
+    inventory_version: '1.1.0'
+  repository:
+    repository_id: REPO-eduvijna-ai-Edu-Chrome-Extension
+    name: Edu-Chrome-Extension
+    clone_url: https://github.com/eduvijna-ai/Edu-Chrome-Extension.git
+    web_url: https://github.com/eduvijna-ai/Edu-Chrome-Extension
+    visibility: private
+    hosting_platform: github
+    default_branch: main
+    primary_language: JavaScript
+    lifecycle: 'UNKNOWN'
+    criticality: 'UNKNOWN'
+    classification: Experimental
+    ownership:
+      organisational_owner: eduvijna-ai
+      technical_owner: 'UNKNOWN'
+      codeowners_present: 'false'
+  repository_optional:
+    monorepo: 'UNKNOWN'
+    ci_cd_present: 'false'
+    readme_present: 'true'
+    description: Chrome extension built with React + Vite (package name eduvijna-chrome-extension; @types/chrome
+      present).
+    languages:
+    - JavaScript (119200)
+    - TypeScript (107082)
+    - CSS (24502)
+    - HTML (421)
+    notes: 'stack: React + Vite Chrome extension (package.json + @types/chrome); package_manager: npm
+      and yarn (package-lock.json + yarn.lock); workflows: 404'
+  evidence:
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Edu-Chrome-Extension-root.json
+    description: Root listing evidences package.json, package-lock.json, yarn.lock, vite.config.ts, README.md;
+      no .github.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Edu-Chrome-Extension-languages.json
+    description: 'Languages: JavaScript slightly ahead of TypeScript.'
+  - type: github-workflow
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Edu-Chrome-Extension-workflows.json
+    description: Workflows API HTTP 404; ci_cd_present=false.
+  - type: package-json
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__Edu-Chrome-Extension__package.json.txt
+    description: react, vite, axios, @types/chrome; chrome-webstore-upload scripts; name eduvijna-chrome-extension.
+  - type: other
+    location: https://github.com/eduvijna-ai/Edu-Chrome-Extension
+    description: GitHub URL from gh discovery; hosting_platform=github; visibility=private.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/gh-repo-list-default-branches.txt
+    description: gh repo list metadata evidences defaultBranchRef.name=main for this repository.
+  - type: manual
+    location: reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+    description: Wave 1 frozen repository classification vocabulary decision recorded in DISC-REP-001
+      review package; supports repository.classification.
+  unknown_value_policy:
+    statement: Unknown values are recorded explicitly using the marker. Never invent or guess missing
+      facts.
+    marker: 'UNKNOWN'
+    fields_marked_unknown:
+    - repository.lifecycle
+    - repository.criticality
+    - repository.ownership.technical_owner
+    - repository_optional.license
+    - repository_optional.monorepo
+    rationale_required: true
+  observations:
+  - observation_id: OBS-01
+    text: repository.classification set from Wave 1 frozen vocabulary decision (EAO-approved); see reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+      and discovery/VALIDATION_RULES.md.
+    related_fields:
+    - repository.classification
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-02
+    text: axios dependency evidenced; backend target UNKNOWN.
+    related_fields:
+    - discovery_view.relationships
+    recorded_on: '2026-08-07'
+  assumptions:
+  - assumption_id: ASM-01
+    statement: HTTPS clone_url and web_url for eduvijna-ai/Edu-Chrome-Extension match the GitHub repository
+      identity recorded during Wave 1 gh discovery.
+    rationale: Root/languages/workflows evidence files are keyed by owner__name; full repository metadata
+      JSON was not retained as a separate _raw artefact for every metadata field.
+    impact_if_wrong: URLs or visibility could refer to a renamed, transferred, or forked repository.
+  reproducibility:
+    method: Replay Discovery Wave 1 repository capture against GitHub user eduvijna and org eduvijna-ai
+      using gh API (list repos; fetch root contents, languages, .github/workflows paths; download selected
+      manifests). Populate inventory fields only from artefacts under discovery/inventories/repositories/evidence/_raw/.
+      Mark remaining required fields UNKNOWN. Do not modify application repositories.
+    tooling:
+    - gh
+    - Python 3
+    - jsonschema
+    - PyYAML
+    replay_notes: Re-run against the same GitHub owners on or after 2026-08-07. Some README/CODEOWNERS
+      fetches in _raw are truncated or HTTP 404; prefer root-listing presence flags plus successfully
+      fetched manifests. UTF-16 LE BOM may be present in Windows-captured files.
+  discovery_view:
+    technology:
+      primary_language: JavaScript
+      package_manager: npm and yarn (dual lockfiles)
+      frameworks_runtimes: React, Vite (Chrome extension)
+      notes: '@types/chrome and chrome-webstore-upload-cli evidenced.'
+      languages:
+      - JavaScript (119200)
+      - TypeScript (107082)
+      - CSS (24502)
+      - HTML (421)
+    operations:
+      ci_cd_present: 'false'
+      workflows: none evidenced (workflows API 404)
+      containerisation: none evidenced
+      iac: none evidenced
+    quality:
+      readme_present: 'true'
+      contributing_present: 'false'
+      license: 'UNKNOWN'
+      codeowners_present: 'false'
+      architecture_doc_present: 'false'
+    relationships:
+      evidenced_dependencies: 'UNKNOWN'
+      notes: axios present; no evidenced repository link.
+    classification: Experimental
+- metadata:
+    discovery_id: DISC-REP-0013
+    discovery_type: repository
+    source_repository: eduvijna
+    discovered_at: '2026-08-07T14:00:00Z'
+    discovered_by: Enterprise Discovery Engineer
+    confidence: HIGH
+    version: '0.2.0'
+    inventory_version: '1.1.0'
+  repository:
+    repository_id: REPO-eduvijna-ai-eduvijna
+    name: eduvijna
+    clone_url: https://github.com/eduvijna-ai/eduvijna.git
+    web_url: https://github.com/eduvijna-ai/eduvijna
+    visibility: private
+    hosting_platform: github
+    default_branch: main
+    primary_language: TypeScript
+    lifecycle: 'UNKNOWN'
+    criticality: 'UNKNOWN'
+    classification: Experimental
+    ownership:
+      organisational_owner: eduvijna-ai
+      technical_owner: 'UNKNOWN'
+      codeowners_present: 'false'
+  repository_optional:
+    monorepo: 'UNKNOWN'
+    ci_cd_present: 'false'
+    readme_present: 'false'
+    description: React + Vite TypeScript starter (npm package name vite-react-typescript-starter).
+    languages:
+    - TypeScript (92648)
+    - CSS (2702)
+    - JavaScript (2583)
+    - HTML (1761)
+    - Dockerfile (576)
+    notes: 'stack: React + Vite (package.json name vite-react-typescript-starter); package_manager: npm
+      (package-lock.json); workflows: 404'
+  evidence:
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-root.json
+    description: Root listing evidences package.json, package-lock.json, vite.config.ts, Dockerfile; no
+      README.md; no .github.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-languages.json
+    description: 'Languages: TypeScript dominant.'
+  - type: github-workflow
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna-workflows.json
+    description: Workflows API HTTP 404; ci_cd_present=false.
+  - type: package-json
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna__package.json.txt
+    description: Package name vite-react-typescript-starter; vite and @vitejs/plugin-react dependencies.
+  - type: dockerfile
+    location: discovery/inventories/repositories/evidence/_raw/eduvijna-ai__eduvijna__Dockerfile.txt
+    description: Dockerfile present at repository root (content captured).
+  - type: other
+    location: https://github.com/eduvijna-ai/eduvijna
+    description: GitHub URL from gh discovery; hosting_platform=github; visibility=private.
+  - type: other
+    location: discovery/inventories/repositories/evidence/_raw/gh-repo-list-default-branches.txt
+    description: gh repo list metadata evidences defaultBranchRef.name=main for this repository.
+  - type: manual
+    location: reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+    description: Wave 1 frozen repository classification vocabulary decision recorded in DISC-REP-001
+      review package; supports repository.classification.
+  unknown_value_policy:
+    statement: Unknown values are recorded explicitly using the marker. Never invent or guess missing
+      facts.
+    marker: 'UNKNOWN'
+    fields_marked_unknown:
+    - repository.lifecycle
+    - repository.criticality
+    - repository.ownership.technical_owner
+    - repository_optional.license
+    - repository_optional.description
+    - repository_optional.monorepo
+    rationale_required: true
+  observations:
+  - observation_id: OBS-01
+    text: repository.classification set from Wave 1 frozen vocabulary decision (EAO-approved); see reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+      and discovery/VALIDATION_RULES.md.
+    related_fields:
+    - repository.classification
+    recorded_on: '2026-08-07'
+  - observation_id: OBS-02
+    text: No README at repository root in collected listing.
+    related_fields:
+    - repository_optional.readme_present
+    recorded_on: '2026-08-07'
+  assumptions:
+  - assumption_id: ASM-01
+    statement: HTTPS clone_url and web_url for eduvijna-ai/eduvijna match the GitHub repository identity
+      recorded during Wave 1 gh discovery.
+    rationale: Root/languages/workflows evidence files are keyed by owner__name; full repository metadata
+      JSON was not retained as a separate _raw artefact for every metadata field.
+    impact_if_wrong: URLs or visibility could refer to a renamed, transferred, or forked repository.
+  reproducibility:
+    method: Replay Discovery Wave 1 repository capture against GitHub user eduvijna and org eduvijna-ai
+      using gh API (list repos; fetch root contents, languages, .github/workflows paths; download selected
+      manifests). Populate inventory fields only from artefacts under discovery/inventories/repositories/evidence/_raw/.
+      Mark remaining required fields UNKNOWN. Do not modify application repositories.
+    tooling:
+    - gh
+    - Python 3
+    - jsonschema
+    - PyYAML
+    replay_notes: Re-run against the same GitHub owners on or after 2026-08-07. Some README/CODEOWNERS
+      fetches in _raw are truncated or HTTP 404; prefer root-listing presence flags plus successfully
+      fetched manifests. UTF-16 LE BOM may be present in Windows-captured files.
+  discovery_view:
+    technology:
+      primary_language: TypeScript
+      package_manager: npm (package-lock.json)
+      frameworks_runtimes: React, Vite
+      notes: Package name vite-react-typescript-starter.
+      languages:
+      - TypeScript (92648)
+      - CSS (2702)
+      - JavaScript (2583)
+      - HTML (1761)
+      - Dockerfile (576)
+    operations:
+      ci_cd_present: 'false'
+      workflows: none evidenced (workflows API 404)
+      containerisation: Dockerfile at root
+      iac: none evidenced
+    quality:
+      readme_present: 'false'
+      contributing_present: 'false'
+      license: 'UNKNOWN'
+      codeowners_present: 'false'
+      architecture_doc_present: 'false'
+    relationships:
+      evidenced_dependencies: none evidenced
+      notes: No cross-repo dependency facts captured.
+    classification: Experimental

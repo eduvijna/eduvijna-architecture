@@ -1,0 +1,82 @@
+# =============================================================================
+# Application Discovery Template
+# Schema: discovery/schemas/application.schema.json
+# Rules:  discovery/VALIDATION_RULES.md
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Common metadata
+# Schema: discovery/schemas/common-metadata.schema.json
+# Do not define alternate or domain-specific metadata structures.
+# -----------------------------------------------------------------------------
+metadata:
+  discovery_id: ""              # DISC-APP-0001 (see VALIDATION_RULES.md ID convention)
+  discovery_type: application  # Fixed value for this template
+  source_repository: ""         # Repository name under discovery (e.g. eduvijna-api)
+  discovered_at: ""             # ISO-8601 timestamp (e.g. 2026-08-07T14:00:00Z)
+  discovered_by: ""             # Person or role who captured the inventory
+  confidence: ""                # HIGH | MEDIUM | LOW
+  version: "0.1.0"              # Inventory record version
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Application identity
+# -----------------------------------------------------------------------------
+application:
+  application_id: ""            # Stable ID for the application
+  name: ""                      # Application display or product name
+  application_type: ""          # web | api | batch | mobile | desktop | platform | other | UNKNOWN
+  lifecycle_status: ""          # planned | active | maintenance | deprecated | retired | UNKNOWN
+  business_owner: ""            # Business owner or UNKNOWN
+  technical_owner: ""           # Technical owning team/role or UNKNOWN
+  primary_purpose: ""           # Short evidenced statement of purpose, or UNKNOWN
+
+# -----------------------------------------------------------------------------
+# OPTIONAL — Application attributes
+# -----------------------------------------------------------------------------
+application_optional:
+  description: ""               # Longer description if evidenced
+  user_communities: []          # Known user groups if evidenced
+  environments: []              # e.g. dev, test, prod — only if evidenced
+  repository_ids: []            # Related repository inventory IDs
+  capability_ids: []            # Related capability inventory IDs
+  technology_ids: []            # Related technology inventory IDs
+  criticality: ""               # low | medium | high | critical | UNKNOWN
+  data_classification: ""       # If evidenced classification label, else omit/UNKNOWN
+  notes: ""                     # Factual notes only
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Evidence (structured)
+# Every asserted fact must map to at least one evidence entry.
+# Free-form evidence is not permitted.
+# -----------------------------------------------------------------------------
+evidence:
+  - type: ""                    # package-json | pyproject | requirements-txt | dockerfile | docker-compose | csproj | solution | github-workflow | terraform | kubernetes | readme | manual | other
+    location: ""                # Path or locator (e.g. package.json)
+    description: ""             # What fact(s) this evidence supports
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Unknown Value Policy
+# -----------------------------------------------------------------------------
+unknown_value_policy:
+  statement: "Unknown values are recorded explicitly using the marker. Never invent or guess missing facts."
+  marker: UNKNOWN
+  fields_marked_unknown: []
+  rationale_required: true
+
+# -----------------------------------------------------------------------------
+# OPTIONAL — Observations (NOT facts)
+# -----------------------------------------------------------------------------
+observations: []
+
+# -----------------------------------------------------------------------------
+# OPTIONAL — Assumptions (explicit; not facts)
+# -----------------------------------------------------------------------------
+assumptions: []
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Reproducibility
+# -----------------------------------------------------------------------------
+reproducibility:
+  method: ""
+  tooling: []
+  replay_notes: ""

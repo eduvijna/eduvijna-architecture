@@ -1,0 +1,57 @@
+﻿# Core TTS Framework
+TTS>=0.22.0
+torch==2.1.0
+torchaudio==2.1.0
+transformers==4.35.0
+
+# Audio Processing
+librosa>=0.10.0
+soundfile>=0.12.0
+pydub>=0.25.0
+audioread>=3.0.0
+resampy>=0.4.2
+
+# Text Processing
+pandas>=1.5.0
+numpy>=1.24.0
+scipy>=1.10.0
+epitran>=1.24
+indic-transliteration>=2.3.0
+
+# Evaluation Metrics
+pesq>=0.0.4
+pystoi>=0.3.3
+openai-whisper>=20231117
+jiwer>=3.0.0
+
+# API Framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
+aiofiles>=23.2.0
+
+# Utilities
+tqdm>=4.66.0
+PyYAML>=6.0
+python-dotenv>=1.0.0
+colorlog>=6.7.0
+
+# Data Processing
+scikit-learn>=1.3.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Development Tools
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.10.0
+flake8>=6.1.0
+isort>=5.12.0
+
+# Deployment
+gunicorn>=21.2.0
+python-json-logger>=2.0.7
+
+# Optional: Jupyter for notebooks
+jupyter>=1.0.0
+ipywidgets>=8.1.0

@@ -1,0 +1,116 @@
+# =============================================================================
+# Repository Discovery — Worked Example
+# Template: discovery/templates/repository-template.yaml
+# Schema:   discovery/schemas/repository.schema.json
+# Common:   discovery/schemas/common-metadata.schema.json
+# Rules:    discovery/VALIDATION_RULES.md
+# Framework: Discovery Specification Framework 1.1.0
+# =============================================================================
+# ILLUSTRATIVE ONLY. Does not represent analysis of a live EduVijna product
+# repository. Values demonstrate metadata, evidence, confidence, and UNKNOWN.
+#
+# Identity note:
+#   metadata.discovery_id  = inventory record ID (DISC-REP-####)
+#   repository.repository_id = subject asset ID (REPO-...)
+# =============================================================================
+metadata:
+  discovery_id: DISC-REP-0001
+  discovery_type: repository
+  source_repository: eduvijna-architecture
+  discovered_at: '2026-08-07T14:00:00Z'
+  discovered_by: Enterprise Discovery Engineer (example)
+  confidence: MEDIUM
+  version: '0.2.0'
+  inventory_version: '1.1.0'
+repository:
+  repository_id: REPO-EX-ARCH-001
+  name: eduvijna-architecture
+  clone_url: 'UNKNOWN'
+  web_url: 'UNKNOWN'
+  visibility: private
+  hosting_platform: 'UNKNOWN'
+  default_branch: main
+  primary_language: 'UNKNOWN'
+  lifecycle: 'UNKNOWN'
+  criticality: 'UNKNOWN'
+  classification: Governance
+  ownership:
+    organisational_owner: Enterprise Architecture Office
+    technical_owner: Enterprise Architecture Office
+    codeowners_present: 'true'
+repository_optional:
+  description: Enterprise Architecture Office governance repository for the EduVijna ecosystem.
+  license: Apache-2.0
+  topics: []
+  created_on_host: ''
+  last_activity_on: ''
+  languages: []
+  related_application_ids: []
+  monorepo: 'false'
+  ci_cd_present: 'UNKNOWN'
+  readme_present: 'true'
+  notes: Example inventory limited to facts evidenced from structured evidence entries below.
+evidence:
+- type: readme
+  location: README.md
+  description: Repository purpose and organisational ownership context for eduvijna-architecture.
+- type: other
+  location: LICENSE
+  description: Apache-2.0 license identified for repository_optional.license.
+- type: other
+  location: CODEOWNERS
+  description: CODEOWNERS file present; supports ownership.codeowners_present=true.
+- type: other
+  location: meta/repository-manifest.yaml
+  description: Manifest evidences visibility=private and default_branch=main.
+- type: manual
+  location: discovery/VALIDATION_RULES.md
+  description: Frozen repository classification vocabulary; supports repository.classification=Governance
+    for this example.
+- type: manual
+  location: local-working-copy
+  description: Confirms example scope is framework illustration only; remote hosting fields remain UNKNOWN.
+unknown_value_policy:
+  statement: Unknown values are recorded explicitly using the marker. Never invent or guess missing facts.
+  marker: 'UNKNOWN'
+  fields_marked_unknown:
+  - repository.clone_url
+  - repository.web_url
+  - repository.hosting_platform
+  - repository.primary_language
+  - repository.lifecycle
+  - repository.criticality
+  - repository_optional.ci_cd_present
+  rationale_required: true
+observations:
+- observation_id: OBS-01
+  text: repository.classification=Governance set from Wave 1 frozen vocabulary (illustrative); discovery_id
+    DISC-REP-0001 identifies the inventory record, while repository_id REPO-EX-ARCH-001 identifies the
+    subject repository asset.
+  related_fields:
+  - repository.classification
+  - metadata.discovery_id
+  - repository.repository_id
+  recorded_on: '2026-08-07'
+- observation_id: OBS-02
+  text: Remote clone and web URLs were not recorded because this example intentionally avoids hosting
+    API queries.
+  related_fields:
+  - repository.clone_url
+  - repository.web_url
+  - repository.hosting_platform
+  recorded_on: '2026-08-07'
+assumptions:
+- assumption_id: ASM-01
+  statement: The local working copy inspected for this example corresponds to source_repository eduvijna-architecture.
+  rationale: Example capture uses local files without verifying remote HEAD.
+  impact_if_wrong: Identity fields could refer to a different fork or stale checkout.
+reproducibility:
+  method: Open the local eduvijna-architecture working copy. Read README.md, LICENSE, CODEOWNERS, and
+    meta/repository-manifest.yaml. Populate only fields supported by those sources. Mark remaining required
+    fields UNKNOWN. Do not call hosting APIs or invent remote URLs.
+  tooling:
+  - text editor / file viewer
+  replay_notes: Re-run on the same commit of eduvijna-architecture to obtain the same factual claims.
+    Hosting URLs and primary language remain UNKNOWN unless new structured evidence entries are authorised
+    and added.

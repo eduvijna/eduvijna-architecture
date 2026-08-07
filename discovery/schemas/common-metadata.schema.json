@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://eduvijna.local/discovery/schemas/common-metadata.schema.json",
+  "title": "Common Discovery Metadata and Evidence",
+  "description": "Reusable metadata and structured evidence definitions for all Discovery Specification Framework inventories. Domain schemas must $ref these definitions and must not redefine them.",
+  "$defs": {
+    "confidence": {
+      "type": "string",
+      "enum": ["HIGH", "MEDIUM", "LOW"],
+      "description": "Confidence in the inventory facts based on evidence quality and coverage."
+    },
+    "discoveryType": {
+      "type": "string",
+      "enum": [
+        "repository",
+        "application",
+        "technology",
+        "database",
+        "api",
+        "ai",
+        "infrastructure",
+        "capability",
+        "security",
+        "technical-debt"
+      ]
+    },
+    "discoveryId": {
+      "type": "string",
+      "pattern": "^DISC-(REP|APP|DB|API|INF|AI|SEC|CAP|TECH|DEBT)-[0-9]{4}$",
+      "description": "Stable discovery inventory ID per VALIDATION_RULES.md (e.g. DISC-REP-0001). Identifies the inventory record, not the subject asset."
+    },
+    "iso8601Timestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})$",
+      "description": "ISO-8601 timestamp (e.g. 2026-08-07T14:00:00Z)."
+    },
+    "evidenceType": {
+      "type": "string",
+      "enum": [
+        "package-json",
+        "pyproject",
+        "requirements-txt",
+        "dockerfile",
+        "docker-compose",
+        "csproj",
+        "solution",
+        "github-workflow",
+        "terraform",
+        "kubernetes",
+        "readme",
+        "manual",
+        "other"
+      ]
+    },
+    "evidenceItem": {
+      "type": "object",
+      "required": ["type", "location", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/evidenceType"
+        },
+        "location": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Path or locator for the evidence (e.g. package.json)."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What fact(s) this evidence supports."
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/evidenceItem"
+      },
+      "description": "Structured evidence entries. Free-form evidence is not permitted."
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "discovery_id",
+        "discovery_type",
+        "source_repository",
+        "discovered_at",
+        "discovered_by",
+        "confidence",
+        "version",
+        "inventory_version"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "discovery_id": {
+          "$ref": "#/$defs/discoveryId"
+        },
+        "discovery_type": {
+          "$ref": "#/$defs/discoveryType"
+        },
+        "source_repository": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Repository name that was the source of discovery (e.g. eduvijna-api)."
+        },
+        "discovered_at": {
+          "$ref": "#/$defs/iso8601Timestamp"
+        },
+        "discovered_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Semantic version of this inventory record content."
+        },
+        "inventory_version": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Discovery Specification Framework version that generated this inventory (e.g. 1.1.0)."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://eduvijna.local/discovery/schemas/api.schema.json",
+  "title": "Api Discovery Inventory",
+  "description": "Validates api discovery inventories completed from discovery/templates/api-template.yaml. Metadata and evidence are defined in common-metadata.schema.json.",
+  "type": "object",
+  "required": [
+    "metadata",
+    "api",
+    "evidence",
+    "unknown_value_policy",
+    "reproducibility"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "metadata": {
+      "allOf": [
+        {
+          "$ref": "common-metadata.schema.json#/$defs/metadata"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "discovery_type": {
+              "const": "api"
+            }
+          }
+        }
+      ]
+    },
+    "api": {
+      "type": "object",
+      "required": [
+        "api_id",
+        "name",
+        "style",
+        "ownership",
+        "lifecycle_status",
+        "interface_contract_known"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "api_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "style": {
+          "type": "string",
+          "enum": [
+            "rest",
+            "graphql",
+            "grpc",
+            "soap",
+            "event",
+            "other",
+            "UNKNOWN"
+          ]
+        },
+        "ownership": {
+          "type": "object",
+          "required": [
+            "technical_owner",
+            "providing_application_id"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "technical_owner": {
+              "$ref": "#/$defs/stringOrUnknown"
+            },
+            "providing_application_id": {
+              "$ref": "#/$defs/stringOrUnknown"
+            }
+          }
+        },
+        "lifecycle_status": {
+          "type": "string",
+          "enum": [
+            "planned",
+            "active",
+            "deprecated",
+            "retired",
+            "UNKNOWN"
+          ]
+        },
+        "interface_contract_known": {
+          "$ref": "#/$defs/tfu"
+        }
+      }
+    },
+    "evidence": {
+      "$ref": "common-metadata.schema.json#/$defs/evidence"
+    },
+    "unknown_value_policy": {
+      "$ref": "#/$defs/unknownValuePolicy"
+    },
+    "observations": {
+      "$ref": "#/$defs/observations"
+    },
+    "assumptions": {
+      "$ref": "#/$defs/assumptions"
+    },
+    "reproducibility": {
+      "$ref": "#/$defs/reproducibility"
+    },
+    "api_optional": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "base_url": {
+          "type": "string"
+        },
+        "auth_mechanism": {
+          "type": "string"
+        },
+        "versioning_scheme": {
+          "type": "string"
+        },
+        "consumer_application_ids": {
+          "$ref": "#/$defs/stringList"
+        },
+        "repository_ids": {
+          "$ref": "#/$defs/stringList"
+        },
+        "documentation_url": {
+          "type": "string"
+        },
+        "sla_known": {
+          "$ref": "#/$defs/tfuEmpty"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringOrUnknown": {
+      "type": "string",
+      "minLength": 1
+    },
+    "isoDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "dateOrEmpty": {
+      "type": "string",
+      "pattern": "^([0-9]{4}-[0-9]{2}-[0-9]{2})?$"
+    },
+    "tfu": {
+      "type": "string",
+      "enum": [
+        "true",
+        "false",
+        "UNKNOWN"
+      ]
+    },
+    "tfuEmpty": {
+      "type": "string",
+      "enum": [
+        "true",
+        "false",
+        "UNKNOWN",
+        ""
+      ]
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unknownValuePolicy": {
+      "type": "object",
+      "required": [
+        "statement",
+        "marker",
+        "fields_marked_unknown",
+        "rationale_required"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "statement": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "marker": {
+          "const": "UNKNOWN"
+        },
+        "fields_marked_unknown": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rationale_required": {
+          "type": "boolean"
+        }
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "observation_id",
+          "text",
+          "recorded_on"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "observation_id": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "text": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "related_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "recorded_on": {
+            "$ref": "#/$defs/isoDate"
+          }
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "assumption_id",
+          "statement",
+          "rationale",
+          "impact_if_wrong"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "assumption_id": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "statement": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "rationale": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "impact_if_wrong": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        }
+      }
+    },
+    "reproducibility": {
+      "type": "object",
+      "required": [
+        "method",
+        "tooling",
+        "replay_notes"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "tooling": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "replay_notes": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    }
+  }
+}

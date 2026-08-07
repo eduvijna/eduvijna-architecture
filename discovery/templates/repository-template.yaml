@@ -1,0 +1,122 @@
+# =============================================================================
+# Repository Discovery Template
+# Schema: discovery/schemas/repository.schema.json
+# Rules:  discovery/VALIDATION_RULES.md
+# =============================================================================
+# Copy this file to create a repository inventory. Replace placeholders.
+# Use UNKNOWN for missing required facts. Never guess.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Common metadata
+# Schema: discovery/schemas/common-metadata.schema.json
+# Do not define alternate or domain-specific metadata structures.
+# -----------------------------------------------------------------------------
+# discovery_id identifies THIS INVENTORY record (e.g. DISC-REP-0001).
+# repository.repository_id identifies THE REPOSITORY asset (e.g. REPO-eduvijna-api).
+# Those are different concepts — never reuse one for the other.
+# -----------------------------------------------------------------------------
+metadata:
+  discovery_id: ""              # DISC-REP-0001 — inventory ID (not repository ID)
+  discovery_type: repository    # Fixed value for this template
+  source_repository: ""         # Repository name under discovery (e.g. eduvijna-api)
+  discovered_at: ""             # ISO-8601 timestamp (e.g. 2026-08-07T14:00:00Z)
+  discovered_by: ""             # Person or role who captured the inventory
+  confidence: ""                # HIGH | MEDIUM | LOW
+  version: "0.1.0"              # This inventory record content version
+  inventory_version: "1.1.0"    # Discovery Framework version that generated this inventory
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Repository identity and ownership
+# -----------------------------------------------------------------------------
+repository:
+  repository_id: ""             # Stable repository asset ID (e.g. REPO-eduvijna-api); NOT DISC-REP-*
+  name: ""                      # Repository name as published by the host
+  clone_url: ""                 # HTTPS or SSH clone URL, or UNKNOWN
+  web_url: ""                   # Browser URL to the repository, or UNKNOWN
+  visibility: ""                # public | internal | private | UNKNOWN
+  hosting_platform: ""          # e.g. github | gitlab | azure-devops | bitbucket | other | UNKNOWN
+  default_branch: ""            # Default branch name (capture via host API when available), or UNKNOWN
+  primary_language: ""          # Dominant language if evidenced, or UNKNOWN
+  lifecycle: ""                 # production | active | experimental | archived | planned | deprecated | UNKNOWN
+  criticality: ""               # Critical | High | Medium | Low | UNKNOWN
+  classification: ""            # Governance | Engineering | Platform | Runtime | Infrastructure | Research | Experimental | Archive | UNKNOWN
+  ownership:
+    organisational_owner: ""    # Team, business unit, or UNKNOWN
+    technical_owner: ""         # Named role/team for tech ownership, or UNKNOWN
+    codeowners_present: ""      # true | false | UNKNOWN — false if CODEOWNERS not found; do not infer
+
+# -----------------------------------------------------------------------------
+# OPTIONAL — Repository attributes (omit or leave empty only if unused; prefer omit)
+# -----------------------------------------------------------------------------
+repository_optional:
+  description: ""               # Host-provided or README description if evidenced
+  license: ""                   # SPDX id or license name if evidenced
+  topics: []                    # Host topics/tags if evidenced
+  created_on_host: ""           # Host creation date if evidenced (YYYY-MM-DD)
+  last_activity_on: ""          # Last evidenced commit/activity date (YYYY-MM-DD)
+  languages: []                 # Additional languages with optional percentages
+  related_application_ids: []   # Links to application inventories when known
+  monorepo: ""                  # true | false | UNKNOWN
+  ci_cd_present: ""             # true | false | UNKNOWN
+  readme_present: ""            # true | false | UNKNOWN
+  notes: ""                     # Factual notes only (not observations)
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Evidence (structured)
+# Every asserted fact must map to at least one evidence entry.
+# Free-form evidence is not permitted.
+# -----------------------------------------------------------------------------
+evidence:
+  - type: ""                    # package-json | pyproject | requirements-txt | dockerfile | docker-compose | csproj | solution | github-workflow | terraform | kubernetes | readme | manual | other
+    location: ""                # Path or locator (e.g. package.json)
+    description: ""             # What fact(s) this evidence supports
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Unknown Value Policy
+# -----------------------------------------------------------------------------
+unknown_value_policy:
+  statement: "Unknown values are recorded explicitly using the marker. Never invent or guess missing facts."
+  marker: UNKNOWN               # Literal token used in fields when value is unknown
+  fields_marked_unknown: []     # List of field paths set to UNKNOWN (e.g. repository.primary_language)
+  rationale_required: true      # When true, each unknown should be justifiable from missing evidence
+
+# -----------------------------------------------------------------------------
+# OPTIONAL — Observations (NOT facts)
+# Qualitative notes, hypotheses, or non-authoritative remarks only.
+# Classification belongs in repository.classification (frozen vocabulary), not here.
+# -----------------------------------------------------------------------------
+observations: []
+# Example entry shape:
+# - observation_id: OBS-01
+#   text: ""
+#   related_fields: []
+#   recorded_on: ""
+
+# -----------------------------------------------------------------------------
+# OPTIONAL — Assumptions (explicit; not facts)
+# -----------------------------------------------------------------------------
+assumptions: []
+# Example entry shape:
+# - assumption_id: ASM-01
+#   statement: ""
+#   rationale: ""
+#   impact_if_wrong: ""
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Reproducibility
+# -----------------------------------------------------------------------------
+reproducibility:
+  method: ""                    # Steps another engineer can follow to replay capture
+  tooling: []                   # Tools used (e.g. gh, git, browser); empty if none
+  replay_notes: ""              # Caveats needed to regenerate the same factual claims
+
+# -----------------------------------------------------------------------------
+# FUTURE — Relationship model (not required in current schema)
+# When evidenced dependencies appear, record:
+# relationships:
+#   - target: REPO-eduvijna-api   # repository_id of peer
+#     confidence: HIGH           # HIGH | MEDIUM | LOW
+# Do not invent depends_on edges without evidence.
+# API edges → DISC-API-*; capability pairing → DISC-CAP-*; deploy targets → DISC-INF-*.
+# -----------------------------------------------------------------------------

@@ -1,0 +1,80 @@
+# =============================================================================
+# Infrastructure Discovery Template
+# Schema: discovery/schemas/infrastructure.schema.json
+# Rules:  discovery/VALIDATION_RULES.md
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Common metadata
+# Schema: discovery/schemas/common-metadata.schema.json
+# Do not define alternate or domain-specific metadata structures.
+# -----------------------------------------------------------------------------
+metadata:
+  discovery_id: ""              # DISC-INF-0001 (see VALIDATION_RULES.md ID convention)
+  discovery_type: infrastructure  # Fixed value for this template
+  source_repository: ""         # Repository name under discovery (e.g. eduvijna-api)
+  discovered_at: ""             # ISO-8601 timestamp (e.g. 2026-08-07T14:00:00Z)
+  discovered_by: ""             # Person or role who captured the inventory
+  confidence: ""                # HIGH | MEDIUM | LOW
+  version: "0.1.0"              # Inventory record version
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Infrastructure identity
+# -----------------------------------------------------------------------------
+infrastructure:
+  infra_id: ""                  # Stable ID for the infrastructure asset
+  name: ""                      # Asset or stack name
+  infra_type: ""                # compute | network | storage | container-platform | serverless | cdn | other | UNKNOWN
+  environment: ""               # e.g. prod | nonprod | shared | UNKNOWN
+  provider: ""                  # Cloud/vendor/provider name or UNKNOWN
+  technical_owner: ""           # Owning team/role or UNKNOWN
+  purpose: ""                   # Evidenced purpose or UNKNOWN
+
+# -----------------------------------------------------------------------------
+# OPTIONAL — Infrastructure attributes
+# -----------------------------------------------------------------------------
+infrastructure_optional:
+  region: ""                    # Region/location if evidenced
+  account_or_subscription: ""   # Account/subscription/project id if evidenced
+  iac_present: ""               # true | false | UNKNOWN
+  iac_repository_ids: []
+  related_application_ids: []
+  monitoring_known: ""          # true | false | UNKNOWN
+  notes: ""
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Evidence (structured)
+# Every asserted fact must map to at least one evidence entry.
+# Free-form evidence is not permitted.
+# -----------------------------------------------------------------------------
+evidence:
+  - type: ""                    # package-json | pyproject | requirements-txt | dockerfile | docker-compose | csproj | solution | github-workflow | terraform | kubernetes | readme | manual | other
+    location: ""                # Path or locator (e.g. package.json)
+    description: ""             # What fact(s) this evidence supports
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Unknown Value Policy
+# -----------------------------------------------------------------------------
+unknown_value_policy:
+  statement: "Unknown values are recorded explicitly using the marker. Never invent or guess missing facts."
+  marker: UNKNOWN
+  fields_marked_unknown: []
+  rationale_required: true
+
+# -----------------------------------------------------------------------------
+# OPTIONAL — Observations (NOT facts)
+# -----------------------------------------------------------------------------
+observations: []
+
+# -----------------------------------------------------------------------------
+# OPTIONAL — Assumptions (explicit; not facts)
+# -----------------------------------------------------------------------------
+assumptions: []
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Reproducibility
+# -----------------------------------------------------------------------------
+reproducibility:
+  method: ""
+  tooling: []
+  replay_notes: ""

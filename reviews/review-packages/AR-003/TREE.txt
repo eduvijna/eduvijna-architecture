@@ -1,0 +1,39 @@
+AR-003 Review Package — Repository Tree (Discovery Specification Framework)
+
+eduvijna-architecture/
+├── discovery/
+│   ├── OVERVIEW.md
+│   ├── VALIDATION_RULES.md
+│   ├── templates/
+│   │   ├── repository-template.yaml
+│   │   ├── application-template.yaml
+│   │   ├── technology-template.yaml
+│   │   ├── database-template.yaml
+│   │   ├── api-template.yaml
+│   │   ├── ai-template.yaml
+│   │   ├── infrastructure-template.yaml
+│   │   ├── capability-template.yaml
+│   │   ├── security-template.yaml
+│   │   └── technical-debt-template.yaml
+│   ├── schemas/
+│   │   ├── repository.schema.json
+│   │   ├── application.schema.json
+│   │   ├── technology.schema.json
+│   │   ├── database.schema.json
+│   │   ├── api.schema.json
+│   │   ├── ai.schema.json
+│   │   ├── infrastructure.schema.json
+│   │   ├── capability.schema.json
+│   │   ├── security.schema.json
+│   │   └── technical-debt.schema.json
+│   └── examples/
+│       └── repository-example.yaml
+│
+└── reviews/
+    └── review-packages/
+        └── AR-003/
+            ├── SUMMARY.md
+            ├── TREE.txt
+            ├── CHANGED_FILES.md
+            ├── CHECKLIST.md
+            └── OPEN_QUESTIONS.md

@@ -1,0 +1,104 @@
+# Schema: discovery/schemas/repository.schema.json
+# Discovery Wave 1 — eduvijna/Eduvijna-App
+metadata:
+  discovery_id: DISC-REP-0003
+  discovery_type: repository
+  source_repository: Eduvijna-App
+  discovered_at: '2026-08-07T14:00:00Z'
+  discovered_by: Enterprise Discovery Engineer
+  confidence: HIGH
+  version: '0.2.0'
+  inventory_version: '1.1.0'
+repository:
+  repository_id: REPO-eduvijna-Eduvijna-App
+  name: Eduvijna-App
+  clone_url: https://github.com/eduvijna/Eduvijna-App.git
+  web_url: https://github.com/eduvijna/Eduvijna-App
+  visibility: private
+  hosting_platform: github
+  default_branch: main
+  primary_language: TypeScript
+  lifecycle: 'UNKNOWN'
+  criticality: 'UNKNOWN'
+  classification: Runtime
+  ownership:
+    organisational_owner: eduvijna
+    technical_owner: 'UNKNOWN'
+    codeowners_present: 'false'
+repository_optional:
+  monorepo: 'UNKNOWN'
+  ci_cd_present: 'false'
+  readme_present: 'true'
+  description: Expo/React Native TypeScript mobile application (package name eduvijna).
+  languages:
+  - TypeScript (1286745)
+  - Python (37769)
+  - JavaScript (8049)
+  notes: 'stack: Expo ~52 + React Native 0.76.9 + TypeScript (package.json); package_manager: npm (package-lock.json);
+    workflows: 404'
+evidence:
+- type: other
+  location: discovery/inventories/repositories/evidence/_raw/eduvijna__Eduvijna-App-root.json
+  description: Root listing evidences package.json, package-lock.json, app.json, eas.json, ARCHITECTURE.md,
+    README.md; no .github.
+- type: other
+  location: discovery/inventories/repositories/evidence/_raw/eduvijna__Eduvijna-App-languages.json
+  description: 'Languages: TypeScript dominant.'
+- type: github-workflow
+  location: discovery/inventories/repositories/evidence/_raw/eduvijna__Eduvijna-App-workflows.json
+  description: gh API HTTP 404 for workflows directory; ci_cd_present=false.
+- type: package-json
+  location: discovery/inventories/repositories/evidence/_raw/eduvijna__Eduvijna-App__package.json.txt
+  description: Dependencies include expo ~52.0.0, react-native 0.76.9, axios; name eduvijna.
+- type: other
+  location: https://github.com/eduvijna/Eduvijna-App
+  description: GitHub URL from gh discovery; hosting_platform=github; visibility=private.
+- type: other
+  location: discovery/inventories/repositories/evidence/_raw/gh-repo-list-default-branches.txt
+  description: gh repo list metadata evidences defaultBranchRef.name=main for this repository.
+- type: manual
+  location: reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+  description: Wave 1 frozen repository classification vocabulary decision recorded in DISC-REP-001 review
+    package; supports repository.classification.
+unknown_value_policy:
+  statement: Unknown values are recorded explicitly using the marker. Never invent or guess missing facts.
+  marker: 'UNKNOWN'
+  fields_marked_unknown:
+  - repository.lifecycle
+  - repository.criticality
+  - repository.ownership.technical_owner
+  - repository_optional.license
+  - repository_optional.monorepo
+  rationale_required: true
+observations:
+- observation_id: OBS-01
+  text: repository.classification set from Wave 1 frozen vocabulary decision (EAO-approved); see reviews/review-packages/DISC-REP-001/OPEN_QUESTIONS.md
+    and discovery/VALIDATION_RULES.md.
+  related_fields:
+  - repository.classification
+  recorded_on: '2026-08-07'
+- observation_id: OBS-02
+  text: Shares npm package name eduvijna with eduvijna/Eduvijna; relationship beyond naming not evidenced.
+  related_fields:
+  - discovery_view.relationships
+  recorded_on: '2026-08-07'
+assumptions:
+- assumption_id: ASM-01
+  statement: HTTPS clone_url and web_url for eduvijna/Eduvijna-App match the GitHub repository identity
+    recorded during Wave 1 gh discovery.
+  rationale: Root/languages/workflows evidence files are keyed by owner__name; full repository metadata
+    JSON was not retained as a separate _raw artefact for every metadata field.
+  impact_if_wrong: URLs or visibility could refer to a renamed, transferred, or forked repository.
+reproducibility:
+  method: Replay Discovery Wave 1 repository capture against GitHub user eduvijna and org eduvijna-ai
+    using gh API (list repos; fetch root contents, languages, .github/workflows paths; download selected
+    manifests). Populate inventory fields only from artefacts under discovery/inventories/repositories/evidence/_raw/.
+    Mark remaining required fields UNKNOWN. Do not modify application repositories.
+  tooling:
+  - gh
+  - Python 3
+  - jsonschema
+  - PyYAML
+  replay_notes: Re-run against the same GitHub owners on or after 2026-08-07. Some README/CODEOWNERS fetches
+    in _raw are truncated or HTTP 404; prefer root-listing presence flags plus successfully fetched manifests.
+    UTF-16 LE BOM may be present in Windows-captured files.

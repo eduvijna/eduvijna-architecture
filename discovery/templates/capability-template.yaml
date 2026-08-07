@@ -1,0 +1,78 @@
+# =============================================================================
+# Capability Discovery Template
+# Schema: discovery/schemas/capability.schema.json
+# Rules:  discovery/VALIDATION_RULES.md
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Common metadata
+# Schema: discovery/schemas/common-metadata.schema.json
+# Do not define alternate or domain-specific metadata structures.
+# -----------------------------------------------------------------------------
+metadata:
+  discovery_id: ""              # DISC-CAP-0001 (see VALIDATION_RULES.md ID convention)
+  discovery_type: capability  # Fixed value for this template
+  source_repository: ""         # Repository name under discovery (e.g. eduvijna-api)
+  discovered_at: ""             # ISO-8601 timestamp (e.g. 2026-08-07T14:00:00Z)
+  discovered_by: ""             # Person or role who captured the inventory
+  confidence: ""                # HIGH | MEDIUM | LOW
+  version: "0.1.0"              # Inventory record version
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Capability identity
+# -----------------------------------------------------------------------------
+capability:
+  capability_id: ""             # Stable ID for the business/technical capability
+  name: ""                      # Capability name
+  domain: ""                    # Business or architecture domain, or UNKNOWN
+  description: ""               # Evidenced description or UNKNOWN
+  capability_owner: ""          # Owning role/team or UNKNOWN
+  maturity: ""                  # initial | developing | defined | managed | optimizing | UNKNOWN
+
+# -----------------------------------------------------------------------------
+# OPTIONAL — Capability attributes
+# -----------------------------------------------------------------------------
+capability_optional:
+  parent_capability_id: ""      # Hierarchy link if evidenced
+  supporting_application_ids: []
+  supporting_repository_ids: []
+  related_process_refs: []      # Process docs/tickets if evidenced
+  outcomes: []                  # Evidenced outcomes/KPIs labels only
+  notes: ""
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Evidence (structured)
+# Every asserted fact must map to at least one evidence entry.
+# Free-form evidence is not permitted.
+# -----------------------------------------------------------------------------
+evidence:
+  - type: ""                    # package-json | pyproject | requirements-txt | dockerfile | docker-compose | csproj | solution | github-workflow | terraform | kubernetes | readme | manual | other
+    location: ""                # Path or locator (e.g. package.json)
+    description: ""             # What fact(s) this evidence supports
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Unknown Value Policy
+# -----------------------------------------------------------------------------
+unknown_value_policy:
+  statement: "Unknown values are recorded explicitly using the marker. Never invent or guess missing facts."
+  marker: UNKNOWN
+  fields_marked_unknown: []
+  rationale_required: true
+
+# -----------------------------------------------------------------------------
+# OPTIONAL — Observations (NOT facts)
+# -----------------------------------------------------------------------------
+observations: []
+
+# -----------------------------------------------------------------------------
+# OPTIONAL — Assumptions (explicit; not facts)
+# -----------------------------------------------------------------------------
+assumptions: []
+
+# -----------------------------------------------------------------------------
+# REQUIRED — Reproducibility
+# -----------------------------------------------------------------------------
+reproducibility:
+  method: ""
+  tooling: []
+  replay_notes: ""

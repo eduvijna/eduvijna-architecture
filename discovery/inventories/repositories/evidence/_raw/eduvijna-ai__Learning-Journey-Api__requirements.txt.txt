@@ -1,0 +1,36 @@
+﻿# Core Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+python-dotenv==1.0.0
+
+# Security (Phase 4)
+slowapi==0.1.9
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Email & Scheduler
+APScheduler==3.10.4
+
+# WhatsApp Integration (Optional - Free, uses WhatsApp Web)
+# Note: Requires QR code scan on first use
+pywhatkit==5.4
+
+# Database
+# SQLite (built-in with Python)
+
+# AI Integration (Optional)
+openai==1.3.5  # For OpenAI GPT
+# OR use Ollama locally (no package needed)
+
+# HTTP Requests
+requests==2.31.0
+
+# Optional: YouTube API
+google-api-python-client==2.108.0
+youtube-transcript-api==0.6.1
+
+# Development & Testing
+# pytest==7.4.3  # Uncomment for testing
+
+routers

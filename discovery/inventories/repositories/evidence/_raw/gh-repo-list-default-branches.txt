@@ -1,0 +1,17 @@
+# GitHub repository metadata captured via `gh repo list` for discovery Wave 1.
+# Evidence for default_branch = main across all inventoried repositories.
+# Captured: 2026-08-07T14:00:00Z
+#
+# eduvijna/eduvijna-architecture: defaultBranchRef.name=main
+# eduvijna/Eduvijna: defaultBranchRef.name=main
+# eduvijna/Eduvijna-App: defaultBranchRef.name=main
+# eduvijna-ai/eduvijna-api: defaultBranchRef.name=main
+# eduvijna-ai/Quiz-React: defaultBranchRef.name=main
+# eduvijna-ai/eduvijna-web: defaultBranchRef.name=main
+# eduvijna-ai/Eduvijna-Cloud-Infra-Deploy: defaultBranchRef.name=main
+# eduvijna-ai/Learning-Journey-Api: defaultBranchRef.name=main
+# eduvijna-ai/Learning-Journey-App: defaultBranchRef.name=main
+# eduvijna-ai/eduvijna-app: defaultBranchRef.name=main
+# eduvijna-ai/voice-clone: defaultBranchRef.name=main
+# eduvijna-ai/Edu-Chrome-Extension: defaultBranchRef.name=main
+# eduvijna-ai/eduvijna: defaultBranchRef.name=main

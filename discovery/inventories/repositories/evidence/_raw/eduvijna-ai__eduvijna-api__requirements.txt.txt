@@ -1,0 +1,59 @@
+﻿fastapi
+uvicorn
+python-dotenv
+pydantic
+pydantic-settings
+requests
+python-multipart
+pyjwt
+cryptography  # For RS256 support
+openai
+youtube-transcript-api
+reportlab
+sqlalchemy
+databases
+aiosqlite
+aiohttp
+json-repair
+PyMuPDF
+spacy
+python-docx
+beautifulsoup4
+unstructured
+backoff
+pdfminer.six  # More maintained fork of pdfminer
+PyYAML  # For cloudflared configuration
+pillow  # For image processing
+pytesseract  # For OCR (Optical Character Recognition)
+pdf2image  # Convert PDF pages to images for OCR
+psycopg2-binary
+pytest
+httpx
+pydantic-settings
+pyjwt
+cryptography
+bcrypt==4.0.1
+passlib[bcrypt]
+blis
+tenacity
+pdfplumber
+chardet
+docx2txt
+python-docx
+groq
+yt-dlp>=2023.10.13
+aioredis>=2.0.1
+redis>=5.0.0
+email-validator
+structlog
+asyncpg
+firebase-admin>=6.0.0
+weasyprint
+jinja2
+matplotlib
+boto3
+sendgrid
+PyPDF2
+openpyxl
+sarvamai
+websockets
