@@ -29,4 +29,4 @@ When an ADR is approved, add a summary entry here that links to the ADR.
 | ADR-045 | Teaching Intent owns teacher goals (constitutional) · Implemented EBP-001.3 (UX) | 2026-08-10 | Accepted | [ADR-045](ADR-045-teaching-intent-owns-goals.md) |
 | ADR-046 | Artifact Status Lifecycle (one lifecycle, no exceptions) | 2026-08-10 | Accepted | [ADR-046](ADR-046-artifact-status-lifecycle.md) |
 | ADR-047 | Outcome-first teaching language (Prepare Tomorrow) | 2026-08-10 | Accepted | [ADR-047](ADR-047-outcome-first-prepare-tomorrow.md) |
-| ADR-048 | Review Queue owns approval (teacher judgement only) | 2026-08-10 | Accepted | [ADR-048](ADR-048-review-queue-owns-approval.md) |
+| ADR-048 | Review Queue owns approval (teacher judgement only) · Implemented EBP-001.5 | 2026-08-10 | Accepted | [ADR-048](ADR-048-review-queue-owns-approval.md) |

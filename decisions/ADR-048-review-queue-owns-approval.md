@@ -15,6 +15,7 @@ reviewers:
 
 **Status:** Approved — **binding for Review Queue**  
 **Date:** 2026-08-10  
+**Implementation:** **EBP-001.5** (Review Queue experience)  
 **Related:** PA-REVIEW-Q-001 · ADR-042 · ADR-044 · ADR-045 · ADR-046 · ADR-047 · EXPERIENCE_PRINCIPLES.md · REVIEW_QUEUE.md
 
 ---
@@ -56,6 +57,16 @@ Review Queue may offer only:
 
 **Nothing more.**
 
+### EBP-001.5 action mapping
+
+| UX | Lifecycle (ADR-046) | Review decision (workflow) |
+|----|---------------------|----------------------------|
+| Approve | `In Review` → **`Approved`** | `approved` |
+| Reject | stays **`In Review`** | `rejected` (**not** a lifecycle status) |
+| Request Changes | stays **`In Review`** | `changes_requested` + note; **no AI call** |
+
+**Approved ≠ Published.** Publish is out of scope for EBP-001.5.
+
 ## Forbidden
 
 | Forbidden | Why |
@@ -65,6 +76,7 @@ Review Queue may offer only:
 | Run or own orchestration | Orchestration is not Review Queue |
 | Auto-publish without judgement | Violates “AI Assists, Teacher Decides” |
 | Type-specific alternate approval cockpits | One queue; ADR-046 lifecycle |
+| Invent `Rejected` as ADR-046 status | Rejection is judgement metadata only |
 
 ## Complements Experience Principles
 
@@ -83,17 +95,18 @@ This ADR locks that boundary so Wave 1+ slices cannot turn `/teacher-os/review` 
 **Negative / follow-ups**
 
 - “Open editor” and “Regenerate” need clear hand-offs to other surfaces/services  
-- EBP-001.5 must implement only judgement actions; generation stays out of scope for the queue itself  
+- Full regeneration / explain / editor entry points remain placeholders until those capabilities ship  
 
 ## Alternatives considered
 
 1. **Queue also generates missing kit items** — Rejected: blurs Intent/orchestration with approval.  
 2. **Inline full editing as the queue product** — Rejected: queue becomes a mega-editor; Progressive Disclosure fails.  
 3. **Per-type approval screens** — Rejected: breaks type-agnostic Artifact model (ADR-046).  
+4. **Add Rejected to ADR-046 lifecycle** — Rejected: would break canonical lifecycle; use review decision instead.
 
 ## Compliance
 
 - `REVIEW_QUEUE.md` must state: owns judgement, not generation/editing/orchestration.  
 - Engineering Constitution cites ADR-048.  
 - EBP-001.5 and later Review Queue EDRs must not add Generate as a queue responsibility.  
-- Lifecycle transitions remain ADR-046 (`In Review` → `Approved` / reject paths).
+- Lifecycle transitions remain ADR-046; reject/request-changes use review decision fields.
