@@ -69,11 +69,13 @@ Authoritative records: `eduvijna-architecture/decisions/ADR-AIEOS-*.md`
 
 Architecture status: **Frozen / Approved**. Not IMPLEMENTED / MERGED / DEPLOYED / PRODUCTION.
 
-ADR-AIEOS-023 remains a frozen historical Identity/Tenant/Security decision whose canonical record is pending separate synchronization and is intentionally absent from EA-SYNC-01A. EA-SYNC-01A does not reconstruct its body from later implementation. That gap remains a production-promotion blocker.
+Historical ADR-AIEOS-023 remains Frozen / Approved (Identity/Tenant/Security); its original canonical body is unavailable and is not reconstructed. ADR-AIEOS-023R1 is the Frozen / Approved canonical restatement and the usable identity/tenant/security implementation baseline. Architecture catalogue deposition does not by itself authorize identity implementation or production promotion.
 
 | ADR | Title | Status | Notes |
 |-----|-------|--------|-------|
 | [ADR-AIEOS-022](../decisions/ADR-AIEOS-022-aieos-platform-technology-baseline.md) | AIEOS Platform Technology Baseline | Frozen / Approved | Event broker and workflow engine deferred here; later ADRs own those selections |
+| ADR-AIEOS-023 | Historical Identity/Tenant/Security | Frozen / Approved | Original canonical body unavailable; restated by ADR-AIEOS-023R1 |
+| [ADR-AIEOS-023R1](../decisions/ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) | AIEOS Identity, Tenant & Security Canonical Restatement | Frozen / Approved | Canonical future implementation baseline; does not reproduce lost original 023 text |
 | [ADR-AIEOS-024](../decisions/ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md) | AIEOS Data, Resource & SoR Implementation Baseline | Frozen / Approved | |
 | [ADR-AIEOS-025](../decisions/ADR-AIEOS-025-aieos-api-contract-integration-implementation-baseline.md) | AIEOS API Contract & Integration Implementation Baseline | Frozen / Approved | NATS JetStream; domain never publishes NATS directly |
 | [ADR-AIEOS-026](../decisions/ADR-AIEOS-026-aieos-workflow-implementation-baseline.md) | AIEOS Workflow Implementation Baseline | Frozen / Approved | Temporal; workflow state ≠ domain state |

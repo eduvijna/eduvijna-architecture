@@ -103,7 +103,7 @@ Generic Content domain rules are detailed in [ADR-AIEOS-027](ADR-AIEOS-027-aieos
 
 - Production migration, mutation, and deployment remain independently unauthorized.
 - Asset/File SoR specifics belong to [ADR-AIEOS-033](ADR-AIEOS-033-asset-file-architecture.md) and later Asset ADRs.
-- Identity/tenant/security **current-authority tables** are not reconstructed here as a substitute for ADR-AIEOS-023.
+- Identity/tenant/security **current-authority tables** are not reconstructed here; historical ADR-AIEOS-023 remains frozen but unavailable, and [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) is the canonical restatement.
 
 ## Consequences
 
@@ -116,7 +116,8 @@ Generic Content domain rules are detailed in [ADR-AIEOS-027](ADR-AIEOS-027-aieos
 | ID | Relationship |
 |----|----------------|
 | [ADR-AIEOS-022](ADR-AIEOS-022-aieos-platform-technology-baseline.md) | Technology family (PostgreSQL, SQLAlchemy, Alembic) |
-| ADR-AIEOS-023 | Frozen Identity/Tenant/Security decision; canonical body **not** deposited in EA-SYNC-01A |
+| ADR-AIEOS-023 | Historical Frozen / Approved Identity/Tenant/Security; original body unavailable |
+| [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) | Canonical Identity, Tenant & Security restatement |
 | [ADR-AIEOS-027](ADR-AIEOS-027-aieos-generic-content-implementation-baseline.md) | Generic Content SoR |
 | [ADR-AIEOS-028](ADR-AIEOS-028-security-audit-mutation-accountability.md) | Security-audit intent |
 | [ADR-AIEOS-033](ADR-AIEOS-033-asset-file-architecture.md) | Asset SoR |

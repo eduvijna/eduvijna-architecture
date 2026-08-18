@@ -60,7 +60,7 @@ Bearer JWT
 - This ADR does not list Asset capabilities; those are [ADR-AIEOS-036](ADR-AIEOS-036-asset-authorization-transactional-security-audit-baseline.md).
 - External policy engines are not the AIEOS authorization authority.
 - Control-plane grant APIs and production deployment remain independently unauthorized.
-- ADR-AIEOS-023’s full identity model is not reconstructed here.
+- Identity/tenant/membership inputs are owned by [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md). Historical ADR-AIEOS-023 remains frozen but unavailable; this ADR does not reconstruct that historical body.
 
 ## Consequences
 
@@ -71,6 +71,8 @@ Bearer JWT
 
 | ID | Relationship |
 |----|----------------|
+| ADR-AIEOS-023 | Historical Frozen / Approved Identity/Tenant/Security; original body unavailable |
+| [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) | Canonical identity/tenant/membership inputs |
 | [ADR-AIEOS-030](ADR-AIEOS-030-production-jwt-bearer.md) | Authentication only |
 | [ADR-AIEOS-032](ADR-AIEOS-032-governance-adapter-foundation.md) | Governance ports |
 | [ADR-AIEOS-036](ADR-AIEOS-036-asset-authorization-transactional-security-audit-baseline.md) | Asset capability catalog addition |
