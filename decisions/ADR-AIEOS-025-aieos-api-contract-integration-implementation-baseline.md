@@ -38,7 +38,7 @@ AIEOS needs one synchronous API contract family and one reliable integration/eve
 - ETag + If-Match
 - HTTP 412 for stale revision
 - HTTP 428 when a required precondition is missing
-- `Idempotency-Key` with a transactionally coordinated idempotent outcome
+- `Idempotency-Key` → transactionally coordinated outcome → defined retention / reconciliation horizon (no concrete universal duration is frozen here)
 - Opaque cursor pagination
 - Stable keyset semantics
 - No implicit snapshot guarantee
@@ -93,7 +93,7 @@ In the authoritative transaction:
 - Owned remediation
 - Controlled replay
 - MaxDeliver is not itself business quarantine
-- Replay preserves event identity
+- Quarantine replay preserves original event identity
 
 ### External integration
 
@@ -102,6 +102,16 @@ In the authoritative transaction:
 - External-event dedupe
 - Ambiguous external outcomes require reconciliation / provider idempotency
 - Never blind retry
+
+### Contract compatibility (002.6A)
+
+API and event contract compatibility is machine-testable through CI compatibility gates:
+
+- approved OpenAPI compatibility is checked in CI
+- approved event-contract compatibility is checked in CI where applicable
+- breaking contract changes cannot silently mutate an existing contract version
+
+This ADR does not inventory other 002.6A hardening identifiers that are not recovered here.
 
 ## Binding invariants
 
@@ -112,6 +122,8 @@ In the authoritative transaction:
 - Workflow ≠ Domain State.
 - Broker ≠ SoR.
 - Legacy API is not an AIEOS runtime dependency.
+- Transactional idempotency (`Idempotency-Key`) has a defined retention / reconciliation horizon.
+- Bounded retry and quarantine remain the failure path; quarantine replay preserves original event identity.
 
 ## Explicit non-goals / deferred decisions
 

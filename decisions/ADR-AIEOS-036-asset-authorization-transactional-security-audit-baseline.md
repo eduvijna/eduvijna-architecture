@@ -38,6 +38,17 @@ Asset mutations authorized by [ADR-AIEOS-035](ADR-AIEOS-035-aieos-asset-mutation
 
 No wildcard `asset.*`. No `*`. No role vocabulary. No JWT role/scope business authority. No owner bypass.
 
+This B6 authorization scope does **not** introduce:
+
+- resource-scoped grants
+- Asset ACLs
+- per-Asset grants
+- ownership-based authorization
+- Asset sharing authority
+- Asset delegation authority
+
+Authorization remains principal + tenant + exact capability, with resource context contextual only.
+
 ### Command → capability
 
 | Command | Capability |

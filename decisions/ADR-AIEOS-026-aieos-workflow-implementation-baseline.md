@@ -37,6 +37,7 @@ Long-running AIEOS processes need a durable workflow runtime that cannot become 
 - Temporal Run ID is separate.
 - Durable workflow-start intent.
 - Idempotent workflow starts.
+- Stable workflow identity across retries.
 - Deterministic workflow definitions.
 - No direct database, HTTP, NATS, or AI-provider effects in workflow code.
 - Material effects occur through normal durable Activities.
@@ -50,13 +51,15 @@ Long-running AIEOS processes need a durable workflow runtime that cannot become 
 - Tenant suspension is respected.
 - Break-glass authority does not persist automatically.
 - Workflow history / provenance is not perpetual permission.
-- AIEOS-authoritative approval artifacts remain in AIEOS, not in Temporal history as authority.
+- `REQUIRE_APPROVAL` integrates with durable workflow waiting.
+- Approval truth remains an AIEOS-authoritative artifact; Temporal history is not approval authority.
 - Durable approval / workflow-command delivery.
 - Idempotent workflow commands.
 - Authority is revalidated after approval.
 - Cancellation ≠ rollback.
 - Termination ≠ cancellation.
 - Saga-style compensation; compensation failure is visible.
+- Manual intervention is explicit when automatic recovery / compensation cannot safely complete.
 - Explicit workflow major-version evolution.
 - History replay is a release gate.
 - Continue-As-New for bounded history.
@@ -66,15 +69,19 @@ Long-running AIEOS processes need a durable workflow runtime that cannot become 
 - Environment isolation.
 - Capability-oriented task queues.
 - No per-tenant namespace / task-queue baseline.
+- Current governance survives restore.
+- Restored historical workflow state does not restore obsolete authority or governance.
+- No direct workflow persistence coupling.
 - No Temporal SDK in domains.
 - No Temporal SDK in frontend.
 - Target OCI / runtime compatibility is revalidated before production.
 
 ## Binding invariants
 
-- Workflow execution truth is not Generic Content, Asset, or authorization truth.
+- Workflow execution truth is not Generic Content, Asset, or authorization truth. Workflow state ≠ domain state.
 - Temporal may coordinate and wait; it is not approval authority ([ADR-AIEOS-027](ADR-AIEOS-027-aieos-generic-content-implementation-baseline.md)).
 - Activities invoke normal application commands; they do not bypass current authorization.
+- No direct workflow persistence coupling to domain SoR.
 
 ## Explicit non-goals / deferred decisions
 

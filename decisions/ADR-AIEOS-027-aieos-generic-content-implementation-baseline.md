@@ -108,24 +108,47 @@ Draft · Generating · Generated · In Review · Approved · Published · Archiv
 
 ## Binding invariants — GCI hardening rules
 
-1. Exact-version review: approval of version N never approves N+1.
-2. Approved ≠ Published; publication is a separate explicit command.
-3. Binary assets are referenced only through `ResourceRef`; Asset/File owns binary authority.
-4. Temporal may coordinate and wait; it is not approval authority. NATS is transport, not SoR.
-5. Derived projections (search / vector / KG / cache) are non-authoritative.
-6. Archive ≠ Purge.
-7. Purge requires governed lifecycle, retention, hold, reference, and deletion evidence (not frozen here).
-8. Restore requires governance reconciliation.
-9. Legacy systems are migration input, not AIEOS runtime dependencies.
-10. Legacy approved/published status is not automatically AIEOS authority.
-11. Migration is resumable and source identity/digest aware.
-12. Applicable AI-produced learner/parent-facing output cannot bypass human review.
+These twelve promoted identifiers are frozen. They are not a substitute summary.
+
+| ID | Name | Architecture meaning |
+|----|------|----------------------|
+| GCI-G01 | Immutable History / Purge Authority Separation | Committed immutable Content history is distinct from governed purge authority. |
+| GCI-G02 | Same-Aggregate Version Lineage | ContentVersion lineage remains within the same Content aggregate. |
+| GCI-G03 | Authoritative Schema Reader Retention | Authoritative historical schema readers/validators required to read retained immutable versions cannot be casually removed while those versions remain authoritative. |
+| GCI-G04 | Transaction-Local RLS Context Isolation | Tenant RLS security context is transaction-local and must not leak through pooled connections. |
+| GCI-G05 | Negative Review Requires a New Version | `REQUEST_CHANGES` / `REJECT` closes that immutable-version review cycle; resubmission requires a new ContentVersion. |
+| GCI-G06 | Review Comment Data Governance | Review comments are governed data and are not an uncontrolled logging/free-text escape hatch. |
+| GCI-G07 | Mandatory AI Generation Provenance | AI-origin versions require mandatory generation provenance. |
+| GCI-G08 | Typed / Allow-Listed Provenance | Provenance is typed / allow-listed and excludes secret material. |
+| GCI-G09 | Asset Reference Dual Validation | Asset references require both reference-contract validation and current governed Asset-use validation where required. |
+| GCI-G10 | Archive Withdraws Active Publication | Archive withdraws active publication while preserving publication history. |
+| GCI-G11 | Current Asset Governance Survives Publication | Publication does not permanently bless an Asset; current Asset governance continues to apply after publication. |
+| GCI-G12 | Migration Source Identity and Digest Conflict Detection | Migration uses stable source identity + source digest/version and detects changed/conflicting source records. |
+
+Approved ≠ Published remains in force (see Publication above). Archive remains distinct from governed purge; physical purge / retention / hold stay deferred.
 
 Additional coordination:
 
 - Current authorization is revalidated before sensitive Content effects.
 - Content mutation + outbox intent + required audit intent are coordinated transactionally where required.
 - Domain code never publishes directly to NATS.
+
+### Frozen Content event family
+
+The initial frozen Content event types are:
+
+- `io.eduvijna.aieos.content.content.created.v1`
+- `io.eduvijna.aieos.content.content.version_created.v1`
+- `io.eduvijna.aieos.content.content.submitted_for_review.v1`
+- `io.eduvijna.aieos.content.content.review_approved.v1`
+- `io.eduvijna.aieos.content.content.review_changes_requested.v1`
+- `io.eduvijna.aieos.content.content.review_rejected.v1`
+- `io.eduvijna.aieos.content.content.published.v1`
+- `io.eduvijna.aieos.content.content.archived.v1`
+
+Those event **semantics** are frozen. Exact event payload schemas remain implementation-contract work. Events remain facts, not Content authority. Domain code does not publish directly to NATS.
+
+This ADR does **not** invent Asset events.
 
 ## Explicit non-goals / deferred decisions
 

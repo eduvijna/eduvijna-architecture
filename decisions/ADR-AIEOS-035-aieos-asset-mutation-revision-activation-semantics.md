@@ -34,30 +34,55 @@ Asset aggregates need explicit create, immutable revision registration, and exac
 - `current_revision = NULL`
 - `aggregate_revision = 0`
 
+Create replay with a stable caller-supplied AssetId:
+
+- same AssetId + same immutable creation facts → return the existing Asset outcome
+- same AssetId + different immutable creation facts → identity conflict
+
+A valid create replay remains a replay even if mutable Asset state changed after original creation. It must **not** create another Asset.
+
 ### Registration
 
 - Immutable revision.
 - Pending safety / non-purged revision state.
 - Monotonic revision number.
-- Stable `AssetRevisionId` replay semantics.
 - Registration **does not** advance `aggregate_revision`.
 - Registration allowed while `active` / `withdrawn` where otherwise valid.
 - No implicit activation.
 - Deleted Assets must not receive a new revision.
 
+Revision registration replay:
+
+- same `AssetRevisionId` + same immutable revision facts → return the existing revision
+- same `AssetRevisionId` + different immutable revision facts → identity conflict
+
+Replay does not allocate another revision number, increment `aggregate_revision`, or activate the revision.
+
 ### Activation
 
+Frozen ordering:
+
+1. read candidate authoritative facts
+2. verify candidate `aggregate_revision` equals caller expected revision
+3. `BlobStore.inspect`
+4. verify observed size/hash
+5. begin write UoW / transaction
+6. lock Asset
+7. re-read governing facts
+8. verify expected revision and candidate still match
+9. set exact `current_revision`
+10. `aggregate_revision` +1 exactly once
+11. commit
+
+Stale expected aggregate revision must be rejected **before** `BlobStore.inspect`. There is no hidden retry that changes caller concurrency authority.
+
 - Exact candidate revision.
-- Expected aggregate revision supplied by the caller.
-- Physical inspect **before** the write transaction.
-- Verify size / hash.
-- Write transaction locks and re-reads governing Asset facts.
-- Candidate and aggregate must still match.
-- Set exact `current_revision`.
-- `aggregate_revision` increments by exactly 1.
 - Safety must be `passed`.
 - Bytes not purged.
 - Missing, unavailable, or mismatching bytes prevent mutation.
+- A withdrawn Asset may activate an otherwise valid revision.
+- A quarantined Asset may activate an otherwise valid revision.
+- [ADR-AIEOS-034](ADR-AIEOS-034-aieos-asset-current-use-authority-decision-semantics.md) still blocks current use while withdrawn or quarantined.
 
 ### Lifecycle
 

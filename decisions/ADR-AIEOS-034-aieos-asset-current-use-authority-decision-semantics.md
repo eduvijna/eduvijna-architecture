@@ -13,8 +13,8 @@ reviewers:
 
 # ADR-AIEOS-034 — AIEOS Asset Current-Use Authority Decision Semantics
 
-**Status:** Frozen / Approved  
-**Date:** 2026-08-18  
+**Status:** Frozen / Approved
+**Date:** 2026-08-18
 **Related:** [ADR-AIEOS-032](ADR-AIEOS-032-governance-adapter-foundation.md) · [ADR-AIEOS-033](ADR-AIEOS-033-asset-file-architecture.md) · [ADR-AIEOS-035](ADR-AIEOS-035-aieos-asset-mutation-revision-activation-semantics.md)
 
 **Catalogue note:** Frozen / Approved is architecture status. Current-use evaluation is not production composition, not Asset HTTP, and not a BlobStore provider selection.
@@ -50,7 +50,9 @@ Forbidden overloads:
 - missing blob → `NOT_FOUND` / `DELETED` / `SAFETY_FAILED`
 - bytes purged → `DELETED` / `SAFETY_FAILED`
 - integrity mismatch → `SAFETY_FAILED`
-- BlobStore unavailable → a deterministic usable=`false` assessment
+
+**Forbidden:** BlobStore unavailable → deterministic unusable assessment (`usable=false` with a rejection reason).
+**Required:** BlobStore unavailable → governance unavailable (`GovernanceUnavailableError` / equivalent fail-closed unavailable semantics). It must **not** become a deterministic unusable rejection reason.
 
 ### Precedence / current-use semantics
 
@@ -76,6 +78,13 @@ Additional frozen rules:
 - Unpinned `current_revision` change during inspect requires re-evaluation.
 - Optimistic retry is bounded; persistent governing-state churn → governance unavailable.
 - No positive cross-request cache.
+
+### Assessment metadata
+
+- When an Asset is successfully resolved / evaluated, `authority_revision` represents the governing Asset `aggregate_revision`.
+- `NOT_FOUND` has `authority_revision = None`.
+- `observed_at` is timezone-aware.
+- `authority_revision` is **not** `AssetRevisionNumber`.
 
 ## Binding invariants
 
