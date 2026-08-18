@@ -58,7 +58,7 @@ Client headers asserting principal, role, admin, or capability are not authentic
 
 ## Explicit non-goals / deferred decisions
 
-- Principal provisioning, issuer-to-principal mapping tables, and identity SoR deposition for ADR-AIEOS-023 are out of this ADR.
+- Principal provisioning, issuer-to-principal mapping tables, and identity SoR remain out of this ADR. Historical ADR-AIEOS-023 remains frozen but unavailable; [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) is the canonical restatement.
 - Production deployment remains independently unauthorized ([ADR-AIEOS-029](ADR-AIEOS-029-production-environment-deployment-readiness-baseline.md)).
 
 ## Consequences
@@ -70,6 +70,7 @@ Client headers asserting principal, role, admin, or capability are not authentic
 
 | ID | Relationship |
 |----|----------------|
-| ADR-AIEOS-023 | Frozen Identity/Tenant/Security decision; canonical body **not** deposited in EA-SYNC-01A |
+| ADR-AIEOS-023 | Historical Frozen / Approved Identity/Tenant/Security; original body unavailable |
+| [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) | Canonical Identity, Tenant & Security restatement |
 | [ADR-AIEOS-029](ADR-AIEOS-029-production-environment-deployment-readiness-baseline.md) | Fail-closed production configuration |
 | [ADR-AIEOS-031](ADR-AIEOS-031-production-authorization-kernel.md) | Current capability authorization |

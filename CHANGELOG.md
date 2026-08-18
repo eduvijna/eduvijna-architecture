@@ -10,6 +10,7 @@ and this repository follows [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - EA-SYNC-01A: canonical AIEOS platform ADR family under `decisions/ADR-AIEOS-*` (022, 024–036, 036R1). ADR-AIEOS-023 is intentionally not reconstructed. Architecture status Frozen / Approved; production deployment and mutation remain unauthorized.
+- EA-SYNC-01B deposits ADR-AIEOS-023R1 as the Frozen / Approved canonical Identity, Tenant & Security restatement, preserving historical ADR-023 as frozen-but-unavailable and making no production authorization.
 
 ### Changed
 

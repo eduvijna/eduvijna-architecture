@@ -17,11 +17,11 @@ Conflict preference:
 
 ---
 
-## AIEOS platform ADR catalogue (EA-SYNC-01A)
+## AIEOS platform ADR catalogue
 
 The AIEOS platform ADR family is now canonically deposited under `decisions/ADR-AIEOS-*`. Teacher OS `ADR-042`–`ADR-048` remain a distinct ID family.
 
-ADR-AIEOS-023 is a previously frozen Identity/Tenant/Security decision whose canonical record remains pending synchronization. EA-SYNC-01A intentionally does not reconstruct its body from later implementation.
+Historical ADR-AIEOS-023 remains Frozen / Approved (Identity/Tenant/Security), but its original body is unavailable. ADR-AIEOS-023R1 is now the canonical restated identity/tenant/security implementation baseline. This closes the architecture-catalogue identity/tenant/security gap. It does **not** authorize identity implementation or production promotion by itself.
 
 Current Asset / platform implementation remains **NON_PRODUCTION**. Architecture catalogue synchronization does **not** authorize production deployment or mutation.
 

@@ -33,15 +33,17 @@ EduVijna Enterprise Architecture Office (EAO). Decision authors may include doma
 | [ADR-047](ADR-047-outcome-first-prepare-tomorrow.md) | “Help me prepare tomorrow” — outcome-first language |
 | [ADR-048](ADR-048-review-queue-owns-approval.md) | Review Queue owns approval — teacher judgement only |
 
-### AIEOS platform (EA-SYNC-01A)
+### AIEOS platform
 
 Architecture status: **Frozen / Approved**. Not production authorized.
 
-ADR-AIEOS-023 is a previously frozen Identity/Tenant/Security decision whose canonical record remains pending synchronization. EA-SYNC-01A intentionally does not reconstruct its body from later implementation.
+Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; original body unavailable. ADR-AIEOS-023R1 is the transparent canonical restatement.
 
 | ID | Title |
 |----|-------|
 | [ADR-AIEOS-022](ADR-AIEOS-022-aieos-platform-technology-baseline.md) | AIEOS Platform Technology Baseline |
+| ADR-AIEOS-023 | Historical Identity/Tenant/Security (original body unavailable — no fabricated file) |
+| [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) | AIEOS Identity, Tenant & Security Canonical Restatement |
 | [ADR-AIEOS-024](ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md) | AIEOS Data, Resource & SoR Implementation Baseline |
 | [ADR-AIEOS-025](ADR-AIEOS-025-aieos-api-contract-integration-implementation-baseline.md) | AIEOS API Contract & Integration Implementation Baseline |
 | [ADR-AIEOS-026](ADR-AIEOS-026-aieos-workflow-implementation-baseline.md) | AIEOS Workflow Implementation Baseline |

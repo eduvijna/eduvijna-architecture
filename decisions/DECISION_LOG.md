@@ -33,11 +33,13 @@ When an ADR is approved, add a summary entry here that links to the ADR.
 
 `ADR-AIEOS-*` and Teacher OS `ADR-042`–`ADR-048` are distinct ID families.
 
-ADR-AIEOS-023 is a previously frozen Identity/Tenant/Security decision whose canonical record remains pending synchronization. EA-SYNC-01A intentionally does not reconstruct its body from later implementation.
+Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; original body unavailable. ADR-AIEOS-023R1 is the transparent canonical restatement.
 
 | ID | Title | Date | Status | Record |
 |----|-------|------|--------|--------|
 | ADR-AIEOS-022 | AIEOS Platform Technology Baseline | 2026-08-18 | Frozen / Approved | [ADR-AIEOS-022](ADR-AIEOS-022-aieos-platform-technology-baseline.md) |
+| ADR-AIEOS-023 | Historical Identity/Tenant/Security | — | Frozen / Approved | Original body unavailable — no fabricated file |
+| ADR-AIEOS-023R1 | AIEOS Identity, Tenant & Security Canonical Restatement | 2026-08-18 | Frozen / Approved | [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) |
 | ADR-AIEOS-024 | AIEOS Data, Resource & SoR Implementation Baseline | 2026-08-18 | Frozen / Approved | [ADR-AIEOS-024](ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md) |
 | ADR-AIEOS-025 | AIEOS API Contract & Integration Implementation Baseline | 2026-08-18 | Frozen / Approved | [ADR-AIEOS-025](ADR-AIEOS-025-aieos-api-contract-integration-implementation-baseline.md) |
 | ADR-AIEOS-026 | AIEOS Workflow Implementation Baseline | 2026-08-18 | Frozen / Approved | [ADR-AIEOS-026](ADR-AIEOS-026-aieos-workflow-implementation-baseline.md) |

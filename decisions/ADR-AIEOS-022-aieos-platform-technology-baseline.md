@@ -111,7 +111,8 @@ Later selections such as NATS JetStream ([ADR-AIEOS-025](ADR-AIEOS-025-aieos-api
 
 | ID | Relationship |
 |----|----------------|
-| ADR-AIEOS-023 | Frozen Identity/Tenant/Security decision; canonical body **not** deposited in EA-SYNC-01A |
+| ADR-AIEOS-023 | Historical Frozen / Approved Identity/Tenant/Security; original body unavailable |
+| [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) | Canonical Identity, Tenant & Security restatement |
 | [ADR-AIEOS-024](ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md) | Data / Resource / SoR baseline |
 | [ADR-AIEOS-025](ADR-AIEOS-025-aieos-api-contract-integration-implementation-baseline.md) | API / events / NATS |
 | [ADR-AIEOS-026](ADR-AIEOS-026-aieos-workflow-implementation-baseline.md) | Temporal workflow runtime |
