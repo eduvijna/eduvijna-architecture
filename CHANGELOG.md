@@ -11,6 +11,7 @@ and this repository follows [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - EA-SYNC-01A: canonical AIEOS platform ADR family under `decisions/ADR-AIEOS-*` (022, 024–036, 036R1). ADR-AIEOS-023 is intentionally not reconstructed. Architecture status Frozen / Approved; production deployment and mutation remain unauthorized.
 - EA-SYNC-01B deposits ADR-AIEOS-023R1 as the Frozen / Approved canonical Identity, Tenant & Security restatement, preserving historical ADR-023 as frozen-but-unavailable and making no production authorization.
+- EA-SYNC-01C deposits ADR-AIEOS-037 (DigitalOcean production infrastructure baseline) and ADR-AIEOS-038 (cross-cloud managed Asset object-storage exception). Spaces remains rejected. Amazon S3 is a candidate only and is not selected. Architecture synchronization only; no infrastructure, AWS, or implementation authorization.
 
 ### Changed
 

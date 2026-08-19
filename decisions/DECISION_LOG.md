@@ -54,3 +54,5 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | ADR-AIEOS-035 | AIEOS Asset Mutation & Revision Activation Semantics | 2026-08-18 | Frozen / Approved | [ADR-AIEOS-035](ADR-AIEOS-035-aieos-asset-mutation-revision-activation-semantics.md) |
 | ADR-AIEOS-036 | Asset Authorization & Transactional Security Audit Baseline | 2026-08-18 | Frozen / Approved | [ADR-AIEOS-036](ADR-AIEOS-036-asset-authorization-transactional-security-audit-baseline.md) |
 | ADR-AIEOS-036R1 | Asset Security-Audit Resource Revision Semantics | 2026-08-18 | Frozen / Approved | [ADR-AIEOS-036R1](ADR-AIEOS-036R1-asset-security-audit-resource-revision-semantics.md) |
+| ADR-AIEOS-037 | AIEOS Production Infrastructure Baseline | 2026-08-19 | Frozen / Approved | [ADR-AIEOS-037](ADR-AIEOS-037-aieos-production-infrastructure-baseline.md) |
+| ADR-AIEOS-038 | AIEOS Cross-Cloud Asset Object Storage Exception | 2026-08-19 | Frozen / Approved | [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) |
