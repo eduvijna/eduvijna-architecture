@@ -15,9 +15,9 @@ reviewers:
 
 **Status:** Frozen / Approved  
 **Date:** 2026-08-19  
-**Related:** [ADR-AIEOS-033](ADR-AIEOS-033-asset-file-architecture.md) · [ADR-AIEOS-034](ADR-AIEOS-034-aieos-asset-current-use-authority-decision-semantics.md) · [ADR-AIEOS-037](ADR-AIEOS-037-aieos-production-infrastructure-baseline.md) · [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md)
+**Related:** [ADR-AIEOS-033](ADR-AIEOS-033-asset-file-architecture.md) · [ADR-AIEOS-034](ADR-AIEOS-034-aieos-asset-current-use-authority-decision-semantics.md) · [ADR-AIEOS-037](ADR-AIEOS-037-aieos-production-infrastructure-baseline.md) · [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) · [ADR-AIEOS-039](ADR-AIEOS-039-aieos-asset-blobstore-provider-selection.md)
 
-**Catalogue note:** Frozen / Approved is architecture status. This ADR is a **forward refinement** of [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md). It does **not** delete, reject, or rewrite ADR-AIEOS-038. ADR-AIEOS-038 remains an approved historical decision. This ADR is the current first-production Asset-storage **hosting direction**. It does **not** select a BlobStore provider. It does **not** authorize DigitalOcean object-storage resources, MinIO/AIStor installation, AWS resources, OpenTofu apply, Asset HTTP, or implementation.
+**Catalogue note:** Frozen / Approved is architecture status. This ADR is a **forward refinement** of [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md). It does **not** delete, reject, or rewrite ADR-AIEOS-038. ADR-AIEOS-038 remains an approved historical decision. This ADR is the current first-production Asset-storage **hosting direction**. It does **not** select a BlobStore provider. Later [ADR-AIEOS-039](ADR-AIEOS-039-aieos-asset-blobstore-provider-selection.md) selects MinIO AIStor as the first-production BlobStore software provider. It does **not** authorize DigitalOcean object-storage resources, MinIO/AIStor installation, AWS resources, OpenTofu apply, Asset HTTP, or implementation.
 
 ---
 
@@ -190,3 +190,4 @@ This ADR does **not** authorize:
 | [ADR-AIEOS-034](ADR-AIEOS-034-aieos-asset-current-use-authority-decision-semantics.md) | Whole-object SHA-256 inspect unchanged |
 | [ADR-AIEOS-037](ADR-AIEOS-037-aieos-production-infrastructure-baseline.md) | Production cloud, BLR1, App Platform, PostgreSQL, NATS, Temporal Cloud, Kubernetes not required |
 | [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) | Historical approved cross-cloud exception; dormant for first production |
+| [ADR-AIEOS-039](ADR-AIEOS-039-aieos-asset-blobstore-provider-selection.md) | Later first-production BlobStore provider selection (MinIO AIStor); this ADR remains hosting-only |

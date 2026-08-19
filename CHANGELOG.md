@@ -13,6 +13,7 @@ and this repository follows [Semantic Versioning](https://semver.org/spec/v2.0.0
 - EA-SYNC-01B deposits ADR-AIEOS-023R1 as the Frozen / Approved canonical Identity, Tenant & Security restatement, preserving historical ADR-023 as frozen-but-unavailable and making no production authorization.
 - EA-SYNC-01C deposits ADR-AIEOS-037 (DigitalOcean production infrastructure baseline) and ADR-AIEOS-038 (cross-cloud managed Asset object-storage exception). Spaces remains rejected. Amazon S3 is a candidate only and is not selected. Architecture synchronization only; no infrastructure, AWS, or implementation authorization.
 - EA-SYNC-01D deposits ADR-AIEOS-038R1 as the Frozen / Approved current first-production DigitalOcean-only Asset storage hosting direction. ADR-AIEOS-038 is retained as an approved historical decision. Amazon S3 no longer advances for first production. Spaces remains rejected. No BlobStore provider is selected. AWS-BOOT-01 and PED-I10B7C-TV02 are cancelled. Architecture synchronization only.
+- EA-SYNC-01E deposits ADR-AIEOS-039 as the Frozen / Approved first-production Asset BlobStore provider selection (MinIO AIStor, AIEOS-operated, DigitalOcean hosting). Spaces, Garage, and Amazon S3 are not open implementation choices. Topology, substrate, SKU, and commercial tier remain unselected. Architecture synchronization only; no purchase, infrastructure, adapter, or production authorization.
 
 ### Changed
 
