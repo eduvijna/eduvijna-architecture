@@ -15,9 +15,9 @@ reviewers:
 
 **Status:** Frozen / Approved  
 **Date:** 2026-08-19  
-**Related:** [ADR-AIEOS-022](ADR-AIEOS-022-aieos-platform-technology-baseline.md) · [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) · [ADR-AIEOS-024](ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md) · [ADR-AIEOS-025](ADR-AIEOS-025-aieos-api-contract-integration-implementation-baseline.md) · [ADR-AIEOS-026](ADR-AIEOS-026-aieos-workflow-implementation-baseline.md) · [ADR-AIEOS-029](ADR-AIEOS-029-production-environment-deployment-readiness-baseline.md) · [ADR-AIEOS-033](ADR-AIEOS-033-asset-file-architecture.md) · [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md)
+**Related:** [ADR-AIEOS-022](ADR-AIEOS-022-aieos-platform-technology-baseline.md) · [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) · [ADR-AIEOS-024](ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md) · [ADR-AIEOS-025](ADR-AIEOS-025-aieos-api-contract-integration-implementation-baseline.md) · [ADR-AIEOS-026](ADR-AIEOS-026-aieos-workflow-implementation-baseline.md) · [ADR-AIEOS-029](ADR-AIEOS-029-production-environment-deployment-readiness-baseline.md) · [ADR-AIEOS-033](ADR-AIEOS-033-asset-file-architecture.md) · [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) · [ADR-AIEOS-038R1](ADR-AIEOS-038R1-aieos-digitalocean-only-asset-storage-direction.md)
 
-**Catalogue note:** Frozen / Approved is architecture status. This ADR does **not** authorize infrastructure creation, OpenTofu apply, production deployment, credentials, DNS, Asset BlobStore provider selection, DigitalOcean Spaces, Asset HTTP, or PED-I03 mutation. [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) is the explicit later exception to same-cloud preference for Asset authoritative bytes. This ADR does **not** select Amazon S3.
+**Catalogue note:** Frozen / Approved is architecture status. This ADR does **not** authorize infrastructure creation, OpenTofu apply, production deployment, credentials, DNS, Asset BlobStore provider selection, DigitalOcean Spaces, Asset HTTP, or PED-I03 mutation. [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) later recorded a narrow cross-cloud Asset-storage exception. Later [ADR-AIEOS-038R1](ADR-AIEOS-038R1-aieos-digitalocean-only-asset-storage-direction.md) is the current first-production Asset-storage hosting direction (DigitalOcean-only; S3 no longer advancing). This ADR does **not** select Amazon S3. DigitalOcean remains the primary production cloud. Infrastructure invariants in this ADR are unchanged.
 
 ---
 
@@ -192,6 +192,8 @@ DigitalOcean cloud selection **does not** automatically select DigitalOcean Spac
 
 [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) later records a narrow cross-cloud managed Asset-storage exception. This ADR does **not** select Amazon S3 or any BlobStore provider.
 
+Later [ADR-AIEOS-038R1](ADR-AIEOS-038R1-aieos-digitalocean-only-asset-storage-direction.md) freezes DigitalOcean as the first-production Asset-storage hosting boundary and closes the first-production cross-cloud path. That later ADR does not alter these infrastructure invariants.
+
 ## Binding invariants
 
 | ID | Invariant |
@@ -242,6 +244,7 @@ This ADR does **not** authorize:
 - Later workstreams inherit DigitalOcean, BLR1, App Platform, Managed PostgreSQL 18, Temporal Cloud, and AIEOS-operated NATS as first-production baseline.
 - A BlobStore provider still requires its own frozen ADR. Spaces is not selected here.
 - [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) may authorize a narrow external managed object-store **candidate** path without reopening this cloud baseline.
+- Later [ADR-AIEOS-038R1](ADR-AIEOS-038R1-aieos-digitalocean-only-asset-storage-direction.md) makes that first-production cross-cloud candidate path dormant; DigitalOcean remains primary cloud.
 
 ## Related ADRs
 
@@ -255,3 +258,4 @@ This ADR does **not** authorize:
 | [ADR-AIEOS-029](ADR-AIEOS-029-production-environment-deployment-readiness-baseline.md) | Deploy/live/ready ≠ mutation |
 | [ADR-AIEOS-033](ADR-AIEOS-033-asset-file-architecture.md) | Provider-neutral BlobStore; no provider here |
 | [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) | Narrow later exception for Asset object storage only; S3 not selected here |
+| [ADR-AIEOS-038R1](ADR-AIEOS-038R1-aieos-digitalocean-only-asset-storage-direction.md) | Later current first-production Asset-storage hosting direction; DigitalOcean-only |

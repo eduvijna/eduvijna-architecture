@@ -15,9 +15,9 @@ reviewers:
 
 **Status:** Frozen / Approved  
 **Date:** 2026-08-19  
-**Related:** [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) · [ADR-AIEOS-031](ADR-AIEOS-031-production-authorization-kernel.md) · [ADR-AIEOS-033](ADR-AIEOS-033-asset-file-architecture.md) · [ADR-AIEOS-034](ADR-AIEOS-034-aieos-asset-current-use-authority-decision-semantics.md) · [ADR-AIEOS-035](ADR-AIEOS-035-aieos-asset-mutation-revision-activation-semantics.md) · [ADR-AIEOS-037](ADR-AIEOS-037-aieos-production-infrastructure-baseline.md)
+**Related:** [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) · [ADR-AIEOS-031](ADR-AIEOS-031-production-authorization-kernel.md) · [ADR-AIEOS-033](ADR-AIEOS-033-asset-file-architecture.md) · [ADR-AIEOS-034](ADR-AIEOS-034-aieos-asset-current-use-authority-decision-semantics.md) · [ADR-AIEOS-035](ADR-AIEOS-035-aieos-asset-mutation-revision-activation-semantics.md) · [ADR-AIEOS-037](ADR-AIEOS-037-aieos-production-infrastructure-baseline.md) · [ADR-AIEOS-038R1](ADR-AIEOS-038R1-aieos-digitalocean-only-asset-storage-direction.md)
 
-**Catalogue note:** Frozen / Approved is architecture status. This ADR does **not** select Amazon S3 as the production BlobStore. It does **not** authorize AWS resources, credentials, SDKs, adapters, Asset HTTP, signed URLs, CDN, or implementation. DigitalOcean remains the production cloud under [ADR-AIEOS-037](ADR-AIEOS-037-aieos-production-infrastructure-baseline.md).
+**Catalogue note:** Frozen / Approved is architecture status. This ADR does **not** select Amazon S3 as the production BlobStore. It does **not** authorize AWS resources, credentials, SDKs, adapters, Asset HTTP, signed URLs, CDN, or implementation. DigitalOcean remains the production cloud under [ADR-AIEOS-037](ADR-AIEOS-037-aieos-production-infrastructure-baseline.md). Later [ADR-AIEOS-038R1](ADR-AIEOS-038R1-aieos-digitalocean-only-asset-storage-direction.md) is the current first-production Asset-storage hosting direction and **closes Amazon S3 advancement for first production**. This ADR remains an approved historical decision; its Decision section is not rewritten.
 
 ---
 
@@ -234,3 +234,4 @@ This ADR does **not** authorize:
 | [ADR-AIEOS-034](ADR-AIEOS-034-aieos-asset-current-use-authority-decision-semantics.md) | Authoritative physical SHA-256 inspect preserved |
 | [ADR-AIEOS-035](ADR-AIEOS-035-aieos-asset-mutation-revision-activation-semantics.md) | Mutation/activation unchanged |
 | [ADR-AIEOS-037](ADR-AIEOS-037-aieos-production-infrastructure-baseline.md) | Production cloud baseline; Spaces not selected there |
+| [ADR-AIEOS-038R1](ADR-AIEOS-038R1-aieos-digitalocean-only-asset-storage-direction.md) | Later forward refinement: DigitalOcean-only first-production Asset storage; S3 no longer advancing |
