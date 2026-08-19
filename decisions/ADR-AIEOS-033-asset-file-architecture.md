@@ -15,9 +15,9 @@ reviewers:
 
 **Status:** Frozen / Approved  
 **Date:** 2026-08-18  
-**Related:** [ADR-AIEOS-024](ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md) · [ADR-AIEOS-027](ADR-AIEOS-027-aieos-generic-content-implementation-baseline.md) · [ADR-AIEOS-032](ADR-AIEOS-032-governance-adapter-foundation.md) · [ADR-AIEOS-034](ADR-AIEOS-034-aieos-asset-current-use-authority-decision-semantics.md) · [ADR-AIEOS-035](ADR-AIEOS-035-aieos-asset-mutation-revision-activation-semantics.md)
+**Related:** [ADR-AIEOS-024](ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md) · [ADR-AIEOS-027](ADR-AIEOS-027-aieos-generic-content-implementation-baseline.md) · [ADR-AIEOS-032](ADR-AIEOS-032-governance-adapter-foundation.md) · [ADR-AIEOS-034](ADR-AIEOS-034-aieos-asset-current-use-authority-decision-semantics.md) · [ADR-AIEOS-035](ADR-AIEOS-035-aieos-asset-mutation-revision-activation-semantics.md) · [ADR-AIEOS-037](ADR-AIEOS-037-aieos-production-infrastructure-baseline.md) · [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md)
 
-**Catalogue note:** Chief Architect confirms this ADR is **Frozen / Approved**. Later current-use, mutation, and audit semantics belong to ADR-AIEOS-034 / 035 / 036 / 036R1. This ADR does **not** select a production BlobStore provider.
+**Catalogue note:** Chief Architect confirms this ADR is **Frozen / Approved**. Later current-use, mutation, and audit semantics belong to ADR-AIEOS-034 / 035 / 036 / 036R1. This ADR does **not** select a production BlobStore provider. Provider selection remains external to ADR-AIEOS-033. Later [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) allows a narrow cross-cloud managed Asset-storage exception without changing these BlobStore invariants. Amazon S3 is not selected by this ADR.
 
 ---
 
@@ -84,3 +84,5 @@ Still open / not frozen here:
 | [ADR-AIEOS-024](ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md) | Domain-owned schemas; no automatic cross-domain FK |
 | [ADR-AIEOS-027](ADR-AIEOS-027-aieos-generic-content-implementation-baseline.md) | Content references Assets via ResourceRef |
 | [ADR-AIEOS-032](ADR-AIEOS-032-governance-adapter-foundation.md) | AssetUseAuthority port |
+| [ADR-AIEOS-037](ADR-AIEOS-037-aieos-production-infrastructure-baseline.md) | Production cloud baseline; Spaces not selected here |
+| [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) | Later cross-cloud Asset-storage exception; BlobStore invariants unchanged |

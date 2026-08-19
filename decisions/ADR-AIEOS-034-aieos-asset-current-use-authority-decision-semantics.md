@@ -15,9 +15,9 @@ reviewers:
 
 **Status:** Frozen / Approved
 **Date:** 2026-08-18
-**Related:** [ADR-AIEOS-032](ADR-AIEOS-032-governance-adapter-foundation.md) · [ADR-AIEOS-033](ADR-AIEOS-033-asset-file-architecture.md) · [ADR-AIEOS-035](ADR-AIEOS-035-aieos-asset-mutation-revision-activation-semantics.md)
+**Related:** [ADR-AIEOS-032](ADR-AIEOS-032-governance-adapter-foundation.md) · [ADR-AIEOS-033](ADR-AIEOS-033-asset-file-architecture.md) · [ADR-AIEOS-035](ADR-AIEOS-035-aieos-asset-mutation-revision-activation-semantics.md) · [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md)
 
-**Catalogue note:** Frozen / Approved is architecture status. Current-use evaluation is not production composition, not Asset HTTP, and not a BlobStore provider selection.
+**Catalogue note:** Frozen / Approved is architecture status. Current-use evaluation is not production composition, not Asset HTTP, and not a BlobStore provider selection. Later [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) preserves authoritative physical whole-object SHA-256 inspection; it does not change these semantics.
 
 ---
 
@@ -111,3 +111,4 @@ Additional frozen rules:
 | [ADR-AIEOS-032](ADR-AIEOS-032-governance-adapter-foundation.md) | AssetUseAuthority port |
 | [ADR-AIEOS-033](ADR-AIEOS-033-asset-file-architecture.md) | Identities, lifecycle, BlobStore |
 | [ADR-AIEOS-035](ADR-AIEOS-035-aieos-asset-mutation-revision-activation-semantics.md) | How revisions become current |
+| [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) | Later exception preserves whole-object SHA-256 inspect; S3 not selected here |

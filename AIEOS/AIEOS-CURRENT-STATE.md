@@ -25,6 +25,8 @@ Historical ADR-AIEOS-023 remains Frozen / Approved (Identity/Tenant/Security), b
 
 Current Asset / platform implementation remains **NON_PRODUCTION**. Architecture catalogue synchronization does **not** authorize production deployment or mutation.
 
+**Production infrastructure (architecture freeze only):** DigitalOcean production infrastructure baseline is frozen ([ADR-AIEOS-037](../decisions/ADR-AIEOS-037-aieos-production-infrastructure-baseline.md)). DigitalOcean Spaces is **rejected** for authoritative Asset BlobStore under the current frozen contract. Cross-cloud managed Asset object storage exception is frozen ([ADR-AIEOS-038](../decisions/ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md)). Amazon S3 is the sole provider candidate advancing to controlled validation. Amazon S3 is **not** yet selected as the production provider. No infrastructure apply, AWS resource, SDK, or adapter is authorized by catalogue deposition.
+
 ---
 
 ## Product

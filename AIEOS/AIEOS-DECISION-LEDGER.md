@@ -90,8 +90,12 @@ Historical ADR-AIEOS-023 remains Frozen / Approved (Identity/Tenant/Security); i
 | [ADR-AIEOS-035](../decisions/ADR-AIEOS-035-aieos-asset-mutation-revision-activation-semantics.md) | AIEOS Asset Mutation & Revision Activation Semantics | Frozen / Approved | No HTTP / audit / events in this ADR |
 | [ADR-AIEOS-036](../decisions/ADR-AIEOS-036-asset-authorization-transactional-security-audit-baseline.md) | Asset Authorization & Transactional Security Audit Baseline | Frozen / Approved | Asset remains NON_PRODUCTION |
 | [ADR-AIEOS-036R1](../decisions/ADR-AIEOS-036R1-asset-security-audit-resource-revision-semantics.md) | Asset Security-Audit Resource Revision Semantics | Frozen / Approved | Refines 036; does not replace it |
+| [ADR-AIEOS-037](../decisions/ADR-AIEOS-037-aieos-production-infrastructure-baseline.md) | AIEOS Production Infrastructure Baseline | Frozen / Approved | DigitalOcean production cloud; Spaces not selected |
+| [ADR-AIEOS-038](../decisions/ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) | AIEOS Cross-Cloud Asset Object Storage Exception | Frozen / Approved | Spaces rejected; S3 candidate only, not selected |
 
-Still open (not authorized / not frozen by this catalogue): production BlobStore/cloud provider; Asset HTTP/binary contract; Asset events/outbox; physical purge/retention/legal hold; Asset schema-owner readiness; Asset production runtime composition; PED-I03 Asset mutation activation; production migration; production mutation; production deployment.
+DigitalOcean production infrastructure baseline is frozen ([ADR-AIEOS-037](../decisions/ADR-AIEOS-037-aieos-production-infrastructure-baseline.md)). DigitalOcean Spaces is **rejected** as the authoritative Asset BlobStore under the current frozen contract. Cross-cloud managed Asset object storage exception is frozen ([ADR-AIEOS-038](../decisions/ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md)). Amazon S3 is the sole provider candidate advancing to controlled validation. Amazon S3 is **not** yet selected as the production provider.
+
+Still open (not authorized / not frozen by this catalogue): production BlobStore provider (S3 candidate only); Asset HTTP/binary contract; Asset events/outbox; physical purge/retention/legal hold; Asset schema-owner readiness; Asset production runtime composition; PED-I03 Asset mutation activation; production migration; production mutation; production deployment; OpenTofu apply; AWS resources.
 
 ---
 
