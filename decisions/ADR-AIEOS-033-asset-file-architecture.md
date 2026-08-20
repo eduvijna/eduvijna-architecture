@@ -87,3 +87,4 @@ Still open / not frozen here:
 | [ADR-AIEOS-037](ADR-AIEOS-037-aieos-production-infrastructure-baseline.md) | Production cloud baseline; Spaces not selected here |
 | [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) | Later cross-cloud Asset-storage exception; BlobStore invariants unchanged |
 | [ADR-AIEOS-039](ADR-AIEOS-039-aieos-asset-blobstore-provider-selection.md) | Later first-production BlobStore provider selection; BlobStore invariants unchanged |
+| [ADR-AIEOS-040](ADR-AIEOS-040-aieos-asset-blobstore-first-production-topology.md) | Later ADR-AIEOS-040 freezes first-production AIStor topology (8×1, EC:3); BlobStore invariants unchanged |
