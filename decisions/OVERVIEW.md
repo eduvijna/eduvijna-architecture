@@ -65,6 +65,9 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | [ADR-AIEOS-040](ADR-AIEOS-040-aieos-asset-blobstore-first-production-topology.md) | AIEOS Asset BlobStore First-Production Topology (historical 8×1; later reclassified as Scale Production by ADR-AIEOS-040R1) |
 | [ADR-AIEOS-040R1](ADR-AIEOS-040R1-aieos-asset-blobstore-bootstrap-scale-production-topology.md) | AIEOS Asset BlobStore Bootstrap & Scale Production Topology (current: Bootstrap single-node Free + Scale 8×1) |
 | [ADR-AIEOS-041](ADR-AIEOS-041-aieos-asset-backup-recovery-architecture.md) | AIEOS Asset Backup & Recovery Architecture (SFO3 Spaces Standard backup-only; verified ≤1h) |
+| [ADR-AIEOS-041R1](ADR-AIEOS-041R1-aieos-asset-backup-execution-manifest-recovery-authority.md) | AIEOS Asset Backup Execution, Manifest & Recovery Authority (PG job SoR; signed manifest; 7-day PITR Phase-0) |
+| [ADR-AIEOS-042](ADR-AIEOS-042-aieos-asset-binary-delivery-bootstrap-media-profile.md) | AIEOS Asset Binary Delivery & Bootstrap Media Profile (API-mediated; 32 MiB; no Bootstrap video) |
+| [ADR-AIEOS-043](ADR-AIEOS-043-aieos-bootstrap-aistor-service-boundary-primary-namespace.md) | AIEOS Bootstrap AIStor Service Boundary & Primary Namespace (private-only; primary bucket/env; Versioning OFF) |
 
 ## Exclusions
 

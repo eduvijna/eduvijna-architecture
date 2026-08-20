@@ -61,3 +61,6 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | ADR-AIEOS-040 | AIEOS Asset BlobStore First-Production Topology | 2026-08-19 | Frozen / Approved | [ADR-AIEOS-040](ADR-AIEOS-040-aieos-asset-blobstore-first-production-topology.md) |
 | ADR-AIEOS-040R1 | AIEOS Asset BlobStore Bootstrap & Scale Production Topology | 2026-08-20 | Frozen / Approved | [ADR-AIEOS-040R1](ADR-AIEOS-040R1-aieos-asset-blobstore-bootstrap-scale-production-topology.md) |
 | ADR-AIEOS-041 | AIEOS Asset Backup & Recovery Architecture | 2026-08-20 | Frozen / Approved | [ADR-AIEOS-041](ADR-AIEOS-041-aieos-asset-backup-recovery-architecture.md) |
+| ADR-AIEOS-041R1 | AIEOS Asset Backup Execution, Manifest & Recovery Authority | 2026-08-20 | Frozen / Approved | [ADR-AIEOS-041R1](ADR-AIEOS-041R1-aieos-asset-backup-execution-manifest-recovery-authority.md) |
+| ADR-AIEOS-042 | AIEOS Asset Binary Delivery & Bootstrap Media Profile | 2026-08-20 | Frozen / Approved | [ADR-AIEOS-042](ADR-AIEOS-042-aieos-asset-binary-delivery-bootstrap-media-profile.md) |
+| ADR-AIEOS-043 | AIEOS Bootstrap AIStor Service Boundary & Primary Namespace | 2026-08-20 | Frozen / Approved | [ADR-AIEOS-043](ADR-AIEOS-043-aieos-bootstrap-aistor-service-boundary-primary-namespace.md) |
