@@ -59,3 +59,5 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | ADR-AIEOS-038R1 | AIEOS DigitalOcean-Only Asset Storage Direction | 2026-08-19 | Frozen / Approved | [ADR-AIEOS-038R1](ADR-AIEOS-038R1-aieos-digitalocean-only-asset-storage-direction.md) |
 | ADR-AIEOS-039 | AIEOS Asset BlobStore Provider Selection | 2026-08-19 | Frozen / Approved | [ADR-AIEOS-039](ADR-AIEOS-039-aieos-asset-blobstore-provider-selection.md) |
 | ADR-AIEOS-040 | AIEOS Asset BlobStore First-Production Topology | 2026-08-19 | Frozen / Approved | [ADR-AIEOS-040](ADR-AIEOS-040-aieos-asset-blobstore-first-production-topology.md) |
+| ADR-AIEOS-040R1 | AIEOS Asset BlobStore Bootstrap & Scale Production Topology | 2026-08-20 | Frozen / Approved | [ADR-AIEOS-040R1](ADR-AIEOS-040R1-aieos-asset-blobstore-bootstrap-scale-production-topology.md) |
+| ADR-AIEOS-041 | AIEOS Asset Backup & Recovery Architecture | 2026-08-20 | Frozen / Approved | [ADR-AIEOS-041](ADR-AIEOS-041-aieos-asset-backup-recovery-architecture.md) |

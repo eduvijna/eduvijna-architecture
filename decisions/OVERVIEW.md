@@ -62,7 +62,9 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) | AIEOS Cross-Cloud Asset Object Storage Exception (historical approved; dormant for first production) |
 | [ADR-AIEOS-038R1](ADR-AIEOS-038R1-aieos-digitalocean-only-asset-storage-direction.md) | AIEOS DigitalOcean-Only Asset Storage Direction (current first-production hosting direction; no provider selected) |
 | [ADR-AIEOS-039](ADR-AIEOS-039-aieos-asset-blobstore-provider-selection.md) | AIEOS Asset BlobStore Provider Selection (MinIO AIStor) |
-| [ADR-AIEOS-040](ADR-AIEOS-040-aieos-asset-blobstore-first-production-topology.md) | AIEOS Asset BlobStore First-Production Topology (8×1, EC:3, DO Volumes/XFS; compute/capacity/commercial still open) |
+| [ADR-AIEOS-040](ADR-AIEOS-040-aieos-asset-blobstore-first-production-topology.md) | AIEOS Asset BlobStore First-Production Topology (historical 8×1; later reclassified as Scale Production by ADR-AIEOS-040R1) |
+| [ADR-AIEOS-040R1](ADR-AIEOS-040R1-aieos-asset-blobstore-bootstrap-scale-production-topology.md) | AIEOS Asset BlobStore Bootstrap & Scale Production Topology (current: Bootstrap single-node Free + Scale 8×1) |
+| [ADR-AIEOS-041](ADR-AIEOS-041-aieos-asset-backup-recovery-architecture.md) | AIEOS Asset Backup & Recovery Architecture (SFO3 Spaces Standard backup-only; verified ≤1h) |
 
 ## Exclusions
 
