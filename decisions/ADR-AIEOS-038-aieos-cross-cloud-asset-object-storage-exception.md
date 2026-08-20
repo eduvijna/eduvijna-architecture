@@ -236,3 +236,4 @@ This ADR does **not** authorize:
 | [ADR-AIEOS-037](ADR-AIEOS-037-aieos-production-infrastructure-baseline.md) | Production cloud baseline; Spaces not selected there |
 | [ADR-AIEOS-038R1](ADR-AIEOS-038R1-aieos-digitalocean-only-asset-storage-direction.md) | Later forward refinement: DigitalOcean-only first-production Asset storage; S3 no longer advancing |
 | [ADR-AIEOS-039](ADR-AIEOS-039-aieos-asset-blobstore-provider-selection.md) | Later first-production BlobStore provider selection (MinIO AIStor); this Decision section is not rewritten |
+| [ADR-AIEOS-040](ADR-AIEOS-040-aieos-asset-blobstore-first-production-topology.md) | Later ADR-AIEOS-040 freezes first-production AIStor topology (8×1, EC:3); this Decision section is not rewritten |

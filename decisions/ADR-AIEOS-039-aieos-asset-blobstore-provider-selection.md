@@ -17,7 +17,7 @@ reviewers:
 **Date:** 2026-08-19  
 **Related:** [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) · [ADR-AIEOS-029](ADR-AIEOS-029-production-environment-deployment-readiness-baseline.md) · [ADR-AIEOS-031](ADR-AIEOS-031-production-authorization-kernel.md) · [ADR-AIEOS-033](ADR-AIEOS-033-asset-file-architecture.md) · [ADR-AIEOS-034](ADR-AIEOS-034-aieos-asset-current-use-authority-decision-semantics.md) · [ADR-AIEOS-035](ADR-AIEOS-035-aieos-asset-mutation-revision-activation-semantics.md) · [ADR-AIEOS-037](ADR-AIEOS-037-aieos-production-infrastructure-baseline.md) · [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) · [ADR-AIEOS-038R1](ADR-AIEOS-038R1-aieos-digitalocean-only-asset-storage-direction.md)
 
-**Catalogue note:** Frozen / Approved is architecture status. This ADR selects the first-production Asset BlobStore **software provider**. It does **not** select production topology, DigitalOcean storage substrate, compute SKU, capacity, load-balancing layout, backup/DR, RPO/RTO, or MinIO commercial tier. It does **not** authorize purchase, DigitalOcean resources, OpenTofu apply, BlobStore adapter implementation, Asset HTTP, PED-I03 mutation, or production deployment.
+**Catalogue note:** Frozen / Approved is architecture status. This ADR selects the first-production Asset BlobStore **software provider**. It does **not** select production topology, DigitalOcean storage substrate, compute SKU, capacity, load-balancing layout, backup/DR, RPO/RTO, or MinIO commercial tier. Later [ADR-AIEOS-040](ADR-AIEOS-040-aieos-asset-blobstore-first-production-topology.md) freezes the first-production AIStor topology (8×1, EC:3). It does **not** authorize purchase, DigitalOcean resources, OpenTofu apply, BlobStore adapter implementation, Asset HTTP, PED-I03 mutation, or production deployment.
 
 ---
 
@@ -182,7 +182,7 @@ This ADR does **not** authorize or freeze:
 - artifact promotion
 - production data movement
 - production authority seeding
-- ADR-AIEOS-040 topology selection
+- ADR-AIEOS-040 topology selection — **superseded by** [ADR-AIEOS-040](ADR-AIEOS-040-aieos-asset-blobstore-first-production-topology.md)
 
 Still open after this ADR:
 

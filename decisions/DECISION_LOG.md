@@ -58,3 +58,4 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | ADR-AIEOS-038 | AIEOS Cross-Cloud Asset Object Storage Exception | 2026-08-19 | Frozen / Approved | [ADR-AIEOS-038](ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) |
 | ADR-AIEOS-038R1 | AIEOS DigitalOcean-Only Asset Storage Direction | 2026-08-19 | Frozen / Approved | [ADR-AIEOS-038R1](ADR-AIEOS-038R1-aieos-digitalocean-only-asset-storage-direction.md) |
 | ADR-AIEOS-039 | AIEOS Asset BlobStore Provider Selection | 2026-08-19 | Frozen / Approved | [ADR-AIEOS-039](ADR-AIEOS-039-aieos-asset-blobstore-provider-selection.md) |
+| ADR-AIEOS-040 | AIEOS Asset BlobStore First-Production Topology | 2026-08-19 | Frozen / Approved | [ADR-AIEOS-040](ADR-AIEOS-040-aieos-asset-blobstore-first-production-topology.md) |
