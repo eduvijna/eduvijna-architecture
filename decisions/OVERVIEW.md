@@ -70,6 +70,7 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | [ADR-AIEOS-043](ADR-AIEOS-043-aieos-bootstrap-aistor-service-boundary-primary-namespace.md) | AIEOS Bootstrap AIStor Service Boundary & Primary Namespace (private-only; primary bucket/env; Versioning OFF) |
 | [ADR-AIEOS-044](ADR-AIEOS-044-aieos-bootstrap-production-preapply-execution-baseline.md) | AIEOS Bootstrap Production Pre-Apply Execution Baseline (commercial RED evidence; NATS/VPC/state/identity freezes; architecture freeze ≠ apply) |
 | [ADR-AIEOS-044R1](ADR-AIEOS-044R1-aieos-production-state-namespace-collision-resolution.md) | AIEOS Production State Namespace Collision Resolution (replacement state bucket `eduvijna-aieos-tofu-state-prod-blr1`; NYC3 collision HOLD; Stage 1 suspended) |
+| [ADR-AIEOS-044R2](ADR-AIEOS-044R2-aieos-production-state-region-availability-resolution.md) | AIEOS Production State Region Availability Resolution (state → SFO3 / `eduvijna-aieos-tofu-state-prod-sfo3`; workload remains BLR1; Stage 1 suspended) |
 
 ## Exclusions
 
