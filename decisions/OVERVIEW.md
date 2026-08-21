@@ -69,6 +69,7 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | [ADR-AIEOS-042](ADR-AIEOS-042-aieos-asset-binary-delivery-bootstrap-media-profile.md) | AIEOS Asset Binary Delivery & Bootstrap Media Profile (API-mediated; 32 MiB; no Bootstrap video) |
 | [ADR-AIEOS-043](ADR-AIEOS-043-aieos-bootstrap-aistor-service-boundary-primary-namespace.md) | AIEOS Bootstrap AIStor Service Boundary & Primary Namespace (private-only; primary bucket/env; Versioning OFF) |
 | [ADR-AIEOS-044](ADR-AIEOS-044-aieos-bootstrap-production-preapply-execution-baseline.md) | AIEOS Bootstrap Production Pre-Apply Execution Baseline (commercial RED evidence; NATS/VPC/state/identity freezes; architecture freeze ≠ apply) |
+| [ADR-AIEOS-044R1](ADR-AIEOS-044R1-aieos-production-state-namespace-collision-resolution.md) | AIEOS Production State Namespace Collision Resolution (replacement state bucket `eduvijna-aieos-tofu-state-prod-blr1`; NYC3 collision HOLD; Stage 1 suspended) |
 
 ## Exclusions
 
