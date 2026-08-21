@@ -65,3 +65,4 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | ADR-AIEOS-042 | AIEOS Asset Binary Delivery & Bootstrap Media Profile | 2026-08-20 | Frozen / Approved | [ADR-AIEOS-042](ADR-AIEOS-042-aieos-asset-binary-delivery-bootstrap-media-profile.md) |
 | ADR-AIEOS-043 | AIEOS Bootstrap AIStor Service Boundary & Primary Namespace | 2026-08-20 | Frozen / Approved | [ADR-AIEOS-043](ADR-AIEOS-043-aieos-bootstrap-aistor-service-boundary-primary-namespace.md) |
 | ADR-AIEOS-044 | AIEOS Bootstrap Production Pre-Apply Execution Baseline | 2026-08-21 | Frozen / Approved | [ADR-AIEOS-044](ADR-AIEOS-044-aieos-bootstrap-production-preapply-execution-baseline.md) |
+| ADR-AIEOS-044R1 | AIEOS Production State Namespace Collision Resolution | 2026-08-21 | Frozen / Approved | [ADR-AIEOS-044R1](ADR-AIEOS-044R1-aieos-production-state-namespace-collision-resolution.md) |
