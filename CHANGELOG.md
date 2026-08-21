@@ -21,7 +21,7 @@ and this repository follows [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Nothing yet.
+- ADR-AIEOS-044 v1.0.1 corrects the setup-opentofu action mapping: `a1320f892987e89d278cc92dc5adc984fb93aca4` is **v2.0.2**, not v1.0.8. No architecture topology, commercial authority, implementation authority, infrastructure, credential, or production authorization changes.
 
 ### Deprecated
 

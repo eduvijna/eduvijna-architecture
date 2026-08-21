@@ -3,7 +3,7 @@ id: ADR-AIEOS-044
 title: AIEOS Bootstrap Production Pre-Apply Execution Baseline
 owner: EduVijna Enterprise Architecture Office · Chief AI Enterprise Architect
 status: approved
-version: 1.0.0
+version: 1.0.1
 created: 2026-08-21
 last_updated: 2026-08-21
 reviewers:
@@ -360,9 +360,26 @@ Verified candidates from preflight:
 | Action | Tag | Commit SHA |
 | --- | --- | --- |
 | `actions/checkout` | v4.2.2 | `11bd71901bbe5b1630ceea73d27597364c9af683` |
-| `opentofu/setup-opentofu` | v1.0.8 | `a1320f892987e89d278cc92dc5adc984fb93aca4` |
+| `opentofu/setup-opentofu` | v2.0.2 | `a1320f892987e89d278cc92dc5adc984fb93aca4` |
 
 Checkout must use `persist-credentials: false`.
+
+### Corrigendum — setup-opentofu tag mapping
+
+ADR-AIEOS-044 v1.0.0 incorrectly labeled immutable SHA `a1320f892987e89d278cc92dc5adc984fb93aca4` as setup-opentofu **v1.0.8**.
+
+Upstream verification established:
+
+- `v1.0.8` = `9d84900f3238fab8cd84ce47d658d25dd008be2f`
+- `v2.0.2` = `a1320f892987e89d278cc92dc5adc984fb93aca4`
+
+The immutable SHA selected by the original architecture deposit was correct; only its human-readable tag/version label was wrong.
+
+Chief Architect binding correction:
+
+`setup-opentofu` **v2.0.2** @ `a1320f892987e89d278cc92dc5adc984fb93aca4`
+
+No other ADR-AIEOS-044 decision is changed.
 
 This is a repository-hardening requirement, **not** cloud authorization.
 
