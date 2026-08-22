@@ -2,7 +2,7 @@
 id: ADR-AIEOS-045
 title: AIEOS Dispatcher Tenant-Candidate Discovery Authority
 owner: EduVijna Enterprise Architecture Office · Chief AI Enterprise Architect
-status: proposed
+status: approved
 version: 1.0.0
 created: 2026-08-22
 last_updated: 2026-08-22
@@ -13,11 +13,11 @@ reviewers:
 
 # ADR-AIEOS-045 — AIEOS Dispatcher Tenant-Candidate Discovery Authority
 
-**Status:** Proposed / Awaiting Chief Architect Freeze  
+**Status:** Frozen / Approved  
 **Date:** 2026-08-22  
 **Related:** [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) · [ADR-AIEOS-024](ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md) · [ADR-AIEOS-025](ADR-AIEOS-025-aieos-api-contract-integration-implementation-baseline.md) · [ADR-AIEOS-026](ADR-AIEOS-026-aieos-workflow-implementation-baseline.md) · [ADR-AIEOS-028](ADR-AIEOS-028-security-audit-mutation-accountability.md) · [ADR-AIEOS-031](ADR-AIEOS-031-production-authorization-kernel.md) · [ADR-AIEOS-032](ADR-AIEOS-032-governance-adapter-foundation.md) · [ADR-AIEOS-037](ADR-AIEOS-037-aieos-production-infrastructure-baseline.md)
 
-**Catalogue note:** Proposed is architecture deposition status only. It is **not** Frozen / Approved, **not** implementation authorization, **not** database migration authorization, **not** production deployment, and **not** production identity provisioning.
+**Catalogue note:** Frozen / Approved is architecture authority only. It does **not** itself authorize backend implementation, database migration, dispatcher daemon execution, production identity provisioning, production deployment, cloud mutation, or workload provisioning.
 
 Evidence SHAs at deposit (read-only gate):
 
