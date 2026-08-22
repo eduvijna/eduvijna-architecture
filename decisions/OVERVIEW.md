@@ -70,7 +70,7 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | [ADR-AIEOS-043](ADR-AIEOS-043-aieos-bootstrap-aistor-service-boundary-primary-namespace.md) | AIEOS Bootstrap AIStor Service Boundary & Primary Namespace (private-only; primary bucket/env; Versioning OFF) |
 | [ADR-AIEOS-044](ADR-AIEOS-044-aieos-bootstrap-production-preapply-execution-baseline.md) | AIEOS Bootstrap Production Pre-Apply Execution Baseline (commercial RED evidence; NATS/VPC/state/identity freezes; architecture freeze ≠ apply) |
 | [ADR-AIEOS-044R1](ADR-AIEOS-044R1-aieos-production-state-namespace-collision-resolution.md) | AIEOS Production State Namespace Collision Resolution (historical BLR1 replacement target `eduvijna-aieos-tofu-state-prod-blr1`; NYC3 collision remains HOLD; forward state authority later superseded by ADR-AIEOS-044R2) |
-| [ADR-AIEOS-044R2](ADR-AIEOS-044R2-aieos-production-state-region-availability-resolution.md) | AIEOS Production State Region Availability Resolution (state authority → SFO3 / `eduvijna-aieos-tofu-state-prod-sfo3`; workload remains BLR1; Stage 1 bucket bootstrap + Stage 2 backend initialization completed; remote state not yet materialized; no apply authorization) |
+| [ADR-AIEOS-044R2](ADR-AIEOS-044R2-aieos-production-state-region-availability-resolution.md) | AIEOS Production State Region Availability Resolution (state authority → SFO3 / `eduvijna-aieos-tofu-state-prod-sfo3`; workload remains BLR1; Stage 1 bucket bootstrap + Stage 2 backend initialization completed; Stage 3A refresh-only/live-lock validation completed; Stage 3B first authoritative state materialization completed with zero managed resources; normal workload apply remains unauthorized) |
 
 ## Exclusions
 
