@@ -45,7 +45,24 @@ Current Asset / platform implementation remains **NON_PRODUCTION**. Architecture
 | Stream administration | separate `streamadmin` |
 | EVENT `$JS.API` stream-admin | **NONE** |
 
-Historical ADR-025 modular-first examples (`AIEOS_EVENTS`, `aieos.event.v1.>`) are not current production authority. **Backend EVENT dispatcher implementation = NOT YET AUTHORIZED.** Architecture freeze does **not** authorize production NATS provisioning, production credentials, production stream creation, DigitalOcean mutation, or deployment.
+Historical ADR-025 modular-first examples (`AIEOS_EVENTS`, `aieos.event.v1.>`) are not current production authority.
+
+**Backend EVENT dispatcher runtime source (PED-I11) = IMPLEMENTED / MERGED.** Evidence Backend `origin/main` at this WPI-SF01-A gate: `8e837d2ef723db468e18b0405cb8bbc039efa8c2`. PED-I11 is Backend source only — not deployed and not activated.
+
+Production boundary preserved:
+
+| Concern | Status |
+|---------|--------|
+| Production EVENT execution | **NOT AUTHORIZED** |
+| Production NATS access | **NOT AUTHORIZED** |
+| Production NATS credential issuance/injection | **NOT AUTHORIZED** |
+| Production stream creation/mutation | **NOT AUTHORIZED** |
+| Production DB access/migration | **NOT AUTHORIZED** |
+| Production candidate-reader provisioning | **NOT AUTHORIZED** |
+| DigitalOcean / OpenTofu / App Platform deployment | **NOT AUTHORIZED** |
+| Production deployment | **NOT AUTHORIZED** |
+
+Architecture freeze does **not** authorize production NATS provisioning, production credentials, production stream creation, DigitalOcean mutation, or deployment.
 
 **Production workflow plane identity & least privilege:** [ADR-AIEOS-047](../decisions/ADR-AIEOS-047-aieos-production-workflow-plane-identity-least-privilege-contract.md) is **ARCHITECTURE FROZEN / APPROVED** (not implemented / provisioned / deployed / production-ready / activated). Distinct from Teacher OS ADR-047.
 
@@ -66,7 +83,7 @@ Historical ADR-025 modular-first examples (`AIEOS_EVENTS`, `aieos.event.v1.>`) a
 
 **WORKFLOW dispatcher Backend runtime = NOT YET AUTHORIZED.** **Temporal Cloud production provisioning = NOT AUTHORIZED.** **Production execution = NOT AUTHORIZED.** Architecture freeze does **not** authorize Temporal Cloud account/namespace/service-account/API-key creation, production Temporal access, WORKFLOW dispatcher Backend implementation, worker/dispatcher deployment, DigitalOcean mutation, OpenTofu apply, or deployment.
 
-**Still OPEN (not authorized by catalogue):** WORKFLOW dispatcher Backend runtime; Temporal Cloud production provisioning; event/workflow dispatcher production activation; database candidate-function migration; production candidate-reader role provisioning; scheduled/reconciliation runtime ownership; production BlobStore runtime composition / production credential conformance; actual Asset HTTP implementation; backup worker implementation; backup schema/migrations; production entrypoints / App Platform composition (API + Temporal worker entrypoints implemented in backend; dispatcher daemons remain excluded); normal production workload plan; further production apply; VPC / AIStor / NATS / Managed PostgreSQL / App Platform / Temporal production creation; production schema-owner readiness; Asset production runtime composition; production deployment; commercial release (≤250 or new Founder ceiling); production migration; production mutation; PED-I03 Asset mutation activation; physical purge/retention/legal hold; Scale Production commercial purchase/entitlement execution; DOKS retirement. Catalogue deposition authorizes none of: purchase, infrastructure apply, AIStor production install, production BlobStore composition / credential activation, Asset HTTP implementation, backup execution, restore, normal workload plan, further apply, or production mutation.
+**Still OPEN (not authorized by catalogue):** WORKFLOW dispatcher Backend runtime; Temporal Cloud production provisioning; EVENT dispatcher production activation / provisioning / deployment (PED-I11 source = IMPLEMENTED / MERGED; production operating authority remains excluded); database candidate-function migration; production candidate-reader role provisioning; scheduled/reconciliation runtime ownership; production BlobStore runtime composition / production credential conformance; actual Asset HTTP implementation; backup worker implementation; backup schema/migrations; production entrypoints / App Platform composition (API + Temporal worker entrypoints + PED-I11 EVENT dispatcher runtime source implemented in backend; WORKFLOW dispatcher runtime source = NOT YET AUTHORIZED; EVENT production activation/deployment remains excluded); normal production workload plan; further production apply; VPC / AIStor / NATS / Managed PostgreSQL / App Platform / Temporal production creation; production schema-owner readiness; Asset production runtime composition; production deployment; commercial release (≤250 or new Founder ceiling); production migration; production mutation; PED-I03 Asset mutation activation; physical purge/retention/legal hold; Scale Production commercial purchase/entitlement execution; DOKS retirement. Catalogue deposition authorizes none of: purchase, infrastructure apply, AIStor production install, production BlobStore composition / credential activation, Asset HTTP implementation, backup execution, restore, normal workload plan, further apply, or production mutation.
 
 ---
 
