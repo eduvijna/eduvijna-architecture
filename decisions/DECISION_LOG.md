@@ -68,3 +68,4 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | ADR-AIEOS-044R1 | AIEOS Production State Namespace Collision Resolution | 2026-08-21 | Frozen / Approved | [ADR-AIEOS-044R1](ADR-AIEOS-044R1-aieos-production-state-namespace-collision-resolution.md) |
 | ADR-AIEOS-044R2 | AIEOS Production State Region Availability Resolution | 2026-08-21 | Frozen / Approved | [ADR-AIEOS-044R2](ADR-AIEOS-044R2-aieos-production-state-region-availability-resolution.md) |
 | ADR-AIEOS-045 | AIEOS Dispatcher Tenant-Candidate Discovery Authority | 2026-08-22 | Frozen / Approved | [ADR-AIEOS-045](ADR-AIEOS-045-aieos-dispatcher-tenant-candidate-discovery-authority.md) |
+| ADR-AIEOS-046 | AIEOS Production Event Plane Identity & Least-Privilege Contract | 2026-08-23 | Frozen / Approved | [ADR-AIEOS-046](ADR-AIEOS-046-aieos-production-event-plane-identity-least-privilege-contract.md) |
