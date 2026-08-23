@@ -159,6 +159,32 @@ Conflict preference:
 
 ---
 
+## 12. ADR-AIEOS-048 — First-production App runtime & OCI delivery
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Freeze first-production App Platform worker topology, dedicated BLR1 VPC, Preview compute exception, OCI digest authority, and Temporal secret destinations for WORKFLOW_DISPATCHER and TEMPORAL_WORKER. |
+| **Architectural reason** | Prevent improvisation from default-blr1 reuse, mutable `latest` tags, shared Temporal keys, or Preview SKUs without bounded Founder/Chief acceptance. |
+| **What was implemented** | Architecture source only: [ADR-AIEOS-048](../decisions/ADR-AIEOS-048-aieos-first-production-app-runtime-oci-delivery-contract.md) deposited; catalogue/ledger/current-state updated. Distinct from Teacher OS ADR-048. |
+| **What was deliberately NOT implemented** | App Platform apps; VPC creation; DOCR `aieos-backend` repository; OCI publication; secret injection; OpenTofu plan/apply; production deployment. |
+| **Governing decisions** | ADR-AIEOS-048; binding prior ADR-AIEOS-022/026/029/037/040R1/044R2/045/046/047. |
+| **Current status** | **Architecture Frozen / Approved.** Cloud / App / OCI / deployment mutation **not authorized**. |
+
+---
+
+## 13. Workflow plane source & Temporal provisioning status reconciliation
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Keep journey/current-state aligned after PED-I12 Backend merge and WPI-A01 Temporal Cloud first-production apply without rewriting ADR-AIEOS-047 historical freeze text. |
+| **Architectural reason** | Historical ADR freeze status ≠ current implementation/provisioning status. |
+| **What was implemented** | WORKFLOW_DISPATCHER Backend runtime source (**PED-I12**) = **IMPLEMENTED / MERGED** at Backend `8f4dd172e6a0ba8b4ad944b0ae22060442356342`. Temporal Cloud Namespace `eduvijna-aieos-prod.w97q1` + WORKFLOW_DISPATCHER and TEMPORAL_WORKER service accounts (**WPI-A01**) = **PROVISIONED / CONFORMED / FORMALLY CLOSED**. |
+| **What was deliberately NOT implemented** | Temporal runtime API-key issuance/injection; App Platform worker deployment; dedicated VPC creation; governed production OCI publication; production workflow execution. |
+| **Governing decisions** | ADR-AIEOS-047 (architecture freeze retained); ADR-AIEOS-048 (App runtime architecture freeze); separately authorized PED-I12 / WPI-A01 execution gates. |
+| **Current status** | Source + Namespace/SA provisioning closed; runtime keys, App Platform deployment, and production execution **not authorized**. |
+
+---
+
 ## Gaps / missing chronology
 
 Where older pre-Teacher-OS platform history (earlier Platform AI packages, ERP modules, etc.) is relevant but not part of this AIEOS journey spine: **Not established by current repository evidence** as a fully sequenced AIEOS chronology in this folder — treat as adjacent capability history under product/API repos.
