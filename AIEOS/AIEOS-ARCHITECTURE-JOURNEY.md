@@ -159,6 +159,19 @@ Conflict preference:
 
 ---
 
+## 12. ADR-AIEOS-048 — First-production App runtime & OCI delivery
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Freeze first-production App Platform worker topology, dedicated BLR1 VPC, Preview compute exception, OCI digest authority, and Temporal secret destinations for WORKFLOW_DISPATCHER and TEMPORAL_WORKER. |
+| **Architectural reason** | Prevent improvisation from default-blr1 reuse, mutable `latest` tags, shared Temporal keys, or Preview SKUs without bounded Founder/Chief acceptance. |
+| **What was implemented** | Architecture source only: [ADR-AIEOS-048](../decisions/ADR-AIEOS-048-aieos-first-production-app-runtime-oci-delivery-contract.md) deposited; catalogue/ledger/current-state updated. Distinct from Teacher OS ADR-048. |
+| **What was deliberately NOT implemented** | App Platform apps; VPC creation; DOCR `aieos-backend` repository; OCI publication; secret injection; OpenTofu plan/apply; production deployment. |
+| **Governing decisions** | ADR-AIEOS-048; binding prior ADR-AIEOS-022/026/029/037/040R1/044R2/045/046/047. |
+| **Current status** | **Architecture Frozen / Approved.** Cloud / App / OCI / deployment mutation **not authorized**. |
+
+---
+
 ## Gaps / missing chronology
 
 Where older pre-Teacher-OS platform history (earlier Platform AI packages, ERP modules, etc.) is relevant but not part of this AIEOS journey spine: **Not established by current repository evidence** as a fully sequenced AIEOS chronology in this folder — treat as adjacent capability history under product/API repos.
