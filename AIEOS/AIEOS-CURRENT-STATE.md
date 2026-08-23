@@ -31,6 +31,22 @@ Current Asset / platform implementation remains **NON_PRODUCTION**. Architecture
 
 **Dispatcher tenant-candidate discovery:** [ADR-AIEOS-045](../decisions/ADR-AIEOS-045-aieos-dispatcher-tenant-candidate-discovery-authority.md) is **Frozen / Approved**. Pending-work candidate discovery from `integration.outbox_messages` and workflow intent queues; dedicated NOLOGIN NOBYPASSRLS candidate-reader identities (`aieos_event_candidate_reader`, `aieos_workflow_candidate_reader` conceptually); SECURITY DEFINER functions owned by candidate-reader not schema owner; dispatcher login remains NOBYPASSRLS with EXECUTE-only access; no cross-tenant payload visibility. Architecture freeze does **not** authorize dispatcher daemon implementation, database candidate-function migration, production candidate-reader role provisioning, or production deployment.
 
+**Production event plane identity & least privilege:** [ADR-AIEOS-046](../decisions/ADR-AIEOS-046-aieos-production-event-plane-identity-least-privilege-contract.md) is **Frozen / Approved**.
+
+| Concern | Frozen value |
+|---------|--------------|
+| Production stream | `AIEOS_EVENTS_PROD` |
+| Production stream subjects | `io.eduvijna.aieos.>` |
+| EVENT publisher | `io.eduvijna.aieos.content.>` |
+| EVENT publisher SUB | `_INBOX.>` (+ publish ACK response semantics only) |
+| EVENT credential | `AIEOS_EVENT_DISPATCHER_NATS_CREDENTIALS` |
+| EVENT auth | JWT + NKey `.creds` / in-memory `user_jwt_cb` + `signature_cb` |
+| Secret delivery | App Platform encrypted env |
+| Stream administration | separate `streamadmin` |
+| EVENT `$JS.API` stream-admin | **NONE** |
+
+Historical ADR-025 modular-first examples (`AIEOS_EVENTS`, `aieos.event.v1.>`) are not current production authority. **Backend EVENT dispatcher implementation = NOT YET AUTHORIZED.** Architecture freeze does **not** authorize production NATS provisioning, production credentials, production stream creation, DigitalOcean mutation, or deployment.
+
 **Still OPEN (not authorized by catalogue):** event/workflow dispatcher daemon implementation; database candidate-function migration; production candidate-reader role provisioning; scheduled/reconciliation runtime ownership; production BlobStore runtime composition / production credential conformance; actual Asset HTTP implementation; backup worker implementation; backup schema/migrations; production entrypoints / App Platform composition (API + Temporal worker entrypoints implemented in backend; dispatcher daemons remain excluded); normal production workload plan; further production apply; VPC / AIStor / NATS / Managed PostgreSQL / App Platform / Temporal production creation; production schema-owner readiness; Asset production runtime composition; production deployment; commercial release (≤250 or new Founder ceiling); production migration; production mutation; PED-I03 Asset mutation activation; physical purge/retention/legal hold; Scale Production commercial purchase/entitlement execution; DOKS retirement. Catalogue deposition authorizes none of: purchase, infrastructure apply, AIStor production install, production BlobStore composition / credential activation, Asset HTTP implementation, backup execution, restore, normal workload plan, further apply, or production mutation.
 
 ---
