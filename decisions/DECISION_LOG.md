@@ -31,7 +31,7 @@ When an ADR is approved, add a summary entry here that links to the ADR.
 | ADR-047 | Outcome-first teaching language (Prepare Tomorrow) | 2026-08-10 | Accepted | [ADR-047](ADR-047-outcome-first-prepare-tomorrow.md) |
 | ADR-048 | Review Queue owns approval (teacher judgement only) · Implemented EBP-001.5 | 2026-08-10 | Accepted | [ADR-048](ADR-048-review-queue-owns-approval.md) |
 
-`ADR-AIEOS-*` and Teacher OS `ADR-042`–`ADR-048` are distinct ID families.
+`ADR-AIEOS-*` and Teacher OS `ADR-042`–`ADR-048` are distinct ID families. Teacher OS ADR-047 (Outcome-first Prepare Tomorrow) is not platform ADR-AIEOS-047 (Production Workflow Plane Identity & Least-Privilege Contract).
 
 Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; original body unavailable. ADR-AIEOS-023R1 is the transparent canonical restatement.
 
@@ -69,3 +69,4 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | ADR-AIEOS-044R2 | AIEOS Production State Region Availability Resolution | 2026-08-21 | Frozen / Approved | [ADR-AIEOS-044R2](ADR-AIEOS-044R2-aieos-production-state-region-availability-resolution.md) |
 | ADR-AIEOS-045 | AIEOS Dispatcher Tenant-Candidate Discovery Authority | 2026-08-22 | Frozen / Approved | [ADR-AIEOS-045](ADR-AIEOS-045-aieos-dispatcher-tenant-candidate-discovery-authority.md) |
 | ADR-AIEOS-046 | AIEOS Production Event Plane Identity & Least-Privilege Contract | 2026-08-23 | Frozen / Approved | [ADR-AIEOS-046](ADR-AIEOS-046-aieos-production-event-plane-identity-least-privilege-contract.md) |
+| ADR-AIEOS-047 | AIEOS Production Workflow Plane Identity & Least-Privilege Contract | 2026-08-23 | Frozen / Approved | [ADR-AIEOS-047](ADR-AIEOS-047-aieos-production-workflow-plane-identity-least-privilege-contract.md) |
