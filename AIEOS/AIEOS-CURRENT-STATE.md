@@ -1,8 +1,8 @@
-# AIEOS â€” Current State
+# AIEOS — Current State
 
 **Question answered:** Where is EduVijna AIEOS today?  
 **Evidence date orientation:** 2026-08-11 repository / discovery evidence  
-**Nature:** Orientation document â€” does not authorize implementation
+**Nature:** Orientation document — does not authorize implementation
 
 ---
 
@@ -19,15 +19,15 @@ Conflict preference:
 
 ## AIEOS platform ADR catalogue
 
-The AIEOS platform ADR family is now canonically deposited under `decisions/ADR-AIEOS-*`. Teacher OS `ADR-042`â€“`ADR-048` remain a distinct ID family. Teacher OS **ADR-047** (Outcome-first Prepare Tomorrow) is not platform **ADR-AIEOS-047** (Production Workflow Plane Identity & Least-Privilege Contract). Teacher OS **ADR-048** (Review Queue owns approval) is not platform **ADR-AIEOS-048** (First-Production App Runtime & OCI Delivery Contract).
+The AIEOS platform ADR family is now canonically deposited under `decisions/ADR-AIEOS-*`. Teacher OS `ADR-042`–`ADR-048` remain a distinct ID family. Teacher OS **ADR-047** (Outcome-first Prepare Tomorrow) is not platform **ADR-AIEOS-047** (Production Workflow Plane Identity & Least-Privilege Contract). Teacher OS **ADR-048** (Review Queue owns approval) is not platform **ADR-AIEOS-048** (First-Production App Runtime & OCI Delivery Contract).
 
 Historical ADR-AIEOS-023 remains Frozen / Approved (Identity/Tenant/Security), but its original body is unavailable. ADR-AIEOS-023R1 is now the canonical restated identity/tenant/security implementation baseline. This closes the architecture-catalogue identity/tenant/security gap. It does **not** authorize identity implementation or production promotion by itself.
 
 Current Asset / platform implementation remains **NON_PRODUCTION**. Architecture catalogue synchronization does **not** authorize production deployment or mutation.
 
-**Production infrastructure (architecture + execution status):** [ADR-AIEOS-037](../decisions/ADR-AIEOS-037-aieos-production-infrastructure-baseline.md) is Frozen / Approved (DigitalOcean production cloud baseline). [ADR-AIEOS-038](../decisions/ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) is Frozen / Approved as a historical cross-cloud exception. [ADR-AIEOS-038R1](../decisions/ADR-AIEOS-038R1-aieos-digitalocean-only-asset-storage-direction.md) is Frozen / Approved as the current first-production Asset storage hosting direction (DigitalOcean-only). [ADR-AIEOS-039](../decisions/ADR-AIEOS-039-aieos-asset-blobstore-provider-selection.md) is Frozen / Approved as the Asset BlobStore **software provider** (MinIO AIStor, AIEOS-operated). [ADR-AIEOS-040](../decisions/ADR-AIEOS-040-aieos-asset-blobstore-first-production-topology.md) remains Frozen / Approved as the **historical** 8Ã—1 topology decision (originally First Production; empirically validated by PED-I10B7E-TV04-R2 in NON_PRODUCTION). [ADR-AIEOS-040R1](../decisions/ADR-AIEOS-040R1-aieos-asset-blobstore-bootstrap-scale-production-topology.md) is Frozen / Approved as the **current** topology classification: Bootstrap (single-node AIStor Free; 6 Ã— ~190 GiB Volumes; N=6 / K=3 / M=3; EC:3; BLR1) and Scale (ADR-AIEOS-040 8Ã—1 distributed; EC:3). [ADR-AIEOS-041](../decisions/ADR-AIEOS-041-aieos-asset-backup-recovery-architecture.md) remains Frozen / Approved as the base Asset Backup & Recovery Architecture. [ADR-AIEOS-041R1](../decisions/ADR-AIEOS-041R1-aieos-asset-backup-execution-manifest-recovery-authority.md) is Frozen / Approved as the forward revision (PostgreSQL backup-job SoR; signed-manifest PG authority; no required Bootstrap Asset business events; seven-day Managed PostgreSQL PITR Phase-0). [ADR-AIEOS-042](../decisions/ADR-AIEOS-042-aieos-asset-binary-delivery-bootstrap-media-profile.md) is Frozen / Approved (API-mediated streaming; 32 MiB Bootstrap ceiling; image/document/audio; video not authorized). [ADR-AIEOS-043](../decisions/ADR-AIEOS-043-aieos-bootstrap-aistor-service-boundary-primary-namespace.md) is Frozen / Approved (private-only AIStor service boundary; TLS trust; no Bootstrap LB; one primary bucket/env; Versioning OFF; Object Lock OFF). [ADR-AIEOS-044](../decisions/ADR-AIEOS-044-aieos-bootstrap-production-preapply-execution-baseline.md) remains Frozen / Approved as the historical Bootstrap pre-apply execution baseline (NATS/VPC/state/identity/TLS/admin freezes; commercial release condition). [ADR-AIEOS-044R1](../decisions/ADR-AIEOS-044R1-aieos-production-state-namespace-collision-resolution.md) remains Frozen / Approved as the historical namespace-collision revision. [ADR-AIEOS-044R2](../decisions/ADR-AIEOS-044R2-aieos-production-state-region-availability-resolution.md) remains Frozen / Approved as the forward OpenTofu production-state location authority: **production workload region remains BLR1**; **production OpenTofu state region is SFO3**; production state bucket `eduvijna-aieos-tofu-state-prod-sfo3` = **CREATED / PRIVATE / VERSIONING ENABLED** (project AIEOS); permanent bucket-scoped `readwrite` state credential established outside Git; temporary fullaccess provisioning key destroyed. **Stage 1 = PASS / FORMALLY CLOSED.** **Stage 2 = PASS / FORMALLY CLOSED** (OpenTofu 1.12.5 S3 backend initialized against `https://sfo3.digitaloceanspaces.com` with `use_lockfile=true`). **Stage 3A = PASS / FORMALLY CLOSED** (bounded refresh-only production plan; native S3 live-lock cycle validated; zero managed resources; no DigitalOcean workload mutation; `DIGITALOCEAN_TOKEN` not used). **Stage 3B = PASS / FORMALLY CLOSED** (exact inspected refresh-only saved-plan apply; 0 added / 0 changed / 0 destroyed; first authoritative remote tfstate materialized). **Remote tfstate object = MATERIALIZED / AUTHORITATIVE** (key `environments/production/opentofu.tfstate`). Stage 3B closed at initial serial **1** / managed resources **0** / empty `tofu state list`. Subsequently **WPI-A01** Temporal Cloud first-production apply = **EXECUTED / FORMALLY CLOSED** (Namespace `eduvijna-aieos-prod.w97q1` + WORKFLOW_DISPATCHER and TEMPORAL_WORKER service accounts). Current persistent lock object = **ABSENT**; native lock cycle = **VALIDATED**. Prior BLR1 target `eduvijna-aieos-tofu-state-prod-blr1` = **PLANNED / NEVER CREATED / SUPERSEDED**. NYC3 Space `eduvijna-aieos-tofu-state-prod` remains **UNATTRIBUTED / PRE-EXISTING / NON-AUTHORITATIVE / HOLD**. Bounded Stage 3A refresh-only plan and Stage 3B refresh-only saved-plan apply = **EXECUTED / CLOSED**. App Platform / dedicated VPC / AIStor / NATS / Managed PostgreSQL workload plan/apply and other unauthorized mutation = **NOT AUTHORIZED**. `enable_cloud_resources` remains **false**. Temporal runtime API-key issuance and production App Platform deployment = **NOT AUTHORIZED**. Commercial blocker = **IN FORCE**. DigitalOcean Spaces remains **REJECTED** as the authoritative primary Asset BlobStore. Amazon S3 is **no longer advancing for first production**. AWS-BOOT-01 is cancelled / closed without implementation. PED-I10B7C-TV02 is cancelled before AWS resource creation. Raw validation artifacts are not canonical repository files.
+**Production infrastructure (architecture + execution status):** [ADR-AIEOS-037](../decisions/ADR-AIEOS-037-aieos-production-infrastructure-baseline.md) is Frozen / Approved (DigitalOcean production cloud baseline). [ADR-AIEOS-038](../decisions/ADR-AIEOS-038-aieos-cross-cloud-asset-object-storage-exception.md) is Frozen / Approved as a historical cross-cloud exception. [ADR-AIEOS-038R1](../decisions/ADR-AIEOS-038R1-aieos-digitalocean-only-asset-storage-direction.md) is Frozen / Approved as the current first-production Asset storage hosting direction (DigitalOcean-only). [ADR-AIEOS-039](../decisions/ADR-AIEOS-039-aieos-asset-blobstore-provider-selection.md) is Frozen / Approved as the Asset BlobStore **software provider** (MinIO AIStor, AIEOS-operated). [ADR-AIEOS-040](../decisions/ADR-AIEOS-040-aieos-asset-blobstore-first-production-topology.md) remains Frozen / Approved as the **historical** 8×1 topology decision (originally First Production; empirically validated by PED-I10B7E-TV04-R2 in NON_PRODUCTION). [ADR-AIEOS-040R1](../decisions/ADR-AIEOS-040R1-aieos-asset-blobstore-bootstrap-scale-production-topology.md) is Frozen / Approved as the **current** topology classification: Bootstrap (single-node AIStor Free; 6 × ~190 GiB Volumes; N=6 / K=3 / M=3; EC:3; BLR1) and Scale (ADR-AIEOS-040 8×1 distributed; EC:3). [ADR-AIEOS-041](../decisions/ADR-AIEOS-041-aieos-asset-backup-recovery-architecture.md) remains Frozen / Approved as the base Asset Backup & Recovery Architecture. [ADR-AIEOS-041R1](../decisions/ADR-AIEOS-041R1-aieos-asset-backup-execution-manifest-recovery-authority.md) is Frozen / Approved as the forward revision (PostgreSQL backup-job SoR; signed-manifest PG authority; no required Bootstrap Asset business events; seven-day Managed PostgreSQL PITR Phase-0). [ADR-AIEOS-042](../decisions/ADR-AIEOS-042-aieos-asset-binary-delivery-bootstrap-media-profile.md) is Frozen / Approved (API-mediated streaming; 32 MiB Bootstrap ceiling; image/document/audio; video not authorized). [ADR-AIEOS-043](../decisions/ADR-AIEOS-043-aieos-bootstrap-aistor-service-boundary-primary-namespace.md) is Frozen / Approved (private-only AIStor service boundary; TLS trust; no Bootstrap LB; one primary bucket/env; Versioning OFF; Object Lock OFF). [ADR-AIEOS-044](../decisions/ADR-AIEOS-044-aieos-bootstrap-production-preapply-execution-baseline.md) remains Frozen / Approved as the historical Bootstrap pre-apply execution baseline (NATS/VPC/state/identity/TLS/admin freezes; commercial release condition). [ADR-AIEOS-044R1](../decisions/ADR-AIEOS-044R1-aieos-production-state-namespace-collision-resolution.md) remains Frozen / Approved as the historical namespace-collision revision. [ADR-AIEOS-044R2](../decisions/ADR-AIEOS-044R2-aieos-production-state-region-availability-resolution.md) remains Frozen / Approved as the forward OpenTofu production-state location authority: **production workload region remains BLR1**; **production OpenTofu state region is SFO3**; production state bucket `eduvijna-aieos-tofu-state-prod-sfo3` = **CREATED / PRIVATE / VERSIONING ENABLED** (project AIEOS); permanent bucket-scoped `readwrite` state credential established outside Git; temporary fullaccess provisioning key destroyed. **Stage 1 = PASS / FORMALLY CLOSED.** **Stage 2 = PASS / FORMALLY CLOSED** (OpenTofu 1.12.5 S3 backend initialized against `https://sfo3.digitaloceanspaces.com` with `use_lockfile=true`). **Stage 3A = PASS / FORMALLY CLOSED** (bounded refresh-only production plan; native S3 live-lock cycle validated; zero managed resources; no DigitalOcean workload mutation; `DIGITALOCEAN_TOKEN` not used). **Stage 3B = PASS / FORMALLY CLOSED** (exact inspected refresh-only saved-plan apply; 0 added / 0 changed / 0 destroyed; first authoritative remote tfstate materialized). **Remote tfstate object = MATERIALIZED / AUTHORITATIVE** (key `environments/production/opentofu.tfstate`). Stage 3B closed at initial serial **1** / managed resources **0** / empty `tofu state list`. Subsequently **WPI-A01** Temporal Cloud first-production apply = **EXECUTED / FORMALLY CLOSED** (Namespace `eduvijna-aieos-prod.w97q1` + WORKFLOW_DISPATCHER and TEMPORAL_WORKER service accounts). Current persistent lock object = **ABSENT**; native lock cycle = **VALIDATED**. Prior BLR1 target `eduvijna-aieos-tofu-state-prod-blr1` = **PLANNED / NEVER CREATED / SUPERSEDED**. NYC3 Space `eduvijna-aieos-tofu-state-prod` remains **UNATTRIBUTED / PRE-EXISTING / NON-AUTHORITATIVE / HOLD**. Bounded Stage 3A refresh-only plan and Stage 3B refresh-only saved-plan apply = **EXECUTED / CLOSED**. App Platform / dedicated VPC / AIStor / NATS / Managed PostgreSQL workload plan/apply and other unauthorized mutation = **NOT AUTHORIZED**. `enable_cloud_resources` remains **false**. Temporal runtime API-key issuance and production App Platform deployment = **NOT AUTHORIZED**. Commercial blocker = **IN FORCE**. DigitalOcean Spaces remains **REJECTED** as the authoritative primary Asset BlobStore. Amazon S3 is **no longer advancing for first production**. AWS-BOOT-01 is cancelled / closed without implementation. PED-I10B7C-TV02 is cancelled before AWS resource creation. Raw validation artifacts are not canonical repository files.
 
-**Commercial envelope (architecture only):** Bootstrap operating target â‰¤ USD 240/month; hard ceiling USD 250/month. 2026-08-21 planning evidence projects â‰ˆ USD 294.05/month pre-tax (**RED**). Architecture freeze does **not** authorize production spend; complete first-production DigitalOcean apply remains blocked until ADR-AIEOS-044 commercial release condition is met. `ARCHITECTURE FREEZE != PRODUCTION APPLY AUTHORIZATION.`
+**Commercial envelope (architecture only):** Bootstrap operating target ≤ USD 240/month; hard ceiling USD 250/month. 2026-08-21 planning evidence projects ≈ USD 294.05/month pre-tax (**RED**). Architecture freeze does **not** authorize production spend; complete first-production DigitalOcean apply remains blocked until ADR-AIEOS-044 commercial release condition is met. `ARCHITECTURE FREEZE != PRODUCTION APPLY AUTHORIZATION.`
 
 **Dispatcher tenant-candidate discovery:** [ADR-AIEOS-045](../decisions/ADR-AIEOS-045-aieos-dispatcher-tenant-candidate-discovery-authority.md) is **Frozen / Approved**. Pending-work candidate discovery from `integration.outbox_messages` and workflow intent queues; dedicated NOLOGIN NOBYPASSRLS candidate-reader identities (`aieos_event_candidate_reader`, `aieos_workflow_candidate_reader` conceptually); SECURITY DEFINER functions owned by candidate-reader not schema owner; dispatcher login remains NOBYPASSRLS with EXECUTE-only access; no cross-tenant payload visibility. Architecture freeze does **not** authorize dispatcher daemon implementation, database candidate-function migration, production candidate-reader role provisioning, or production deployment.
 
@@ -47,7 +47,7 @@ Current Asset / platform implementation remains **NON_PRODUCTION**. Architecture
 
 Historical ADR-025 modular-first examples (`AIEOS_EVENTS`, `aieos.event.v1.>`) are not current production authority.
 
-**Backend EVENT dispatcher runtime source (PED-I11) = IMPLEMENTED / MERGED.** Evidence Backend `origin/main` at this WPI-SF01-A gate: `8e837d2ef723db468e18b0405cb8bbc039efa8c2`. PED-I11 is Backend source only â€” not deployed and not activated.
+**Backend EVENT dispatcher runtime source (PED-I11) = IMPLEMENTED / MERGED.** Evidence Backend `origin/main` at this WPI-SF01-A gate: `8e837d2ef723db468e18b0405cb8bbc039efa8c2`. PED-I11 is Backend source only — not deployed and not activated.
 
 Production boundary preserved:
 
@@ -64,7 +64,7 @@ Production boundary preserved:
 
 Architecture freeze does **not** authorize production NATS provisioning, production credentials, production stream creation, DigitalOcean mutation, or deployment.
 
-**Production workflow plane identity & least privilege:** [ADR-AIEOS-047](../decisions/ADR-AIEOS-047-aieos-production-workflow-plane-identity-least-privilege-contract.md) is **ARCHITECTURE FROZEN / APPROVED**. Distinct from Teacher OS ADR-047. Historical ADR freeze â‰  current implementation/provisioning status.
+**Production workflow plane identity & least privilege:** [ADR-AIEOS-047](../decisions/ADR-AIEOS-047-aieos-production-workflow-plane-identity-least-privilege-contract.md) is **ARCHITECTURE FROZEN / APPROVED**. Distinct from Teacher OS ADR-047. Historical ADR freeze ≠ current implementation/provisioning status.
 
 | Concern | Frozen value |
 |---------|--------------|
@@ -85,7 +85,7 @@ Architecture freeze does **not** authorize production NATS provisioning, product
 
 | Concern | Current status |
 |---------|----------------|
-| WORKFLOW_DISPATCHER Backend runtime source (PED-I12) | **IMPLEMENTED / MERGED** â€” Backend `origin/main` `8f4dd172e6a0ba8b4ad944b0ae22060442356342` |
+| WORKFLOW_DISPATCHER Backend runtime source (PED-I12) | **IMPLEMENTED / MERGED** — Backend `origin/main` `8f4dd172e6a0ba8b4ad944b0ae22060442356342` |
 | Temporal Cloud first-production Namespace + workload service accounts (WPI-A01) | **PROVISIONED / CONFORMED / FORMALLY CLOSED** |
 | Production Namespace | `eduvijna-aieos-prod.w97q1` |
 | Provisioned resources | production Namespace; WORKFLOW_DISPATCHER service account; TEMPORAL_WORKER service account |
@@ -100,8 +100,8 @@ ADR-AIEOS-047 architecture freeze does **not** by itself authorize runtime API-k
 |---------|--------------|
 | App Platform region / DC | `blr` / `blr1` |
 | Production VPC | dedicated `aieos-prod-blr1` / `10.130.0.0/20` (default-blr1 reuse forbidden) |
-| WORKFLOW_DISPATCHER app | `eduvijna-aieos-prod-workflow-dispatcher` (worker Ã— 1) |
-| TEMPORAL_WORKER app | `eduvijna-aieos-prod-temporal-worker` (worker Ã— 1) |
+| WORKFLOW_DISPATCHER app | `eduvijna-aieos-prod-workflow-dispatcher` (worker × 1) |
+| TEMPORAL_WORKER app | `eduvijna-aieos-prod-temporal-worker` (worker × 1) |
 | Instance size | `apps-s-1vcpu-1gb-fixed` (Preview; bounded Founder/Chief acceptance 2026-08-23) |
 | OCI registry / repository | `eduvijna-registry` / `aieos-backend` |
 | Artifact authority | immutable digest + governed CI/provenance + explicit promotion gate (`latest` forbidden) |
@@ -110,16 +110,16 @@ ADR-AIEOS-047 architecture freeze does **not** by itself authorize runtime API-k
 
 **App Platform creation / VPC creation / DOCR repository creation / OCI publication / secret injection / OpenTofu plan-apply / production deployment = NOT AUTHORIZED.**
 
-**Still OPEN (not authorized by catalogue):** production WORKFLOW dispatcher execution/deployment; TEMPORAL_WORKER execution/deployment; production Temporal runtime API-key issuance/injection; dedicated production VPC creation; App Platform application creation; governed production OCI build/publication/promotion; App Platform runtime-secret injection ([ADR-AIEOS-048](../decisions/ADR-AIEOS-048-aieos-first-production-app-runtime-oci-delivery-contract.md) architecture only); EVENT dispatcher production activation / provisioning / deployment (PED-I11 source = IMPLEMENTED / MERGED; production operating authority remains excluded); database candidate-function migration; production candidate-reader role provisioning; scheduled/reconciliation runtime ownership; production BlobStore runtime composition / production credential conformance; actual Asset HTTP implementation; backup worker implementation; backup schema/migrations; normal production workload plan beyond already-closed Temporal WPI-A01 apply; further production apply for App/VPC/AIStor/NATS/Managed PostgreSQL; production schema-owner readiness; Asset production runtime composition; production deployment; commercial release (â‰¤250 or new Founder ceiling); production migration; production mutation; PED-I03 Asset mutation activation; physical purge/retention/legal hold; Scale Production commercial purchase/entitlement execution; DOKS retirement. Catalogue deposition authorizes none of: purchase, infrastructure apply, AIStor production install, production BlobStore composition / credential activation, Asset HTTP implementation, backup execution, restore, App Platform deployment, runtime API-key issuance, or production mutation.
+**Still OPEN (not authorized by catalogue):** production WORKFLOW dispatcher execution/deployment; TEMPORAL_WORKER execution/deployment; production Temporal runtime API-key issuance/injection; dedicated production VPC creation; App Platform application creation; governed production OCI build/publication/promotion; App Platform runtime-secret injection ([ADR-AIEOS-048](../decisions/ADR-AIEOS-048-aieos-first-production-app-runtime-oci-delivery-contract.md) architecture only); EVENT dispatcher production activation / provisioning / deployment (PED-I11 source = IMPLEMENTED / MERGED; production operating authority remains excluded); database candidate-function migration; production candidate-reader role provisioning; scheduled/reconciliation runtime ownership; production BlobStore runtime composition / production credential conformance; actual Asset HTTP implementation; backup worker implementation; backup schema/migrations; normal production workload plan beyond already-closed Temporal WPI-A01 apply; further production apply for App/VPC/AIStor/NATS/Managed PostgreSQL; production schema-owner readiness; Asset production runtime composition; production deployment; commercial release (≤250 or new Founder ceiling); production migration; production mutation; PED-I03 Asset mutation activation; physical purge/retention/legal hold; Scale Production commercial purchase/entitlement execution; DOKS retirement. Catalogue deposition authorizes none of: purchase, infrastructure apply, AIStor production install, production BlobStore composition / credential activation, Asset HTTP implementation, backup execution, restore, App Platform deployment, runtime API-key issuance, or production mutation.
 
 ---
 
 ## Product
 
-**EduVijna AIEOS** â€” Artificial Intelligence Engineering Education Operating System
+**EduVijna AIEOS** — Artificial Intelligence Engineering Education Operating System
 
 - Founder: **Sreekanth**
-- Architecture role: **Chief AI Enterprise Architect â€” ChatGPT**
+- Architecture role: **Chief AI Enterprise Architect — ChatGPT**
 - **AIEOS** = complete product  
 - **Teacher OS** = subsystem (current major delivery programme)
 
@@ -127,9 +127,9 @@ ADR-AIEOS-047 architecture freeze does **not** by itself authorize runtime API-k
 
 ## Current major program
 
-**Teacher OS / EBP-001 â€” Teacher OS Foundation (Wave 1)**
+**Teacher OS / EBP-001 — Teacher OS Foundation (Wave 1)**
 
-Philosophy: vertical-slice first on existing apps, behind `teacher_os_enabled`, architecture-bound by ADR-042â€¦048 and EBP-000.
+Philosophy: vertical-slice first on existing apps, behind `teacher_os_enabled`, architecture-bound by ADR-042…048 and EBP-000.
 
 ---
 
@@ -140,15 +140,15 @@ Recorded as **APPROVED / CLOSED** in EBP-001.9 Phase 0 discovery status (aligned
 | ID | Slice | Notes (evidence-based) |
 |----|-------|-------------------------|
 | **EBP-001.1** | Teacher OS Shell | Flag-gated shell, nav, routes, TeacherOsContext foundation (EDR-002) |
-| **EBP-001.2** | Today's Mission | Mission landing UI; MissionService faÃ§ade (mock-backed) |
+| **EBP-001.2** | Today's Mission | Mission landing UI; MissionService façade (mock-backed) |
 | **EBP-001.3** | Teaching Intent | Intent landing + wizard UX (ADR-045); mock Intent |
-| **EBP-001.4** | Intent â†’ Preparing Bridge | Preparing Kit bridge; mock artifacts; Continue path |
+| **EBP-001.4** | Intent → Preparing Bridge | Preparing Kit bridge; mock artifacts; Continue path |
 | **EBP-001.5** | Review Queue | Queue UX + approve/reject/request-changes semantics (ADR-048); in-memory mock SoR |
 | **EBP-001.6** | Continuous Context | Session/Intent thread via React Context (EDR-001); not durable Memory |
 | **EBP-001.7** | Mission Service Hardening | MissionService read-composition hardening; Continuous Context snapshot integration |
 | **EBP-001.8** | Teacher / School Context | Read surface; school name hydrate via existing `my-school`; **not** Teacher Memory |
 
-**Important nuance:** Several completed slices are **UI / faÃ§ade complete** with **mocks**. Wave 1 acceptance still requires Review Queue integration with existing generators (durable path not closed).
+**Important nuance:** Several completed slices are **UI / façade complete** with **mocks**. Wave 1 acceptance still requires Review Queue integration with existing generators (durable path not closed).
 
 EBP-001 product review package docs may lag the latest slice numbering; prefer slice IDs + code/tests + latest `engineering/EBP-001/*` package for 001.8.
 
@@ -158,11 +158,11 @@ EBP-001 product review package docs may lag the latest slice numbering; prefer s
 
 ### EBP-001.9
 
-**Status:** Discovery / preflight â€” **not implemented** as a closed delivery slice.
+**Status:** Discovery / preflight — **not implemented** as a closed delivery slice.
 
 Derived next slice (discovery recommendation, **not** automatic implementation authorization):
 
-> **Review Queue â†” Existing Generators Integration** â€” close the Wave 1 critical path: generate â†’ needs-review â†’ approve (no auto-publish), using stable product/content services â€” not Agents/MCP.
+> **Review Queue ↔ Existing Generators Integration** — close the Wave 1 critical path: generate → needs-review → approve (no auto-publish), using stable product/content services — not Agents/MCP.
 
 #### Persistence architecture status
 
@@ -173,9 +173,9 @@ Persistence preflight verdict:
 Findings (read-only discovery):
 
 - Generic Content SoR expected by `ContentPersistence` (`edu.contents` / `edu.content_versions`) **not** evidenced in-repo migrations or live PostgREST schema cache.
-- Existing `edu.content` (singular) is LMS/CMS â€” **not** the Platform AI / Teacher OS generic Content SoR.
+- Existing `edu.content` (singular) is LMS/CMS — **not** the Platform AI / Teacher OS generic Content SoR.
 - Specialized tables (e.g. kindergarten worksheets, sketchnotes) show stewardship facet patterns but are **not** the generic SoR.
-- Durable Teacher OS Review Queue therefore needs Content SoR alignment/creation â€” **architecture design required**.
+- Durable Teacher OS Review Queue therefore needs Content SoR alignment/creation — **architecture design required**.
 
 **Recorded constraint:**
 
@@ -197,7 +197,7 @@ Findings (read-only discovery):
 | **Quiz-React** (eduvijna-web) | Teacher OS shell, Mission, Intent, Preparing Kit, Review Queue UI, Continuous Context, Teacher/School Context cards |
 | **eduvijna-api** | Auth, feature flags (`teacher_os_enabled`), Platform AI / content domain, school-management APIs, persistence contracts |
 | **eduvijna-product** | Product vision, PA-001 Teacher OS architecture, EBP-000/001 engineering blueprint & standards, EDRs |
-| **eduvijna-architecture** | Enterprise architecture governance, ADRs (042â€“048), reviews, discovery, **AIEOS orientation** |
+| **eduvijna-architecture** | Enterprise architecture governance, ADRs (042–048), reviews, discovery, **AIEOS orientation** |
 
 ---
 
@@ -206,14 +206,14 @@ Findings (read-only discovery):
 | Boundary | Source |
 |----------|--------|
 | Shell owns UX, not generators/business engines | ADR-042 |
-| Foundation â†’ Hardening â†’ Review â†’ Next Capability | ADR-043 |
-| Frontend â†’ stable product services only; no direct Agents/MCP | ADR-044 |
+| Foundation → Hardening → Review → Next Capability | ADR-043 |
+| Frontend → stable product services only; no direct Agents/MCP | ADR-044 |
 | Teaching Intent owns goals; generators are capabilities | ADR-045 |
 | One Artifact lifecycle for all types | ADR-046 |
 | Outcome-first Prepare language | ADR-047 |
-| Review Queue owns approval; Approved â‰  Published | ADR-048 |
-| Continuous Context â‰  Teacher Memory â‰  School Context | PA Continuous Context Â· EDR-001 |
-| Teacher/School Context read surface â‰  Teacher Memory | EBP-001.8 |
+| Review Queue owns approval; Approved ≠ Published | ADR-048 |
+| Continuous Context ≠ Teacher Memory ≠ School Context | PA Continuous Context · EDR-001 |
+| Teacher/School Context read surface ≠ Teacher Memory | EBP-001.8 |
 | Teacher OS evolves existing repos (no new app) | EBP-001 |
 | Engineering Constitution v1.0 frozen | EBP-000 |
 
@@ -233,7 +233,7 @@ Findings (read-only discovery):
 | Full Prepare orchestration | Deferred (EBP-001 out of scope depth) |
 | Student OS / Parent OS / Principal OS | Out of Wave 1 scope |
 | New generators / new model providers | Out of Wave 1 scope |
-| Content SoR DB creation | **Not authorized** â€” under architecture review |
+| Content SoR DB creation | **Not authorized** — under architecture review |
 
 ---
 
@@ -242,10 +242,10 @@ Findings (read-only discovery):
 | Risk | Notes |
 |------|-------|
 | **EBP-001.9 persistence** | DB CHANGE REQUIRED; no authorized DB creation; production Review Queue durable SoR missing |
-| Review Queue mock vs generators | Wave 1 acceptance gap â€” generateâ†’queue not closed on durable path |
+| Review Queue mock vs generators | Wave 1 acceptance gap — generate→queue not closed on durable path |
 | Naming confusion | Teacher/School Context vs Teacher Memory; Continuous Context vs Memory |
 | Dual chrome | Classic MainLayout + TeacherShell until Mission is default production landing |
-| Discovery â‰  authorization | EBP-001.9 recommendations must not be treated as approved implementation without architecture approval |
+| Discovery ≠ authorization | EBP-001.9 recommendations must not be treated as approved implementation without architecture approval |
 | Premature platform jumps | Risk of introducing Agents/MCP/Orchestration/Memory/DB without ADR + EBP authorization |
 
 ---
