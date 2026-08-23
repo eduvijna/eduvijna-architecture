@@ -172,6 +172,19 @@ Conflict preference:
 
 ---
 
+## 13. Workflow plane source & Temporal provisioning status reconciliation
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Keep journey/current-state aligned after PED-I12 Backend merge and WPI-A01 Temporal Cloud first-production apply without rewriting ADR-AIEOS-047 historical freeze text. |
+| **Architectural reason** | Historical ADR freeze status ≠ current implementation/provisioning status. |
+| **What was implemented** | WORKFLOW_DISPATCHER Backend runtime source (**PED-I12**) = **IMPLEMENTED / MERGED** at Backend `8f4dd172e6a0ba8b4ad944b0ae22060442356342`. Temporal Cloud Namespace `eduvijna-aieos-prod.w97q1` + WORKFLOW_DISPATCHER and TEMPORAL_WORKER service accounts (**WPI-A01**) = **PROVISIONED / CONFORMED / FORMALLY CLOSED**. |
+| **What was deliberately NOT implemented** | Temporal runtime API-key issuance/injection; App Platform worker deployment; dedicated VPC creation; governed production OCI publication; production workflow execution. |
+| **Governing decisions** | ADR-AIEOS-047 (architecture freeze retained); ADR-AIEOS-048 (App runtime architecture freeze); separately authorized PED-I12 / WPI-A01 execution gates. |
+| **Current status** | Source + Namespace/SA provisioning closed; runtime keys, App Platform deployment, and production execution **not authorized**. |
+
+---
+
 ## Gaps / missing chronology
 
 Where older pre-Teacher-OS platform history (earlier Platform AI packages, ERP modules, etc.) is relevant but not part of this AIEOS journey spine: **Not established by current repository evidence** as a fully sequenced AIEOS chronology in this folder — treat as adjacent capability history under product/API repos.
