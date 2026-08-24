@@ -19,7 +19,7 @@ Conflict preference:
 
 ## AIEOS platform ADR catalogue
 
-The AIEOS platform ADR family is now canonically deposited under `decisions/ADR-AIEOS-*`. Teacher OS `ADR-042`–`ADR-048` remain a distinct ID family. Teacher OS **ADR-047** (Outcome-first Prepare Tomorrow) is not platform **ADR-AIEOS-047** (Production Workflow Plane Identity & Least-Privilege Contract). Teacher OS **ADR-048** (Review Queue owns approval) is not platform **ADR-AIEOS-048** (First-Production App Runtime & OCI Delivery Contract).
+The AIEOS platform ADR family is now canonically deposited under `decisions/ADR-AIEOS-*`. Teacher OS `ADR-042`–`ADR-048` remain a distinct ID family. Teacher OS **ADR-047** (Outcome-first Prepare Tomorrow) is not platform **ADR-AIEOS-047** (Production Workflow Plane Identity & Least-Privilege Contract). Teacher OS **ADR-048** (Review Queue owns approval) is not platform **ADR-AIEOS-048** (First-Production App Runtime & OCI Delivery Contract) or **ADR-AIEOS-048R1** (App Platform Provider-Compliant Naming Revision).
 
 Historical ADR-AIEOS-023 remains Frozen / Approved (Identity/Tenant/Security), but its original body is unavailable. ADR-AIEOS-023R1 is now the canonical restated identity/tenant/security implementation baseline. This closes the architecture-catalogue identity/tenant/security gap. It does **not** authorize identity implementation or production promotion by itself.
 
@@ -94,14 +94,15 @@ Architecture freeze does **not** authorize production NATS provisioning, product
 
 ADR-AIEOS-047 architecture freeze does **not** by itself authorize runtime API-key issuance, secret injection, App Platform deployment, or production workflow execution.
 
-**First-production App runtime & OCI delivery:** [ADR-AIEOS-048](../decisions/ADR-AIEOS-048-aieos-first-production-app-runtime-oci-delivery-contract.md) is **ARCHITECTURE FROZEN / APPROVED**. Distinct from Teacher OS ADR-048.
+**First-production App runtime & OCI delivery:** [ADR-AIEOS-048](../decisions/ADR-AIEOS-048-aieos-first-production-app-runtime-oci-delivery-contract.md) is **ARCHITECTURE FROZEN / APPROVED** as the **historical/base** first-production App runtime contract. [ADR-AIEOS-048R1](../decisions/ADR-AIEOS-048R1-aieos-app-platform-provider-compliant-naming.md) is **ARCHITECTURE FROZEN / APPROVED** as the **CURRENT** App Platform naming authority. Distinct from Teacher OS ADR-048.
 
 | Concern | Frozen value |
 |---------|--------------|
 | App Platform region / DC | `blr` / `blr1` |
 | Production VPC | dedicated `aieos-prod-blr1` / `10.130.0.0/20` (default-blr1 reuse forbidden) |
-| WORKFLOW_DISPATCHER app | `eduvijna-aieos-prod-workflow-dispatcher` (worker × 1) |
-| TEMPORAL_WORKER app | `eduvijna-aieos-prod-temporal-worker` (worker × 1) |
+| WORKFLOW_DISPATCHER app (CURRENT) | `aieos-prod-workflow-dispatcher` (worker × 1) |
+| TEMPORAL_WORKER app (CURRENT) | `aieos-prod-temporal-worker` (worker × 1) |
+| Historical ADR-AIEOS-048 app names | `eduvijna-aieos-prod-workflow-dispatcher` / `eduvijna-aieos-prod-temporal-worker` — SUPERSEDED; not current authority |
 | Instance size | `apps-s-1vcpu-1gb-fixed` (Preview; bounded Founder/Chief acceptance 2026-08-23) |
 | OCI registry / repository | `eduvijna-registry` / `aieos-backend` |
 | Artifact authority | immutable digest + governed CI/provenance + explicit promotion gate (`latest` forbidden) |
@@ -110,7 +111,7 @@ ADR-AIEOS-047 architecture freeze does **not** by itself authorize runtime API-k
 
 **App Platform creation / VPC creation / DOCR repository creation / OCI publication / secret injection / OpenTofu plan-apply / production deployment = NOT AUTHORIZED.**
 
-**Still OPEN (not authorized by catalogue):** production WORKFLOW dispatcher execution/deployment; TEMPORAL_WORKER execution/deployment; production Temporal runtime API-key issuance/injection; dedicated production VPC creation; App Platform application creation; governed production OCI build/publication/promotion; App Platform runtime-secret injection ([ADR-AIEOS-048](../decisions/ADR-AIEOS-048-aieos-first-production-app-runtime-oci-delivery-contract.md) architecture only); EVENT dispatcher production activation / provisioning / deployment (PED-I11 source = IMPLEMENTED / MERGED; production operating authority remains excluded); database candidate-function migration; production candidate-reader role provisioning; scheduled/reconciliation runtime ownership; production BlobStore runtime composition / production credential conformance; actual Asset HTTP implementation; backup worker implementation; backup schema/migrations; normal production workload plan beyond already-closed Temporal WPI-A01 apply; further production apply for App/VPC/AIStor/NATS/Managed PostgreSQL; production schema-owner readiness; Asset production runtime composition; production deployment; commercial release (≤250 or new Founder ceiling); production migration; production mutation; PED-I03 Asset mutation activation; physical purge/retention/legal hold; Scale Production commercial purchase/entitlement execution; DOKS retirement. Catalogue deposition authorizes none of: purchase, infrastructure apply, AIStor production install, production BlobStore composition / credential activation, Asset HTTP implementation, backup execution, restore, App Platform deployment, runtime API-key issuance, or production mutation.
+**Still OPEN (not authorized by catalogue):** production WORKFLOW dispatcher execution/deployment; TEMPORAL_WORKER execution/deployment; production Temporal runtime API-key issuance/injection; dedicated production VPC creation; App Platform application creation; governed production OCI build/publication/promotion; App Platform runtime-secret injection ([ADR-AIEOS-048](../decisions/ADR-AIEOS-048-aieos-first-production-app-runtime-oci-delivery-contract.md) / [ADR-AIEOS-048R1](../decisions/ADR-AIEOS-048R1-aieos-app-platform-provider-compliant-naming.md) architecture only); EVENT dispatcher production activation / provisioning / deployment (PED-I11 source = IMPLEMENTED / MERGED; production operating authority remains excluded); database candidate-function migration; production candidate-reader role provisioning; scheduled/reconciliation runtime ownership; production BlobStore runtime composition / production credential conformance; actual Asset HTTP implementation; backup worker implementation; backup schema/migrations; normal production workload plan beyond already-closed Temporal WPI-A01 apply; further production apply for App/VPC/AIStor/NATS/Managed PostgreSQL; production schema-owner readiness; Asset production runtime composition; production deployment; commercial release (≤250 or new Founder ceiling); production migration; production mutation; PED-I03 Asset mutation activation; physical purge/retention/legal hold; Scale Production commercial purchase/entitlement execution; DOKS retirement. Catalogue deposition authorizes none of: purchase, infrastructure apply, AIStor production install, production BlobStore composition / credential activation, Asset HTTP implementation, backup execution, restore, App Platform deployment, runtime API-key issuance, or production mutation.
 
 ---
 
