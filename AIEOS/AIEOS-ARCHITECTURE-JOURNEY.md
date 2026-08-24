@@ -168,7 +168,7 @@ Conflict preference:
 | **What was implemented** | Architecture source only: [ADR-AIEOS-048](../decisions/ADR-AIEOS-048-aieos-first-production-app-runtime-oci-delivery-contract.md) deposited; catalogue/ledger/current-state updated. Distinct from Teacher OS ADR-048. |
 | **What was deliberately NOT implemented** | App Platform apps; VPC creation; DOCR `aieos-backend` repository; OCI publication; secret injection; OpenTofu plan/apply; production deployment. |
 | **Governing decisions** | ADR-AIEOS-048; binding prior ADR-AIEOS-022/026/029/037/040R1/044R2/045/046/047. |
-| **Current status** | **Architecture Frozen / Approved.** Cloud / App / OCI / deployment mutation **not authorized**. |
+| **Current status** | **Architecture Frozen / Approved** as historical/base App runtime contract. Current App Platform **naming** authority is [ADR-AIEOS-048R1](../decisions/ADR-AIEOS-048R1-aieos-app-platform-provider-compliant-naming.md). Cloud / App / OCI / deployment mutation **not authorized**. |
 
 ---
 
@@ -182,6 +182,19 @@ Conflict preference:
 | **What was deliberately NOT implemented** | Temporal runtime API-key issuance/injection; App Platform worker deployment; dedicated VPC creation; governed production OCI publication; production workflow execution. |
 | **Governing decisions** | ADR-AIEOS-047 (architecture freeze retained); ADR-AIEOS-048 (App runtime architecture freeze); separately authorized PED-I12 / WPI-A01 execution gates. |
 | **Current status** | Source + Namespace/SA provisioning closed; runtime keys, App Platform deployment, and production execution **not authorized**. |
+
+---
+
+## 14. ADR-AIEOS-048R1 — Provider-compliant App Platform naming
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Correct first-production App Platform application names so they satisfy the DigitalOcean App Platform naming constraint without changing any other ADR-AIEOS-048 contract. |
+| **Architectural reason** | WPI-AP-I01 implementation review found ADR-AIEOS-048 names `eduvijna-aieos-prod-*` incompatible with the provider naming constraint. |
+| **What was implemented** | Architecture source only: [ADR-AIEOS-048R1](../decisions/ADR-AIEOS-048R1-aieos-app-platform-provider-compliant-naming.md) deposited. CURRENT names `aieos-prod-workflow-dispatcher` (length 30) and `aieos-prod-temporal-worker` (length 26). ADR-AIEOS-048 historical body not rewritten. |
+| **What was deliberately NOT implemented** | Infrastructure PR #12 modification or merge; App Platform apps; VPC creation; DOCR / OCI publication; secret injection; OpenTofu plan/apply; production deployment. |
+| **Governing decisions** | ADR-AIEOS-048R1 (current naming); ADR-AIEOS-048 (historical/base non-naming authority). |
+| **Current status** | **Architecture Frozen / Approved.** Infrastructure WPI-AP-I01 / PR #12 remains **BLOCKED** until this ADR is merged and that PR is reconciled. Cloud / App / OCI / deployment mutation **not authorized**. |
 
 ---
 
