@@ -220,7 +220,20 @@ Conflict preference:
 | **What was implemented** | Architecture source only: [ADR-AIEOS-049](../decisions/ADR-AIEOS-049-aieos-app-platform-state-free-deployment-plane.md) deposited. Design frozen/approved. Historical ADR-048 / 048R1 / 048R2 bodies not rewritten. |
 | **What was deliberately NOT implemented** | Deployment-controller implementation; durable lease implementation; secret-delivery product selection; disposable live validation; production credentials; App/VPC/OCI/Temporal-key mutation; production deployment. |
 | **Governing decisions** | ADR-AIEOS-049 (current detailed deployment-plane behavior); ADR-AIEOS-048R2 (ownership boundary); ADR-AIEOS-048R1 (naming); ADR-AIEOS-048 (base topology). |
-| **Current status** | **Architecture Frozen / Approved.** Design frozen; implementation and disposable empirical validation = **REQUIRED / NOT AUTHORIZED**. Production App Platform deployment **not authorized**. |
+| **Current status** | **Architecture Frozen / Approved.** Design frozen; implementation and disposable empirical validation = **REQUIRED / NOT AUTHORIZED**. Production App Platform deployment **not authorized**. Release-controller implementation architecture = [ADR-AIEOS-050](../decisions/ADR-AIEOS-050-aieos-app-platform-release-controller-implementation-architecture.md). |
+
+---
+
+## 17. ADR-AIEOS-050 — App Platform release controller implementation architecture
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Freeze the WPI-AP-DP02 release-controller implementation architecture required to realize ADR-AIEOS-049: Infrastructure-isolated Python 3.14 / `uv` tool; GitHub-hosted `ubuntu-24.04` only; two fixed `workflow_dispatch` workflows and Environments; per-App durable lease via Actions concurrency; direct DigitalOcean v2 REST via controlled `httpx` with zero automatic mutation retries; closed typed mutation allowlist; four PAT classes; Environment secret-delivery boundary; sanitized `release-receipt.json` (90-day retention); credential-free offline CI; mandatory WPI-AP-DP-TV01 before production. |
+| **Architectural reason** | ADR-AIEOS-049 froze deployment-plane behavior but left placement, runtime, workflow/Environment identities, lease technology, secret delivery, HTTP posture, credential scopes, evidence sink, and offline CI proof areas unselected; those must be frozen before separated implementation gates. |
+| **What was implemented** | Architecture source only: [ADR-AIEOS-050](../decisions/ADR-AIEOS-050-aieos-app-platform-release-controller-implementation-architecture.md) deposited. WPI-AP-DP02 design complete/frozen. Historical ADR-048 / 048R1 / 048R2 / 049 bodies not rewritten. |
+| **What was deliberately NOT implemented** | Controller source; workflow YAML; GitHub Environments/secrets; DigitalOcean PATs; Temporal keys; WPI-AP-DP-TV01; production App bootstrap; any cloud/state mutation. |
+| **Governing decisions** | ADR-AIEOS-050 (current release-controller implementation architecture); ADR-AIEOS-049 (deployment-plane behavior); ADR-AIEOS-048R2 (ownership boundary); ADR-AIEOS-048R1 (naming); ADR-AIEOS-048 (base topology). |
+| **Current status** | **Architecture Frozen / Approved.** WPI-AP-DP02 = **DESIGN COMPLETE / FROZEN**; implementation = **NOT AUTHORIZED**; WPI-AP-DP-TV01 = **REQUIRED / NOT AUTHORIZED**; production App deployment **not authorized**. |
 
 ---
 
