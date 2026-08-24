@@ -168,7 +168,7 @@ Conflict preference:
 | **What was implemented** | Architecture source only: [ADR-AIEOS-048](../decisions/ADR-AIEOS-048-aieos-first-production-app-runtime-oci-delivery-contract.md) deposited; catalogue/ledger/current-state updated. Distinct from Teacher OS ADR-048. |
 | **What was deliberately NOT implemented** | App Platform apps; VPC creation; DOCR `aieos-backend` repository; OCI publication; secret injection; OpenTofu plan/apply; production deployment. |
 | **Governing decisions** | ADR-AIEOS-048; binding prior ADR-AIEOS-022/026/029/037/040R1/044R2/045/046/047. |
-| **Current status** | **Architecture Frozen / Approved** as historical/base App runtime contract. Current App Platform **naming** authority is [ADR-AIEOS-048R1](../decisions/ADR-AIEOS-048R1-aieos-app-platform-provider-compliant-naming.md). Cloud / App / OCI / deployment mutation **not authorized**. |
+| **Current status** | **Architecture Frozen / Approved** as historical/base App runtime contract. Current App Platform **naming** authority is [ADR-AIEOS-048R1](../decisions/ADR-AIEOS-048R1-aieos-app-platform-provider-compliant-naming.md). Current App Platform **ownership/deployment** authority is [ADR-AIEOS-048R2](../decisions/ADR-AIEOS-048R2-aieos-app-platform-runtime-ownership-boundary.md). Cloud / App / OCI / deployment mutation **not authorized**. |
 
 ---
 
@@ -194,7 +194,20 @@ Conflict preference:
 | **What was implemented** | Architecture source only: [ADR-AIEOS-048R1](../decisions/ADR-AIEOS-048R1-aieos-app-platform-provider-compliant-naming.md) deposited. CURRENT names `aieos-prod-workflow-dispatcher` (length 30) and `aieos-prod-temporal-worker` (length 26). ADR-AIEOS-048 historical body not rewritten. |
 | **What was deliberately NOT implemented** | Infrastructure PR #12 modification or merge; App Platform apps; VPC creation; DOCR / OCI publication; secret injection; OpenTofu plan/apply; production deployment. |
 | **Governing decisions** | ADR-AIEOS-048R1 (current naming); ADR-AIEOS-048 (historical/base non-naming authority). |
-| **Current status** | **Architecture Frozen / Approved.** Infrastructure WPI-AP-I01 / PR #12 remains **BLOCKED** until this ADR is merged and that PR is reconciled. Cloud / App / OCI / deployment mutation **not authorized**. |
+| **Current status** | **Architecture Frozen / Approved.** Current naming authority. Cloud / App / OCI / deployment mutation **not authorized**. |
+
+---
+
+## 15. ADR-AIEOS-048R2 — App Platform runtime ownership boundary
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Reject production OpenTofu ownership of DigitalOcean App Platform applications after empiric proof that provider 2.99.1 materializes out-of-band encrypted secrets into plan/state; move App lifecycle to a governed state-free deployment plane while preserving ADR-AIEOS-048/048R1 topology and naming. |
+| **Architectural reason** | WPI-AP-SV01 / WPI-AP-SV01R1 disposable validation classified **B. FAIL_OPEN_TOFU_SECRET_MATERIAL**: refresh-only plan JSON contained `EV[...]` for an out-of-band `SECRET` while HCL had zero env blocks. |
+| **What was implemented** | Architecture source only: [ADR-AIEOS-048R2](../decisions/ADR-AIEOS-048R2-aieos-app-platform-runtime-ownership-boundary.md) deposited. Production OpenTofu `digitalocean_app` ownership REJECTED. Encrypted `EV[...]` classified as secret material. State-free deployment plane required. ADR-048/048R1 historical bodies not rewritten. |
+| **What was deliberately NOT implemented** | Infrastructure reconciliation; deployment-plane implementation; App Platform apps; VPC creation; DOCR / OCI publication; secret injection; OpenTofu plan/apply; production deployment. |
+| **Governing decisions** | ADR-AIEOS-048R2 (current ownership/deployment); ADR-AIEOS-048R1 (current naming); ADR-AIEOS-048 (historical/base topology). |
+| **Current status** | **Architecture Frozen / Approved.** WPI-AP-SV01/R1 = FORMALLY CLOSED — FAIL_OPEN_TOFU_SECRET_MATERIAL. Merged Infrastructure App ownership = ARCHITECTURALLY SUPERSEDED — MUST REMAIN INACTIVE. Infrastructure reconciliation and WPI-AP-DP01 design = REQUIRED. Cloud / App / OCI / deployment mutation **not authorized**. |
 
 ---
 
