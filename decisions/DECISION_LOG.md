@@ -73,3 +73,4 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | ADR-AIEOS-048 | AIEOS First-Production App Runtime & OCI Delivery Contract | 2026-08-23 | Frozen / Approved | [ADR-AIEOS-048](ADR-AIEOS-048-aieos-first-production-app-runtime-oci-delivery-contract.md) |
 | ADR-AIEOS-048R1 | AIEOS App Platform Provider-Compliant Naming Revision | 2026-08-24 | Frozen / Approved | [ADR-AIEOS-048R1](ADR-AIEOS-048R1-aieos-app-platform-provider-compliant-naming.md) |
 | ADR-AIEOS-048R2 | AIEOS App Platform Runtime Ownership Boundary Revision | 2026-08-24 | Frozen / Approved | [ADR-AIEOS-048R2](ADR-AIEOS-048R2-aieos-app-platform-runtime-ownership-boundary.md) |
+| ADR-AIEOS-049 | AIEOS App Platform State-Free Deployment Plane | 2026-08-24 | Frozen / Approved | [ADR-AIEOS-049](ADR-AIEOS-049-aieos-app-platform-state-free-deployment-plane.md) |
