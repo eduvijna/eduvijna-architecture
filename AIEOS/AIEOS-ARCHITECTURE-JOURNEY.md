@@ -207,7 +207,20 @@ Conflict preference:
 | **What was implemented** | Architecture source only: [ADR-AIEOS-048R2](../decisions/ADR-AIEOS-048R2-aieos-app-platform-runtime-ownership-boundary.md) deposited. Production OpenTofu `digitalocean_app` ownership REJECTED. Encrypted `EV[...]` classified as secret material. State-free deployment plane required. ADR-048/048R1 historical bodies not rewritten. |
 | **What was deliberately NOT implemented** | Infrastructure reconciliation; deployment-plane implementation; App Platform apps; VPC creation; DOCR / OCI publication; secret injection; OpenTofu plan/apply; production deployment. |
 | **Governing decisions** | ADR-AIEOS-048R2 (current ownership/deployment); ADR-AIEOS-048R1 (current naming); ADR-AIEOS-048 (historical/base topology). |
-| **Current status** | **Architecture Frozen / Approved.** WPI-AP-SV01/R1 = FORMALLY CLOSED — FAIL_OPEN_TOFU_SECRET_MATERIAL. Merged Infrastructure App ownership = ARCHITECTURALLY SUPERSEDED — MUST REMAIN INACTIVE. Infrastructure reconciliation and WPI-AP-DP01 design = REQUIRED. Cloud / App / OCI / deployment mutation **not authorized**. |
+| **Current status** | **Architecture Frozen / Approved.** WPI-AP-SV01/R1 = FORMALLY CLOSED — FAIL_OPEN_TOFU_SECRET_MATERIAL. WPI-AP-I02 Infrastructure reconciliation = FORMALLY CLOSED. Detailed deployment-plane behavior = [ADR-AIEOS-049](../decisions/ADR-AIEOS-049-aieos-app-platform-state-free-deployment-plane.md). Cloud / App / OCI / deployment mutation **not authorized**. |
+
+---
+
+## 16. ADR-AIEOS-049 — App Platform state-free deployment plane
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Freeze the WPI-AP-DP01 design for the governed state-free App Platform deployment plane required by ADR-AIEOS-048R2: direct DigitalOcean REST release controller with one App per process/release, transient in-memory secret/`EV[...]` handling, exact allowlist reconciliation, durable per-App lease plus double-read fence, independent dispatcher/worker credentials and secrets, immutable OCI digest authority, native rollback, and redacted evidence. |
+| **Architectural reason** | After OpenTofu `digitalocean_app` ownership was rejected and removed (WPI-AP-I02), production App lifecycle requires an explicit state-free controller contract before any implementation. |
+| **What was implemented** | Architecture source only: [ADR-AIEOS-049](../decisions/ADR-AIEOS-049-aieos-app-platform-state-free-deployment-plane.md) deposited. Design frozen/approved. Historical ADR-048 / 048R1 / 048R2 bodies not rewritten. |
+| **What was deliberately NOT implemented** | Deployment-controller implementation; durable lease implementation; secret-delivery product selection; disposable live validation; production credentials; App/VPC/OCI/Temporal-key mutation; production deployment. |
+| **Governing decisions** | ADR-AIEOS-049 (current detailed deployment-plane behavior); ADR-AIEOS-048R2 (ownership boundary); ADR-AIEOS-048R1 (naming); ADR-AIEOS-048 (base topology). |
+| **Current status** | **Architecture Frozen / Approved.** Design frozen; implementation and disposable empirical validation = **REQUIRED / NOT AUTHORIZED**. Production App Platform deployment **not authorized**. |
 
 ---
 
