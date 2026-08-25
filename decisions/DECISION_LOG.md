@@ -75,3 +75,4 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | ADR-AIEOS-048R2 | AIEOS App Platform Runtime Ownership Boundary Revision | 2026-08-24 | Frozen / Approved | [ADR-AIEOS-048R2](ADR-AIEOS-048R2-aieos-app-platform-runtime-ownership-boundary.md) |
 | ADR-AIEOS-049 | AIEOS App Platform State-Free Deployment Plane | 2026-08-24 | Frozen / Approved | [ADR-AIEOS-049](ADR-AIEOS-049-aieos-app-platform-state-free-deployment-plane.md) |
 | ADR-AIEOS-050 | AIEOS App Platform Release Controller Implementation Architecture | 2026-08-24 | Frozen / Approved | [ADR-AIEOS-050](ADR-AIEOS-050-aieos-app-platform-release-controller-implementation-architecture.md) |
+| ADR-AIEOS-051 | AIEOS Backend Production OCI Build, Provenance & First-Publication Architecture | 2026-08-25 | Frozen / Approved | [ADR-AIEOS-051](ADR-AIEOS-051-aieos-backend-production-oci-build-provenance-first-publication-architecture.md) |
