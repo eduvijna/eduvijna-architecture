@@ -233,7 +233,20 @@ Conflict preference:
 | **What was implemented** | Architecture source only: [ADR-AIEOS-050](../decisions/ADR-AIEOS-050-aieos-app-platform-release-controller-implementation-architecture.md) deposited. WPI-AP-DP02 design complete/frozen. Historical ADR-048 / 048R1 / 048R2 / 049 bodies not rewritten. |
 | **What was deliberately NOT implemented** | Controller source; workflow YAML; GitHub Environments/secrets; DigitalOcean PATs; Temporal keys; WPI-AP-DP-TV01; production App bootstrap; any cloud/state mutation. |
 | **Governing decisions** | ADR-AIEOS-050 (current release-controller implementation architecture); ADR-AIEOS-049 (deployment-plane behavior); ADR-AIEOS-048R2 (ownership boundary); ADR-AIEOS-048R1 (naming); ADR-AIEOS-048 (base topology). |
-| **Current status** | **Architecture Frozen / Approved.** WPI-AP-DP02 = **DESIGN COMPLETE / FROZEN**; implementation = **NOT AUTHORIZED**; WPI-AP-DP-TV01 = **REQUIRED / NOT AUTHORIZED**; production App deployment **not authorized**. |
+| **Current status** | **Architecture Frozen / Approved.** WPI-AP-DP02 = **DESIGN COMPLETE / FROZEN**; implementation = **NOT AUTHORIZED**; WPI-AP-DP-TV01 = **AUTHORIZED BUT PAUSED ON OCI MANIFEST DIGEST** (see ADR-AIEOS-051); production App deployment **not authorized**. |
+
+---
+
+## 18. ADR-AIEOS-051 — Backend production OCI build, provenance & first-publication architecture
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Freeze the production Backend OCI build / provenance / first-publication architecture: one common `eduvijna-registry` / `aieos-backend` image for WORKFLOW_DISPATCHER and TEMPORAL_WORKER; exact clean Backend Git SHA source; future `Dockerfile.backend-runtime` (Python 3.14.7 / uv 0.12.4 / non-root / fail-closed default); OCI identity labels; sanitized provenance receipt; source-SHA tag convenience with immutable digest authority; separated WPI-OCI-I01 (source/offline) and WPI-OCI-P01 (live publication) gates. |
+| **Architectural reason** | ADR-048/049/050 require immutable OCI digest authority for App Platform release, but no production OCI build/provenance/publication architecture was frozen; TV01 is blocked on that digest. |
+| **What was implemented** | Architecture source only: [ADR-AIEOS-051](../decisions/ADR-AIEOS-051-aieos-backend-production-oci-build-provenance-first-publication-architecture.md) deposited. Historical ADR-048 / 048R1 / 048R2 / 049 / 050 bodies not rewritten. |
+| **What was deliberately NOT implemented** | Production Dockerfile; provenance tooling; offline CI; registry login; publication credential; OCI push/promote; TV01 App CREATE; App Platform mutation; production deployment. |
+| **Governing decisions** | ADR-AIEOS-051 (CURRENT Backend production OCI architecture); ADR-AIEOS-048 (base OCI delivery); ADR-AIEOS-049 / 050 (digest-consuming release plane). |
+| **Current status** | **Architecture Frozen / Approved.** Production Backend OCI architecture = **DESIGN FROZEN**. **WPI-OCI-I01** = AUTHORIZED **SOURCE / OFFLINE IMPLEMENTATION ONLY** (after deposition merge). **WPI-OCI-P01** = **NOT AUTHORIZED**. **WPI-AP-DP-TV01** = **AUTHORIZED BUT PAUSED ON OCI MANIFEST DIGEST**. Production deployment **not authorized**. |
 
 ---
 
