@@ -49,6 +49,7 @@ Labels used below:
 |------|--------|-------|
 | EBP-001.9 Wave 1 next-slice discovery & preflight | Proposed / under architecture review | Not implemented |
 | Persistence / Content SoR design for durable Review Queue | Proposed / under architecture review | Preflight: **DB CHANGE REQUIRED**; **DB creation NOT authorized** |
+| [ADR-AIEOS-052](../decisions/ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) — Prepare Tomorrow multi-artifact kit (TOS-DEV04) | **Proposed / Pending Approval** | Architecture deposition only; unlocks deferred ADR-047 orchestration **if approved**; does not authorize implementation |
 | Teacher OS behind `teacher_os_enabled` | Approved (flagged rollout path) | Default off pattern |
 
 ---
@@ -74,7 +75,7 @@ Until architecture authorization: treat “Approved Next” as **empty of newly 
 | Personalization / inferred preferences | Deferred | |
 | Agents | Deferred | ADR-044; not premature |
 | MCP | Deferred | ADR-044; not premature |
-| Full Orchestration / Prepare multi-artefact depth | Deferred | EBP-001 out-of-scope depth |
+| Full Orchestration / Prepare multi-artefact depth | Deferred → **Proposed ADR-AIEOS-052** | Was EBP-001 out-of-scope depth; architecture proposal deposited 2026-08-28; **not approved / not implemented** |
 | AI Assistant expansion | Deferred | Placeholder today |
 | Publishing / assign / send after Approved | Deferred | Approved ≠ Published |
 | Student OS / Parent OS / Principal OS (Wave 1) | Deferred | EBP-001 out of scope |

@@ -250,6 +250,19 @@ Conflict preference:
 
 ---
 
+## 19. ADR-AIEOS-052 — Preparation kit & multi-artifact generation architecture (PROPOSED)
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Propose architecture for Teacher OS TOS-DEV04 Prepare Tomorrow: one outcome action → `education.generate_preparation_kit` → one structured generation → atomic six-artifact Generic Content materialization → six IN_REVIEW admissions; provenance V2 with mandatory `artifact_kind`; no PreparationKit aggregate; no AI payload staging; no `generation_artifacts` canonical bridge. |
+| **Architectural reason** | Teacher OS ADR-047 deferred multi-artifact Prepare Tomorrow orchestration pending architecture review; TOS-DEV03 proved single-worksheet path but cannot express one execution → six governed artifacts without material architecture decisions. |
+| **What was implemented** | Architecture source only (Proposed): [ADR-AIEOS-052](../decisions/ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) deposited for review. |
+| **What was deliberately NOT implemented** | Backend; Frontend; migrations; OpenAPI; live provider proof; production Content catalog activation. |
+| **Governing decisions (if approved)** | ADR-AIEOS-027 (Content authority); ADR-AIEOS-026 (no workflow as SoR); Teacher OS ADR-044–048 (outcome-first, review semantics). |
+| **Current status** | **Proposed / Pending Approval — NOT Frozen / Approved.** Founder / Product Architecture approval required. **No DEV04 implementation authorized.** |
+
+---
+
 ## Gaps / missing chronology
 
 Where older pre-Teacher-OS platform history (earlier Platform AI packages, ERP modules, etc.) is relevant but not part of this AIEOS journey spine: **Not established by current repository evidence** as a fully sequenced AIEOS chronology in this folder — treat as adjacent capability history under product/API repos.

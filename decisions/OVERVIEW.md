@@ -74,6 +74,14 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | [ADR-AIEOS-045](ADR-AIEOS-045-aieos-dispatcher-tenant-candidate-discovery-authority.md) | AIEOS Dispatcher Tenant-Candidate Discovery Authority (Frozen / Approved — pending-work candidate discovery; dedicated NOBYPASSRLS candidate-reader boundary; no dispatcher BYPASSRLS; no cross-tenant payload visibility; does not authorize implementation or migration) |
 | [ADR-AIEOS-046](ADR-AIEOS-046-aieos-production-event-plane-identity-least-privilege-contract.md) | AIEOS Production Event Plane Identity & Least-Privilege Contract (Frozen / Approved — `AIEOS_EVENTS_PROD` / `io.eduvijna.aieos.>`; EVENT PUB `io.eduvijna.aieos.content.>`; JWT+NKey `.creds` via `AIEOS_EVENT_DISPATCHER_NATS_CREDENTIALS` in-memory callbacks; separate `streamadmin`; EVENT no `$JS.API` admin; does not authorize provisioning or Backend daemon) |
 
+### Proposed (pending approval)
+
+Architecture status: **Proposed / Pending Approval**. Not Frozen / Approved. Not implementation-authorized.
+
+| ID | Title |
+|----|-------|
+| [ADR-AIEOS-052](ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) | AIEOS Preparation Kit & Multi-Artifact Generation Architecture — TOS-DEV04 Prepare Tomorrow depth; one `education.generate_preparation_kit` execution → six governed ContentVersions via provenance V2; atomic Content materialization; no payload staging; no `generation_artifacts`; unlocks deferred multi-artifact orchestration from Teacher OS ADR-047 |
+
 ## Exclusions
 
 - Informal chat decisions without recorded process
