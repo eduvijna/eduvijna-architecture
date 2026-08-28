@@ -2,7 +2,7 @@
 id: ADR-AIEOS-052
 title: AIEOS Preparation Kit & Multi-Artifact Generation Architecture
 owner: EduVijna Enterprise Architecture Office · Chief AI Enterprise Architect
-status: proposed
+status: approved
 version: 1.0.1
 created: 2026-08-28
 last_updated: 2026-08-28
@@ -13,15 +13,15 @@ reviewers:
 
 # ADR-AIEOS-052 — AIEOS Preparation Kit & Multi-Artifact Generation Architecture
 
-**Status:** Proposed / Pending Approval  
+**Status:** Frozen / Approved  
 **Date:** 2026-08-28  
 **Related:** [ADR-AIEOS-024](ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md) · [ADR-AIEOS-025](ADR-AIEOS-025-aieos-api-contract-integration-implementation-baseline.md) · [ADR-AIEOS-026](ADR-AIEOS-026-aieos-workflow-implementation-baseline.md) · [ADR-AIEOS-027](ADR-AIEOS-027-aieos-generic-content-implementation-baseline.md) · [ADR-AIEOS-028](ADR-AIEOS-028-security-audit-mutation-accountability.md) · [ADR-044](ADR-044-ai-platform-behind-stable-services.md) · [ADR-045](ADR-045-teaching-intent-owns-goals.md) · [ADR-046](ADR-046-artifact-status-lifecycle.md) · [ADR-047](ADR-047-outcome-first-prepare-tomorrow.md) · [ADR-048](ADR-048-review-queue-owns-approval.md)
 
-**Catalogue note:** **Proposed / Pending Approval** is **NOT** Frozen / Approved. This ADR proposes the architecture for Teacher OS **TOS-DEV04 — Prepare Tomorrow Depth**. It does **not** authorize Backend implementation, Frontend implementation, database migration, OpenAPI change, live provider call, or production Content catalog activation. Founder / Product Architecture approval is required before freeze.
+**Catalogue note:** Frozen / Approved is **ARCHITECTURE AUTHORITY ONLY**. This ADR freezes the **AIEOS Preparation Kit & Multi-Artifact Generation Architecture** for Teacher OS **TOS-DEV04 — Prepare Tomorrow Depth**. Founder / Product Architecture approval was granted **2026-08-28**. Architecture freeze **does not** authorize Backend implementation, Frontend implementation, database migration, OpenAPI change, live provider call, or production Content catalog activation. Implementation slices require separate Chief Architect authorization gates per slice — including **DEV04-I10** live provider proof.
 
 **ID family note:** `ADR-AIEOS-052` is part of the AIEOS platform ADR family (`ADR-AIEOS-*`). It is **distinct** from Teacher OS **ADR-047** (Outcome-first Prepare Tomorrow). Teacher OS ADR-047 expresses product language and outcome intent; this ADR freezes platform execution, Content, provenance, and API boundaries for multi-artifact preparation. Platform **ADR-AIEOS-047** (Production Workflow Plane Identity) is also a distinct decision.
 
-**Supersedes / unlocks:** Teacher OS ADR-047 deferred multi-artifact Prepare Tomorrow orchestration pending architecture review. This ADR, **if approved**, unlocks that deferred orchestration for the TOS-DEV04 development slice only — not for production deployment by itself.
+**Supersedes / unlocks:** Teacher OS ADR-047 deferred multi-artifact Prepare Tomorrow orchestration pending architecture review. This ADR **unlocks** that deferred orchestration architecture for the TOS-DEV04 development slice — **not** for production deployment or implementation by architecture freeze alone.
 
 ---
 
@@ -65,7 +65,7 @@ That fence prevents a successful `education.generate_worksheet` run from coexist
 
 Generic Content ([ADR-AIEOS-027](ADR-AIEOS-027-aieos-generic-content-implementation-baseline.md)) remains the sole authoritative artifact payload and version System of Record. Workflow history ([ADR-AIEOS-026](ADR-AIEOS-026-aieos-workflow-implementation-baseline.md)) is not Content authority. Provider responses are not business authority.
 
-This ADR proposes how **one preparation execution** produces **many governed ContentVersions** without introducing a second Content SoR, without durable full-kit payload staging in the AI schema, and without a `PreparationKit` business aggregate in DEV04.
+This ADR freezes how **one preparation execution** produces **many governed ContentVersions** without introducing a second Content SoR, without durable full-kit payload staging in the AI schema, and without a `PreparationKit` business aggregate in DEV04.
 
 ---
 
@@ -782,9 +782,9 @@ Revisit Temporal only if future behavior crosses [ADR-AIEOS-026](ADR-AIEOS-026-a
 - Future selective regeneration may require PreparationKit or equivalent resource evolution
 - Kit-level UX grouping in Review Queue remains a product projection concern, not a new approval authority
 
-### Implementation consequences (not authorized by this Proposed ADR)
+### Implementation consequences (not authorized by architecture freeze alone)
 
-Future implementation, **after freeze and separate authorization**, may include:
+Future implementation, **after separate Chief Architect authorization**, may include:
 
 - `AIGenerationProvenanceV2`
 - plural repository query by `generation_run_id`
@@ -804,7 +804,9 @@ Future implementation, **after freeze and separate authorization**, may include:
 
 ---
 
-## Recommended implementation slicing (after freeze)
+## Recommended implementation slicing
+
+Implementation slices require separate authorization after this ADR merges:
 
 | Slice | Scope |
 |-------|-------|
@@ -833,12 +835,14 @@ Future implementation, **after freeze and separate authorization**, may include:
 
 ## Compliance
 
-Until this ADR is Frozen / Approved:
+Frozen / Approved architecture **does not** authorize:
 
-- No DEV04 Backend or Frontend implementation is authorized by this document.
-- No database migration is authorized.
-- No OpenAPI change is authorized.
-- No live provider call is authorized.
-- DEV03 paths must remain functional.
+- DEV04 Backend or Frontend implementation by this document alone.
+- database migration implementation.
+- OpenAPI implementation change.
+- live provider call or credential creation.
+- production Content catalog activation.
 
-After Founder / Product Architecture approval and explicit freeze, implementation slices require separate Chief Architect authorization gates per slice — including **DEV04-I10** live provider proof.
+DEV03 paths must remain functional.
+
+Implementation slices require separate Chief Architect authorization gates per slice — including **DEV04-I10** live provider proof.

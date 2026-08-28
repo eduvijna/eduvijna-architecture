@@ -73,14 +73,7 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | [ADR-AIEOS-044R2](ADR-AIEOS-044R2-aieos-production-state-region-availability-resolution.md) | AIEOS Production State Region Availability Resolution (state authority → SFO3 / `eduvijna-aieos-tofu-state-prod-sfo3`; workload remains BLR1; Stage 1 bucket bootstrap + Stage 2 backend initialization completed; Stage 3A refresh-only/live-lock validation completed; Stage 3B first authoritative state materialization completed with zero managed resources; normal workload apply remains unauthorized) |
 | [ADR-AIEOS-045](ADR-AIEOS-045-aieos-dispatcher-tenant-candidate-discovery-authority.md) | AIEOS Dispatcher Tenant-Candidate Discovery Authority (Frozen / Approved — pending-work candidate discovery; dedicated NOBYPASSRLS candidate-reader boundary; no dispatcher BYPASSRLS; no cross-tenant payload visibility; does not authorize implementation or migration) |
 | [ADR-AIEOS-046](ADR-AIEOS-046-aieos-production-event-plane-identity-least-privilege-contract.md) | AIEOS Production Event Plane Identity & Least-Privilege Contract (Frozen / Approved — `AIEOS_EVENTS_PROD` / `io.eduvijna.aieos.>`; EVENT PUB `io.eduvijna.aieos.content.>`; JWT+NKey `.creds` via `AIEOS_EVENT_DISPATCHER_NATS_CREDENTIALS` in-memory callbacks; separate `streamadmin`; EVENT no `$JS.API` admin; does not authorize provisioning or Backend daemon) |
-
-### Proposed (pending approval)
-
-Architecture status: **Proposed / Pending Approval**. Not Frozen / Approved. Not implementation-authorized.
-
-| ID | Title |
-|----|-------|
-| [ADR-AIEOS-052](ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) | AIEOS Preparation Kit & Multi-Artifact Generation Architecture — TOS-DEV04 Prepare Tomorrow depth; capability/revision-aware GenerationRun fences; provenance V2; atomic Content materialization; DEV03 worksheet coexistence; no payload staging; no `generation_artifacts`; unlocks deferred multi-artifact orchestration from Teacher OS ADR-047 |
+| [ADR-AIEOS-052](ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) | AIEOS Preparation Kit & Multi-Artifact Generation Architecture (Frozen / Approved — TOS-DEV04 Prepare Tomorrow; `education.generate_preparation_kit`; provenance V2 `artifact_kind`; capability/revision-aware GenerationRun fences; atomic six-artifact Content UoW; deterministic Answer Key; DEV03 worksheet coexistence; no payload staging; no `generation_artifacts`; distinct from Teacher OS ADR-047; architecture freeze ≠ implementation) |
 
 ## Exclusions
 
