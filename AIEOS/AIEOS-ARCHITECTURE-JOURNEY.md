@@ -250,6 +250,19 @@ Conflict preference:
 
 ---
 
+## 19. ADR-AIEOS-052 — Preparation kit & multi-artifact generation architecture
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Freeze architecture for Teacher OS TOS-DEV04 Prepare Tomorrow: one outcome action → `education.generate_preparation_kit` → atomic six-artifact Generic Content materialization; provenance V2 with mandatory `artifact_kind`; capability/revision-aware GenerationRun fences (DEV03 worksheet coexistence); FAILED terminal replay vs stale RUNNING reclaim; no PreparationKit aggregate; no AI payload staging; no `generation_artifacts` canonical bridge. |
+| **Architectural reason** | Teacher OS ADR-047 deferred multi-artifact Prepare Tomorrow orchestration pending architecture review; TOS-DEV03 proved single-worksheet path but cannot express one execution → six governed artifacts without material architecture decisions. |
+| **What was implemented** | Architecture source only: [ADR-AIEOS-052](../decisions/ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) deposited and Frozen / Approved **2026-08-28**. |
+| **What was deliberately NOT implemented** | Backend; Frontend; migrations; OpenAPI; live provider proof; production Content catalog activation. |
+| **Governing decisions** | ADR-AIEOS-052 (CURRENT multi-artifact Prepare Tomorrow architecture); ADR-AIEOS-027 (Content authority); ADR-AIEOS-026 (no workflow as SoR); Teacher OS ADR-044–048 (outcome-first, review semantics). |
+| **Current status** | **Architecture Frozen / Approved.** Multi-artifact Prepare Tomorrow architecture = **DESIGN FROZEN**. **TOS-DEV04 implementation = NOT AUTHORIZED / NOT IMPLEMENTED.** Live provider proof requires separate gate (**DEV04-I10**). |
+
+---
+
 ## Gaps / missing chronology
 
 Where older pre-Teacher-OS platform history (earlier Platform AI packages, ERP modules, etc.) is relevant but not part of this AIEOS journey spine: **Not established by current repository evidence** as a fully sequenced AIEOS chronology in this folder — treat as adjacent capability history under product/API repos.

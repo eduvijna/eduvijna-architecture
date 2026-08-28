@@ -59,10 +59,13 @@ No new implementation slice is recorded here as **Approved** solely because disc
 
 | Item | Status | Notes |
 |------|--------|-------|
-| Review Queue ↔ Existing Generators Integration (derived EBP-001.9 candidate) | **Proposed** | Blueprint Wave 1 acceptance gap; requires architecture authorization before build; may require Content SoR decision first |
+| [ADR-AIEOS-052](../decisions/ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) — Prepare Tomorrow multi-artifact kit architecture (TOS-DEV04) | **Architecture Frozen / Approved** | Founder / Product Architecture approval **2026-08-28**; unlocks deferred ADR-047 orchestration architecture; **TOS-DEV04 implementation NOT authorized / NOT implemented** |
+| TOS-DEV04 source implementation (DEV04-I01 … I09) | **Not authorized** | Requires separate Chief Architect slice authorization after ADR merge |
+| TOS-DEV04 live provider proof (DEV04-I10) | **Not authorized** | Separate gate |
+| Review Queue ↔ Existing Generators Integration (derived EBP-001.9 candidate) | **Proposed** | Blueprint Wave 1 acceptance gap; may require Content SoR decision first |
 | Sprint 4 hardening / GA readiness (EBP-001) | **Proposed** (blueprint) | After durable generate→queue path exists |
 
-Until architecture authorization: treat “Approved Next” as **empty of newly authorized build work**.
+Architecture for multi-artifact Prepare Tomorrow is now Frozen / Approved. **No TOS-DEV04 implementation slice is authorized here.**
 
 ---
 
@@ -74,7 +77,6 @@ Until architecture authorization: treat “Approved Next” as **empty of newly 
 | Personalization / inferred preferences | Deferred | |
 | Agents | Deferred | ADR-044; not premature |
 | MCP | Deferred | ADR-044; not premature |
-| Full Orchestration / Prepare multi-artefact depth | Deferred | EBP-001 out-of-scope depth |
 | AI Assistant expansion | Deferred | Placeholder today |
 | Publishing / assign / send after Approved | Deferred | Approved ≠ Published |
 | Student OS / Parent OS / Principal OS (Wave 1) | Deferred | EBP-001 out of scope |
