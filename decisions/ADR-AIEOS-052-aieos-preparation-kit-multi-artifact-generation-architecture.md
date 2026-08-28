@@ -3,7 +3,7 @@ id: ADR-AIEOS-052
 title: AIEOS Preparation Kit & Multi-Artifact Generation Architecture
 owner: EduVijna Enterprise Architecture Office · Chief AI Enterprise Architect
 status: proposed
-version: 1.0.0
+version: 1.0.1
 created: 2026-08-28
 last_updated: 2026-08-28
 reviewers:
@@ -52,6 +52,16 @@ Current platform evidence (TOS-DEV03 merged source) exposes a structural mismatc
 | `POST …/actions/generate` response | Singular `artifact` | Six artifacts or kit envelope |
 | `GET …/artifacts` | Plural list, singular backing | All kit artifacts for a preparation run |
 | Content provenance uniqueness | At most one AI version per `generation_run_id` | At most one AI version per `generation_run_id` + `artifact_kind` |
+| GenerationRun work fence (DEV03) | At most one `RUNNING`/`SUCCEEDED` run per `work_resource_id` | Capability/revision-aware fences (see §7) |
+
+The merged DEV03 migration establishes conceptually:
+
+```text
+UNIQUE(tenant_id, work_resource_id)
+WHERE status IN ('RUNNING', 'SUCCEEDED')
+```
+
+That fence prevents a successful `education.generate_worksheet` run from coexisting with a later `education.generate_preparation_kit` run for the same Teaching Work — violating additive DEV03/DEV04 compatibility. DEV04 requires explicit semantic evolution of this fence (§7).
 
 Generic Content ([ADR-AIEOS-027](ADR-AIEOS-027-aieos-generic-content-implementation-baseline.md)) remains the sole authoritative artifact payload and version System of Record. Workflow history ([ADR-AIEOS-026](ADR-AIEOS-026-aieos-workflow-implementation-baseline.md)) is not Content authority. Provider responses are not business authority.
 
@@ -219,7 +229,110 @@ Existing DEV03 V1 ContentVersions and V1 parsing MUST remain valid.
 
 Exact SQL/index text is an implementation concern. The **semantic uniqueness contract** above is architecture-binding.
 
-### 7. GenerationRun compatibility
+### 7. GenerationRun work-execution fence evolution
+
+DEV03 establishes `uq_ai_generation_runs_work_active_or_succeeded`, which conceptually enforces at most one `RUNNING` or `SUCCEEDED` `GenerationRun` per `tenant_id + work_resource_id` regardless of capability or Work revision.
+
+DEV04 requires **replacement/evolution** of that semantic fence with **two** architecture invariants. Exact PostgreSQL index names and SQL are implementation concerns. The migration MUST preserve existing DEV03 `GenerationRun` history.
+
+#### Fence A — Work revision + capability outcome fence
+
+For a given:
+
+```text
+tenant
+Teaching Work (work_resource_id)
+exact Work revision (work_resource_revision)
+capability_id
+```
+
+there may be at most **one** `GenerationRun` in `RUNNING` **or** `SUCCEEDED`.
+
+Conceptual invariant:
+
+```text
+UNIQUE(
+  tenant_id,
+  work_resource_id,
+  work_resource_revision,
+  capability_id
+)
+WHERE status IN ('RUNNING', 'SUCCEEDED')
+```
+
+This ensures:
+
+- the same preparation capability cannot create duplicate kit outcomes for one Work revision;
+- a `SUCCEEDED` preparation blocks another preparation for that same Work revision and capability;
+- a later refined Work revision MAY produce a new preparation outcome;
+- provider/model changes do not create a parallel business outcome for the same capability/revision (`provider_id` and `model_id` remain fingerprint/provenance dimensions only).
+
+#### Fence B — Single active execution per Work + capability
+
+For a given:
+
+```text
+tenant
+Teaching Work (work_resource_id)
+capability_id
+```
+
+there may be at most **one** `RUNNING` execution **across Work revisions**.
+
+Conceptual invariant:
+
+```text
+UNIQUE(
+  tenant_id,
+  work_resource_id,
+  capability_id
+)
+WHERE status = 'RUNNING'
+```
+
+**Reason:** If Work revision R0 is being prepared and the teacher refines the Work to R1 during the provider call, do **not** permit a second simultaneous preparation provider execution for R1. The first execution remains bound to its exact claimed Work revision R0. Once that execution becomes terminal or is recovered, a later revision MAY prepare independently.
+
+### 8. DEV03 and DEV04 capability coexistence
+
+Explicitly:
+
+```text
+education.generate_worksheet
+```
+
+and:
+
+```text
+education.generate_preparation_kit
+```
+
+are **distinct capabilities**.
+
+Therefore they **MAY** each have a successful `GenerationRun` for the same Teaching Work **and** the same Work revision, because the `capability_id` values differ.
+
+This is **required** for additive DEV03 compatibility.
+
+Do **not** treat `provider_id` or `model_id` as the business outcome partition. They MUST NOT permit two successful preparation kits for the same Work + revision + preparation capability.
+
+### 9. Work refinement during preparation
+
+**Scenario:** Preparation run A claims Work revision R0 and is `RUNNING`. The teacher refines the Teaching Work to revision R1.
+
+Required semantics:
+
+1. Run A remains bound to R0.
+2. If A succeeds, its provenance references the exact Work revision R0 in `source_refs`.
+3. While A remains `RUNNING`, another `education.generate_preparation_kit` execution for the same Work is blocked by Fence B (single active execution per Work + capability).
+4. After A becomes terminal:
+   - if A `SUCCEEDED` for R0, R1 MAY subsequently have its own preparation execution (Fence A is revision-scoped);
+   - if A `FAILED`, R1 MAY subsequently execute;
+   - if A is stale `RUNNING`, normal lease recovery resolves A before another active preparation execution proceeds.
+5. Do **not** rewrite or silently rebind A from R0 to R1.
+6. Work artifact projections MUST preserve exact source revision provenance so historical artifacts cannot masquerade as artifacts generated from a newer revision.
+
+Frontend stale-artifact UX is out of scope for this ADR.
+
+### 10. GenerationRun compatibility
 
 `GenerationRun` is **not** redesigned into a Content aggregate.
 
@@ -247,7 +360,7 @@ remain compatible with DEV03 worksheet generation.
 
 Future deprecation or removal of singular fields is **not** part of DEV04.
 
-### 8. Atomic materialization — binding DEV04 decision
+### 11. Atomic materialization — binding DEV04 decision
 
 After the model returns and **all** typed schema validation and Educational Quality validation pass:
 
@@ -274,7 +387,7 @@ This is intentionally stricter and simpler than partial-kit recovery alternative
 
 Per-artifact invalid partial `ContentVersion` creation remains **forbidden** ([ADR-AIEOS-027](ADR-AIEOS-027-aieos-generic-content-implementation-baseline.md)).
 
-### 9. Kit state (derived — no durable PARTIAL)
+### 12. Kit state (derived — no durable PARTIAL)
 
 Because Content materialization is atomic, DEV04 baseline kit states are **conceptual** and **derived**:
 
@@ -294,23 +407,57 @@ PARTIALLY_READY
 
 DEV04 baseline does **not** add a new `GenerationRun` status.
 
-### 10. Failure and recovery semantics
+### 13. Failure and recovery semantics
 
-| Scenario | Durable outcome | Teacher visibility | Provider re-call |
-|----------|-----------------|--------------------|--------------------|
-| **A.** Provider fails | `GenerationRun` → `FAILED`; zero kit ContentVersions | Failure | Allowed on new attempt per idempotency rules |
-| **B.** Structured output invalid / incomplete / missing | `FAILED`; zero kit ContentVersions | Failure detail | Allowed on stale reclaim if no committed Content |
-| **C.** Educational Quality fails (component or coherence) | `FAILED`; zero kit ContentVersions | EQ detail | Allowed on stale reclaim if no committed Content |
-| **D.** Content batch transaction fails | Rollback all six; `FAILED`; zero kit ContentVersions | Failure | Allowed on stale reclaim if no committed Content |
-| **E.** Crash before Content transaction commits | Zero committed ContentVersions; stale `RUNNING` | None or in-progress until lease resolves | **Acceptable:** stale recovery with zero committed Content may require a new provider execution |
-| **F.** Content transaction commits all six; crash before `GenerationRun` finalize | Six authoritative ContentVersions exist | Kit artifacts visible via Content queries | **No** — reconcile and finalize `SUCCEEDED` |
-| **G.** HTTP response lost after success | Same-key replay | Full kit | **No** — zero new Content; zero provider call |
+`GenerationRun` in `FAILED` is **terminal**. It is **not** stale-reclaimed. Once a run is durably marked `FAILED`, same idempotency key + same fingerprint replays the same durable failure with **zero** provider calls and **zero** new Content — preserving DEV03 idempotency expectations.
 
-Because generated output is intentionally **not** stored durably in the AI schema, scenario **E** may require repeating provider generation. That is acceptable DEV04 behavior and is preferable to introducing a second payload SoR.
+Stale reclaim applies **only** to `RUNNING` runs with an **expired lease**. It is **not** the same as retrying a `FAILED` `GenerationRun`.
 
-Scenario **F** recovery: stale or same-key replay queries Content by `generation_run_id`, validates the exact six `artifact_kind` set, finalizes the same `GenerationRun` as `SUCCEEDED`, returns the same six IDs — zero provider call.
+#### Terminal failure scenarios
 
-### 11. Idempotency and concurrency
+For provider unavailable, request rejected, model output incomplete/missing/invalid, Educational Quality failure, or Content batch failure:
+
+| Outcome | Provider re-call on same key |
+|---------|------------------------------|
+| `GenerationRun` → `FAILED`; zero kit ContentVersions | **No** — same key replays failure |
+
+#### Stale RUNNING reclaim
+
+A stale `RUNNING` run with **zero** committed DEV04 ContentVersions MAY be reclaimed (lease expired). Because ADR-052 rejects durable generated-payload staging, the reclaimed execution **MAY** need to call the provider again. That is acceptable and is **not** a `FAILED`-run retry.
+
+#### Post-Content-commit crash (provider-free recovery)
+
+If all six ContentVersions and review admissions committed atomically, but the process crashes before `GenerationRun` finalization:
+
+- `GenerationRun` may still be stale `RUNNING`.
+- Recovery MUST query Content provenance V2 by `generation_run_id`.
+- Recovery MUST require the exact six `artifact_kind` values as the authoritative committed set.
+- Recovery MUST finalize the **same** `GenerationRun` as `SUCCEEDED`.
+- Recovery MUST return the same six IDs with **zero** provider calls.
+- No new result bridge table. No AI payload staging.
+
+#### Retry after FAILED
+
+A genuinely **new** retry after `FAILED` requires a **new** idempotency key. Because `FAILED` releases the Fence A active/succeeded slot, a new run MAY be created subject to normal authorization and concurrency rules — provided:
+
+- no `RUNNING` run exists for the Work + capability (Fence B);
+- no `SUCCEEDED` run already exists for the exact Work revision + capability (Fence A).
+
+Do **not** invent automatic retry loops. Do **not** automatically call the provider from a replay of a `FAILED` key.
+
+#### Scenario reference table
+
+| Scenario | Durable outcome | Same-key replay | New-key after FAILED |
+|----------|-----------------|-----------------|----------------------|
+| Provider / model failure | `FAILED`; zero Content | Replay failure; zero provider | New attempt permitted if fences allow |
+| Structured output invalid | `FAILED`; zero Content | Replay failure; zero provider | New attempt permitted if fences allow |
+| EQ failure | `FAILED`; zero Content | Replay failure; zero provider | New attempt permitted if fences allow |
+| Content batch failure | Rollback; `FAILED`; zero Content | Replay failure; zero provider | New attempt permitted if fences allow |
+| Crash before Content commit | Stale `RUNNING`; zero Content | Stale reclaim MAY re-call provider | N/A until terminal |
+| Content committed; crash before finalize | Six Content exist; stale `RUNNING` | Reconcile → `SUCCEEDED`; zero provider | N/A |
+| HTTP response lost after success | `SUCCEEDED` | Same six IDs; zero provider | Blocked if Fence A succeeded |
+
+### 14. Idempotency and concurrency
 
 Retain DEV03 fingerprint concepts.
 
@@ -324,16 +471,23 @@ provider_id
 model_id
 ```
 
-| Condition | Behavior |
-|-----------|----------|
-| Same idempotency key + same fingerprint + `SUCCEEDED` | Return same run and same exact six artifacts; zero model calls; zero new Content rows |
-| Same key + different fingerprint | Conflict |
-| Different key after `SUCCEEDED` preparation for same Work revision | Must not create a second baseline kit; return existing-generation conflict per stable Teaching error semantics |
-| Concurrent callers | At most one `RUNNING`/`SUCCEEDED` preparation fence for the same Work revision |
+#### Idempotency matrix
 
-DEV04 does **not** invent regeneration semantics. Future selective or whole-kit regeneration requires separate architecture review.
+| Condition | Behavior | Provider call | New Content |
+|-----------|----------|---------------|-------------|
+| Same key + `RUNNING` + fresh lease | `work_generation_in_progress` for competing caller | Zero from competing caller | None |
+| Same key + `RUNNING` + stale lease + zero Content | Reclaim permitted | Provider **may** be called again on reclaim | None until success path |
+| Same key + `RUNNING` + stale lease + complete six Content | Reconcile → `SUCCEEDED` | Zero | None |
+| Same key + `SUCCEEDED` | Return same exact six artifacts | Zero | Zero |
+| Same key + `FAILED` | Replay same durable failure | Zero | Zero |
+| Same key + different fingerprint | Idempotency conflict | Zero | None |
+| Different key + same Work revision + same capability + `SUCCEEDED` | Existing-generation conflict | Zero | None |
+| Different key + prior `FAILED` run | New attempt permitted if Fence A/B allow | Per new execution rules | Per new execution |
+| DEV03 worksheet + DEV04 preparation, same Work revision | Both permitted | Independent per capability | Independent per capability |
 
-### 12. Preparation capability
+Fence semantics (§7) govern concurrency. DEV04 does **not** invent regeneration semantics. Future selective or whole-kit regeneration requires separate architecture review.
+
+### 15. Preparation capability
 
 Freeze native provider-neutral capability:
 
@@ -362,7 +516,7 @@ DEV04 Prepare Tomorrow is **additive**.
 
 Orchestration is a bounded synchronous application service behind stable product APIs ([ADR-044](ADR-044-ai-platform-behind-stable-services.md)).
 
-### 13. Provider execution strategy
+### 16. Provider execution strategy
 
 Freeze:
 
@@ -389,7 +543,7 @@ Architecture requires only:
 - no frontend provider selection;
 - no provider SDK imports outside provider adapters.
 
-### 14. Typed preparation output — PreparationKitV1
+### 17. Typed preparation output — PreparationKitV1
 
 Conceptual provider-neutral capability output envelope:
 
@@ -418,7 +572,7 @@ Shared learning objectives are canonical within the kit. Component drafts refere
 
 Question IDs must be unique within the preparation result or namespaced by artifact kind.
 
-### 15. Answer key
+### 18. Answer key
 
 `answer_key` is a **separate governed Content artifact** in the teacher's preparation kit.
 
@@ -435,7 +589,7 @@ During materialization, where implementation permits, bind the answer key to the
 
 No answer-key entry may reference a nonexistent question.
 
-### 16. Worksheet compatibility
+### 19. Worksheet compatibility
 
 Retain:
 
@@ -451,7 +605,7 @@ If `PreparationKitV1` uses a normalized shared-objective draft shape internally,
 
 DEV03 worksheet behavior must not regress.
 
-### 17. New Content types (development only)
+### 20. New Content types (development only)
 
 DEV04 candidate **development** Content types and schema identities:
 
@@ -468,7 +622,7 @@ Naming follows the existing DEV03 convention (`education.worksheet@1`).
 
 This ADR does **not** activate production Content catalog registration.
 
-### 18. Teacher notes and answer key audience
+### 21. Teacher notes and answer key audience
 
 `teacher_notes` and `answer_key` are **teacher-facing governed Content**.
 
@@ -480,7 +634,7 @@ Do **not** encode audience semantics inside free-text description fields alone. 
 
 Any public learner-delivery policy for these types remains separate from DEV04 if the existing catalog cannot express it safely.
 
-### 19. Educational Quality
+### 22. Educational Quality
 
 Require **both**:
 
@@ -513,7 +667,7 @@ Subjective heuristics MUST NOT be frozen as hard failures without a deterministi
 
 Warnings MAY exist but MUST NOT silently convert a hard invariant into a pass.
 
-### 20. Review
+### 23. Review
 
 Successful DEV04 kit baseline produces:
 
@@ -534,7 +688,7 @@ Approved ≠ Published
 
 ([ADR-048](ADR-048-review-queue-owns-approval.md), [ADR-AIEOS-027](ADR-AIEOS-027-aieos-generic-content-implementation-baseline.md))
 
-### 21. API evolution
+### 24. API evolution
 
 Preserve existing:
 
@@ -575,7 +729,7 @@ GET /api/v1/teaching/works/{work_id}/artifacts
 
 remains the authoritative Work artifact projection surface and MUST be extended to return all Content results bound to preparation runs, including `artifact_kind` and derived kit status.
 
-### 22. No PreparationKit aggregate yet
+### 25. No PreparationKit aggregate yet
 
 Defer a durable Teaching-domain **PreparationKit** aggregate.
 
@@ -597,7 +751,7 @@ A future **PreparationKit** aggregate MAY become justified when product requirem
 
 That requires separate architecture review.
 
-### 23. Temporal
+### 26. Temporal
 
 Do **not** introduce Temporal in DEV04 baseline.
 
@@ -624,7 +778,7 @@ Revisit Temporal only if future behavior crosses [ADR-AIEOS-026](ADR-AIEOS-026-a
 - Content batch transaction is larger and longer-held
 - Failure during artifact 6 materialization rolls back artifacts 1–5 within the same transaction attempt
 - Stale recovery **before** Content commit may require repeating provider generation
-- V2 provenance and version-aware uniqueness index migration is required
+- V2 provenance, version-aware Content uniqueness index, and capability/revision-aware GenerationRun fence migration are required
 - Future selective regeneration may require PreparationKit or equivalent resource evolution
 - Kit-level UX grouping in Review Queue remains a product projection concern, not a new approval authority
 
@@ -634,7 +788,8 @@ Future implementation, **after freeze and separate authorization**, may include:
 
 - `AIGenerationProvenanceV2`
 - plural repository query by `generation_run_id`
-- version-aware unique indexes
+- version-aware unique indexes on `content.content_versions` provenance
+- **evolution of `uq_ai_generation_runs_work_active_or_succeeded`** to Fence A (revision + capability outcome) and Fence B (single active execution per Work + capability) semantics — preserving existing DEV03 `GenerationRun` history
 - batch AI Content materialization-for-review service
 - `PreparationKitV1` and typed drafts
 - deterministic `AnswerKeyV1` builder
@@ -654,7 +809,7 @@ Future implementation, **after freeze and separate authorization**, may include:
 | Slice | Scope |
 |-------|-------|
 | **DEV04-I01** | Typed PreparationKit contracts + provenance V2 contracts |
-| **DEV04-I02** | Content persistence migration: version-aware uniqueness + plural provenance queries |
+| **DEV04-I02** | Content + GenerationRun persistence migration: version-aware Content uniqueness, capability/revision-aware fences, plural provenance queries |
 | **DEV04-I03** | Atomic six-artifact Content materialization service |
 | **DEV04-I04** | `GeneratePreparationKitCapability` + deterministic answer-key builder |
 | **DEV04-I05** | Preparation Educational Quality / coherence baseline |

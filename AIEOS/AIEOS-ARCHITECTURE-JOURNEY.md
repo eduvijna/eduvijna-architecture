@@ -254,7 +254,7 @@ Conflict preference:
 
 | Field | Content |
 |-------|---------|
-| **Objective** | Propose architecture for Teacher OS TOS-DEV04 Prepare Tomorrow: one outcome action → `education.generate_preparation_kit` → one structured generation → atomic six-artifact Generic Content materialization → six IN_REVIEW admissions; provenance V2 with mandatory `artifact_kind`; no PreparationKit aggregate; no AI payload staging; no `generation_artifacts` canonical bridge. |
+| **Objective** | Propose architecture for Teacher OS TOS-DEV04 Prepare Tomorrow: one outcome action → `education.generate_preparation_kit` → atomic six-artifact Generic Content materialization; provenance V2 with mandatory `artifact_kind`; capability/revision-aware GenerationRun fences (DEV03 worksheet coexistence); FAILED terminal replay vs stale RUNNING reclaim; no PreparationKit aggregate; no AI payload staging; no `generation_artifacts` canonical bridge. |
 | **Architectural reason** | Teacher OS ADR-047 deferred multi-artifact Prepare Tomorrow orchestration pending architecture review; TOS-DEV03 proved single-worksheet path but cannot express one execution → six governed artifacts without material architecture decisions. |
 | **What was implemented** | Architecture source only (Proposed): [ADR-AIEOS-052](../decisions/ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) deposited for review. |
 | **What was deliberately NOT implemented** | Backend; Frontend; migrations; OpenAPI; live provider proof; production Content catalog activation. |

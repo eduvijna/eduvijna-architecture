@@ -80,7 +80,7 @@ Architecture status: **Proposed / Pending Approval**. Not Frozen / Approved. Not
 
 | ID | Title |
 |----|-------|
-| [ADR-AIEOS-052](ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) | AIEOS Preparation Kit & Multi-Artifact Generation Architecture — TOS-DEV04 Prepare Tomorrow depth; one `education.generate_preparation_kit` execution → six governed ContentVersions via provenance V2; atomic Content materialization; no payload staging; no `generation_artifacts`; unlocks deferred multi-artifact orchestration from Teacher OS ADR-047 |
+| [ADR-AIEOS-052](ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) | AIEOS Preparation Kit & Multi-Artifact Generation Architecture — TOS-DEV04 Prepare Tomorrow depth; capability/revision-aware GenerationRun fences; provenance V2; atomic Content materialization; DEV03 worksheet coexistence; no payload staging; no `generation_artifacts`; unlocks deferred multi-artifact orchestration from Teacher OS ADR-047 |
 
 ## Exclusions
 
