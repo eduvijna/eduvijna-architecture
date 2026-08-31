@@ -118,6 +118,8 @@ Teacher Review Queue
 | Learner delivery truth | **Publication** — separate, explicit |
 | Review Queue listing | Derived projection over governed Content — not a competing SoR |
 
+> **Clarified by [ADR-AIEOS-053](ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md):** “Learner delivery truth | Publication” means **eligibility for downstream distribution** via the official published ContentVersion pointer — **not** classroom assignment or learner receipt. Classroom assignment intent is owned by **TeachingAssignment** under ADR-AIEOS-053. DEV04 preparation architecture, Content authority, and Review Queue authority are unchanged.
+
 **Explicit rejections for DEV04 baseline:**
 
 - No **PreparationKit** business aggregate.

@@ -58,6 +58,8 @@ Archived
 | **Published** | Delivered to intended audience (students / parents / records) |
 | **Archived** | Retained in Library history; not active |
 
+> **Clarified by [ADR-AIEOS-053](ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md):** The historical Published row above must **not** be read as proof of classroom assignment or learner receipt. Forward interpretation: **Publication** = official / published ContentVersion pointer + eligibility for downstream distribution; **TeachingAssignment** = teacher-owned classroom assignment intent; external delivery is a separate concern. The common lifecycle vocabulary (Draft → … → Published → Archived) is unchanged.
+
 ## Mapping from earlier PA wording
 
 | Prior label (PA-ARTIFACT-001 draft) | ADR-046 status |

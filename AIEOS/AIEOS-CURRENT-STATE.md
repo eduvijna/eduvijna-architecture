@@ -240,7 +240,7 @@ Findings (read-only discovery):
 | MCP | Deferred / not currently authorized |
 | Orchestration (full Prepare multi-artefact depth) | Deferred / later EBP; entry points only today |
 | AI Assistant expansion | Placeholder / deferred |
-| Publishing (assign/send after Approved) | Deferred relative to approval slices |
+| Publishing / assign / send after Approved | Deferred relative to approval slices; **ADR-AIEOS-053 Frozen / Approved** (Founder approved **2026-08-31**) separates Publication eligibility from TeachingAssignment; **DEV06-I01+ NOT AUTHORIZED** |
 | Full Prepare orchestration | Deferred (EBP-001 out of scope depth) |
 | Student OS / Parent OS / Principal OS | Out of Wave 1 scope |
 | New generators / new model providers | Out of Wave 1 scope |
