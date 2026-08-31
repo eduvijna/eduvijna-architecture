@@ -263,6 +263,19 @@ Conflict preference:
 
 ---
 
+## 20. ADR-AIEOS-053 — Teaching Assignment & Classroom Delivery Authority
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Freeze-candidate architecture for Teacher OS TOS-DEV06: Publication ≠ Assignment; TeachingAssignment Teaching-domain intent SoR; immutable exact ContentVersion bind with published_version_id precondition; ClassRef via AIEOS School Context façade; command Idempotency-Key semantics; ACTIVE/CLOSED/CANCELLED; no LMS delivery-attempt persistence in DEV06 core; narrow clarification of ADR-046 / ADR-AIEOS-052 delivery wording only. |
+| **Architectural reason** | Implemented Teacher OS publish path is governance eligibility, not classroom delivery; Product/ADR wording that collapses Published with assign/send must not remain current precedence; Class/Roster remain Admin/ERP/SIS masters. |
+| **What was implemented** | Architecture source only: [ADR-AIEOS-053](../decisions/ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) deposited as **Proposed / Freeze Candidate** **2026-08-31**. |
+| **What was deliberately NOT implemented** | Backend; Frontend; Product; migrations; OpenAPI; School Context provider; LMS connector; deployment; production mutation. |
+| **Governing decisions** | ADR-AIEOS-053 (freeze candidate); ADR-AIEOS-027 (Content / Publication); ADR-AIEOS-052 (preparation; delivery wording clarified); ADR-046 (lifecycle vocabulary; Published wording clarified); ADR-048 (Review Queue). |
+| **Current status** | **Proposed / Freeze Candidate.** Awaiting Founder authorization to Frozen / Approved. **DEV06-I01+ implementation = NOT AUTHORIZED.** |
+
+---
+
 ## Gaps / missing chronology
 
 Where older pre-Teacher-OS platform history (earlier Platform AI packages, ERP modules, etc.) is relevant but not part of this AIEOS journey spine: **Not established by current repository evidence** as a fully sequenced AIEOS chronology in this folder — treat as adjacent capability history under product/API repos.
