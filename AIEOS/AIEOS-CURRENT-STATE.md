@@ -31,13 +31,13 @@ Current Asset / platform implementation remains **NON_PRODUCTION**. Architecture
 
 **Dispatcher tenant-candidate discovery:** [ADR-AIEOS-045](../decisions/ADR-AIEOS-045-aieos-dispatcher-tenant-candidate-discovery-authority.md) is **Frozen / Approved**. Pending-work candidate discovery from `integration.outbox_messages` and workflow intent queues; dedicated NOLOGIN NOBYPASSRLS candidate-reader identities (`aieos_event_candidate_reader`, `aieos_workflow_candidate_reader` conceptually); SECURITY DEFINER functions owned by candidate-reader not schema owner; dispatcher login remains NOBYPASSRLS with EXECUTE-only access; no cross-tenant payload visibility. Architecture freeze does **not** authorize dispatcher daemon implementation, database candidate-function migration, production candidate-reader role provisioning, or production deployment.
 
-**Production event plane identity & least privilege:** [ADR-AIEOS-046](../decisions/ADR-AIEOS-046-aieos-production-event-plane-identity-least-privilege-contract.md) is **Frozen / Approved**.
+**Production event plane identity & least privilege:** [ADR-AIEOS-046](../decisions/ADR-AIEOS-046-aieos-production-event-plane-identity-least-privilege-contract.md) is **Frozen / Approved** (historical/base contract). [ADR-AIEOS-046R1](../decisions/ADR-AIEOS-046R1-aieos-production-event-plane-multi-domain-publisher-scope-revision.md) is **Frozen / Approved** (current EVENT publisher-domain-scope authority; Founder approved **2026-08-31**).
 
 | Concern | Frozen value |
 |---------|--------------|
 | Production stream | `AIEOS_EVENTS_PROD` |
 | Production stream subjects | `io.eduvijna.aieos.>` |
-| EVENT publisher | `io.eduvijna.aieos.content.>` |
+| EVENT publisher PUB (closed set) | `io.eduvijna.aieos.content.>` + `io.eduvijna.aieos.teaching.>` |
 | EVENT publisher SUB | `_INBOX.>` (+ publish ACK response semantics only) |
 | EVENT credential | `AIEOS_EVENT_DISPATCHER_NATS_CREDENTIALS` |
 | EVENT auth | JWT + NKey `.creds` / in-memory `user_jwt_cb` + `signature_cb` |
