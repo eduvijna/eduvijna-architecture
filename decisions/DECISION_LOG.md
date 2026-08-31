@@ -69,6 +69,7 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | ADR-AIEOS-044R2 | AIEOS Production State Region Availability Resolution | 2026-08-21 | Frozen / Approved | [ADR-AIEOS-044R2](ADR-AIEOS-044R2-aieos-production-state-region-availability-resolution.md) |
 | ADR-AIEOS-045 | AIEOS Dispatcher Tenant-Candidate Discovery Authority | 2026-08-22 | Frozen / Approved | [ADR-AIEOS-045](ADR-AIEOS-045-aieos-dispatcher-tenant-candidate-discovery-authority.md) |
 | ADR-AIEOS-046 | AIEOS Production Event Plane Identity & Least-Privilege Contract | 2026-08-23 | Frozen / Approved | [ADR-AIEOS-046](ADR-AIEOS-046-aieos-production-event-plane-identity-least-privilege-contract.md) |
+| ADR-AIEOS-046R1 | AIEOS Production Event Plane Multi-Domain Publisher Scope Revision | 2026-08-31 | Frozen / Approved | [ADR-AIEOS-046R1](ADR-AIEOS-046R1-aieos-production-event-plane-multi-domain-publisher-scope-revision.md) |
 | ADR-AIEOS-047 | AIEOS Production Workflow Plane Identity & Least-Privilege Contract | 2026-08-23 | Frozen / Approved | [ADR-AIEOS-047](ADR-AIEOS-047-aieos-production-workflow-plane-identity-least-privilege-contract.md) |
 | ADR-AIEOS-048 | AIEOS First-Production App Runtime & OCI Delivery Contract | 2026-08-23 | Frozen / Approved | [ADR-AIEOS-048](ADR-AIEOS-048-aieos-first-production-app-runtime-oci-delivery-contract.md) |
 | ADR-AIEOS-048R1 | AIEOS App Platform Provider-Compliant Naming Revision | 2026-08-24 | Frozen / Approved | [ADR-AIEOS-048R1](ADR-AIEOS-048R1-aieos-app-platform-provider-compliant-naming.md) |

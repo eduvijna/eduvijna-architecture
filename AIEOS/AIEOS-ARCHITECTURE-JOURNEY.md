@@ -276,6 +276,19 @@ Conflict preference:
 
 ---
 
+## 21. ADR-AIEOS-046R1 — Production Event Plane Multi-Domain Publisher Scope Revision
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Narrow forward revision of ADR-AIEOS-046: expand production EVENT publisher PUB authority from Content-only to a closed multi-domain set (Content + Teaching) required by ADR-AIEOS-053 TeachingAssignment events; preserve all other ADR-AIEOS-046 invariants; forbid platform-wide `io.eduvijna.aieos.>` publisher wildcard. |
+| **Architectural reason** | ADR-AIEOS-053 requires TeachingAssignment mutation events under `io.eduvijna.aieos.teaching....`; ADR-AIEOS-046 A46-INV-03 limited publisher scope to Content only; minimum Teaching-domain permission added without granting unrelated domain authority. |
+| **What was implemented** | Architecture source only: [ADR-AIEOS-046R1](../decisions/ADR-AIEOS-046R1-aieos-production-event-plane-multi-domain-publisher-scope-revision.md) Frozen / Approved by Founder **2026-08-31**. |
+| **What was deliberately NOT implemented** | Backend; Infrastructure; NATS mutation; credential creation/regeneration; stream creation/update; DigitalOcean mutation; deployment; production EVENT execution; TeachingAssignment application/API; OpenAPI; Frontend; LMS integration. |
+| **Governing decisions** | ADR-AIEOS-046R1 (Frozen / Approved); ADR-AIEOS-046 (historical/base); ADR-AIEOS-053 (TeachingAssignment event requirement); ADR-AIEOS-025 (outbox/CloudEvents). |
+| **Current status** | **Architecture Frozen / Approved.** Founder approved **2026-08-31**. ADR-AIEOS-046 historical body unchanged. **TOS-DEV06-I03 = NOT AUTHORIZED.** |
+
+---
+
 ## Gaps / missing chronology
 
 Where older pre-Teacher-OS platform history (earlier Platform AI packages, ERP modules, etc.) is relevant but not part of this AIEOS journey spine: **Not established by current repository evidence** as a fully sequenced AIEOS chronology in this folder — treat as adjacent capability history under product/API repos.
