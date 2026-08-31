@@ -60,7 +60,7 @@ No new implementation slice is recorded here as **Approved** solely because disc
 | Item | Status | Notes |
 |------|--------|-------|
 | [ADR-AIEOS-052](../decisions/ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) — Prepare Tomorrow multi-artifact kit architecture (TOS-DEV04) | **Architecture Frozen / Approved** | Founder / Product Architecture approval **2026-08-28**; unlocks deferred ADR-047 orchestration architecture; **TOS-DEV04 implementation NOT authorized / NOT implemented** |
-| [ADR-AIEOS-053](../decisions/ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) — Teaching Assignment & Classroom Delivery Authority (TOS-DEV06) | **Proposed / Freeze Candidate** | Architecture freeze candidate deposited **2026-08-31**; Publication ≠ Assignment; TeachingAssignment intent SoR; ClassRef School Context prerequisite; **DEV06-I01+ implementation NOT authorized** |
+| [ADR-AIEOS-053](../decisions/ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) — Teaching Assignment & Classroom Delivery Authority (TOS-DEV06) | **Architecture Frozen / Approved** | Founder / Product Architecture approval **2026-08-31**; Publication ≠ Assignment; TeachingAssignment intent SoR; ClassRef School Context prerequisite; **DEV06-I01+ implementation NOT authorized** |
 | TOS-DEV04 source implementation (DEV04-I01 … I09) | **Not authorized** | Requires separate Chief Architect slice authorization after ADR merge |
 | TOS-DEV04 live provider proof (DEV04-I10) | **Not authorized** | Separate gate |
 | Review Queue ↔ Existing Generators Integration (derived EBP-001.9 candidate) | **Proposed** | Blueprint Wave 1 acceptance gap; may require Content SoR decision first |
@@ -79,7 +79,7 @@ Architecture for multi-artifact Prepare Tomorrow is now Frozen / Approved. **No 
 | Agents | Deferred | ADR-044; not premature |
 | MCP | Deferred | ADR-044; not premature |
 | AI Assistant expansion | Deferred | Placeholder today |
-| Publishing / assign / send after Approved | Deferred | Approved ≠ Published; Published ≠ Assigned ([ADR-AIEOS-053](../decisions/ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) Proposed / Freeze Candidate) |
+| Publishing / assign / send after Approved | Deferred | Approved ≠ Published; Published ≠ Assigned ([ADR-AIEOS-053](../decisions/ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) Frozen / Approved — Founder approved **2026-08-31**; DEV06-I01+ NOT AUTHORIZED) |
 | Student OS / Parent OS / Principal OS (Wave 1) | Deferred | EBP-001 out of scope |
 | New generators / new model providers | Deferred | EBP-001 out of scope |
 | Major database redesign / unauthorized Content SoR creation | Deferred / blocked | Under architecture review |

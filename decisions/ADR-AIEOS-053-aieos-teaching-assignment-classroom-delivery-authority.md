@@ -2,7 +2,7 @@
 id: ADR-AIEOS-053
 title: AIEOS Teaching Assignment & Classroom Delivery Authority
 owner: EduVijna Enterprise Architecture Office · Chief AI Enterprise Architect
-status: proposed
+status: approved
 version: 1.0.1
 created: 2026-08-31
 last_updated: 2026-08-31
@@ -13,11 +13,11 @@ reviewers:
 
 # ADR-AIEOS-053 — AIEOS Teaching Assignment & Classroom Delivery Authority
 
-**Status:** Proposed / Freeze Candidate  
+**Status:** Frozen / Approved  
 **Date:** 2026-08-31  
 **Related:** [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) · [ADR-AIEOS-024](ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md) · [ADR-AIEOS-025](ADR-AIEOS-025-aieos-api-contract-integration-implementation-baseline.md) · [ADR-AIEOS-027](ADR-AIEOS-027-aieos-generic-content-implementation-baseline.md) · [ADR-AIEOS-028](ADR-AIEOS-028-security-audit-mutation-accountability.md) · [ADR-AIEOS-052](ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) · [ADR-042](ADR-042-teacher-os-shell-owns-ux.md) · [ADR-044](ADR-044-ai-platform-behind-stable-services.md) · [ADR-045](ADR-045-teaching-intent-owns-goals.md) · [ADR-046](ADR-046-artifact-status-lifecycle.md) · [ADR-047](ADR-047-outcome-first-prepare-tomorrow.md) · [ADR-048](ADR-048-review-queue-owns-approval.md)
 
-**Catalogue note:** This ADR is the **architecture freeze candidate** for Teacher OS **TOS-DEV06 — Assignment & Classroom Delivery**. Status is **Proposed / Freeze Candidate**. It is **not** Frozen / Approved until Founder authorization. Architecture freeze (when granted) is **ARCHITECTURE AUTHORITY ONLY** and **does not** authorize Backend implementation, Frontend implementation, database migration, OpenAPI change, School Context provider provisioning, LMS connector work, deployment, or production mutation. Implementation slices **DEV06-I01+** require separate Chief Architect authorization after Founder freeze of this ADR.
+**Catalogue note:** Frozen / Approved is **ARCHITECTURE AUTHORITY ONLY**. This ADR freezes the **AIEOS Teaching Assignment & Classroom Delivery Authority** for Teacher OS **TOS-DEV06 — Assignment & Classroom Delivery**. Founder / Product Architecture approval was granted **2026-08-31**. Architecture freeze ≠ Backend implementation authorization ≠ Frontend implementation authorization ≠ migration authorization ≠ OpenAPI authorization ≠ School Context provider provisioning ≠ LMS connector authorization ≠ deployment authorization ≠ production mutation authorization. Implementation slices **DEV06-I01+** still require separate Chief Architect authorization.
 
 **ID family note:** `ADR-AIEOS-053` is part of the AIEOS platform ADR family (`ADR-AIEOS-*`). It is distinct from Teacher OS ADR-046 / ADR-047 / ADR-048 product-language decisions and from platform ADR-AIEOS-046 / ADR-AIEOS-047 / ADR-AIEOS-048 infrastructure decisions.
 
