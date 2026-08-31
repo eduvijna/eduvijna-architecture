@@ -3,7 +3,7 @@ id: ADR-AIEOS-053
 title: AIEOS Teaching Assignment & Classroom Delivery Authority
 owner: EduVijna Enterprise Architecture Office · Chief AI Enterprise Architect
 status: proposed
-version: 1.0.0
+version: 1.0.1
 created: 2026-08-31
 last_updated: 2026-08-31
 reviewers:
@@ -150,6 +150,44 @@ Historical ADR-046 / ADR-AIEOS-052 bodies retain their original text; this ADR p
 
 **No kit-level assignment aggregate.** Assignment is per Content artifact version, never a PreparationKit entity.
 
+#### `teacher_principal_id` — represented / effective teacher
+
+`teacher_principal_id` is the **represented / effective HUMAN teacher Principal** whose classroom assignment intent the TeachingAssignment records.
+
+It is **not** automatically:
+
+- the transport caller
+- the authenticated workload
+- the executing service
+- the delegated acting Principal
+
+Compatibility with [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) and [ADR-AIEOS-028](ADR-AIEOS-028-security-audit-mutation-accountability.md):
+
+| Identity | Meaning |
+|----------|---------|
+| `principal_id` | Actual authenticated / calling AIEOS Principal |
+| `effective_actor_id` | Principal on whose behalf the governed action is performed |
+| `teacher_principal_id` | Represented / effective HUMAN teacher whose classroom intent is recorded |
+
+Default while delegation is absent:
+
+```text
+effective_actor_id = principal_id
+```
+
+For ordinary direct Teacher OS assignment:
+
+```text
+teacher_principal_id = effective_actor_id = principal_id
+```
+
+If a **future separately authorized** delegation mechanism allows `principal_id != effective_actor_id`, then:
+
+- `teacher_principal_id` **MUST** identify the effective / represented teacher
+- required security audit provenance **MUST** retain `principal_id`, `effective_actor_id`, and `delegation_id` as applicable
+
+This ADR does **not** authorize delegation implementation and does **not** add delegation fields to the TeachingAssignment aggregate merely for that future case.
+
 ### 5. Exact ContentVersion binding
 
 TeachingAssignment binds **immutably** to:
@@ -168,6 +206,30 @@ Content.published_version_id == requested content_version_id
 - Frontend GET observation alone is **never** sufficient business authority
 - If Content later receives or publishes another ContentVersion, existing TeachingAssignment **MUST** remain bound to the original exact version (does **not** follow the live published pointer)
 
+### 5A. CREATE authority composition (dual gate)
+
+TeachingAssignment **CREATE** requires **both** server-authoritative gates:
+
+**A. Content eligibility**
+
+```text
+Content.published_version_id == requested content_version_id
+```
+
+(plus learner-assignable ContentAudience / policy eligibility under §6)
+
+**B. Audience eligibility / current ClassRef authority**
+
+```text
+requested class_ref resolves within the exact tenant
+  AND is currently an assignable class target
+  for the represented / effective teacher
+  under current AIEOS authority
+```
+
+Both checks are **server authoritative**. Frontend Content GET and School Context GET remain **advisory observations only**.
+
+Implementation must later make both gates race- / freshness-safe according to their own authority boundaries. A stale browser class list **cannot** authorize assignment.
 ### 6. Artifact eligibility
 
 Baseline **learner-assignable** preparation kinds:
@@ -207,7 +269,7 @@ class_ref     = one stable opaque School Context class identifier
 - Individual learner targeting: **DEFERRED**
 - Section-specific semantics: **DEFERRED** unless already represented by the authoritative ClassRef provider
 
-### 8. School Context read boundary
+### 8. School Context read boundary and ClassRef create-time current authority
 
 **Prerequisite for DEV06-I01:**
 
@@ -216,7 +278,33 @@ AIEOS School Context **class read façade / port** that returns only classes the
 - Underlying ERP / SIS / provider remains replaceable
 - No duplicate Class SoR may be introduced in Teaching
 - Frontend calls **AIEOS only**
+- This ADR does **not** invent an exact capability identifier unless already frozen elsewhere
+- This ADR does **not** choose an ERP / SIS vendor
 
+**Binding CREATE rule:**
+
+`GET` / list School Context classes is **UX / read assistance only**. It is **not** durable authorization to create an assignment.
+
+At TeachingAssignment **CREATE**, server-side **current authority MUST** revalidate the requested `class_ref`:
+
+```text
+class_ref resolves within the exact tenant
+  + is currently an assignable class target
+  for the represented / effective teacher
+  under current AIEOS authority
+```
+
+If any of the following holds:
+
+- `class_ref` is unknown
+- `class_ref` belongs to another tenant
+- the represented / effective teacher is no longer authorized for it
+- School Context authority is unavailable
+- current authority cannot be established
+
+→ **FAIL CLOSED** → **no TeachingAssignment commit**.
+
+A stale browser class list cannot authorize assignment.
 ### 9. Roster semantics
 
 TeachingAssignment is **ClassRef-scoped**.
@@ -371,6 +459,8 @@ LMS outage must **not** prevent creation of a valid native TeachingAssignment in
 | L | Roster change | Does not mutate TeachingAssignment ClassRef; membership-delivery policy deferred |
 | M | LMS unavailable | Native TeachingAssignment can still be created |
 | N | Publication changes between client observation and assign command | Server-side authoritative validation prevents stale / unpublished assignment |
+| O | Stale / unauthorized ClassRef: teacher loads permitted classes; authority/relationship changes before CREATE; client submits old ClassRef | Server revalidates current ClassRef authority → reject → no assignment commit |
+| P | Effective actor compatibility: ordinary direct Teacher OS command has `principal_id = effective_actor_id = teacher_principal_id`; future separately authorized delegated execution may have `principal_id != effective_actor_id` | TeachingAssignment remains owned by the represented teacher; security audit preserves actual / effective / delegation provenance as applicable. Architecture compatibility only — **does not authorize delegation implementation** |
 
 ---
 
