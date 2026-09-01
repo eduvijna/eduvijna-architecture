@@ -144,6 +144,17 @@ Philosophy: vertical-slice first on existing apps, behind `teacher_os_enabled`, 
 
 ---
 
+## Teacher OS native implementation (AIEOS repos — current)
+
+| Package | Current status | Evidence |
+|---------|----------------|----------|
+| **TOS-DEV04** — Prepare Tomorrow multi-artifact kit | **IMPLEMENTED / COMPLETE** | Backend `origin/main` `06e05277e73e0c71172cae4904efb37d771c3fad` |
+| **TOS-DEV06** — TeachingAssignment & classroom delivery | **IMPLEMENTED / COMPLETE** through Product E2E | Backend `origin/main` `06e05277e73e0c71172cae4904efb37d771c3fad`; Frontend `origin/main` `89ee9f1330f635de3186d21e0102cb63c5c698e1` (TOS-DEV06-I05) |
+
+**Boundaries preserved ([ADR-AIEOS-053](../decisions/ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md)):** Published ≠ Assigned; Assigned ≠ Externally Delivered; Assigned ≠ Attempted; Assigned ≠ Submitted; Assigned ≠ Graded. External LMS / Student OS learner delivery remains **deferred**.
+
+---
+
 ## Completed EBP work
 
 Recorded as **APPROVED / CLOSED** in EBP-001.9 Phase 0 discovery status (aligned with implementation + review package evidence in product / Quiz-React):
@@ -238,9 +249,13 @@ Findings (read-only discovery):
 | Personalization / inferred preferences | Deferred |
 | Agents | Deferred / not currently authorized (ADR-044 boundary) |
 | MCP | Deferred / not currently authorized |
-| Orchestration (full Prepare multi-artefact depth) | Deferred / later EBP; entry points only today |
+| Orchestration (full Prepare multi-artifact depth) | TOS-DEV04 native Prepare kit **implemented**; live provider proof (**DEV04-I10**) and extended orchestration deferred |
 | AI Assistant expansion | Placeholder / deferred |
-| Publishing / assign / send after Approved | Deferred relative to approval slices; **ADR-AIEOS-053 Frozen / Approved** (Founder approved **2026-08-31**) separates Publication eligibility from TeachingAssignment; **DEV06-I01+ NOT AUTHORIZED** |
+| Publication (native AIEOS Content) | **Implemented** (TOS-DEV04 / DEV05 path) |
+| Native TeachingAssignment | **Implemented** (TOS-DEV06) |
+| Assignment Product E2E | **Complete** (TOS-DEV06-I05) |
+| External learner delivery / LMS / Student OS | Deferred — Assigned ≠ Externally Delivered ([ADR-AIEOS-053](../decisions/ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md)) |
+| Teach / classroom execution (Assigned ≠ Taught) | **ADR-AIEOS-054 Frozen / Approved** (Founder approved **2026-09-01**; TOS-DEV07A discovery accepted; TeachingExecution SoR frozen; **DEV07-I01+ NOT AUTHORIZED**) |
 | Full Prepare orchestration | Deferred (EBP-001 out of scope depth) |
 | Student OS / Parent OS / Principal OS | Out of Wave 1 scope |
 | New generators / new model providers | Out of Wave 1 scope |
