@@ -77,6 +77,12 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | [ADR-AIEOS-052](ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) | AIEOS Preparation Kit & Multi-Artifact Generation Architecture (Frozen / Approved — TOS-DEV04 Prepare Tomorrow; `education.generate_preparation_kit`; provenance V2 `artifact_kind`; capability/revision-aware GenerationRun fences; atomic six-artifact Content UoW; deterministic Answer Key; DEV03 worksheet coexistence; no payload staging; no `generation_artifacts`; distinct from Teacher OS ADR-047; architecture freeze ≠ implementation) |
 | [ADR-AIEOS-053](ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) | AIEOS Teaching Assignment & Classroom Delivery Authority (Frozen / Approved — Founder approved 2026-08-31; TOS-DEV06; Publication ≠ Assignment; TeachingAssignment intent SoR; exact ContentVersion bind; ClassRef via School Context; command Idempotency-Key; no LMS delivery-attempt persistence in DEV06 core; architecture freeze ≠ implementation; DEV06-I01+ NOT AUTHORIZED) |
 
+### Proposed / freeze candidates
+
+| ID | Title |
+|----|-------|
+| [ADR-AIEOS-054](ADR-AIEOS-054-aieos-teaching-execution-observation-authority.md) | AIEOS Teaching Execution & Observation Authority (Proposed / Freeze Candidate — Chief Architect accepted 2026-09-01; TOS-DEV07; HYBRID Option D; TeachingExecution SoR; Assigned ≠ Taught; Founder freeze PENDING; DEV07-I01+ NOT AUTHORIZED) |
+
 ## Exclusions
 
 - Informal chat decisions without recorded process

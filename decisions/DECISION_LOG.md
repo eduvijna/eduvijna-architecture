@@ -79,3 +79,13 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | ADR-AIEOS-051 | AIEOS Backend Production OCI Build, Provenance & First-Publication Architecture | 2026-08-25 | Frozen / Approved | [ADR-AIEOS-051](ADR-AIEOS-051-aieos-backend-production-oci-build-provenance-first-publication-architecture.md) |
 | ADR-AIEOS-052 | AIEOS Preparation Kit & Multi-Artifact Generation Architecture | 2026-08-28 | Frozen / Approved | [ADR-AIEOS-052](ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) |
 | ADR-AIEOS-053 | AIEOS Teaching Assignment & Classroom Delivery Authority | 2026-08-31 | Frozen / Approved | [ADR-AIEOS-053](ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) |
+
+---
+
+## Proposed / freeze candidates
+
+Architecture deposits awaiting Founder / Product Architecture freeze. **Not approved decisions.**
+
+| ID | Title | Date | Status | Record |
+|----|-------|------|--------|--------|
+| ADR-AIEOS-054 | AIEOS Teaching Execution & Observation Authority | 2026-09-01 | Proposed / Freeze Candidate | [ADR-AIEOS-054](ADR-AIEOS-054-aieos-teaching-execution-observation-authority.md) |

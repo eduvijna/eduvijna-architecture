@@ -289,6 +289,19 @@ Conflict preference:
 
 ---
 
+## 21. ADR-AIEOS-054 — Teaching Execution & Observation Authority
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Propose architecture for Teacher OS TOS-DEV07: Assigned ≠ Taught; TeachingExecution Teaching-domain execution SoR; immutable exact ContentVersion bindings; PRIVATE_EXECUTION_NOTE + CLASS_OBSERVATION only; no timetable dependency; execution lifecycle IN_PROGRESS/COMPLETED/CANCELLED; HYBRID / Option D (AIEOS owns execution; ERP/SIS remains Class master). |
+| **Architectural reason** | TOS-DEV07A discovery accepted; TeachingAssignment and TeachingWork must not be repurposed as lesson execution truth; current Teach UI is assignment administration only. |
+| **What was implemented** | Architecture source only: [ADR-AIEOS-054](../decisions/ADR-AIEOS-054-aieos-teaching-execution-observation-authority.md) deposited as **Proposed / Freeze Candidate**; Chief Architect review **ACCEPTED 2026-09-01**; **Founder freeze PENDING**. |
+| **What was deliberately NOT implemented** | Backend; Frontend; Product; migration; OpenAPI; NATS change; deployment; production mutation; DEV07 implementation slices. |
+| **Governing decisions** | ADR-AIEOS-054 (Proposed / Freeze Candidate); ADR-AIEOS-053 (TeachingAssignment); ADR-AIEOS-052 (preparation); ADR-AIEOS-046R1 (event scope — no 046R2 required). |
+| **Current status** | **Proposed / Freeze Candidate.** Founder freeze **PENDING**. **DEV07-I01+ = NOT AUTHORIZED.** |
+
+---
+
 ## Gaps / missing chronology
 
 Where older pre-Teacher-OS platform history (earlier Platform AI packages, ERP modules, etc.) is relevant but not part of this AIEOS journey spine: **Not established by current repository evidence** as a fully sequenced AIEOS chronology in this folder — treat as adjacent capability history under product/API repos.
