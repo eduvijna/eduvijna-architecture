@@ -259,7 +259,7 @@ Conflict preference:
 | **What was implemented** | Architecture source only: [ADR-AIEOS-052](../decisions/ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) deposited and Frozen / Approved **2026-08-28**. |
 | **What was deliberately NOT implemented** | Backend; Frontend; migrations; OpenAPI; live provider proof; production Content catalog activation. |
 | **Governing decisions** | ADR-AIEOS-052 (CURRENT multi-artifact Prepare Tomorrow architecture); ADR-AIEOS-027 (Content authority); ADR-AIEOS-026 (no workflow as SoR); Teacher OS ADR-044–048 (outcome-first, review semantics). |
-| **Current status** | **Architecture Frozen / Approved.** Multi-artifact Prepare Tomorrow architecture = **DESIGN FROZEN**. **TOS-DEV04 implementation = NOT AUTHORIZED / NOT IMPLEMENTED.** Live provider proof requires separate gate (**DEV04-I10**). |
+| **Current status** | **Architecture Frozen / Approved.** TOS-DEV04 native implementation = **IMPLEMENTED / COMPLETE** (Backend `origin/main` `06e05277e73e0c71172cae4904efb37d771c3fad`). Live provider proof requires separate gate (**DEV04-I10**). |
 
 ---
 
@@ -272,7 +272,7 @@ Conflict preference:
 | **What was implemented** | Architecture source only: [ADR-AIEOS-053](../decisions/ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) Frozen / Approved by Founder **2026-08-31**. |
 | **What was deliberately NOT implemented** | Backend; Frontend; Product; migrations; OpenAPI; School Context provider; LMS connector; deployment; production mutation. |
 | **Governing decisions** | ADR-AIEOS-053 (Frozen / Approved); ADR-AIEOS-027 (Content / Publication); ADR-AIEOS-052 (preparation; delivery wording clarified); ADR-046 (lifecycle vocabulary; Published wording clarified); ADR-048 (Review Queue). |
-| **Current status** | **Architecture Frozen / Approved.** Founder approved **2026-08-31**. Architecture freeze ≠ implementation. **DEV06-I01+ implementation = NOT AUTHORIZED.** |
+| **Current status** | **Architecture Frozen / Approved.** Founder approved **2026-08-31**. TOS-DEV06 native TeachingAssignment implementation + Product E2E = **COMPLETE** (Backend `06e05277e73e0c71172cae4904efb37d771c3fad`; Frontend `89ee9f1330f635de3186d21e0102cb63c5c698e1`). External LMS / Student OS delivery remains deferred. |
 
 ---
 
@@ -285,11 +285,11 @@ Conflict preference:
 | **What was implemented** | Architecture source only: [ADR-AIEOS-046R1](../decisions/ADR-AIEOS-046R1-aieos-production-event-plane-multi-domain-publisher-scope-revision.md) Frozen / Approved by Founder **2026-08-31**. |
 | **What was deliberately NOT implemented** | Backend; Infrastructure; NATS mutation; credential creation/regeneration; stream creation/update; DigitalOcean mutation; deployment; production EVENT execution; TeachingAssignment application/API; OpenAPI; Frontend; LMS integration. |
 | **Governing decisions** | ADR-AIEOS-046R1 (Frozen / Approved); ADR-AIEOS-046 (historical/base); ADR-AIEOS-053 (TeachingAssignment event requirement); ADR-AIEOS-025 (outbox/CloudEvents). |
-| **Current status** | **Architecture Frozen / Approved.** Founder approved **2026-08-31**. ADR-AIEOS-046 historical body unchanged. **TOS-DEV06-I03 = NOT AUTHORIZED.** |
+| **Current status** | **Architecture Frozen / Approved.** Founder approved **2026-08-31**. ADR-AIEOS-046 historical body unchanged. TeachingAssignment application/API + outbox events = **IMPLEMENTED** in TOS-DEV06-I03 (Backend `06e05277e73e0c71172cae4904efb37d771c3fad`). Production EVENT activation / NATS provisioning = **NOT AUTHORIZED**. |
 
 ---
 
-## 21. ADR-AIEOS-054 — Teaching Execution & Observation Authority
+## 22. ADR-AIEOS-054 — Teaching Execution & Observation Authority
 
 | Field | Content |
 |-------|---------|

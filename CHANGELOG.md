@@ -36,6 +36,7 @@ and this repository follows [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- ADR-AIEOS-054 exact-head review correction: align Architecture current-state / catalogue surfaces with actual TOS-DEV04 and TOS-DEV06 native implementation status (Backend `06e05277e73e0c71172cae4904efb37d771c3fad`; Frontend `89ee9f1330f635de3186d21e0102cb63c5c698e1` TOS-DEV06-I05); distinguish implemented Publication / TeachingAssignment from deferred external learner delivery; historical ADR bodies and prior CHANGELOG deposition entries unchanged.
 - ADR-AIEOS-053 — Frozen / Approved by Founder on **2026-08-31**. Architecture status transition only; accepted v1.0.1 / TOS-DEV06P1R1 semantics unchanged (`teacher_principal_id` = represented/effective HUMAN teacher Principal; `principal_id` / `effective_actor_id` / audit provenance remain distinct; School Context GET/list remains advisory; TeachingAssignment CREATE revalidates current ClassRef authority; CREATE requires both current Content eligibility and current audience authority). **DEV06-I01+ remains NOT AUTHORIZED.** No Backend / Frontend / Product implementation is authorized by this freeze.
 - ADR-AIEOS-045 freeze finalization: architecture status recorded as Frozen / Approved. Decision semantics unchanged. Dispatcher daemon implementation, database candidate-function migration, production candidate-reader role provisioning, and production deployment remain not authorized.
 

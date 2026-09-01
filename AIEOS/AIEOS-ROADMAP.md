@@ -40,6 +40,8 @@ Labels used below:
 | EBP-001.6 Continuous Context | Approved | Session Context; not Memory |
 | EBP-001.7 Mission Service Hardening | Approved | Closed hardening slice |
 | EBP-001.8 Teacher / School Context | Approved (slice tracking) | Read surface; not Memory |
+| TOS-DEV04 — Prepare Tomorrow native implementation | Approved / Complete | Backend `origin/main` `06e05277e73e0c71172cae4904efb37d771c3fad` |
+| TOS-DEV06 — TeachingAssignment native implementation + Product E2E | Approved / Complete | Backend `06e05277e73e0c71172cae4904efb37d771c3fad`; Frontend `89ee9f1330f635de3186d21e0102cb63c5c698e1` (TOS-DEV06-I05) |
 
 ---
 
@@ -59,16 +61,15 @@ No new implementation slice is recorded here as **Approved** solely because disc
 
 | Item | Status | Notes |
 |------|--------|-------|
-| [ADR-AIEOS-052](../decisions/ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) — Prepare Tomorrow multi-artifact kit architecture (TOS-DEV04) | **Architecture Frozen / Approved** | Founder / Product Architecture approval **2026-08-28**; unlocks deferred ADR-047 orchestration architecture; **TOS-DEV04 implementation NOT authorized / NOT implemented** |
-| [ADR-AIEOS-053](../decisions/ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) — Teaching Assignment & Classroom Delivery Authority (TOS-DEV06) | **Architecture Frozen / Approved** | Founder / Product Architecture approval **2026-08-31**; Publication ≠ Assignment; TeachingAssignment intent SoR; ClassRef School Context prerequisite; **DEV06-I01+ implementation NOT authorized** |
-| [ADR-AIEOS-046R1](../decisions/ADR-AIEOS-046R1-aieos-production-event-plane-multi-domain-publisher-scope-revision.md) — Production Event Plane Multi-Domain Publisher Scope Revision | **Architecture Frozen / Approved** | Founder / Product Architecture approval **2026-08-31**; CURRENT EVENT PUB closed set Content + Teaching; no platform-wide publisher wildcard; narrow supersession of ADR-AIEOS-046 A46-INV-03; **TOS-DEV06-I03 NOT authorized** |
+| [ADR-AIEOS-052](../decisions/ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) — Prepare Tomorrow multi-artifact kit architecture (TOS-DEV04) | **Architecture Frozen / Approved** | Founder / Product Architecture approval **2026-08-28**; **TOS-DEV04 native implementation COMPLETE** (Backend `06e05277e73e0c71172cae4904efb37d771c3fad`); live provider proof (**DEV04-I10**) remains separate gate |
+| [ADR-AIEOS-053](../decisions/ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) — Teaching Assignment & Classroom Delivery Authority (TOS-DEV06) | **Architecture Frozen / Approved** | Founder / Product Architecture approval **2026-08-31**; **TOS-DEV06 native implementation + Product E2E COMPLETE** (Backend `06e05277e73e0c71172cae4904efb37d771c3fad`; Frontend `89ee9f1330f635de3186d21e0102cb63c5c698e1`); external LMS / Student OS delivery deferred |
+| [ADR-AIEOS-046R1](../decisions/ADR-AIEOS-046R1-aieos-production-event-plane-multi-domain-publisher-scope-revision.md) — Production Event Plane Multi-Domain Publisher Scope Revision | **Architecture Frozen / Approved** | Founder / Product Architecture approval **2026-08-31**; TeachingAssignment outbox events **implemented** in TOS-DEV06-I03; production EVENT activation / NATS provisioning **NOT authorized** |
 | [ADR-AIEOS-054](../decisions/ADR-AIEOS-054-aieos-teaching-execution-observation-authority.md) — Teaching Execution & Observation Authority (TOS-DEV07) | **Proposed / Freeze Candidate** | Chief Architect architecture review accepted **2026-09-01**; HYBRID / Option D; TeachingExecution SoR; Assigned ≠ Taught; **Founder freeze PENDING**; **DEV07-I01+ NOT authorized** |
-| TOS-DEV04 source implementation (DEV04-I01 … I09) | **Not authorized** | Requires separate Chief Architect slice authorization after ADR merge |
 | TOS-DEV04 live provider proof (DEV04-I10) | **Not authorized** | Separate gate |
 | Review Queue ↔ Existing Generators Integration (derived EBP-001.9 candidate) | **Proposed** | Blueprint Wave 1 acceptance gap; may require Content SoR decision first |
 | Sprint 4 hardening / GA readiness (EBP-001) | **Proposed** (blueprint) | After durable generate→queue path exists |
 
-Architecture for multi-artifact Prepare Tomorrow is now Frozen / Approved. **No TOS-DEV04 implementation slice is authorized here.**
+Architecture for multi-artifact Prepare Tomorrow is Frozen / Approved and **native TOS-DEV04 implementation is complete**. **TOS-DEV07 (ADR-AIEOS-054) remains NOT authorized pending Founder freeze.**
 
 ---
 
@@ -81,7 +82,7 @@ Architecture for multi-artifact Prepare Tomorrow is now Frozen / Approved. **No 
 | Agents | Deferred | ADR-044; not premature |
 | MCP | Deferred | ADR-044; not premature |
 | AI Assistant expansion | Deferred | Placeholder today |
-| Publishing / assign / send after Approved | Deferred | Approved ≠ Published; Published ≠ Assigned ([ADR-AIEOS-053](../decisions/ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) Frozen / Approved — Founder approved **2026-08-31**; DEV06-I01+ NOT AUTHORIZED) |
+| External learner delivery / LMS / Student OS | Deferred | Published ≠ Assigned; Assigned ≠ Externally Delivered / Attempted / Submitted / Graded ([ADR-AIEOS-053](../decisions/ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md)); native Publication and TeachingAssignment are **implemented** |
 | Student OS / Parent OS / Principal OS (Wave 1) | Deferred | EBP-001 out of scope |
 | New generators / new model providers | Deferred | EBP-001 out of scope |
 | Major database redesign / unauthorized Content SoR creation | Deferred / blocked | Under architecture review |
