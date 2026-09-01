@@ -76,12 +76,7 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | [ADR-AIEOS-046R1](ADR-AIEOS-046R1-aieos-production-event-plane-multi-domain-publisher-scope-revision.md) | AIEOS Production Event Plane Multi-Domain Publisher Scope Revision (Frozen / Approved — Founder approved 2026-08-31; CURRENT EVENT PUB closed set `io.eduvijna.aieos.content.>` + `io.eduvijna.aieos.teaching.>`; TeachingAssignment outbox events implemented in TOS-DEV06-I03; production EVENT activation / NATS provisioning NOT authorized) |
 | [ADR-AIEOS-052](ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) | AIEOS Preparation Kit & Multi-Artifact Generation Architecture (Frozen / Approved — TOS-DEV04 native implementation COMPLETE; Backend `06e05277e73e0c71172cae4904efb37d771c3fad`; live provider proof DEV04-I10 separate gate) |
 | [ADR-AIEOS-053](ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) | AIEOS Teaching Assignment & Classroom Delivery Authority (Frozen / Approved — Founder approved 2026-08-31; TOS-DEV06 native implementation + Product E2E COMPLETE; external LMS / Student OS delivery deferred) |
-
-### Proposed / freeze candidates
-
-| ID | Title |
-|----|-------|
-| [ADR-AIEOS-054](ADR-AIEOS-054-aieos-teaching-execution-observation-authority.md) | AIEOS Teaching Execution & Observation Authority (Proposed / Freeze Candidate — Chief Architect accepted 2026-09-01; TOS-DEV07; HYBRID Option D; TeachingExecution SoR; Assigned ≠ Taught; Founder freeze PENDING; DEV07-I01+ NOT AUTHORIZED) |
+| [ADR-AIEOS-054](ADR-AIEOS-054-aieos-teaching-execution-observation-authority.md) | AIEOS Teaching Execution & Observation Authority (Frozen / Approved — Founder approved 2026-09-01; TOS-DEV07; HYBRID Option D; TeachingExecution SoR; Assigned ≠ Taught; **DEV07-I01+ NOT AUTHORIZED**) |
 
 ## Exclusions
 

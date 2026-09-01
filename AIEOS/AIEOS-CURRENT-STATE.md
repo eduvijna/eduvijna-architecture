@@ -255,7 +255,7 @@ Findings (read-only discovery):
 | Native TeachingAssignment | **Implemented** (TOS-DEV06) |
 | Assignment Product E2E | **Complete** (TOS-DEV06-I05) |
 | External learner delivery / LMS / Student OS | Deferred — Assigned ≠ Externally Delivered ([ADR-AIEOS-053](../decisions/ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md)) |
-| Teach / classroom execution (Assigned ≠ Taught) | **ADR-AIEOS-054 Proposed / Freeze Candidate** (Chief Architect accepted **2026-09-01**; TOS-DEV07A discovery accepted; TeachingExecution SoR proposed; Founder freeze **PENDING**; **DEV07-I01+ NOT AUTHORIZED**) |
+| Teach / classroom execution (Assigned ≠ Taught) | **ADR-AIEOS-054 Frozen / Approved** (Founder approved **2026-09-01**; TOS-DEV07A discovery accepted; TeachingExecution SoR frozen; **DEV07-I01+ NOT AUTHORIZED**) |
 | Full Prepare orchestration | Deferred (EBP-001 out of scope depth) |
 | Student OS / Parent OS / Principal OS | Out of Wave 1 scope |
 | New generators / new model providers | Out of Wave 1 scope |

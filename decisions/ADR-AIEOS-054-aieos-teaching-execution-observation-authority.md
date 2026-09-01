@@ -2,8 +2,8 @@
 id: ADR-AIEOS-054
 title: AIEOS Teaching Execution & Observation Authority
 owner: EduVijna Enterprise Architecture Office · Chief AI Enterprise Architect
-status: proposed
-version: 0.9.0
+status: approved
+version: 1.0.0
 created: 2026-09-01
 last_updated: 2026-09-01
 reviewers:
@@ -13,13 +13,13 @@ reviewers:
 
 # ADR-AIEOS-054 — AIEOS Teaching Execution & Observation Authority
 
-**Status:** Proposed / Freeze Candidate  
+**Status:** Frozen / Approved  
 **Chief Architect architecture review:** ACCEPTED — 2026-09-01  
-**Founder / Product Architecture freeze:** PENDING  
+**Founder / Product Architecture freeze:** APPROVED — 2026-09-01  
 **Date:** 2026-09-01  
 **Related:** [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) · [ADR-AIEOS-024](ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md) · [ADR-AIEOS-025](ADR-AIEOS-025-aieos-api-contract-integration-implementation-baseline.md) · [ADR-AIEOS-027](ADR-AIEOS-027-aieos-generic-content-implementation-baseline.md) · [ADR-AIEOS-028](ADR-AIEOS-028-security-audit-mutation-accountability.md) · [ADR-AIEOS-046R1](ADR-AIEOS-046R1-aieos-production-event-plane-multi-domain-publisher-scope-revision.md) · [ADR-AIEOS-052](ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) · [ADR-AIEOS-053](ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) · [ADR-042](ADR-042-teacher-os-shell-owns-ux.md) · [ADR-044](ADR-044-ai-platform-behind-stable-services.md) · [ADR-045](ADR-045-teaching-intent-owns-goals.md) · [ADR-046](ADR-046-artifact-status-lifecycle.md) · [ADR-047](ADR-047-outcome-first-prepare-tomorrow.md) · [ADR-048](ADR-048-review-queue-owns-approval.md)
 
-**Catalogue note:** Proposed / Freeze Candidate is **ARCHITECTURE AUTHORITY DEPOSIT ONLY**. This ADR proposes the **AIEOS Teaching Execution & Observation Authority** for Teacher OS **TOS-DEV07 — Teach & Classroom Execution**. **Founder / Product Architecture freeze has NOT been granted.** Architecture deposition ≠ Backend implementation authorization ≠ Frontend implementation authorization ≠ migration authorization ≠ OpenAPI authorization ≠ School Context provider provisioning ≠ NATS provisioning/change authorization ≠ deployment authorization ≠ production mutation authorization. Implementation slices **DEV07-I01+** require separate Chief Architect authorization **after** Founder freeze.
+**Catalogue note:** Frozen / Approved is **ARCHITECTURE AUTHORITY ONLY**. This ADR freezes the **AIEOS Teaching Execution & Observation Authority** for Teacher OS **TOS-DEV07 — Teach & Classroom Execution**. Founder / Product Architecture approval was granted **2026-09-01**. Architecture freeze ≠ Backend implementation authorization ≠ Frontend implementation authorization ≠ migration authorization ≠ OpenAPI authorization ≠ School Context provider provisioning ≠ NATS provisioning/change authorization ≠ deployment authorization ≠ production mutation authorization. Implementation slices **DEV07-I01+** require separate Chief Architect authorization.
 
 **ID family note:** `ADR-AIEOS-054` is part of the AIEOS platform ADR family (`ADR-AIEOS-*`). It is distinct from Teacher OS ADR-046 / ADR-047 / ADR-048 product-language decisions and from platform ADR-AIEOS-046 / ADR-AIEOS-047 / ADR-AIEOS-048 infrastructure decisions.
 
@@ -417,7 +417,7 @@ No timetable is required.
 
 Today's Mission → Teach deep-link may be added as **derived UX** during DEV07 without creating a new SoR, but it is **NOT** a prerequisite for TeachingExecution authority.
 
-### 19. Recommended implementation order (after future Founder freeze — NOT authorized yet)
+### 19. Recommended implementation order (NOT authorized yet)
 
 | Slice | Scope |
 |-------|-------|
