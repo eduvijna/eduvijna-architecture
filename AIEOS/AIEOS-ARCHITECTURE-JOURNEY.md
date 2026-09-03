@@ -309,10 +309,10 @@ Conflict preference:
 |-------|---------|
 | **Objective** | Propose architecture for Teacher OS TOS-DEV08: Taught ≠ Assessed ≠ Mastered; Assessment-domain ClassroomAssessment SoR; class-level-first OPTION D; atomic RECORD → RECORDED / VOIDED; exact ContentVersion Cases A/B/C; Bootstrap ClassRef teaching-target authority; no learner identity / attempts / mastery / Improve / events / Temporal / AI grading. |
 | **Architectural reason** | TOS-DEV08A discovery + TOS-DEV08P1 design/validation accepted as freeze-candidate input; TeachingExecution must not be repurposed as assessment truth; `/teacher-os/assess` is PlaceholderPage; no roster/learner SoR exists for learner-specific baseline. |
-| **What was implemented at architecture deposit** | Architecture source only: [ADR-AIEOS-055](../decisions/ADR-AIEOS-055-aieos-assessment-learning-evidence-authority.md) deposited **2026-09-03** as **Proposed / Freeze Candidate**. |
-| **What was deliberately NOT implemented** | Founder freeze; Backend; Frontend; Product; migration; OpenAPI; NATS; Temporal; AI grading; DEV08-I01+ implementation. |
-| **Governing decisions** | ADR-AIEOS-055 (Proposed / Freeze Candidate); ADR-AIEOS-054 (TeachingExecution); ADR-AIEOS-053 (TeachingAssignment); ADR-AIEOS-027 (Content); ADR-AIEOS-023R1 / 024 / 025 / 028 / 031. |
-| **Current status** | **Proposed / Freeze Candidate.** TOS-DEV08A CLOSED. TOS-DEV08P1 DESIGN + VALIDATION COMPLETE. Founder freeze **not granted**. Implementation **not authorized**. |
+| **What was implemented at architecture freeze** | Architecture source only: [ADR-AIEOS-055](../decisions/ADR-AIEOS-055-aieos-assessment-learning-evidence-authority.md) Frozen / Approved **2026-09-03**. Chronology: TOS-DEV08A discovery → TOS-DEV08P1 design + validation → TOS-DEV08P2 freeze candidate → TOS-DEV08P2R1 authority correction → Founder freeze approved **2026-09-03**. |
+| **What was deliberately NOT implemented** | Backend; Frontend; Product; migration; OpenAPI; DEV08-I01+; Improve; learner-specific Assessment; Mastery; events; Temporal; AI grading; production deployment. `/teacher-os/assess` remains PlaceholderPage. |
+| **Governing decisions** | ADR-AIEOS-055 (Frozen / Approved); ADR-AIEOS-054 (TeachingExecution); ADR-AIEOS-053 (TeachingAssignment / Future Student / Learning attempt-submission); ADR-AIEOS-027 (Content); ADR-AIEOS-023R1 / 024 / 025 / 028 / 031. |
+| **Current status** | **Architecture Frozen / Approved.** Founder / Product Architecture approved **2026-09-03**. OPTION D class-level-first ClassroomAssessment. **NOT IMPLEMENTED.** DEV08-I01+ **NOT AUTHORIZED.** |
 
 ---
 

@@ -77,7 +77,7 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | [ADR-AIEOS-052](ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) | AIEOS Preparation Kit & Multi-Artifact Generation Architecture (Frozen / Approved — TOS-DEV04 native implementation COMPLETE; Backend `06e05277e73e0c71172cae4904efb37d771c3fad`; live provider proof DEV04-I10 separate gate) |
 | [ADR-AIEOS-053](ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) | AIEOS Teaching Assignment & Classroom Delivery Authority (Frozen / Approved — Founder approved 2026-08-31; TOS-DEV06 native implementation + Product E2E COMPLETE; external LMS / Student OS delivery deferred) |
 | [ADR-AIEOS-054](ADR-AIEOS-054-aieos-teaching-execution-observation-authority.md) | AIEOS Teaching Execution & Observation Authority (Frozen / Approved — Founder approved 2026-09-01; TOS-DEV07; HYBRID Option D; TeachingExecution SoR; Assigned ≠ Taught; **TOS-DEV07 implementation complete / DEV07-I01–I04 formally closed**) |
-| [ADR-AIEOS-055](ADR-AIEOS-055-aieos-assessment-learning-evidence-authority.md) | AIEOS Assessment & Learning Evidence Authority (**Proposed / Freeze Candidate** — TOS-DEV08; OPTION D class-level-first ClassroomAssessment; Taught ≠ Assessed ≠ Mastered; Founder freeze **not granted**; Backend / Frontend / migration / OpenAPI **not authorized**) |
+| [ADR-AIEOS-055](ADR-AIEOS-055-aieos-assessment-learning-evidence-authority.md) | AIEOS Assessment & Learning Evidence Authority (Frozen / Approved — Founder approved **2026-09-03**; TOS-DEV08; OPTION D class-level-first ClassroomAssessment; Taught ≠ Assessed ≠ Mastered; DEV08 implementation **not authorized**) |
 
 ## Exclusions
 

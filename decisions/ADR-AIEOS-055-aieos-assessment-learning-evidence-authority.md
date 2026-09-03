@@ -2,8 +2,8 @@
 id: ADR-AIEOS-055
 title: AIEOS Assessment & Learning Evidence Authority
 owner: EduVijna Enterprise Architecture Office · Chief AI Enterprise Architect
-status: proposed
-version: 1.0.1
+status: approved
+version: 1.0.2
 created: 2026-09-03
 last_updated: 2026-09-03
 reviewers:
@@ -13,13 +13,13 @@ reviewers:
 
 # ADR-AIEOS-055 — AIEOS Assessment & Learning Evidence Authority
 
-**Status:** Proposed / Freeze Candidate  
-**Chief Architect architecture review:** PENDING  
-**Founder / Product Architecture freeze:** NOT GRANTED  
+**Status:** Frozen / Approved
+**Chief Architect architecture review:** ACCEPTED — 2026-09-03
+**Founder / Product Architecture freeze:** APPROVED — 2026-09-03
 **Date:** 2026-09-03  
 **Related:** [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) · [ADR-AIEOS-024](ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md) · [ADR-AIEOS-025](ADR-AIEOS-025-aieos-api-contract-integration-implementation-baseline.md) · [ADR-AIEOS-027](ADR-AIEOS-027-aieos-generic-content-implementation-baseline.md) · [ADR-AIEOS-028](ADR-AIEOS-028-security-audit-mutation-accountability.md) · [ADR-AIEOS-031](ADR-AIEOS-031-production-authorization-kernel.md) · [ADR-AIEOS-052](ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) · [ADR-AIEOS-053](ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) · [ADR-AIEOS-054](ADR-AIEOS-054-aieos-teaching-execution-observation-authority.md)
 
-**Catalogue note:** Proposed / Freeze Candidate is **ARCHITECTURE DESIGN DEPOSIT ONLY**. This ADR records the **AIEOS Assessment & Learning Evidence Authority** candidate for Teacher OS **TOS-DEV08**. It is **not Frozen**. It is **not Approved**. Founder freeze is **not granted**. Architecture deposit ≠ Backend implementation authorization ≠ Frontend implementation authorization ≠ migration authorization ≠ OpenAPI authorization ≠ NATS provisioning ≠ Temporal authorization ≠ deployment authorization ≠ production mutation authorization. Implementation slices **DEV08-I01+** require separate Chief Architect authorization **after** Founder freeze.
+**Catalogue note:** Frozen / Approved is **ARCHITECTURE AUTHORITY ONLY**. This ADR freezes the **AIEOS Assessment & Learning Evidence Authority** for Teacher OS **TOS-DEV08**. Founder / Product Architecture approval was granted **2026-09-03**. Architecture freeze ≠ Backend implementation authorization ≠ Frontend implementation authorization ≠ migration authorization ≠ OpenAPI authorization ≠ NATS provisioning ≠ Temporal authorization ≠ deployment authorization ≠ production mutation authorization. Implementation slices **DEV08-I01+** require separate Chief Architect authorization.
 
 **ID family note:** `ADR-AIEOS-055` is part of the AIEOS platform ADR family (`ADR-AIEOS-*`). It is distinct from Teacher OS ADR-046 / ADR-047 / ADR-048 product-language decisions.
 
@@ -29,7 +29,7 @@ Does **not** reopen: Generic Content authority (ADR-AIEOS-027); DEV04 preparatio
 
 Historical ADR-AIEOS-053 and ADR-AIEOS-054 bodies remain unchanged.
 
-TOS-DEV08A discovery and TOS-DEV08P1 design + adversarial validation are **COMPLETE**. This deposit does **not** authorize implementation.
+TOS-DEV08A discovery and TOS-DEV08P1 design + adversarial validation are **COMPLETE**. Founder / Product Architecture approval was granted on **2026-09-03**. This freeze does **not** authorize implementation.
 
 ---
 
@@ -425,7 +425,7 @@ There is currently no authorized consumer requiring either. Future consumers may
 
 Assessment will require a future Assessment capability family under [ADR-AIEOS-031](ADR-AIEOS-031-production-authorization-kernel.md).
 
-**Do not freeze final capability identifier strings in this Proposed / Freeze Candidate** beyond conceptual operations:
+**Do not freeze final capability identifier strings in this ADR** beyond conceptual operations:
 
 - record
 - correct
@@ -519,12 +519,12 @@ No migration is authorized by this ADR.
 - Taught remains TeachingExecution; Assessed becomes ClassroomAssessment; Mastered remains future Learner Intelligence.
 - Historical execution-bound and assignment-bound ContentVersions remain assessable after later publication (Cases A/B).
 - Standalone Assess remains gated to the current published learner-facing version (Case C).
-- Founder freeze is still required before implementation authorization.
+- Founder freeze has been granted. DEV08-I01+ still requires separate Chief Architect authorization.
 
 ---
 
-## Founder decision required
+## Founder decision
 
-Accept **class-level-first hybrid ClassroomAssessment** (Option D) versus waiting for roster-backed learner-specific Assessment.
+Founder / Product Architecture **APPROVED** class-level-first hybrid ClassroomAssessment (Option D) on **2026-09-03**.
 
-This ADR recommends Option D. Founder freeze is **not granted** by this deposit.
+This freeze does **not** authorize Backend, Frontend, migration, OpenAPI, DEV08-I01+, Improve, learner-specific Assessment, Student OS, Mastery, or production deployment.
