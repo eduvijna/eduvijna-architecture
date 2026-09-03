@@ -3,7 +3,7 @@ id: ADR-AIEOS-055
 title: AIEOS Assessment & Learning Evidence Authority
 owner: EduVijna Enterprise Architecture Office · Chief AI Enterprise Architect
 status: proposed
-version: 1.0.0
+version: 1.0.1
 created: 2026-09-03
 last_updated: 2026-09-03
 reviewers:
@@ -107,11 +107,13 @@ Assigned  ≠  Graded
 | Class assignment intent | **TeachingAssignment** — AIEOS Teaching ([ADR-AIEOS-053](ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md)) |
 | Actual classroom execution | **TeachingExecution** — AIEOS Teaching ([ADR-AIEOS-054](ADR-AIEOS-054-aieos-teaching-execution-observation-authority.md)) |
 | Class / roster master | **ERP / SIS / Admin School Context** |
-| Class-level assessment evidence | **ClassroomAssessment** — AIEOS Assessment (this ADR) |
+| Class-level assessment evidence / grades / results | **ClassroomAssessment** — AIEOS Assessment (this ADR); learner-specific Assessment results remain future Assessment design after roster authority exists |
 | Learner identity / membership | **ERP / SIS / Admin School Context** (not AIEOS Assessment baseline) |
-| Learner attempts / submissions | **Future AssessmentAttempt (or equivalent)** after roster authority exists |
+| Learner visibility / attempt / response / submission facts | **Future Student / Learning domain** ([ADR-AIEOS-053](ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md)) — **not** Assessment SoR |
 | Mastery / learner model | **Future Learner Intelligence** (not this ADR) |
 | Improve recommendations | **Future Improve** (not this ADR) |
+
+ADR-AIEOS-053 remains the current Frozen / Approved authority for learner visibility / attempt / submission. This ADR **must not** silently move attempt/submission SoR ownership into Assessment. Assessment may later **consume** governed Student / Learning evidence and record/derive separately governed Assessment results; it does **not** become the attempt/submission SoR merely because a future type might be named `AssessmentAttempt`. Any later move of attempt/submission ownership into Assessment requires an explicit governed forward revision of ADR-AIEOS-053.
 
 ### 3. ClassroomAssessment aggregate
 
@@ -146,7 +148,7 @@ The aggregate conceptually owns **only** what is required to represent a represe
 
 - `learner_id`, `student_id`, LearnerRef, StudentRef
 - roster snapshot, membership snapshot
-- AssessmentAttempt, AssessmentSubmission
+- learner attempt / response / submission facts or aggregates
 - individual result, individual score, individual grade
 - mastery, competency attainment
 - misconception / strength / weakness as raw fact columns
@@ -160,7 +162,7 @@ Composition validation belongs to governed application authority (ResourceRef / 
 
 The first product boundary allows a represented teacher to record a governed class-level Assessment fact **without inventing learner identity**.
 
-Future learner-specific Assessment requires separately governed learner / roster authority. Future learner attempts **must be ADDITIVE**. They must **not** redefine ClassroomAssessment ownership, must **not** make TeachingAssignment attempt truth, and must **not** make TeachingExecution assessment truth.
+Future learner-specific Assessment requires separately governed learner / roster authority **and** remains composed with Future Student / Learning attempt/submission facts per ADR-AIEOS-053. Learner-specific Assessment design must be **ADDITIVE**. It must **not** redefine ClassroomAssessment ownership, must **not** make TeachingAssignment attempt truth, must **not** make TeachingExecution assessment truth, and must **not** move attempt/submission SoR ownership into Assessment without an explicit ADR-AIEOS-053 forward revision.
 
 Student OS remains outside this baseline.
 
@@ -441,18 +443,27 @@ No browser authority. No JWT authorization snapshot authority. Authorization una
 
 ### 22. Future learner-specific extension
 
-After authoritative learner identity / roster architecture exists, a future `AssessmentAttempt` (or equivalent) may reference:
+After authoritative learner identity / roster architecture exists:
+
+- **Future Student / Learning** may own learner attempt / response / submission facts ([ADR-AIEOS-053](ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md)).
+- **Future Assessment** may consume those governed facts and produce assessment results / interpretations according to a separately approved learner-specific Assessment design.
+
+Both may reference:
 
 - authoritative learner reference
 - exact ContentVersion
-- assessment context (optionally `ClassroomAssessment`)
+- assessment / class context (optionally `ClassroomAssessment`)
 
-without:
+The future design **MUST** preserve:
 
-- rewriting ClassroomAssessment historical class-level facts
-- making TeachingAssignment attempt truth
-- making TeachingExecution assessment truth
-- making AssessmentResult mastery truth
+```text
+TeachingAssignment  ≠  Attempt
+TeachingExecution   ≠  Assessment
+Attempt / Submission ≠  Assessment Result
+Assessment Result   ≠  Mastery
+```
+
+This ADR does **not** freeze a new learner-specific aggregate name. Names such as `AssessmentAttempt`, `LearnerAssessment`, or `AssessmentSubmission` remain future design questions unless a frozen authority already establishes them. Assessment must **not** become attempt/submission SoR by naming convenience.
 
 Student OS remains outside this baseline.
 
@@ -477,7 +488,7 @@ Prefer one aggregate table unless later evidence proves a child record is needed
 assessment.classroom_assessments
 ```
 
-Do **not** introduce in baseline: `assessment_attempts`, `assessment_submissions`, `learner_results`, mastery tables.
+Do **not** introduce in baseline: learner attempt/submission tables, learner result tables, or mastery tables.
 
 No migration is authorized by this ADR.
 
