@@ -303,6 +303,19 @@ Conflict preference:
 
 ---
 
+## 23. ADR-AIEOS-055 — Assessment & Learning Evidence Authority
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Propose architecture for Teacher OS TOS-DEV08: Taught ≠ Assessed ≠ Mastered; Assessment-domain ClassroomAssessment SoR; class-level-first OPTION D; atomic RECORD → RECORDED / VOIDED; exact ContentVersion Cases A/B/C; Bootstrap ClassRef teaching-target authority; no learner identity / attempts / mastery / Improve / events / Temporal / AI grading. |
+| **Architectural reason** | TOS-DEV08A discovery + TOS-DEV08P1 design/validation accepted as freeze-candidate input; TeachingExecution must not be repurposed as assessment truth; `/teacher-os/assess` is PlaceholderPage; no roster/learner SoR exists for learner-specific baseline. |
+| **What was implemented at architecture deposit** | Architecture source only: [ADR-AIEOS-055](../decisions/ADR-AIEOS-055-aieos-assessment-learning-evidence-authority.md) deposited **2026-09-03** as **Proposed / Freeze Candidate**. |
+| **What was deliberately NOT implemented** | Founder freeze; Backend; Frontend; Product; migration; OpenAPI; NATS; Temporal; AI grading; DEV08-I01+ implementation. |
+| **Governing decisions** | ADR-AIEOS-055 (Proposed / Freeze Candidate); ADR-AIEOS-054 (TeachingExecution); ADR-AIEOS-053 (TeachingAssignment); ADR-AIEOS-027 (Content); ADR-AIEOS-023R1 / 024 / 025 / 028 / 031. |
+| **Current status** | **Proposed / Freeze Candidate.** TOS-DEV08A CLOSED. TOS-DEV08P1 DESIGN + VALIDATION COMPLETE. Founder freeze **not granted**. Implementation **not authorized**. |
+
+---
+
 ## Gaps / missing chronology
 
 Where older pre-Teacher-OS platform history (earlier Platform AI packages, ERP modules, etc.) is relevant but not part of this AIEOS journey spine: **Not established by current repository evidence** as a fully sequenced AIEOS chronology in this folder — treat as adjacent capability history under product/API repos.
