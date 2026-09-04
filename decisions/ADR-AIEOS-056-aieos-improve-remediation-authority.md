@@ -3,7 +3,7 @@ id: ADR-AIEOS-056
 title: AIEOS Improve & Remediation Authority
 owner: EduVijna Enterprise Architecture Office · Chief AI Enterprise Architect
 status: proposed
-version: 1.0.0
+version: 1.0.1
 created: 2026-09-04
 last_updated: 2026-09-04
 reviewers:
@@ -134,8 +134,9 @@ A pure reuse of `prepare_tomorrow` without a distinct IntentType would falsify i
 
 1. New IntentType `remediate_class`
 2. Durable TeachingWork (existing SoR)
-3. Immutable Teaching-owned remediation-origin relation pinned to Assessment revision at creation
+3. Immutable Teaching-owned remediation-origin relation pinned to Assessment **revision + `class_result_level` snapshot** at creation
 4. Application command with Idempotency-Key
+5. Teacher-confirmed `goal_text` as the sole Assessment-derived remediation generator instruction (no live Assessment/Observation reread into model context)
 
 ### 5. Improve ownership boundary
 
@@ -179,8 +180,8 @@ Implementation note (not authorized by this deposit): domain `IntentType` enum *
 | What becomes durable? | TeachingWork + TeachingWorkRemediationOrigin |
 | Who owns `goal_text`? | Teacher — authoritative generator input after confirmation |
 | May teacher edit goal before generation? | **Yes** — confirm/edit at Improve create; may refine on Work after create per existing refine rules (`intent_type` immutable) |
-| What may be prefilled (non-authoritative)? | Display-only Assessment context; optional draft goal suggestions that are **never** persisted or sent to AI until teacher confirms |
-| What requires explicit teacher confirmation? | Remediation `goal_text`; any optional inclusion of `class_result_note`; any optional inclusion of CLASS_OBSERVATION body text |
+| What may be prefilled (non-authoritative)? | Display-only Assessment / Observation context on screen; optional draft goal suggestions that are **never** persisted or sent to AI until teacher confirms |
+| What requires explicit teacher confirmation? | Remediation `goal_text` only — the authoritative Teaching Intent / generator instruction |
 
 ### 7. Provenance model
 
@@ -198,7 +199,8 @@ Implementation note (not authorized by this deposit): domain `IntentType` enum *
 | `work_id` | Remediation TeachingWork identity (PK / 1:1) |
 | `tenant_id` | Tenant boundary |
 | `source_assessment_id` | Which ClassroomAssessment initiated remediation |
-| `source_assessment_aggregate_revision` | Exact Assessment revision the teacher acted on (CORRECT-safe) |
+| `source_assessment_aggregate_revision` | Exact Assessment revision the teacher acted on |
+| `source_class_result_level_snapshot` | Exact `class_result_level` from that same validated revision at create |
 | `source_class_ref` | Provenance class at initiation (≠ future assignment target) |
 | `source_content_id` | Assessed Content identity |
 | `source_content_version_id` | Exact assessed ContentVersion |
@@ -208,47 +210,97 @@ Implementation note (not authorized by this deposit): domain `IntentType` enum *
 | `initiating_teacher_principal_id` | Teacher who deliberately chose Improve |
 | `created_at` | Initiation timestamp |
 
-Optional **explicit inclusion flags** (immutable booleans set only at create):
+**`source_class_result_level_snapshot` semantics:**
 
-| Field | Default | Meaning |
-|-------|---------|---------|
-| `include_class_result_note_in_goal_context` | `false` | Teacher explicitly allowed note into confirmed goal context |
-| `include_selected_observation_ids` | empty | Only observation ids explicitly selected by teacher (CLASS_OBSERVATION only) |
+- Captured from the **same** live Assessment revision validated by `expected_assessment_aggregate_revision`
+- Immutable provenance snapshot of what class-level result the teacher acted upon
+- **NOT** new Assessment authority
+- **NOT** current Assessment truth after later CORRECT
+- **NOT** Mastery
+- **NOT** a recommendation
+- Never rewritten after Assessment CORRECT
+- Remains preserved after Assessment VOID
 
-No generic ungoverned stringly provenance bag.
+**DEV09 baseline excludes** from Teaching provenance:
 
-#### 7.3 Cross-domain rule
+- `class_result_note` copy
+- CLASS_OBSERVATION body copy
+- `include_class_result_note_in_goal_context`
+- `include_selected_observation_ids`
 
-Assessment remains Assessment-owned. Origin stores **identifiers + revision snapshot** only. Improve / Teaching **must not** rewrite Assessment rows when reading origin. UI may compose “source Assessment later CORRECTED / VOIDED” by comparing live Assessment state to pinned revision — **without mutating TeachingWork or origin**.
+Teacher UX **MAY display** current authorized `class_result_note` / CLASS_OBSERVATION before Work creation. The teacher may use human judgment from those displayed facts when writing `goal_text`. Direct model consumption of note/observation body requires a future separately governed immutable input-snapshot design — **not reserved silently in this baseline**.
+
+No generic ungoverned stringly provenance bag. No mutable origin. No Improve lifecycle.
+
+#### 7.3 Create atomicity
+
+Successful create **atomically commits** in one transaction:
+
+1. `TeachingWork` with `intent_type = remediate_class`
+2. `TeachingWorkRemediationOrigin` from the **same** validated Assessment snapshot
+
+Forbidden residual states:
+
+- remediation TeachingWork without its required origin
+- origin without its TeachingWork
+
+Idempotent replay returns the **same** committed Work/origin outcome and **must not** create a second origin or orphan Work.
+
+#### 7.4 Cross-domain rule
+
+Assessment remains Assessment-owned. Origin stores identifiers + revision + `class_result_level` snapshot only. Improve / Teaching **must not** rewrite Assessment rows when reading origin. UI may compose “source Assessment later CORRECTED / VOIDED” by comparing live Assessment state to pinned revision/snapshot — **without mutating TeachingWork or origin**. The snapshot is historical creation-basis provenance, not current Assessment authority.
 
 ### 8. Assessment revision / correction / void semantics
 
 | Case | Required behavior |
 |------|-------------------|
-| **A — CORRECT after remediation** | Existing remediation TeachingWork + origin **MUST NOT** silently rewrite. Origin retains `source_assessment_aggregate_revision` of creation. UI may show source-superseded advisory. |
-| **B — VOID after remediation** | VOID **MUST NOT** cascade-delete / archive / cancel remediation TeachingWork. UI may show source-invalidated advisory. Teacher retains Work control under existing Teaching rules. |
+| **A — CORRECT after remediation** | Existing remediation TeachingWork + origin **MUST NOT** silently rewrite. Origin retains creation revision **and** `source_class_result_level_snapshot`. UI may show source-superseded advisory. |
+| **B — VOID after remediation** | VOID **MUST NOT** cascade-delete / archive / cancel remediation TeachingWork. Origin remains unchanged historical provenance. UI may show source-invalidated advisory. Teacher retains Work control under existing Teaching rules. |
 | **C — VOID before Improve** | VOIDED Assessment is **not eligible** to initiate new remediation work. Create command **FAIL CLOSED**. |
 | **D — Multiple Improve from same Assessment** | **Allowed**. No business uniqueness on `assessment_id`. Replay protection via Idempotency-Key only. |
+
+**CORRECT example (binding):**
+
+```text
+Assessment A revision 3: class_result_level = MIXED
+  → teacher creates remediation Work
+  → origin freezes:
+       source_assessment_id = A
+       source_assessment_aggregate_revision = 3
+       source_class_result_level_snapshot = MIXED
+  → Assessment CORRECT → revision 4: class_result_level = DEMONSTRATED
+
+Required:
+  origin remains revision 3 / MIXED
+  TeachingWork unchanged
+  live Assessment = revision 4 / DEMONSTRATED
+  UI may note source Assessment subsequently changed
+  do NOT rewrite origin to DEMONSTRATED
+  do NOT claim snapshot is current Assessment authority
+```
 
 **Eligibility for create:** `lifecycle_state = RECORDED` only. `DEMONSTRATED` / `MIXED` / `NOT_YET_DEMONSTRATED` are all eligible — Assessed ≠ Improvement required; teacher may still choose Improve.
 
 ### 9. Teacher-deliberate AI boundary
 
 ```text
-Assessment facts may INFORM the screen
+Assessment / Observation facts may INFORM the screen
   → teacher chooses Improve
   → teacher owns/confirms remediation goal_text
-  → TeachingWork created
-  → existing generation uses teacher-confirmed goal_text as authoritative Intent input
+  → TeachingWork + origin created atomically
+  → generation uses teacher-confirmed goal_text as THE authoritative remediation generator instruction
+     (+ ordinary existing TeachingWork generator context already governed)
 ```
 
-| Input | Machine/AI use |
+| Input | Baseline use |
 |-------|----------------|
-| `class_result_level` | May be **displayed**; may be included in generation context only as structured non-secret class-level signal **after** Work exists — must not alone trigger generation |
-| `class_result_note` | **Never** silently forwarded to the model. Requires explicit teacher inclusion + confirmation |
-| CLASS_OBSERVATION body | **Never** silently forwarded. Requires explicit teacher selection + confirmation |
+| Live `class_result_level` | May be **displayed** while teacher forms the goal. Snapshot stored on origin for provenance. **MUST NOT** be dynamically reread into model context after Work creation to change remediation intent. |
+| `class_result_note` | May be **displayed** before create. **MUST NOT** be copied into Teaching provenance. **MUST NOT** be forwarded to the model in DEV09 baseline. |
+| CLASS_OBSERVATION body | May be **displayed** before create. **MUST NOT** be copied into Teaching provenance. **MUST NOT** be forwarded to the model in DEV09 baseline. |
 | PRIVATE_EXECUTION_NOTE | **Out of Improve baseline** (teacher-private; not remediation input) |
-| Teacher-confirmed `goal_text` | **Authoritative** Teaching Intent / generator input |
+| Teacher-confirmed `goal_text` | **THE authoritative** remediation generator instruction |
+
+Remove prior wording that allowed `class_result_level` injection into generation context merely “after Work exists”. Mutable Assessment facts **MUST NOT** be read later at generation time in a way that changes the teacher's creation basis.
 
 **No automatic AI remediation** on Assessment RECORD / CORRECT / VOID / list.
 
@@ -258,7 +310,7 @@ DEV09 baseline **MUST NOT** require or invent:
 
 `learner_id`, `student_id`, roster, attempt, response, submission, score, grade, learner group, student profile, mastery, competency attainment, personalized learning state, fake counts such as “12 students” / “G1/G2”.
 
-Permitted class-level context: `class_ref`, `class_result_level`, teacher-confirmed goal/context, exact ContentVersion, optional selected CLASS_OBSERVATION, TeachingWork context.
+Permitted class-level context for UX / create: `class_ref`, displayed `class_result_level` / note / CLASS_OBSERVATION (display-only), teacher-confirmed `goal_text`, exact ContentVersion, TeachingWork context. Durable Teaching remediation input remains `goal_text` + ordinary Work generator context; durable provenance remains origin fields only.
 
 ### 11. ClassRef semantics
 
@@ -294,10 +346,9 @@ Preferred over `/improvements` because no Improve aggregate exists.
 - `goal_text` (required; teacher-confirmed; non-empty)
 - `target_date`, `locale` (as existing Work create)
 - optional `class_label` / `subject` / `topic` (teacher-editable context; not ClassRef SoR)
-- optional explicit inclusion flags for note / observation ids
 - `expected_assessment_aggregate_revision` (required) — FAIL CLOSED if live Assessment revision differs (optimistic create basis)
 
-**Success:** creates TeachingWork (`intent_type=remediate_class`) + immutable origin; returns Work identity for navigation to existing Work UX.
+**Success:** atomically creates TeachingWork (`intent_type=remediate_class`) **and** immutable origin (including `source_class_result_level_snapshot` from the validated Assessment); returns Work identity for navigation to existing Work UX.
 
 #### 13.2 Eligibility listing (composition)
 
@@ -320,8 +371,10 @@ Improve hub may list recent RECORDED ClassroomAssessments for the effective teac
 
 - Create uses platform Idempotency-Key scope consistent with TeachingWork create.
 - No uniqueness on `(teacher, assessment_id)`.
-- `expected_assessment_aggregate_revision` prevents creating from a stale screen after CORRECT without teacher acknowledgment.
-- TeachingWork refine / generate concurrency remains existing Work/Content rules (If-Match / ETag where already established).
+- Create must validate Assessment `lifecycle_state = RECORDED` **and** live `aggregate_revision = expected_assessment_aggregate_revision`, then **atomically snapshot** live `class_result_level` into `source_class_result_level_snapshot` before commit.
+- If revision changed: **FAIL CLOSED**. Teacher must reload/review current Assessment and deliberately retry with a new command / Idempotency-Key as appropriate. Do **not** silently adopt the new Assessment revision.
+- Idempotent replay returns the same committed Work/origin outcome and cannot create a second origin or orphan Work.
+- TeachingWork refine / generate concurrency remains existing Work/Content rules (If-Match / ETag where already established). Generation after create uses teacher-confirmed `goal_text` + ordinary Work generator context — it does **not** dynamically reread Assessment result/note or Observation body as remediation intent.
 
 ### 15. Content / Review / Publication / Assignment reuse
 
@@ -434,27 +487,28 @@ If live AI makes deterministic E2E fragile, use the existing governed developmen
 ### Risks if violated
 
 - Secret `prepare_tomorrow` remediation → false Intent analytics and irreversible semantic confusion
-- Missing revision pin → silent provenance lie after CORRECT
+- Missing revision + result snapshot → creation basis not explainable after CORRECT (ADR-AIEOS-055 has no Assessment business-history SoR)
 - Cascade cancel on VOID → destroys teacher work without consent
-- Auto-forwarding `class_result_note` → ungoverned AI input
+- Dynamically rereading live Assessment/Observation into generation → changes teacher creation basis behind their back
+- Auto-forwarding / duplicating `class_result_note` or Observation body into Teaching storage → ungoverned AI/PII/retention scope
 - Improve SoR / fake learner groups → premature Student Intelligence coupling
 
 ---
 
-## Adversarial validation (TOS-DEV09P1)
+## Adversarial validation (TOS-DEV09P1 / TOS-DEV09P1R1)
 
 | # | Scenario | Result |
 |---|----------|--------|
 | 1 | VOIDED Assessment cannot initiate new Improve work | **PASS** — eligibility RECORDED only; FAIL CLOSED |
-| 2 | Assessment CORRECT after remediation does not mutate Work | **PASS** — immutable origin + pinned revision |
+| 2 | Assessment CORRECT after remediation does not mutate Work | **PASS** — immutable origin + pinned revision + result snapshot |
 | 3 | Assessment VOID after remediation does not cascade-delete Work | **PASS** — no cascade; advisory UI only |
 | 4 | Same Assessment may produce multiple remediation Works | **PASS** — no assessment_id uniqueness |
-| 5 | Same Idempotency-Key + same request replays | **PASS** — platform idempotency replay |
+| 5 | Same Idempotency-Key + same request replays | **PASS** — platform idempotency replay of same Work/origin |
 | 6 | Same Idempotency-Key + different request conflicts | **PASS** — fingerprint conflict |
 | 7 | Cross-tenant Assessment reference fails closed | **PASS** |
 | 8 | Different teacher Assessment reference fails closed | **PASS** |
 | 9 | Unauthorized/stale ClassRef fails closed | **PASS** — current ClassRef authority gate |
-| 10 | Assessment note not automatically sent to AI | **PASS** — explicit inclusion required; default false |
+| 10 | Assessment note not automatically sent to AI | **PASS** — note display-only; generation uses goal_text only |
 | 11 | No learner identity introduced | **PASS** |
 | 12 | No Mastery claim introduced | **PASS** — Assessed ≠ Mastered; Assessed ≠ Improvement required |
 | 13 | Review Queue cannot be bypassed | **PASS** — existing Content path only |
@@ -464,7 +518,15 @@ If live AI makes deterministic E2E fragile, use the existing governed developmen
 | 17 | Improve does not rewrite Assessment | **PASS** |
 | 18 | Improve does not modify TeachingExecution | **PASS** |
 | 19 | No new NATS/Temporal requirement for baseline | **PASS** |
-| 20 | Source provenance remains durable and explainable | **PASS** — TeachingWorkRemediationOrigin |
+| 20 | Source provenance remains durable and explainable | **PASS** — TeachingWorkRemediationOrigin with revision + result snapshot |
+| 21 | CORRECT preserves exact `source_class_result_level_snapshot` | **PASS** — MIXED at rev 3 remains MIXED after rev 4 DEMONSTRATED |
+| 22 | Revision number + result snapshot mutually consistent at create | **PASS** — both taken from same validated Assessment revision |
+| 23 | Generation after Work creation does not reread corrected Assessment result as remediation intent | **PASS** — goal_text + ordinary Work generator context only |
+| 24 | `class_result_note` is not copied into Teaching provenance | **PASS** |
+| 25 | CLASS_OBSERVATION body is not copied into Teaching provenance | **PASS** |
+| 26 | Teacher-confirmed `goal_text` is sufficient generator intent | **PASS** |
+| 27 | TeachingWork + origin creation is atomic | **PASS** — no orphan Work or orphan origin |
+| 28 | Idempotent replay cannot create a second origin or orphan Work | **PASS** |
 
 **CURRENT — INVALID scenario failures: 0**
 
