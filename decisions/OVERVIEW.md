@@ -78,6 +78,7 @@ Historical ADR-AIEOS-023 Identity/Tenant/Security remains Frozen / Approved; ori
 | [ADR-AIEOS-053](ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) | AIEOS Teaching Assignment & Classroom Delivery Authority (Frozen / Approved — Founder approved 2026-08-31; TOS-DEV06 native implementation + Product E2E COMPLETE; external LMS / Student OS delivery deferred) |
 | [ADR-AIEOS-054](ADR-AIEOS-054-aieos-teaching-execution-observation-authority.md) | AIEOS Teaching Execution & Observation Authority (Frozen / Approved — Founder approved 2026-09-01; TOS-DEV07; HYBRID Option D; TeachingExecution SoR; Assigned ≠ Taught; **TOS-DEV07 implementation complete / DEV07-I01–I04 formally closed**) |
 | [ADR-AIEOS-055](ADR-AIEOS-055-aieos-assessment-learning-evidence-authority.md) | AIEOS Assessment & Learning Evidence Authority (Frozen / Approved — Founder approved **2026-09-03**; TOS-DEV08; OPTION D class-level-first ClassroomAssessment; Taught ≠ Assessed ≠ Mastered; **TOS-DEV08 implementation complete / DEV08-I01–I04 formally closed**) |
+| [ADR-AIEOS-056](ADR-AIEOS-056-aieos-improve-remediation-authority.md) | AIEOS Improve & Remediation Authority (Frozen / Approved — Founder / Product Architecture approved **2026-09-04**; Chief Architect architecture review **ACCEPTED — 2026-09-04**; TOS-DEV09; OPTION B TeachingWork + `remediate_class` + immutable remediation origin with `source_class_result_level_snapshot`; class-level only; TOS-DEV09 **NOT IMPLEMENTED**; **DEV09-I01+ NOT AUTHORIZED**) |
 
 ## Exclusions
 
