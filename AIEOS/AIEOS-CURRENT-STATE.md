@@ -148,16 +148,16 @@ Philosophy: vertical-slice first on existing apps, behind `teacher_os_enabled`, 
 
 | Package | Current status | Evidence |
 |---------|----------------|----------|
-| **TOS-DEV04** — Prepare Tomorrow multi-artifact kit | **IMPLEMENTED / COMPLETE** | Backend `origin/main` includes DEV04 (current Backend `551e46e004233421746e4df2789c07367702528b`) |
-| **TOS-DEV06** — TeachingAssignment & classroom delivery | **IMPLEMENTED / COMPLETE** through Product E2E | Assignment Product E2E retained; current Backend `551e46e004233421746e4df2789c07367702528b`; Frontend `1c243cae4395a4546b5440a8b194023ff31d0a7d` |
-| **TOS-DEV07** — TeachingExecution & observation | **IMPLEMENTED / COMPLETE** through Product E2E | ADR-AIEOS-054 Frozen / Approved; DEV07-I01–I04 formally closed; Backend `551e46e004233421746e4df2789c07367702528b`; Frontend `1c243cae4395a4546b5440a8b194023ff31d0a7d`; OpenAPI `7D7D0E7C7115667757A31CFEB5474F7498ECC7198FB812DE5EF14A0E9F2D289A`; Alembic `tosd070002`; I04 post-merge CI `33756532004` (17 product tests: 6 Assignment + 11 TeachingExecution) |
-| **TOS-DEV08** — Assessment & Learning Evidence | **Architecture Frozen / Approved** — **NOT IMPLEMENTED** | [ADR-AIEOS-055](../decisions/ADR-AIEOS-055-aieos-assessment-learning-evidence-authority.md); Founder / Product Architecture approved **2026-09-03**; OPTION D class-level-first ClassroomAssessment; `/teacher-os/assess` remains PlaceholderPage; DEV08-I01+ **NOT AUTHORIZED** |
+| **TOS-DEV04** — Prepare Tomorrow multi-artifact kit | **IMPLEMENTED / COMPLETE** | Backend `origin/main` includes DEV04 (current Backend `1fe28f4fd1a2a2070aa69d67daa49cd53ba5820d`) |
+| **TOS-DEV06** — TeachingAssignment & classroom delivery | **IMPLEMENTED / COMPLETE** through Product E2E | Assignment Product E2E retained; current Backend `1fe28f4fd1a2a2070aa69d67daa49cd53ba5820d`; Frontend `30c94f3e0403b9a5a2e955c706766035490598f9` |
+| **TOS-DEV07** — TeachingExecution & observation | **IMPLEMENTED / COMPLETE** through Product E2E | ADR-AIEOS-054 Frozen / Approved; DEV07-I01–I04 formally closed; current Backend `1fe28f4fd1a2a2070aa69d67daa49cd53ba5820d`; Frontend `30c94f3e0403b9a5a2e955c706766035490598f9` |
+| **TOS-DEV08** — Assessment & Learning Evidence | **IMPLEMENTED / COMPLETE** through Product E2E | ADR-AIEOS-055 Frozen / Approved; DEV08-I01–I04 formally closed; Backend `1fe28f4fd1a2a2070aa69d67daa49cd53ba5820d`; Frontend `30c94f3e0403b9a5a2e955c706766035490598f9` (I04 merge); OpenAPI SHA-256 `824B389D6D4EDB2EA5D8ED3A9E5411087B566DFDCA09C2AB0CD4FDED51C4D89D`; Alembic `tosd080002`; I04 post-merge CI `33853706361` SUCCESS |
 
 **Boundaries preserved ([ADR-AIEOS-053](../decisions/ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md)):** Published ≠ Assigned; Assigned ≠ Externally Delivered; Assigned ≠ Attempted; Assigned ≠ Submitted; Assigned ≠ Graded. External LMS / Student OS learner delivery remains **deferred**.
 
 **Boundaries preserved ([ADR-AIEOS-054](../decisions/ADR-AIEOS-054-aieos-teaching-execution-observation-authority.md)):** **Assigned ≠ Taught ≠ Assessed ≠ Mastered**. TeachingAssignment remains assignment-intent truth; TeachingExecution remains classroom-execution truth. TeachingExecution COMPLETED means the teacher recorded lesson completion — **not** assignment completed, learner receipt, attendance, assessment, or mastery. Learner-specific observations, roster, attendance, attempts, submissions, scores, grades, assessment, mastery, timetable, LMS delivery, Student OS, observation events, additional NATS provisioning, and production deployment remain **outside DEV07 / not authorized**.
 
-**TOS-DEV08 Assessment authority (Frozen / Approved — NOT IMPLEMENTED):** [ADR-AIEOS-055](../decisions/ADR-AIEOS-055-aieos-assessment-learning-evidence-authority.md) freezes class-level-first ClassroomAssessment. Founder / Product Architecture approved **2026-09-03**. `/teacher-os/assess` remains a placeholder. Assessment / Improve / Mastery / learner-specific evidence implementation remains **not authorized**. DEV08-I01+ is **NOT AUTHORIZED**.
+**TOS-DEV08 Assessment authority (Frozen / Approved — IMPLEMENTATION COMPLETE):** [ADR-AIEOS-055](../decisions/ADR-AIEOS-055-aieos-assessment-learning-evidence-authority.md) remains **Frozen / Approved** (Founder / Product Architecture **2026-09-03**). Architecture decision status is distinct from implementation status. **TOS-DEV08 implementation COMPLETE** (DEV08-I01–I04 formally closed; real-stack Product E2E COMPLETE). Governed baseline: Backend `1fe28f4fd1a2a2070aa69d67daa49cd53ba5820d`; Frontend `30c94f3e0403b9a5a2e955c706766035490598f9`; Alembic `tosd080002`; OpenAPI SHA-256 `824B389D6D4EDB2EA5D8ED3A9E5411087B566DFDCA09C2AB0CD4FDED51C4D89D`. Implemented flow: TeachingExecution COMPLETED → **no** automatic ClassroomAssessment → teacher deliberately chooses Assess → ClassroomAssessment RECORD → RECORDED → reload / durable history → CORRECT under optimistic concurrency → optional VOID → VOIDED retained as terminal history. ClassroomAssessment remains **class-level only** (no `learner_id` / `student_id` / attempts / submissions / scores / grades / mastery / Improve / Assessment events / Temporal Assessment workflow / AI grading). Learner-specific assessment, mastery, Improve, Teacher Memory, Notification Center, Student Intelligence, and production activation remain **not authorized**. Next implementation baseline requires fresh architecture discovery.
 
 ---
 
@@ -264,9 +264,14 @@ Historical findings (read-only discovery at that time):
 | TeachingExecution application/API / Teach composition | **Complete** (DEV07-I02) |
 | Teacher OS Teach execution UX | **Complete** (DEV07-I03) |
 | TeachingExecution real-stack Product E2E | **Complete** (DEV07-I04; zero `/api` mocks; PostgreSQL 18) |
+| Native ClassroomAssessment | **Implemented** (TOS-DEV08; DEV08-I01–I04 formally closed) |
+| ClassroomAssessment domain/persistence | **Complete** (DEV08-I01; Alembic `tosd080002`) |
+| ClassroomAssessment application/API / authority composition | **Complete** (DEV08-I02) |
+| Teacher OS Assess UX + concurrency / 409 correction | **Complete** (DEV08-I03 / I03R1) |
+| ClassroomAssessment real-stack Product E2E | **Complete** (DEV08-I04; Frontend merge `30c94f3e0403b9a5a2e955c706766035490598f9`; post-merge CI `33853706361` SUCCESS) |
 | External learner delivery / LMS / Student OS | Deferred — Assigned ≠ Externally Delivered ([ADR-AIEOS-053](../decisions/ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md)) |
-| Teach / classroom execution (Assigned ≠ Taught) | **ADR-AIEOS-054 Frozen / Approved** (Founder approved **2026-09-01**); **TOS-DEV07 implementation COMPLETE** (Backend `551e46e004233421746e4df2789c07367702528b`; Frontend `1c243cae4395a4546b5440a8b194023ff31d0a7d`); learner-specific observation / attendance / assessment / mastery remain **not authorized** |
-| Assess / class-level learning evidence (Taught ≠ Assessed) | **ADR-AIEOS-055 Frozen / Approved** (Founder approved **2026-09-03**); OPTION D class-level ClassroomAssessment; **NOT IMPLEMENTED**; `/teacher-os/assess` remains PlaceholderPage; learner-specific / mastery / Improve / DEV08-I01+ **not authorized** |
+| Teach / classroom execution (Assigned ≠ Taught) | **ADR-AIEOS-054 Frozen / Approved** (Founder approved **2026-09-01**); **TOS-DEV07 implementation COMPLETE**; learner-specific observation / attendance / assessment / mastery remain **not authorized** |
+| Assess / class-level learning evidence (Taught ≠ Assessed) | **ADR-AIEOS-055 Frozen / Approved** (Founder approved **2026-09-03**); **TOS-DEV08 implementation COMPLETE** (DEV08-I01–I04 formally closed; Backend `1fe28f4fd1a2a2070aa69d67daa49cd53ba5820d`; Frontend `30c94f3e0403b9a5a2e955c706766035490598f9`); class-level ClassroomAssessment only; learner-specific / mastery / Improve remain **not authorized** |
 | Full Prepare orchestration | Deferred (EBP-001 out of scope depth) |
 | Student OS / Parent OS / Principal OS | Out of Wave 1 scope |
 | New generators / new model providers | Out of Wave 1 scope |
@@ -287,7 +292,7 @@ Historical findings (read-only discovery at that time):
 | Dual chrome | Classic MainLayout + TeacherShell until Mission is default production landing |
 | Discovery ≠ authorization | Discovery recommendations must not be treated as approved implementation without architecture approval |
 | Premature platform jumps | Risk of introducing Agents/MCP/Orchestration/Memory/DB without ADR + EBP authorization |
-| ADR-AIEOS-055 frozen but unimplemented | Assessment architecture Frozen / Approved **2026-09-03**; product Assess UI/Backend remain unimplemented; DEV08-I01+ **not authorized** |
+| Assess complete ≠ Improve / mastery authorized | ADR-AIEOS-055 remains Frozen / Approved; TOS-DEV08 class-level Assess is COMPLETE; Improve, learner-specific assessment, mastery, Teacher Memory, Notification Center, Student Intelligence, and production activation remain **not authorized** without fresh architecture discovery |
 
 ---
 
