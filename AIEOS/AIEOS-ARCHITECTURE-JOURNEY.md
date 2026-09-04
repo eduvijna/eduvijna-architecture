@@ -317,6 +317,19 @@ Conflict preference:
 
 ---
 
+## 24. ADR-AIEOS-056 — Improve & Remediation Authority
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Propose architecture for Teacher OS TOS-DEV09: close Prepare → Teach → Assess → Improve → Prepare again at class level; teacher-deliberate remediation TeachingWork; immutable Assessment-origin provenance; no Improve SoR; no learner/mastery/Memory. |
+| **Architectural reason** | TOS-DEV09A discovery accepted; `/teacher-os/improve` is PlaceholderPage; ADR-AIEOS-055 read handoff exists but Improve implementation authority is missing; least new state is TeachingWork + new IntentType rather than a second aggregate. |
+| **What was implemented** | Architecture source only: [ADR-AIEOS-056](../decisions/ADR-AIEOS-056-aieos-improve-remediation-authority.md) Proposed / Freeze Candidate **2026-09-04**. Chronology: TOS-DEV09A discovery → TOS-DEV09P1 design + adversarial validation. |
+| **What was deliberately NOT implemented** | Backend; Frontend; Product; migration; OpenAPI; DEV09-I01+; Teacher Memory; learner groups; mastery; Improve NATS events; Temporal; auto-recommendations; production deployment. |
+| **Governing decisions** | ADR-AIEOS-056 (Proposed); ADR-AIEOS-055 (Assessment ownership); ADR-AIEOS-054 / 053 / 052 / 027; ADR-045; ADR-048. |
+| **Current status** | **Proposed / NOT FROZEN.** OPTION B selected. Founder freeze not granted. DEV09-I01+ **NOT AUTHORIZED.** |
+
+---
+
 ## Gaps / missing chronology
 
 Where older pre-Teacher-OS platform history (earlier Platform AI packages, ERP modules, etc.) is relevant but not part of this AIEOS journey spine: **Not established by current repository evidence** as a fully sequenced AIEOS chronology in this folder — treat as adjacent capability history under product/API repos.
