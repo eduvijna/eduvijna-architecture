@@ -2,23 +2,24 @@
 id: ADR-AIEOS-056
 title: AIEOS Improve & Remediation Authority
 owner: EduVijna Enterprise Architecture Office · Chief AI Enterprise Architect
-status: proposed
-version: 1.0.1
+status: approved
+version: 1.0.2
 created: 2026-09-04
 last_updated: 2026-09-04
 reviewers:
   - Chief AI Enterprise Architect
+  - Founder / Product Architecture
 ---
 
 # ADR-AIEOS-056 — AIEOS Improve & Remediation Authority
 
-**Status:** Proposed / Freeze Candidate — **NOT FROZEN**  
-**Chief Architect architecture review:** PENDING  
-**Founder / Product Architecture freeze:** NOT GRANTED  
-**Date:** 2026-09-04  
+**Status:** Frozen / Approved
+**Chief Architect architecture review:** ACCEPTED — 2026-09-04
+**Founder / Product Architecture freeze:** APPROVED — 2026-09-04
+**Date:** 2026-09-04
 **Related:** [ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md) · [ADR-AIEOS-024](ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md) · [ADR-AIEOS-025](ADR-AIEOS-025-aieos-api-contract-integration-implementation-baseline.md) · [ADR-AIEOS-027](ADR-AIEOS-027-aieos-generic-content-implementation-baseline.md) · [ADR-AIEOS-028](ADR-AIEOS-028-security-audit-mutation-accountability.md) · [ADR-AIEOS-031](ADR-AIEOS-031-production-authorization-kernel.md) · [ADR-AIEOS-052](ADR-AIEOS-052-aieos-preparation-kit-multi-artifact-generation-architecture.md) · [ADR-AIEOS-053](ADR-AIEOS-053-aieos-teaching-assignment-classroom-delivery-authority.md) · [ADR-AIEOS-054](ADR-AIEOS-054-aieos-teaching-execution-observation-authority.md) · [ADR-AIEOS-055](ADR-AIEOS-055-aieos-assessment-learning-evidence-authority.md) · [ADR-045](ADR-045-teaching-intent-owns-goals.md) · [ADR-048](ADR-048-review-queue-owns-approval.md)
 
-**Catalogue note:** Proposed / Freeze Candidate is **ARCHITECTURE DESIGN ONLY**. This ADR proposes the **AIEOS Improve & Remediation Authority** for Teacher OS **TOS-DEV09 — Teacher OS Class-Level Improve & Remediation**. Architecture proposal ≠ Backend implementation authorization ≠ Frontend implementation authorization ≠ migration authorization ≠ OpenAPI authorization ≠ NATS provisioning ≠ Temporal authorization ≠ deployment authorization ≠ production mutation authorization. Implementation slices **DEV09-I01+** require separate Chief Architect authorization **after** Founder / Product Architecture freeze.
+**Catalogue note:** Frozen / Approved is **ARCHITECTURE AUTHORITY ONLY**. This ADR freezes the **AIEOS Improve & Remediation Authority** for Teacher OS **TOS-DEV09 — Teacher OS Class-Level Improve & Remediation**. Founder / Product Architecture approval was granted **2026-09-04**. Architecture freeze ≠ Backend implementation authorization ≠ Frontend implementation authorization ≠ migration authorization ≠ OpenAPI authorization ≠ NATS provisioning ≠ Temporal authorization ≠ deployment authorization ≠ production mutation authorization. Implementation slices **DEV09-I01+** require separate Chief Architect authorization **after** this architecture PR is merged and closure verified. **TOS-DEV09-I01+ is NOT AUTHORIZED.**
 
 **ID family note:** `ADR-AIEOS-056` is part of the AIEOS platform ADR family (`ADR-AIEOS-*`). It is distinct from Teacher OS product ADR-042–048 language decisions.
 
@@ -28,7 +29,7 @@ Does **not** reopen: Generic Content (ADR-AIEOS-027); preparation kit (ADR-AIEOS
 
 Historical ADR-AIEOS-055 body remains unchanged. ADR-AIEOS-055 §17 read-only Improve handoff remains binding and is specialized (not rewritten) by this ADR.
 
-TOS-DEV09A discovery is **COMPLETE / ACCEPTED**. TOS-DEV09P1 design + adversarial validation is deposited here as **Proposed / NOT FROZEN**. This deposit does **not** authorize implementation.
+TOS-DEV09A discovery is **COMPLETE / ACCEPTED**. TOS-DEV09P1 design + adversarial validation and TOS-DEV09P1R1 provenance + AI-input correction were deposited as Proposed (v1.0.0 / v1.0.1) before freeze. Founder / Product Architecture approval was granted on **2026-09-04**. This freeze does **not** authorize implementation.
 
 ---
 
@@ -534,8 +535,18 @@ If live AI makes deterministic E2E fragile, use the existing governed developmen
 
 ## Authorization boundary
 
-This ADR is **Proposed / NOT FROZEN**.
+This ADR is **Frozen / Approved**.
 
-Even after a future Founder freeze, freeze ≠ implementation authorization. **DEV09-I01+** require separate Chief Architect authorization packages.
+Frozen / Approved ≠ implementation authorization. **TOS-DEV09-I01+ is NOT AUTHORIZED.** Implementation requires a separate Chief Architect governed package after this architecture PR is merged and closure verified.
 
 Does **not** authorize: Backend, Frontend, Product, migration, OpenAPI, NATS, Temporal, Teacher Memory, learner Assessment, mastery, production deployment, or DigitalOcean mutation.
+
+---
+
+## Founder decision
+
+Founder / Product Architecture **APPROVED** OPTION B class-level Improve & Remediation Authority on **2026-09-04**.
+
+Chief Architect architecture review: **ACCEPTED — 2026-09-04**.
+
+This freeze does **not** authorize Backend, Frontend, Product, migration, OpenAPI, DEV09-I01+, Teacher Memory, learner groups, mastery, NATS Improve events, Temporal, or production deployment.
