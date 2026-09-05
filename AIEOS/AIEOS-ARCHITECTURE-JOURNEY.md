@@ -324,9 +324,22 @@ Conflict preference:
 | **Objective** | Freeze architecture for Teacher OS TOS-DEV09: close Prepare → Teach → Assess → Improve → Prepare again at class level; teacher-deliberate remediation TeachingWork; immutable Assessment-origin provenance; no Improve SoR; no learner/mastery/Memory. |
 | **Architectural reason** | TOS-DEV09A discovery accepted; `/teacher-os/improve` is PlaceholderPage; ADR-AIEOS-055 read handoff exists but Improve implementation authority is missing; least new state is TeachingWork + new IntentType rather than a second aggregate. |
 | **What was implemented** | Architecture source only: [ADR-AIEOS-056](../decisions/ADR-AIEOS-056-aieos-improve-remediation-authority.md) Frozen / Approved **2026-09-04** (v1.0.2). Chronology: TOS-DEV09A discovery → TOS-DEV09P1 design + adversarial validation → TOS-DEV09P1R1 provenance + AI-input correction (Proposed v1.0.0 / v1.0.1) → Chief Architect architecture review **ACCEPTED 2026-09-04** → Founder / Product Architecture **Frozen / Approved 2026-09-04**. |
-| **What was deliberately NOT implemented** | Backend; Frontend; Product; migration; OpenAPI; DEV09-I01+; Teacher Memory; learner groups; mastery; Improve NATS events; Temporal; auto-recommendations; Assessment note/Observation body Teaching copies; production deployment. `/teacher-os/improve` remains PlaceholderPage. |
+| **What was deliberately NOT implemented at architecture freeze time** | Backend; Frontend; Product; migration; OpenAPI; DEV09-I01+; Teacher Memory; learner groups; mastery; Improve NATS events; Temporal; auto-recommendations; Assessment note/Observation body Teaching copies; production deployment. `/teacher-os/improve` was PlaceholderPage. *(Historical freeze-time boundary — not a current-status claim.)* |
 | **Governing decisions** | ADR-AIEOS-056 (Frozen / Approved); ADR-AIEOS-055 (Assessment ownership); ADR-AIEOS-054 / 053 / 052 / 027; ADR-045; ADR-048. |
-| **Current status** | **Architecture Frozen / Approved.** Founder / Product Architecture approved **2026-09-04**. Chief Architect review **ACCEPTED — 2026-09-04**. OPTION B frozen. Origin pins Assessment revision + `source_class_result_level_snapshot`. Teacher-confirmed `goal_text` is sole remediation generator instruction. TOS-DEV09 implementation = **NOT IMPLEMENTED**. DEV09-I01+ **NOT AUTHORIZED.** |
+| **Current status** | **Architecture Frozen / Approved.** Founder / Product Architecture approved **2026-09-04**. Chief Architect review **ACCEPTED — 2026-09-04**. OPTION B frozen. Origin pins Assessment revision + `source_class_result_level_snapshot`. Teacher-confirmed `goal_text` is sole remediation generator instruction. **TOS-DEV09 implementation COMPLETE** (DEV09-I01–I04 formally closed; real-stack Product E2E COMPLETE). Governed pins: Backend `62733e3ad0d48887f3cd1e1a4486839170a5d651`; Frontend `732c0b5f88b7342d27e6ee7f103cb1d182ed310b`; Alembic `tosd090002`. Historical ADR-AIEOS-056 body unchanged. |
+
+---
+
+## 25. ADR-AIEOS-057 — Teacher OS Development-Complete Experience Authority
+
+| Field | Content |
+|-------|---------|
+| **Objective** | Propose architecture for Teacher OS TOS-DEV10 Development Ready experience boundary: Library v1 Content façade, Teacher Memory v1 preferences, contextual AI Assistant v1, Mission remediation presentation, DEV04 bounded planning sufficiency, MCP-READY posture. |
+| **Architectural reason** | TOS-DEV10A readiness audit accepted; loop through Improve is implemented; Development Ready still requires Library / Memory / Assistant authority without inventing parallel SoRs, FE→provider paths, or Planner/MCP platforms. |
+| **What was implemented** | Architecture source only: [ADR-AIEOS-057](../decisions/ADR-AIEOS-057-aieos-teacher-os-development-complete-experience-authority.md) **PROPOSED / FREEZE CANDIDATE** (v1.0.0). Orientation reconciliation records TOS-DEV09 COMPLETE and TOS-DEV10 ACTIVE. |
+| **What was deliberately NOT implemented** | Founder freeze; Backend/Frontend Library/Memory/Assistant implementation; Chat SoR; Planner Agent; broad MCP; curriculum platform; production work. |
+| **Governing decisions** | ADR-AIEOS-057 (Proposed); ADR-AIEOS-056–052; ADR-AIEOS-027; ADR-044; ADR-042–048. |
+| **Current status** | **PROPOSED / FREEZE CANDIDATE.** Founder freeze **not** granted. TOS-DEV10A = READINESS AUDIT COMPLETE. TOS-DEV10 = ACTIVE. DEV10 implementation **not** complete. |
 
 ---
 
