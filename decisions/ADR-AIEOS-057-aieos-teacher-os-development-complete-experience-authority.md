@@ -3,7 +3,7 @@ id: ADR-AIEOS-057
 title: AIEOS Teacher OS Development-Complete Experience Authority
 owner: EduVijna Enterprise Architecture Office · Chief AI Enterprise Architect
 status: proposed
-version: 1.0.0
+version: 1.0.1
 created: 2026-09-05
 last_updated: 2026-09-05
 reviewers:
@@ -22,7 +22,7 @@ reviewers:
 
 **ID family note:** `ADR-AIEOS-057` is part of the AIEOS platform ADR family (`ADR-AIEOS-*`). It is distinct from Teacher OS product ADR-042–048 language decisions.
 
-**Architecture programme:** **TOS-DEV10 — Teacher OS Development Complete**. TOS-DEV10A readiness audit is **COMPLETE / ACCEPTED**. This ADR freezes the *proposed* experience boundary for Development Ready (not Production Ready).
+**Architecture programme:** **TOS-DEV10 — Teacher OS Development Complete**. TOS-DEV10A readiness audit is **COMPLETE / ACCEPTED**. This ADR **proposes** the experience boundary for Development Ready (not Production Ready).
 
 Does **not** reopen or rewrite historical text of: ADR-AIEOS-056 (Improve); ADR-AIEOS-052–055; ADR-AIEOS-027; ADR-044 / ADR-042–048.
 
@@ -158,13 +158,30 @@ Teacher Memory v1 **SHALL** contain only explicit / teacher-controlled preferenc
 
 Use a governed **typed / schema-versioned** model.
 
-**Required identity boundary:**
+**Required Teacher Memory owner identity boundary:**
+
+The durable Teacher Memory **owner** SHALL be the **represented HUMAN teacher Principal**.
 
 ```text
 tenant
   +
-represented/effective teacher Principal
+represented HUMAN teacher Principal
 ```
+
+Do **not** define Memory ownership as the transport caller, authenticated workload, executing service, delegated actor, or audit effective actor merely because that actor performs the request.
+
+**Security provenance remains separate** and must stay compatible with existing AIEOS identity/security authority ([ADR-AIEOS-023R1](ADR-AIEOS-023R1-aieos-identity-tenant-security-canonical-restatement.md), [ADR-AIEOS-028](ADR-AIEOS-028-security-audit-mutation-accountability.md)):
+
+- authenticated principal / caller
+- represented principal
+- effective actor where applicable
+- delegation
+- workload / service identity
+- audit provenance
+
+A delegated or service caller **MAY** be authorized to perform an operation only under existing security authority, but **MUST NOT** become the durable Teacher Memory owner by default.
+
+This ADR does **not** redesign ADR-AIEOS-023R1.
 
 It must carry ordinary aggregate revision / optimistic concurrency semantics consistent with AIEOS persistence architecture ([ADR-AIEOS-024](ADR-AIEOS-024-aieos-data-resource-sor-implementation-baseline.md)).
 
